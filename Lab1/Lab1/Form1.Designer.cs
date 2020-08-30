@@ -28,13 +28,32 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.SuspendLayout();
+			// 
+			// richTextBox1
+			// 
+			resources.ApplyResources(this.richTextBox1, "richTextBox1");
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+			// 
+			// Form1
+			// 
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "Form1";
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+			this.Controls.Add(this.richTextBox1);
+			this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.HelpButton = true;
+			this.Name = "Form1";
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.RichTextBox richTextBox1;
 	}
 }
 
