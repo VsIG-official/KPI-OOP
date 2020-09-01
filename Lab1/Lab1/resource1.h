@@ -2,8 +2,9 @@
 // Включаемый файл, созданный в Microsoft Visual C++.
 // Используется module1.rc
 //
-#define IDD_DIALOG1                     101
 #define IDC_EDIT1                       1001
+#define IDD_EDIT1                       1001
+#define IDD_EDITBOX1                    1001
 
 // Next default values for new objects
 // 

@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
+#include "resource1.h"
 
 #define MAX_LOADSTRING 100
 
@@ -11,6 +12,9 @@
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+
+LPTSTR buffer;
+int cchMax;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -140,7 +144,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_WORK2:
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
-                MyWork(hWnd);
+                //MyWork(hWnd);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -222,4 +226,31 @@ INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+
+//Callback-функція вікна
+static BOOL CALLBACK Work1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
+{
+    switch (iMessage)
+    {
+    case WM_COMMAND:
+        if (LOWORD(wParam) == IDOK)
+        {
+            //... можливо, щось ще
+
+             //зчитуємо вміст елементу Edit Control у буфер
+            GetDlgItemText(hDlg, IDC_EDIT1, buffer, cchMax);
+
+            //... можливо, щось ще
+            EndDialog(hDlg, 1);
+            break;
+        }
+        if (LOWORD(wParam) == IDCANCEL)
+            EndDialog(hDlg, 0);
+        break;
+    default:
+        break;
+    }
+    return FALSE;
 }
