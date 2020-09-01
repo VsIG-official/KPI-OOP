@@ -140,7 +140,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case IDM_WORK1:
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
-                MyWork(hWnd);
+                //MyWork(hWnd);
+                DialogBox(hInst, MAKEINTRESOURCE(IDC_EDIT1), hWnd, About);
+
                 break;
             case IDM_WORK2:
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
