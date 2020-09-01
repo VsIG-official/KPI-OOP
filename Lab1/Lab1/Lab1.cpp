@@ -18,7 +18,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    MyWorkForBox(HWND, UINT, WPARAM, LPARAM);
-void MyWork(HWND hWnd);      // оголошення нашшої функції
+void MyWork(HWND hWnd);      // оголошення нашої функції
 
 // Second Part
 // Enter Point "wWinMain"
@@ -59,8 +59,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     return (int) msg.wParam;
 }
-
-
 
 //
 //  ФУНКЦИЯ: MyRegisterClass()
@@ -136,7 +134,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // Разобрать выбор в меню:
             switch (wmId)
             {
-            case IDM_WORK:
+            case IDM_WORK1:
+                //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
+                MyWork(hWnd);
+                break;
+            case IDM_WORK2:
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
                 MyWork(hWnd);
                 break;
