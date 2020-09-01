@@ -17,6 +17,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+//INT_PTR CALLBACK    MyWork(HWND, UINT, WPARAM, LPARAM);
 void MyWork(HWND hWnd);      // оголошення нашшої функції
 
 // Second Part
@@ -136,7 +137,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_WORK:
-                MyWork(hWnd);   // Буде нашим обробником вибіру пункту Робота
+                //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
+                MyWork(hWnd);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -191,12 +193,9 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
-
 //функція-обробник пункту меню "Робота"
 void MyWork(HWND hWnd)
 {
-
-    // Що ми тут запрограмуємо, те й буде робитися
-    // Тут писати код лаби
-
+    //Що ми тут запрограмуємо, те й буде робитися
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, About);
 }
