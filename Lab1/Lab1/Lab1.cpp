@@ -17,7 +17,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-//INT_PTR CALLBACK    MyWork(HWND, UINT, WPARAM, LPARAM);
+INT_PTR CALLBACK    MyWorkForBox(HWND, UINT, WPARAM, LPARAM);
 void MyWork(HWND hWnd);      // оголошення нашшої функції
 
 // Second Part
@@ -197,5 +197,27 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 void MyWork(HWND hWnd)
 {
     //Що ми тут запрограмуємо, те й буде робитися
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, About);
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWorkForBox);
+}
+
+INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    UNREFERENCED_PARAMETER(lParam);
+    switch (message)
+    {
+        // When window is created
+    case WM_INITDIALOG:
+        return (INT_PTR)TRUE;
+
+        // When OK is clicked
+    case WM_COMMAND:
+        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+        {
+            // End dialog window
+            EndDialog(hDlg, LOWORD(wParam));
+            return (INT_PTR)TRUE;
+        }
+        break;
+    }
+    return (INT_PTR)FALSE;
 }
