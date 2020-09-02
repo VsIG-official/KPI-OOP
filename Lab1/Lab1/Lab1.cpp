@@ -1,10 +1,10 @@
 ﻿// Lab1.cpp : Определяет точку входа для приложения.
 //
-//First Part
+// First Part
 #include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
-#include "resource1.h"
+#include "module1.cpp"
 
 #define MAX_LOADSTRING 100
 
@@ -139,8 +139,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_WORK1:
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
                 //MyWork(hWnd);
-                DialogBox(hInst, MAKEINTRESOURCE(IDC_EDIT1), hWnd, About);
-
+                MyWork(hWnd);
                 break;
             case IDM_WORK2:
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
@@ -203,7 +202,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 void MyWork(HWND hWnd)
 {
     //Що ми тут запрограмуємо, те й буде робитися
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWorkForBox);
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_EDITBOX1), hWnd, MyWorkForBox);
 }
 
 INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
@@ -227,5 +226,3 @@ INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
     }
     return (INT_PTR)FALSE;
 }
-
-
