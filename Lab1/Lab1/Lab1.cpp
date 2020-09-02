@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
+#include "module1.h"
 
 #define MAX_LOADSTRING 100
 
@@ -18,6 +19,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
 INT_PTR CALLBACK    MyWorkForBox(HWND, UINT, WPARAM, LPARAM);
 void MyWork(HWND hWnd);      // оголошення нашої функції
 
@@ -201,7 +203,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 void MyWork(HWND hWnd)
 {
     //Що ми тут запрограмуємо, те й буде робитися
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWorkForBox);
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_DIALOG1_MOD1), hWnd, MyWorkForBox);
 }
 
 INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
