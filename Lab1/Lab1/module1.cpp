@@ -1,13 +1,13 @@
-#include "pch.h"
+п»ї#include "pch.h"
 #include "framework.h"
 #include "module1.h"
 
 int symbols;
 LPTSTR buffer; //LPCSTR
-//HDC hdc;
+HDC hdc;
 UINT textToShow;
 
-//Callback-функція вікна
+//Callback-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
 {
     switch (iMessage)
@@ -15,27 +15,24 @@ static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK)
         {
-            //... можливо, щось ще
-            //зчитуємо вміст елементу Edit Control у буфер
+            //... пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Edit Control пїЅ пїЅпїЅпїЅпїЅпїЅ
 
             GetDlgItemText(hDlg, IDC_EDIT1, buffer, symbols);
+            TextOut(hdc, TA_CENTER, TA_CENTER, buffer, symbols);
 
-            //... можливо, щось ще
+            //... пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ
             break;
         }
         if (LOWORD(wParam) == IDCANCEL) EndDialog(hDlg, 0);
         break;
     case WM_PAINT:
         PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hDlg, &ps);
 
-        SetTextColor(hdc, RGB(0, 0, 0)); //White text.
+        // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HDC...
+        //TextOutW(hdc, 10, 10, buffer, 18);
 
-        TextOut(hdc, 0, 0, "We love nice pictures.", strlen("We love nice pictures.")); //Print it!
-
-        ReleaseDC(hDlg, hdc);
-        EndPaint(hDlg, &ps);
-        break;
+    default: break;
     }
     return FALSE;
 }

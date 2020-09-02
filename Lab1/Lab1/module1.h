@@ -1,8 +1,4 @@
-//{{NO_DEPENDENCIES}}
-// Включаемый файл, созданный в Microsoft Visual C++.
-// Используется module1.rc
-//
-#define IDD_DIALOG1                     101
+п»ї#define IDD_DIALOG1                     101
 #define IDD_DIALOG1_MOD1                101
 #define IDC_EDIT1                       1001
 
