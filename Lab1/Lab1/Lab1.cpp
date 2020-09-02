@@ -4,7 +4,6 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
-#include "module1.cpp"
 
 #define MAX_LOADSTRING 100
 
@@ -202,7 +201,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 void MyWork(HWND hWnd)
 {
     //Що ми тут запрограмуємо, те й буде робитися
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_EDITBOX1), hWnd, MyWorkForBox);
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWorkForBox);
 }
 
 INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
