@@ -6,6 +6,7 @@
 #define IDD_DIALOG1_MOD1                101
 #define IDC_EDIT1                       1001
 
+extern LPTSTR buffer;
 
 // Next default values for new objects
 //
@@ -15,6 +16,6 @@
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           101
-extern static BOOL CALLBACK MyWork(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
+extern static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
 #endif
 #endif
