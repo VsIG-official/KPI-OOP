@@ -1,15 +1,13 @@
 ﻿#include "pch.h"
 #include "framework.h"
 #include "module1.h"
+#include <iostream>
 
 int cchMax;
 LPSTR buffer; //LPCSTR
-HDC hdc;
-UINT textToShow;
-CHAR TEXT[] = { 0 };
 
 //Callback-������� ����
-static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
+static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM,HDC hdc)
 {
     switch (iMessage)
     {
@@ -18,10 +16,12 @@ static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM
         {
             //... �������, ���� ��
             //������� ���� �������� Edit Control � �����
-
-            GetDlgItemText(hDlg, IDC_EDIT1, TEXT, 255);
+            UpdateWindow(hDlg);
+            GetDlgItemText(hDlg, IDC_EDIT1, buffer, 255);
             //buffer = "some";
-            TextOut(hdc, TA_CENTER, TA_CENTER, TEXT, 255);
+            //MessageBox(NULL, buffer, "Error message", 14);
+
+            TextOut(hdc, TA_CENTER, TA_CENTER, buffer, 255);
 
             //... �������, ���� ��
             break;
@@ -29,12 +29,6 @@ static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM
         if (LOWORD(wParam) == IDCANCEL)
             EndDialog(hDlg, 0);
         break;
-    case WM_PAINT:
-        //PAINTSTRUCT ps;
-
-        // TODO: �������� ���� ����� ��� ����������, ������������ HDC...
-        //TextOutW(hdc, 10, 10, buffer, 18);
-
     default: break;
     }
     return FALSE;
