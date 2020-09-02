@@ -4,7 +4,7 @@
 
 int symbols;
 LPTSTR buffer; //LPCSTR
-HDC hdc;
+//HDC hdc;
 UINT textToShow;
 
 //Callback-функція вікна
@@ -19,7 +19,6 @@ static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM
             //зчитуємо вміст елементу Edit Control у буфер
 
             GetDlgItemText(hDlg, IDC_EDIT1, buffer, symbols);
-            TextOut(hdc, TA_CENTER, TA_CENTER, buffer, symbols);
 
             //... можливо, щось ще
             break;
@@ -28,11 +27,15 @@ static BOOL CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM
         break;
     case WM_PAINT:
         PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hDlg, &ps);
 
-        // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-        //TextOutW(hdc, 10, 10, buffer, 18);
+        SetTextColor(hdc, RGB(0, 0, 0)); //White text.
 
-    default: break;
+        TextOut(hdc, 0, 0, "We love nice pictures.", strlen("We love nice pictures.")); //Print it!
+
+        ReleaseDC(hDlg, hdc);
+        EndPaint(hDlg, &ps);
+        break;
     }
     return FALSE;
 }
