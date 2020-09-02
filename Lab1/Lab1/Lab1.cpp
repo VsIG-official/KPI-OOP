@@ -22,6 +22,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 INT_PTR CALLBACK    MyWorkForBox(HWND, UINT, WPARAM, LPARAM);
 void MyWork(HWND hWnd);      // оголошення нашої функції
+void Draw(HWND hWnd);      // оголошення нашої функції
 
 // LPCWSTR string;
 
@@ -161,15 +162,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_PAINT:
     {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-
-        SetTextColor(hdc, RGB(0, 0, 0)); //White text.
-
-        TextOut(hdc, 0, 0, "We love nice pictures.", strlen("We love nice pictures.")); //Print it!
-
-        ReleaseDC(hWnd, hdc);
-        EndPaint(hWnd, &ps);
+        Draw(hWnd);
     }
     break;
     case WM_DESTROY:
@@ -233,4 +226,13 @@ INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+void Draw(HWND hWnd)
+{
+    PAINTSTRUCT ps;
+    HDC hdc = BeginPaint(hWnd, &ps);
+    // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
+    TextOut(hdc, 0, 0, TEXT, cchMax); //Print it!
+    EndPaint(hWnd, &ps);
 }
