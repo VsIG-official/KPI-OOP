@@ -9,7 +9,6 @@
 #define IDM_ABOUT                       104
 #define IDD_ABOUTBOX1                   104
 #define IDD_WORK                        104
-#define IDD_WORKBOX                     104
 #define IDM_EXIT                        105
 #define IDI_LAB1                        107
 #define IDI_SMALL                       108
@@ -18,6 +17,8 @@
 #define IDM_WORK                        32771
 #define IDM_WORK1                       32772
 #define IDM_WORK2                       32773
+#define IDM_WORK_MOD1                   32775
+#define IDM_WORK_MOD2                   32776
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
@@ -26,7 +27,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32775
+#define _APS_NEXT_COMMAND_VALUE         32777
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110
 #endif

@@ -140,12 +140,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         // Разобрать выбор в меню:
         switch (wmId)
         {
-        case IDM_WORK1:
-            //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
-            //MyWork(hWnd);
-            MyWork(hWnd);
+        case IDM_WORK_MOD1:
+            //DialogBox(hInst, MAKEINTRESOURCE(IDD_DIALOG1_MOD1), hWnd, MyWorkForBox);
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, MyWork_MOD1);
+            InvalidateRect(hWnd, 0, TRUE);
             break;
-        case IDM_WORK2:
+        case IDM_WORK_MOD2:
             //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORKBOX), hWnd, MyWork);
             //MyWork(hWnd);
             break;
@@ -162,7 +162,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_PAINT:
     {
-        Draw(hWnd);
+        PAINTSTRUCT ps;
+        UpdateWindow(hWnd);
+        HDC hdc = BeginPaint(hWnd, &ps);
+        TextOut(hdc, 1, 1, buffer, 255);
+        EndPaint(hWnd, &ps);
     }
     break;
     case WM_DESTROY:
@@ -199,48 +203,38 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
-//функція-обробник пункту меню "Робота"
-void MyWork(HWND hWnd)
-{
-    //Що ми тут запрограмуємо, те й буде робитися
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_DIALOG1_MOD1), hWnd, MyWorkForBox);
-}
-
-INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-        // When window is created
-    case WM_INITDIALOG:
-        //UpdateWindow(hDlg);
-        return (INT_PTR)TRUE;
-
-        // When OK is clicked
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            // End dialog window
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
-}
-
-void Draw(HWND hWnd)
-{
-    PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hWnd, &ps);
-    // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-
-    //HDC dc = GetDc(hwnd);
-    RECT rc;
-    GetClientRect(hWnd, &rc);
-    DrawText(hdc, buffer, -1, &rc, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
-    ReleaseDC(hWnd, hdc);
-    //TextOut(hdc, 0, 0, (LPSTR)result, cchMax); //Print it!
-
-    EndPaint(hWnd, &ps);
-}
+////функція-обробник пункту меню "Робота"
+//void MyWork(HWND hWnd)
+//{
+//    //Що ми тут запрограмуємо, те й буде робитися
+//    DialogBox(hInst, MAKEINTRESOURCE(IDD_DIALOG1_MOD1), hWnd, MyWorkForBox);
+//}
+//
+//INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+//{
+//    UNREFERENCED_PARAMETER(lParam);
+//    switch (message)
+//    {
+//        // When window is created
+//    case WM_INITDIALOG:
+//        return (INT_PTR)TRUE;
+//
+//        // When OK is clicked
+//    case WM_COMMAND:
+//        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+//        {
+//            // End dialog window
+//            EndDialog(hDlg, LOWORD(wParam));
+//            InvalidateRect(hDlg, 0, TRUE);
+//
+//            return (INT_PTR)TRUE;
+//        }
+//        break;
+//    }
+//    return (INT_PTR)FALSE;
+//}
+//
+//void Draw(HWND hWnd)
+//{
+//
+//}
