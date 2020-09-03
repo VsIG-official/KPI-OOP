@@ -5,7 +5,7 @@
 //
 extern LPSTR buffer;
 extern int cchMax;
-extern UINT result;
+//extern UINT result;
 
 // Next default values for new objects
 //

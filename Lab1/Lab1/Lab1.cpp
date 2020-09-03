@@ -213,7 +213,7 @@ INT_PTR CALLBACK MyWorkForBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
     {
         // When window is created
     case WM_INITDIALOG:
-        UpdateWindow(hDlg);
+        //UpdateWindow(hDlg);
         return (INT_PTR)TRUE;
 
         // When OK is clicked
@@ -235,7 +235,12 @@ void Draw(HWND hWnd)
     HDC hdc = BeginPaint(hWnd, &ps);
     // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
 
-    TextOut(hdc, 0, 0, (LPSTR)result, cchMax); //Print it!
+    //HDC dc = GetDc(hwnd);
+    RECT rc;
+    GetClientRect(hWnd, &rc);
+    DrawText(hdc, buffer, -1, &rc, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+    ReleaseDC(hWnd, hdc);
+    //TextOut(hdc, 0, 0, (LPSTR)result, cchMax); //Print it!
 
     EndPaint(hWnd, &ps);
 }
