@@ -3,7 +3,7 @@
 #include "module1.h"
 
 int const maxSymbols = 255;
-TCHAR buffer[maxSymbols] = { 0 };
+TCHAR tempPlaceForText[maxSymbols] = { 0 };
 
 //Callback-function
  INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -14,7 +14,7 @@ TCHAR buffer[maxSymbols] = { 0 };
         if (LOWORD(wParam) == IDOK)
         {
             // OK button
-            GetDlgItemText(hDlg, IDC_EDIT1, buffer, maxSymbols);
+            GetDlgItemText(hDlg, IDC_EDIT1, tempPlaceForText, maxSymbols);
             EndDialog(hDlg, 0);
             return (INT_PTR)TRUE;
         }

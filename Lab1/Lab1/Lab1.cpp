@@ -21,6 +21,13 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 void Work1(HWND hWnd);      // Declaration of our function
+int fontHeight = 30;
+char fontName[] = "Arial";
+int textHeightPosition = 0;
+int textWidthPosition = 0;
+HFONT hFont = CreateFont(fontHeight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, fontName);
+//Create the font
+
 
 // LPCWSTR string;
 
@@ -168,10 +175,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        TextOut(hdc, 1, 1, buffer, maxSymbols);
+
+        SelectObject(hdc, hFont);
+        TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, maxSymbols);
 
         EndPaint(hWnd, &ps);
-        ZeroMemory(buffer, maxSymbols);
+        ZeroMemory(tempPlaceForText, maxSymbols);
     }
     break;
     case WM_DESTROY:
