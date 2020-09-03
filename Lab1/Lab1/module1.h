@@ -3,7 +3,7 @@
 #define IDC_EDIT1                       1001
 
 //
-extern LPSTR  buffer;
+extern LPSTR buffer;
 extern int cchMax;
 extern UINT result;
 
