@@ -5,7 +5,7 @@
 //
 extern LPSTR  buffer;
 extern int cchMax;
-CHAR TEXT[];
+extern UINT result;
 
 // Next default values for new objects
 //
