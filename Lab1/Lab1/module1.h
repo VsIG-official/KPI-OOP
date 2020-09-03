@@ -7,7 +7,8 @@
 #define IDC_EDIT1                       1001
 
 extern INT_PTR CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-extern TCHAR buffer[1024];
+extern TCHAR buffer[];
+extern int cchMax;
 
 // Next default values for new objects
 //

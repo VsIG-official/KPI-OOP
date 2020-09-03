@@ -5,6 +5,7 @@
 #include "framework.h"
 #include "Lab1.h"
 #include "module1.h"
+#include <iostream>
 
 #define MAX_LOADSTRING 100
 
@@ -165,8 +166,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
+
         TextOut(hdc, 1, 1, buffer, 255);
+
         EndPaint(hWnd, &ps);
+        ZeroMemory(buffer, 255);
     }
     break;
     case WM_DESTROY:

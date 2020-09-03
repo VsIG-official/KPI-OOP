@@ -3,7 +3,7 @@
 #include "module1.h"
 
 int cchMax;
-TCHAR buffer[1024] = { 0 };
+TCHAR buffer[255] = { 0 };
 
 //Callback-function
  INT_PTR CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -13,7 +13,7 @@ TCHAR buffer[1024] = { 0 };
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK)
         {
-            GetDlgItemText(hDlg, IDC_EDIT1, buffer, 1024);
+            GetDlgItemText(hDlg, IDC_EDIT1, buffer, 255);
             EndDialog(hDlg, 0);
             return (INT_PTR)TRUE;
         }
