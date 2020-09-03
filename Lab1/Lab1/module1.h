@@ -6,9 +6,9 @@
 #define IDD_WORK_MOD1                   101
 #define IDC_EDIT1                       1001
 
-extern INT_PTR CALLBACK MyWork_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 extern TCHAR buffer[];
-extern int cchMax;
+extern int const maxSymbols;
 
 // Next default values for new objects
 //
