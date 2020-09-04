@@ -5,16 +5,30 @@
 int const maxSymbols = 255;
 TCHAR tempPlaceForText[maxSymbols] = { 0 };
 
+int pos;
+int nMinPos = 0;
+int nMaxPos = 100;
+BOOL bRedraw = TRUE;
+
 //Callback-function
  INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     switch (iMessage)
     {
+    case WM_INITDIALOG:
+        BOOL SetScrollRange(
+            HWND hDlg,
+            int  nBar,
+            int  nMinPos,
+            int  nMaxPos,
+            BOOL bRedraw
+        );
+        break;
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK)
         {
             // OK button
-            GetDlgItemText(hDlg, IDC_EDIT1, tempPlaceForText, maxSymbols);
+            GetDlgItemText(hDlg, IDC_SCROLLBAR1, tempPlaceForText, maxSymbols);
             EndDialog(hDlg, 0);
             return (INT_PTR)TRUE;
         }
@@ -25,27 +39,30 @@ TCHAR tempPlaceForText[maxSymbols] = { 0 };
         }
         return (INT_PTR)TRUE;
     case WM_HSCROLL:
-        int pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR), SB_CTL);
+        pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
+        //pos = GetScrollPos(hDlg, SB_CTL);
         switch (LOWORD(wParam))
         {
             case SB_LINELEFT:      //натиснуто кнопку ліворуч
-            pos--;
-            break;
+                pos--;
+                break;
             case SB_LINERIGHT:      //натиснуто кнопку праворуч
-            pos++;
-            break;
+                pos++;
+                break;
             case SB_THUMBPOSITION: //фіксована позиція повзуна
             case SB_THUMBTRACK:    //поточна позиція повзуна
-            pos = HIWORD(wParam);
-            break;
-            default :
+                pos = HIWORD(wParam);
+                break;
+            default:
                 break;
         }
         //... потрібний код
-        SetScrollPos(hWndScroll,SB_CTL,pos,TRUE);  //фіксація повзуна
+        SetScrollPos(hDlg,SB_CTL,pos,TRUE);  //фіксація повзуна
         //... потрібний код
         break;
-    default: break;
+        default:
+        // do nothing
+            break;
     }
     return (INT_PTR)FALSE;
 }

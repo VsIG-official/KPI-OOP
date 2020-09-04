@@ -175,7 +175,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
 
-
         SelectObject(hdc, hFont);
         TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, maxSymbols);
 

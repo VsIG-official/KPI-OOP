@@ -68,7 +68,7 @@ BEGIN
     DEFPUSHBUTTON   "ОК",IDOK,199,155,50,14
     PUSHBUTTON      "Отмена",IDCANCEL,253,155,50,14
     SCROLLBAR       IDC_SCROLLBAR1,77,85,151,11
-    LTEXT           "Статический",IDC_STATIC,130,60,58,8
+    LTEXT           "Статический",IDC_STATIC_MOD1,130,60,58,8
 END
 
 
