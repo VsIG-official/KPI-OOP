@@ -8,7 +8,6 @@ TCHAR tempPlaceForText[maxSymbols] = { 0 };
 int pos;
 int nMinPos = 0;
 int nMaxPos = 100;
-BOOL bRedraw = TRUE;
 
 //Callback-function
  INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -16,13 +15,7 @@ BOOL bRedraw = TRUE;
     switch (iMessage)
     {
     case WM_INITDIALOG:
-        BOOL SetScrollRange(
-            HWND hDlg,
-            int  nBar,
-            int  nMinPos,
-            int  nMaxPos,
-            BOOL bRedraw
-        );
+        SetScrollRange(hDlg, IDC_SCROLLBAR1,nMinPos,nMaxPos,TRUE);
         break;
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK)
@@ -57,7 +50,9 @@ BOOL bRedraw = TRUE;
                 break;
         }
         //... потрібний код
+        //pos = GetScrollPos(hDlg, SB_CTL);
         SetScrollPos(hDlg,SB_CTL,pos,TRUE);  //фіксація повзуна
+        SetDlgItemText(hDlg, IDC_STATIC_MOD1, (LPCSTR)pos);
         //... потрібний код
         break;
         default:
