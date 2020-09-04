@@ -6,11 +6,11 @@ int const maxSymbols = 255;
 TCHAR tempPlaceForText[maxSymbols] = { 0 };
 
 int pos;
-int nMinPos = 0;
+int nMinPos = 1;
 int nMaxPos = 100;
 
 //Callback-function
- INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     switch (iMessage)
     {
@@ -32,7 +32,7 @@ int nMaxPos = 100;
         }
         return (INT_PTR)TRUE;
     case WM_HSCROLL:
-        pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
+        pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), IDC_SCROLLBAR1);
         //pos = GetScrollPos(hDlg, SB_CTL);
         switch (LOWORD(wParam))
         {
@@ -51,8 +51,8 @@ int nMaxPos = 100;
         }
         //... потрібний код
         //pos = GetScrollPos(hDlg, SB_CTL);
-        SetScrollPos(hDlg,SB_CTL,pos,TRUE);  //фіксація повзуна
-        SetDlgItemText(hDlg, IDC_STATIC_MOD1, (LPCSTR)pos);
+        SetScrollPos(hDlg, IDC_SCROLLBAR1,127,TRUE);  //фіксація повзуна
+        //SetDlgItemText(hDlg, IDC_STATIC_MOD1, (LPCSTR)pos);
         //... потрібний код
         break;
         default:
