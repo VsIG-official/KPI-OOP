@@ -24,6 +24,27 @@ TCHAR tempPlaceForText[maxSymbols] = { 0 };
             EndDialog(hDlg, 0);
         }
         return (INT_PTR)TRUE;
+    case WM_HSCROLL:
+        int pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR), SB_CTL);
+        switch (LOWORD(wParam))
+        {
+            case SB_LINELEFT:      //натиснуто кнопку ліворуч
+            pos--;
+            break;
+            case SB_LINERIGHT:      //натиснуто кнопку праворуч
+            pos++;
+            break;
+            case SB_THUMBPOSITION: //фіксована позиція повзуна
+            case SB_THUMBTRACK:    //поточна позиція повзуна
+            pos = HIWORD(wParam);
+            break;
+            default :
+                break;
+        }
+        //... потрібний код
+        SetScrollPos(hWndScroll,SB_CTL,pos,TRUE);  //фіксація повзуна
+        //... потрібний код
+        break;
     default: break;
     }
     return (INT_PTR)FALSE;
