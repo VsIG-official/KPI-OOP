@@ -1,18 +1,18 @@
 ﻿//{{NO_DEPENDENCIES}}
 // Включаемый файл, созданный в Microsoft Visual C++.
-// Используется module1.rc
+// Using module1.rc
 //
 #define IDD_DIALOG1_MOD1                101
 #define IDD_WORK_MOD1                   101
 #define IDC_EDIT1                       1001
 #define IDC_SCROLLBAR1                  1002
 #define IDC_STATIC_MOD1                 1003
-#define SB_CTL                          1004
 
 extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 extern TCHAR tempPlaceForText[];
 extern int const maxSymbols;
 extern int pos;
+
 // Next default values for new objects
 //
 #ifdef APSTUDIO_INVOKED

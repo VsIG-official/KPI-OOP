@@ -8,6 +8,7 @@ TCHAR tempPlaceForText[maxSymbols] = { 0 };
 int pos;
 int nMinPos = 1;
 int nMaxPos = 100;
+HWND hWndScrollBar;
 
 //Callback-function
 INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -15,49 +16,38 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     switch (iMessage)
     {
     case WM_INITDIALOG:
-        SetScrollRange(hDlg, IDC_SCROLLBAR1,nMinPos,nMaxPos,TRUE);
+        hWndScrollBar = GetDlgItem(hDlg, IDC_SCROLLBAR1);
+        SetScrollRange(hWndScrollBar, SB_CTL, nMinPos, nMaxPos, TRUE);
         break;
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK)
-        {
-            // OK button
-            GetDlgItemText(hDlg, IDC_SCROLLBAR1, tempPlaceForText, maxSymbols);
-            EndDialog(hDlg, 0);
-            return (INT_PTR)TRUE;
-        }
-        if (LOWORD(wParam) == IDCANCEL)
-        {
-            // Cancel button
-            EndDialog(hDlg, 0);
-        }
-        return (INT_PTR)TRUE;
     case WM_HSCROLL:
-        pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), IDC_SCROLLBAR1);
-        //pos = GetScrollPos(hDlg, SB_CTL);
+        pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
         switch (LOWORD(wParam))
         {
-            case SB_LINELEFT:      //натиснуто кнопку ліворуч
-                pos--;
-                break;
-            case SB_LINERIGHT:      //натиснуто кнопку праворуч
-                pos++;
-                break;
-            case SB_THUMBPOSITION: //фіксована позиція повзуна
-            case SB_THUMBTRACK:    //поточна позиція повзуна
-                pos = HIWORD(wParam);
-                break;
-            default:
-                break;
-        }
-        //... потрібний код
-        //pos = GetScrollPos(hDlg, SB_CTL);
-        SetScrollPos(hDlg, IDC_SCROLLBAR1,127,TRUE);  //фіксація повзуна
-        //SetDlgItemText(hDlg, IDC_STATIC_MOD1, (LPCSTR)pos);
-        //... потрібний код
-        break;
-        default:
-        // do nothing
+        case SB_LINELEFT:
+            pos--;
+            SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
             break;
+        case SB_LINERIGHT:
+            pos++;
+            SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+            break;
+        case SB_THUMBPOSITION:
+        case SB_THUMBTRACK:
+            pos = HIWORD(wParam);
+            SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+            break;
+        default: break;
+        }
+        SetScrollPos(hWndScrollBar, SB_CTL, pos, TRUE);
+        break;
+    case WM_COMMAND:
+        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+        {
+            EndDialog(hDlg, LOWORD(wParam));
+            return (INT_PTR)TRUE;
+        }
+        break;
+    default: break;
     }
-    return (INT_PTR)FALSE;
+    return FALSE;
 }

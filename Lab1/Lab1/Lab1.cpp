@@ -5,6 +5,7 @@
 #include "framework.h"
 #include "Lab1.h"
 #include "module1.h"
+#include "module2.h"
 
 #define MAX_LOADSTRING 100
 
@@ -176,10 +177,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HDC hdc = BeginPaint(hWnd, &ps);
 
         SelectObject(hdc, hFont);
-        TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, maxSymbols);
+        //TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, maxSymbols);
 
         EndPaint(hWnd, &ps);
-        ZeroMemory(tempPlaceForText, maxSymbols);
+        //ZeroMemory(tempPlaceForText, maxSymbols);
     }
     break;
     case WM_DESTROY:
@@ -219,6 +220,6 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 // Function-handler of the menu item "Work"
 void Work1(HWND hWnd)
 {
-    // What we program here will be done
+    // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
 }
