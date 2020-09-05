@@ -24,11 +24,17 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         switch (LOWORD(wParam))
         {
         case SB_LINELEFT:
-            pos--;
+            if (pos != nMinPos)
+            {
+                pos--;
+            }
             SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
             break;
         case SB_LINERIGHT:
-            pos++;
+            if (pos != nMaxPos)
+            {
+                pos++;
+            }
             SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
             break;
         case SB_THUMBPOSITION:
