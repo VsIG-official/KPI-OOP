@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="framework_8h" kind="file">
+    <compoundname>framework.h</compoundname>
+    <includes refid="targetver_8h" local="yes">targetver.h</includes>
+    <includes local="no">windows.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">malloc.h</includes>
+    <includes local="no">memory.h</includes>
+    <includes local="no">tchar.h</includes>
+    <includedby refid="pch_8h" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.h</includedby>
+    <includedby refid="_lab1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</includedby>
+    <includedby refid="module1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</includedby>
+    <includedby refid="module2_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module2.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>windows.h</label>
+      </node>
+      <node id="4">
+        <label>stdlib.h</label>
+      </node>
+      <node id="2">
+        <label>SDKDDKVer.h</label>
+      </node>
+      <node id="5">
+        <label>malloc.h</label>
+      </node>
+      <node id="1">
+        <label>targetver.h</label>
+        <link refid="targetver_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>memory.h</label>
+      </node>
+      <node id="7">
+        <label>tchar.h</label>
+      </node>
+      <node id="0">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h</label>
+        <link refid="framework.h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.h</label>
+        <link refid="pch_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.cpp</label>
+        <link refid="pch_8cpp"/>
+      </node>
+      <node id="11">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</label>
+        <link refid="module1_8cpp"/>
+      </node>
+      <node id="12">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module2.cpp</label>
+        <link refid="module2_8cpp"/>
+      </node>
+      <node id="10">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="_lab1_8cpp"/>
+      </node>
+      <node id="8">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h</label>
+        <link refid="framework.h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="framework_8h_1ac7bef5d85e3dcd73eef56ad39ffc84a9" prot="public" static="no">
+        <name>WIN32_LEAN_AND_MEAN</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h" line="4" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="targetver_8h" kindref="compound">targetver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="framework_8h_1ac7bef5d85e3dcd73eef56ad39ffc84a9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIN32_LEAN_AND_MEAN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Исключите<sp/>редко<sp/>используемые<sp/>компоненты<sp/>из<sp/>заголовков<sp/>Windows</highlight></codeline>
+<codeline lineno="5"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>Файлы<sp/>заголовков<sp/>Windows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;windows.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Файлы<sp/>заголовков<sp/>среды<sp/>выполнения<sp/>C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;malloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tchar.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h"/>
+  </compounddef>
+</doxygen>

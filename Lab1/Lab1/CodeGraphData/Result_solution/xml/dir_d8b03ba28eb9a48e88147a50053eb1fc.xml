@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dir_d8b03ba28eb9a48e88147a50053eb1fc" kind="dir">
+    <compoundname>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1</compoundname>
+    <innerfile refid="framework_8h">framework.h</innerfile>
+    <innerfile refid="_lab1_8cpp">Lab1.cpp</innerfile>
+    <innerfile refid="_lab1_8h">Lab1.h</innerfile>
+    <innerfile refid="module1_8cpp">module1.cpp</innerfile>
+    <innerfile refid="module1_8h">module1.h</innerfile>
+    <innerfile refid="module2_8cpp">module2.cpp</innerfile>
+    <innerfile refid="module2_8h">module2.h</innerfile>
+    <innerfile refid="pch_8cpp">pch.cpp</innerfile>
+    <innerfile refid="pch_8h">pch.h</innerfile>
+    <innerfile refid="resource_8h">resource.h</innerfile>
+    <innerfile refid="targetver_8h">targetver.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/"/>
+  </compounddef>
+</doxygen>

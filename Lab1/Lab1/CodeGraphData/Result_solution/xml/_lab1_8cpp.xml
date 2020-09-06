@@ -1,0 +1,647 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_lab1_8cpp" kind="file">
+    <compoundname>Lab1.cpp</compoundname>
+    <includes refid="pch_8h" local="yes">pch.h</includes>
+    <includes refid="framework_8h" local="yes">framework.h</includes>
+    <includes refid="_lab1_8h" local="yes">Lab1.h</includes>
+    <includes refid="module1_8h" local="yes">module1.h</includes>
+    <includes refid="module2_8h" local="yes">module2.h</includes>
+    <incdepgraph>
+      <node id="15">
+        <label>pch.h</label>
+        <link refid="pch_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>windows.h</label>
+      </node>
+      <node id="20">
+        <label>stdlib.h</label>
+      </node>
+      <node id="18">
+        <label>SDKDDKVer.h</label>
+      </node>
+      <node id="21">
+        <label>malloc.h</label>
+      </node>
+      <node id="17">
+        <label>targetver.h</label>
+        <link refid="targetver_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>memory.h</label>
+      </node>
+      <node id="14">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="Lab1.cpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>resource.h</label>
+        <link refid="resource_8h"/>
+      </node>
+      <node id="24">
+        <label>Lab1.h</label>
+        <link refid="_lab1_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>module2.h</label>
+        <link refid="module2_8h"/>
+      </node>
+      <node id="23">
+        <label>tchar.h</label>
+      </node>
+      <node id="16">
+        <label>framework.h</label>
+        <link refid="framework_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>module1.h</label>
+        <link refid="module1_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_lab1_8cpp_1a2b68559d692760680c326428841254d1" prot="public" static="no">
+        <name>MAX_LOADSTRING</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="10" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="10" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" prot="public" static="no" mutable="no">
+        <type>HINSTANCE</type>
+        <definition>HINSTANCE hInst</definition>
+        <argsstring></argsstring>
+        <name>hInst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="13" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="13" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" compoundref="_lab1_8cpp" startline="111" endline="127">InitInstance</referencedby>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+        <referencedby refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" compoundref="_lab1_8cpp" startline="227" endline="231">Work1</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" prot="public" static="no" mutable="no">
+        <type>WCHAR</type>
+        <definition>WCHAR szTitle[MAX_LOADSTRING]</definition>
+        <argsstring>[MAX_LOADSTRING]</argsstring>
+        <name>szTitle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="14" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="14" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" compoundref="_lab1_8cpp" startline="111" endline="127">InitInstance</referencedby>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" prot="public" static="no" mutable="no">
+        <type>WCHAR</type>
+        <definition>WCHAR szWindowClass[MAX_LOADSTRING]</definition>
+        <argsstring>[MAX_LOADSTRING]</argsstring>
+        <name>szWindowClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="15" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="15" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" compoundref="_lab1_8cpp" startline="111" endline="127">InitInstance</referencedby>
+        <referencedby refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" compoundref="_lab1_8cpp" startline="80" endline="99">MyRegisterClass</referencedby>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1a138aa411131d5957c32a183d2789457e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int fontHeight</definition>
+        <argsstring></argsstring>
+        <name>fontHeight</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="25" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1ac2b32d34264adfa54f64998c7bcc4b31" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char fontName[]</definition>
+        <argsstring>[]</argsstring>
+        <name>fontName</name>
+        <initializer>= &quot;Arial&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="26" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1ae4b1bcbe8dc2d3acadb0a17a1da5a706" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int textHeightPosition</definition>
+        <argsstring></argsstring>
+        <name>textHeightPosition</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="27" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="27" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1aa4bacdd28d308ae3cdc153b25be6f68d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int textWidthPosition</definition>
+        <argsstring></argsstring>
+        <name>textWidthPosition</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="28" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="28" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_lab1_8cpp_1a0b01dd58c861d0bc8dcdf6ecf1502dfd" prot="public" static="no" mutable="no">
+        <type>HFONT</type>
+        <definition>HFONT hFont</definition>
+        <argsstring></argsstring>
+        <name>hFont</name>
+        <initializer>= CreateFont(<ref refid="_lab1_8cpp_1a138aa411131d5957c32a183d2789457e" kindref="member">fontHeight</ref>, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, <ref refid="_lab1_8cpp_1ac2b32d34264adfa54f64998c7bcc4b31" kindref="member">fontName</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="29" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="29" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ATOM</type>
+        <definition>ATOM MyRegisterClass</definition>
+        <argsstring>(HINSTANCE hInstance)</argsstring>
+        <name>MyRegisterClass</name>
+        <param>
+          <type>HINSTANCE</type>
+          <declname>hInstance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="19" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="80" bodyend="99"/>
+        <references refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" compoundref="resource_8h" startline="15">IDC_LAB1</references>
+        <references refid="resource_8h_1a9e5c8e8424fe864a75412df15ddc6a85" compoundref="resource_8h" startline="13">IDI_LAB1</references>
+        <references refid="resource_8h_1a861a8cb71616b4615a5823bcf4bff6e3" compoundref="resource_8h" startline="14">IDI_SMALL</references>
+        <references refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" compoundref="_lab1_8cpp" startline="15">szWindowClass</references>
+        <references refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</references>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL InitInstance</definition>
+        <argsstring>(HINSTANCE, int)</argsstring>
+        <name>InitInstance</name>
+        <param>
+          <type>HINSTANCE</type>
+          <defname>hInstance</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <defname>nCmdShow</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="20" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="111" bodyend="127"/>
+        <references refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" compoundref="_lab1_8cpp" startline="13">hInst</references>
+        <references refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" compoundref="_lab1_8cpp" startline="14">szTitle</references>
+        <references refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" compoundref="_lab1_8cpp" startline="15">szWindowClass</references>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT CALLBACK</type>
+        <definition>LRESULT CALLBACK WndProc</definition>
+        <argsstring>(HWND, UINT, WPARAM, LPARAM)</argsstring>
+        <name>WndProc</name>
+        <param>
+          <type>HWND</type>
+          <defname>hWnd</defname>
+        </param>
+        <param>
+          <type>UINT</type>
+          <defname>message</defname>
+        </param>
+        <param>
+          <type>WPARAM</type>
+          <defname>wParam</defname>
+        </param>
+        <param>
+          <type>LPARAM</type>
+          <defname>lParam</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="21" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="139" bodyend="199"/>
+        <references refid="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" compoundref="_lab1_8cpp" startline="204" endline="224">About</references>
+        <references refid="module1_8cpp_1afb1dfa24057a1b2a1825abb45a93f3fa" compoundref="module1_8cpp" startline="12">canWrite</references>
+        <references refid="_lab1_8cpp_1a0b01dd58c861d0bc8dcdf6ecf1502dfd" compoundref="_lab1_8cpp" startline="29">hFont</references>
+        <references refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" compoundref="_lab1_8cpp" startline="13">hInst</references>
+        <references refid="resource_8h_1a77a06326b569136edbb6c766bc98c33c" compoundref="resource_8h" startline="8">IDD_ABOUTBOX</references>
+        <references refid="resource_8h_1a589e0105bc3e8681893dbf51210ceeec" compoundref="resource_8h" startline="9">IDM_ABOUT</references>
+        <references refid="resource_8h_1a79aeed168a959b22b32169e25f8c1f4d" compoundref="resource_8h" startline="12">IDM_EXIT</references>
+        <references refid="resource_8h_1a992476690115046210a42f6946f7b2de" compoundref="resource_8h" startline="20">IDM_WORK_MOD1</references>
+        <references refid="resource_8h_1abf58c6c4216fe838528dd3521a05cbf7" compoundref="resource_8h" startline="21">IDM_WORK_MOD2</references>
+        <references refid="module1_8cpp_1af2b399ef4b0bba54892820e9d68b040d" compoundref="module1_8cpp" startline="5">maxSymbols</references>
+        <references refid="module1_8cpp_1a1910d262855b71da353ed0d07a6c7823" compoundref="module1_8cpp" startline="8">pos</references>
+        <references refid="module1_8cpp_1aff49cca9b12721963f29a1056119dc01" compoundref="module1_8cpp" startline="6">tempPlaceForText</references>
+        <references refid="_lab1_8cpp_1ae4b1bcbe8dc2d3acadb0a17a1da5a706" compoundref="_lab1_8cpp" startline="27">textHeightPosition</references>
+        <references refid="_lab1_8cpp_1aa4bacdd28d308ae3cdc153b25be6f68d" compoundref="_lab1_8cpp" startline="28">textWidthPosition</references>
+        <references refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" compoundref="_lab1_8cpp" startline="227" endline="231">Work1</references>
+        <referencedby refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" compoundref="_lab1_8cpp" startline="80" endline="99">MyRegisterClass</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT_PTR CALLBACK</type>
+        <definition>INT_PTR CALLBACK About</definition>
+        <argsstring>(HWND, UINT, WPARAM, LPARAM)</argsstring>
+        <name>About</name>
+        <param>
+          <type>HWND</type>
+          <defname>hDlg</defname>
+        </param>
+        <param>
+          <type>UINT</type>
+          <defname>message</defname>
+        </param>
+        <param>
+          <type>WPARAM</type>
+          <defname>wParam</defname>
+        </param>
+        <param>
+          <type>LPARAM</type>
+          <defname>lParam</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="22" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="204" bodyend="224"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Work1</definition>
+        <argsstring>(HWND hWnd)</argsstring>
+        <name>Work1</name>
+        <param>
+          <type>HWND</type>
+          <declname>hWnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="24" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="227" bodyend="231"/>
+        <references refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" compoundref="_lab1_8cpp" startline="13">hInst</references>
+        <references refid="module1_8h_1afa6e04a58f72ef6fb8fdbe0ceee80809" compoundref="module1_8h" startline="6">IDD_WORK_MOD1</references>
+        <references refid="module1_8cpp_1a8ed6bae30130be7f7a028ff8efe1b028" compoundref="module1_8cpp" startline="15" endline="61">Work1_MOD1</references>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int APIENTRY</type>
+        <definition>int APIENTRY wWinMain</definition>
+        <argsstring>(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)</argsstring>
+        <name>wWinMain</name>
+        <param>
+          <type>_In_ HINSTANCE</type>
+          <declname>hInstance</declname>
+        </param>
+        <param>
+          <type>_In_opt_ HINSTANCE</type>
+          <declname>hPrevInstance</declname>
+        </param>
+        <param>
+          <type>_In_ LPWSTR</type>
+          <declname>lpCmdLine</declname>
+        </param>
+        <param>
+          <type>_In_ int</type>
+          <declname>nCmdShow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" line="37" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp" bodystart="37" bodyend="73"/>
+        <references refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" compoundref="resource_8h" startline="15">IDC_LAB1</references>
+        <references refid="resource_8h_1a636c9aea2a8d16b73e43df39b3e0e7bd" compoundref="resource_8h" startline="7">IDS_APP_TITLE</references>
+        <references refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" compoundref="_lab1_8cpp" startline="111" endline="127">InitInstance</references>
+        <references refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" compoundref="_lab1_8cpp" startline="10">MAX_LOADSTRING</references>
+        <references refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" compoundref="_lab1_8cpp" startline="80" endline="99">MyRegisterClass</references>
+        <references refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" compoundref="_lab1_8cpp" startline="14">szTitle</references>
+        <references refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" compoundref="_lab1_8cpp" startline="15">szWindowClass</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Lab1.cpp<sp/>:<sp/>Определяет<sp/>точку<sp/>входа<sp/>для<sp/>приложения.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>First<sp/>Part</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pch_8h" kindref="compound">pch.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="framework_8h" kindref="compound">framework.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_lab1_8h" kindref="compound">Lab1.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="module1_8h" kindref="compound">module1.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="module2_8h" kindref="compound">module2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_LOADSTRING<sp/>100</highlight></codeline>
+<codeline lineno="11"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Global<sp/>variables:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" refkind="member"><highlight class="normal">HINSTANCE<sp/><ref refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" kindref="member">hInst</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Current<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" refkind="member"><highlight class="normal">WCHAR<sp/><ref refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" kindref="member">szTitle</ref>[<ref refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" kindref="member">MAX_LOADSTRING</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Header<sp/>row<sp/>text</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" refkind="member"><highlight class="normal">WCHAR<sp/><ref refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" kindref="member">szWindowClass</ref>[<ref refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" kindref="member">MAX_LOADSTRING</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Class<sp/>name<sp/>of<sp/>main<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Send<sp/>declarations<sp/>of<sp/>functions<sp/>included<sp/>in<sp/>this<sp/>code<sp/>module:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">ATOM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" kindref="member">MyRegisterClass</ref>(HINSTANCE<sp/>hInstance);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" kindref="member">InitInstance</ref>(HINSTANCE,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">LRESULT<sp/>CALLBACK<sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" kindref="member">WndProc</ref>(HWND,<sp/>UINT,<sp/>WPARAM,<sp/>LPARAM);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">INT_PTR<sp/>CALLBACK<sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" kindref="member">About</ref>(HWND,<sp/>UINT,<sp/>WPARAM,<sp/>LPARAM);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" kindref="member">Work1</ref>(HWND<sp/>hWnd);<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Declaration<sp/>of<sp/>our<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="_lab1_8cpp_1a138aa411131d5957c32a183d2789457e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_lab1_8cpp_1a138aa411131d5957c32a183d2789457e" kindref="member">fontHeight</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="26" refid="_lab1_8cpp_1ac2b32d34264adfa54f64998c7bcc4b31" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_lab1_8cpp_1ac2b32d34264adfa54f64998c7bcc4b31" kindref="member">fontName</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Arial&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27" refid="_lab1_8cpp_1ae4b1bcbe8dc2d3acadb0a17a1da5a706" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_lab1_8cpp_1ae4b1bcbe8dc2d3acadb0a17a1da5a706" kindref="member">textHeightPosition</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="28" refid="_lab1_8cpp_1aa4bacdd28d308ae3cdc153b25be6f68d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_lab1_8cpp_1aa4bacdd28d308ae3cdc153b25be6f68d" kindref="member">textWidthPosition</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="29" refid="_lab1_8cpp_1a0b01dd58c861d0bc8dcdf6ecf1502dfd" refkind="member"><highlight class="normal">HFONT<sp/><ref refid="_lab1_8cpp_1a0b01dd58c861d0bc8dcdf6ecf1502dfd" kindref="member">hFont</ref><sp/>=<sp/>CreateFont(<ref refid="_lab1_8cpp_1a138aa411131d5957c32a183d2789457e" kindref="member">fontHeight</ref>,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/>0,<sp/><ref refid="_lab1_8cpp_1ac2b32d34264adfa54f64998c7bcc4b31" kindref="member">fontName</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//Create<sp/>the<sp/>font</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LPCWSTR<sp/>string;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Second<sp/>Part</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Enter<sp/>Point<sp/>&quot;wWinMain&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>APIENTRY<sp/><ref refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" kindref="member">wWinMain</ref>(_In_<sp/>HINSTANCE<sp/>hInstance,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>_In_opt_<sp/>HINSTANCE<sp/>hPrevInstance,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>_In_<sp/>LPWSTR<sp/><sp/><sp/><sp/>lpCmdLine,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nCmdShow)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>UNREFERENCED_PARAMETER(hPrevInstance);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>UNREFERENCED_PARAMETER(lpCmdLine);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Place<sp/>the<sp/>code<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>line<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>LoadStringW(hInstance,<sp/><ref refid="resource_8h_1a636c9aea2a8d16b73e43df39b3e0e7bd" kindref="member">IDS_APP_TITLE</ref>,<sp/><ref refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" kindref="member">szTitle</ref>,<sp/><ref refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" kindref="member">MAX_LOADSTRING</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>LoadStringW(hInstance,<sp/><ref refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" kindref="member">IDC_LAB1</ref>,<sp/><ref refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" kindref="member">szWindowClass</ref>,<sp/><ref refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" kindref="member">MAX_LOADSTRING</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" kindref="member">MyRegisterClass</ref>(hInstance);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Perform<sp/>application<sp/>initialization:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" kindref="member">InitInstance</ref>(hInstance,<sp/>nCmdShow))</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>HACCEL<sp/>hAccelTable<sp/>=<sp/>LoadAccelerators(hInstance,<sp/>MAKEINTRESOURCE(<ref refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" kindref="member">IDC_LAB1</ref>));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>MSG<sp/>msg;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Main<sp/>message<sp/>cycle:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(GetMessage(&amp;msg,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0,<sp/>0))</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!TranslateAccelerator(msg.hwnd,<sp/>hAccelTable,<sp/>&amp;msg))</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TranslateMessage(&amp;msg);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DispatchMessage(&amp;msg);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)msg.wParam;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>FUNCTION:<sp/>MyRegisterClass()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>OBJECTIVE:<sp/>To<sp/>register<sp/>the<sp/>window<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Text<sp/>of<sp/>Function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" refkind="member"><highlight class="normal">ATOM<sp/><ref refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" kindref="member">MyRegisterClass</ref>(HINSTANCE<sp/>hInstance)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>WNDCLASSEXW<sp/>wcex;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.cbSize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(WNDCLASSEX);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.style<sp/>=<sp/>CS_HREDRAW<sp/>|<sp/>CS_VREDRAW;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.lpfnWndProc<sp/>=<sp/><ref refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" kindref="member">WndProc</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.cbClsExtra<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.cbWndExtra<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.hInstance<sp/>=<sp/>hInstance;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.hIcon<sp/>=<sp/>LoadIcon(hInstance,<sp/>MAKEINTRESOURCE(<ref refid="resource_8h_1a9e5c8e8424fe864a75412df15ddc6a85" kindref="member">IDI_LAB1</ref>));</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.hCursor<sp/>=<sp/>LoadCursor(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>IDC_ARROW);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.hbrBackground<sp/>=<sp/>(HBRUSH)(COLOR_WINDOW<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.lpszMenuName<sp/>=<sp/>MAKEINTRESOURCEW(<ref refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" kindref="member">IDC_LAB1</ref>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.lpszClassName<sp/>=<sp/><ref refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" kindref="member">szWindowClass</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>wcex.hIconSm<sp/>=<sp/>LoadIcon(wcex.hInstance,<sp/>MAKEINTRESOURCE(<ref refid="resource_8h_1a861a8cb71616b4615a5823bcf4bff6e3" kindref="member">IDI_SMALL</ref>));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>RegisterClassExW(&amp;wcex);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>FUNCTION:<sp/>InitInstance(HINSTANCE,<sp/>int)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>OBJECTIVE:<sp/>Saves<sp/>the<sp/>instance<sp/>marker<sp/>and<sp/>creates<sp/>the<sp/>main<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>COMMENTARIES:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>this<sp/>function,<sp/>the<sp/>instance<sp/>marker<sp/>is<sp/>saved<sp/>in<sp/>a<sp/>global<sp/>variable,<sp/>and<sp/>also</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>main<sp/>program<sp/>window<sp/>is<sp/>created<sp/>and<sp/>displayed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" refkind="member"><highlight class="normal">BOOL<sp/><ref refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" kindref="member">InitInstance</ref>(HINSTANCE<sp/>hInstance,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nCmdShow)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" kindref="member">hInst</ref><sp/>=<sp/>hInstance;<sp/></highlight><highlight class="comment">//<sp/>Save<sp/>instance<sp/>marker<sp/>in<sp/>global<sp/>variable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>HWND<sp/>hWnd<sp/>=<sp/>CreateWindowW(<ref refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" kindref="member">szWindowClass</ref>,<sp/><ref refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" kindref="member">szTitle</ref>,<sp/>WS_OVERLAPPEDWINDOW,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CW_USEDEFAULT,<sp/>0,<sp/>CW_USEDEFAULT,<sp/>0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>hInstance,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!hWnd)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>ShowWindow(hWnd,<sp/>nCmdShow);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>UpdateWindow(hWnd);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TRUE;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Third<sp/>Part</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>FUNCTION:<sp/>WndProc(HWND,<sp/>UINT,<sp/>WPARAM,<sp/>LPARAM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>OBJECTIVE:<sp/>Processes<sp/>messages<sp/>in<sp/>the<sp/>main<sp/>window.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>WM_COMMAND<sp/><sp/>-<sp/>Process<sp/>the<sp/>application<sp/>menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>WM_PAINT<sp/><sp/><sp/><sp/>-<sp/>Drawing<sp/>of<sp/>the<sp/>main<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>WM_DESTROY<sp/><sp/>-<sp/>Send<sp/>message<sp/>about<sp/>exit<sp/>and<sp/>return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" refkind="member"><highlight class="normal">LRESULT<sp/>CALLBACK<sp/><ref refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" kindref="member">WndProc</ref>(HWND<sp/>hWnd,<sp/>UINT<sp/>message,<sp/>WPARAM<sp/>wParam,<sp/>LPARAM<sp/>lParam)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(message)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WM_COMMAND:</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wmId<sp/>=<sp/>LOWORD(wParam);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disassemble<sp/>the<sp/>selection<sp/>in<sp/>the<sp/>menu:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(wmId)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="resource_8h_1a992476690115046210a42f6946f7b2de" kindref="member">IDM_WORK_MOD1</ref>:</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" kindref="member">Work1</ref>(hWnd);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>update<sp/>region<sp/>represents<sp/>the<sp/>portion<sp/>of<sp/>the<sp/>window&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>client<sp/>area<sp/>that<sp/>must<sp/>be<sp/>redrawn.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InvalidateRect(hWnd,<sp/>0,<sp/>TRUE);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="resource_8h_1abf58c6c4216fe838528dd3521a05cbf7" kindref="member">IDM_WORK_MOD2</ref>:</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>second<sp/>menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="resource_8h_1a589e0105bc3e8681893dbf51210ceeec" kindref="member">IDM_ABOUT</ref>:</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>About<sp/>Menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DialogBox(<ref refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" kindref="member">hInst</ref>,<sp/>MAKEINTRESOURCE(<ref refid="resource_8h_1a77a06326b569136edbb6c766bc98c33c" kindref="member">IDD_ABOUTBOX</ref>),<sp/>hWnd,<sp/><ref refid="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" kindref="member">About</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="resource_8h_1a79aeed168a959b22b32169e25f8c1f4d" kindref="member">IDM_EXIT</ref>:</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Exit<sp/>menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DestroyWindow(hWnd);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DefWindowProc(hWnd,<sp/>message,<sp/>wParam,<sp/>lParam);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WM_PAINT:</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PAINTSTRUCT<sp/>ps;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UpdateWindow(hWnd);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HDC<sp/>hdc<sp/>=<sp/>BeginPaint(hWnd,<sp/>&amp;ps);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SelectObject(hdc,<sp/><ref refid="_lab1_8cpp_1a0b01dd58c861d0bc8dcdf6ecf1502dfd" kindref="member">hFont</ref>);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="module1_8cpp_1afb1dfa24057a1b2a1825abb45a93f3fa" kindref="member">canWrite</ref>)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_itoa_s(<ref refid="module1_8cpp_1a1910d262855b71da353ed0d07a6c7823" kindref="member">pos</ref>,<sp/><ref refid="module1_8cpp_1aff49cca9b12721963f29a1056119dc01" kindref="member">tempPlaceForText</ref>,<sp/>1,<sp/>10);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="module1_8cpp_1afb1dfa24057a1b2a1825abb45a93f3fa" kindref="member">canWrite</ref><sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TextOut(hdc,<sp/><ref refid="_lab1_8cpp_1ae4b1bcbe8dc2d3acadb0a17a1da5a706" kindref="member">textHeightPosition</ref>,<sp/><ref refid="_lab1_8cpp_1aa4bacdd28d308ae3cdc153b25be6f68d" kindref="member">textWidthPosition</ref>,<sp/><ref refid="module1_8cpp_1aff49cca9b12721963f29a1056119dc01" kindref="member">tempPlaceForText</ref>,<sp/><ref refid="module1_8cpp_1af2b399ef4b0bba54892820e9d68b040d" kindref="member">maxSymbols</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EndPaint(hWnd,<sp/>&amp;ps);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ZeroMemory(<ref refid="module1_8cpp_1aff49cca9b12721963f29a1056119dc01" kindref="member">tempPlaceForText</ref>,<sp/><ref refid="module1_8cpp_1af2b399ef4b0bba54892820e9d68b040d" kindref="member">maxSymbols</ref>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WM_DESTROY:</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PostQuitMessage(0);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DefWindowProc(hWnd,<sp/>message,<sp/>wParam,<sp/>lParam);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fourth<sp/>Part</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message<sp/>handler<sp/>for<sp/>&quot;About&quot;<sp/>window.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" refkind="member"><highlight class="normal">INT_PTR<sp/>CALLBACK<sp/><ref refid="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" kindref="member">About</ref>(HWND<sp/>hDlg,<sp/>UINT<sp/>message,<sp/>WPARAM<sp/>wParam,<sp/>LPARAM<sp/>lParam)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>UNREFERENCED_PARAMETER(lParam);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(message)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>window<sp/>is<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WM_INITDIALOG:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(INT_PTR)TRUE;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>OK<sp/>is<sp/>clicked</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WM_COMMAND:</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(LOWORD(wParam)<sp/>==<sp/>IDOK<sp/>||<sp/>LOWORD(wParam)<sp/>==<sp/>IDCANCEL)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>dialog<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EndDialog(hDlg,<sp/>LOWORD(wParam));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(INT_PTR)TRUE;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(INT_PTR)FALSE;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Function-handler<sp/>of<sp/>the<sp/>menu<sp/>item<sp/>&quot;Work&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" kindref="member">Work1</ref>(HWND<sp/>hWnd)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>What<sp/>we<sp/>program<sp/>here<sp/>that<sp/>will<sp/>be<sp/>done</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>DialogBox(<ref refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" kindref="member">hInst</ref>,<sp/>MAKEINTRESOURCE(<ref refid="module1_8h_1afa6e04a58f72ef6fb8fdbe0ceee80809" kindref="member">IDD_WORK_MOD1</ref>),<sp/>hWnd,<sp/><ref refid="module1_8cpp_1a8ed6bae30130be7f7a028ff8efe1b028" kindref="member">Work1_MOD1</ref>);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp"/>
+  </compounddef>
+</doxygen>

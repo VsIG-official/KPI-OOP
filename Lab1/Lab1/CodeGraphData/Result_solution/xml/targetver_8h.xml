@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="targetver_8h" kind="file">
+    <compoundname>targetver.h</compoundname>
+    <includes local="no">SDKDDKVer.h</includes>
+    <includedby refid="framework_8h" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h</includedby>
+    <incdepgraph>
+      <node id="95">
+        <label>SDKDDKVer.h</label>
+      </node>
+      <node id="94">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/targetver.h</label>
+        <link refid="targetver.h"/>
+        <childnode refid="95" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="98">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.h</label>
+        <link refid="pch_8h"/>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.cpp</label>
+        <link refid="pch_8cpp"/>
+      </node>
+      <node id="100">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</label>
+        <link refid="module1_8cpp"/>
+      </node>
+      <node id="101">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module2.cpp</label>
+        <link refid="module2_8cpp"/>
+      </node>
+      <node id="96">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/targetver.h</label>
+        <link refid="targetver.h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="_lab1_8cpp"/>
+      </node>
+      <node id="97">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/framework.h</label>
+        <link refid="framework_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//<sp/>При<sp/>включении<sp/>SDKDDKVer.h<sp/>будет<sp/>задана<sp/>самая<sp/>новая<sp/>из<sp/>доступных<sp/>платформ<sp/>Windows.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Если<sp/>вы<sp/>планируете<sp/>сборку<sp/>приложения<sp/>для<sp/>предыдущей<sp/>версии<sp/>платформы<sp/>Windows,<sp/>включите<sp/>WinSDKVer.h<sp/>и</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>задайте<sp/>желаемую<sp/>платформу<sp/>в<sp/>макросе<sp/>_WIN32_WINNT,<sp/>прежде<sp/>чем<sp/>включать<sp/>SDKDDKVer.h.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDKDDKVer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/targetver.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.6">
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="framework_8h" kind="file"><name>framework.h</name>
+    <member refid="framework_8h_1ac7bef5d85e3dcd73eef56ad39ffc84a9" kind="define"><name>WIN32_LEAN_AND_MEAN</name></member>
+  </compound>
+  <compound refid="_lab1_8cpp" kind="file"><name>Lab1.cpp</name>
+    <member refid="_lab1_8cpp_1a2b68559d692760680c326428841254d1" kind="define"><name>MAX_LOADSTRING</name></member>
+    <member refid="_lab1_8cpp_1a44f41244c97693b2fbd5244bcb1e86ec" kind="variable"><name>hInst</name></member>
+    <member refid="_lab1_8cpp_1adee9884b69dfd657d7bca6a047f122cb" kind="variable"><name>szTitle</name></member>
+    <member refid="_lab1_8cpp_1ac849efb3cbdf5831b7046d4d7214a704" kind="variable"><name>szWindowClass</name></member>
+    <member refid="_lab1_8cpp_1a138aa411131d5957c32a183d2789457e" kind="variable"><name>fontHeight</name></member>
+    <member refid="_lab1_8cpp_1ac2b32d34264adfa54f64998c7bcc4b31" kind="variable"><name>fontName</name></member>
+    <member refid="_lab1_8cpp_1ae4b1bcbe8dc2d3acadb0a17a1da5a706" kind="variable"><name>textHeightPosition</name></member>
+    <member refid="_lab1_8cpp_1aa4bacdd28d308ae3cdc153b25be6f68d" kind="variable"><name>textWidthPosition</name></member>
+    <member refid="_lab1_8cpp_1a0b01dd58c861d0bc8dcdf6ecf1502dfd" kind="variable"><name>hFont</name></member>
+    <member refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" kind="function"><name>MyRegisterClass</name></member>
+    <member refid="_lab1_8cpp_1a5f77d4e3e5569ff9d236463fd80ebe28" kind="function"><name>InitInstance</name></member>
+    <member refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" kind="function"><name>WndProc</name></member>
+    <member refid="_lab1_8cpp_1a5873af2ee357a48c39cdd824f51c1c9c" kind="function"><name>About</name></member>
+    <member refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" kind="function"><name>Work1</name></member>
+    <member refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" kind="function"><name>wWinMain</name></member>
+  </compound>
+  <compound refid="_lab1_8h" kind="file"><name>Lab1.h</name>
+  </compound>
+  <compound refid="module1_8cpp" kind="file"><name>module1.cpp</name>
+    <member refid="module1_8cpp_1af2b399ef4b0bba54892820e9d68b040d" kind="variable"><name>maxSymbols</name></member>
+    <member refid="module1_8cpp_1aff49cca9b12721963f29a1056119dc01" kind="variable"><name>tempPlaceForText</name></member>
+    <member refid="module1_8cpp_1a1910d262855b71da353ed0d07a6c7823" kind="variable"><name>pos</name></member>
+    <member refid="module1_8cpp_1afb4e1f366284c31a7f1b799ea8286f57" kind="variable"><name>nMinPos</name></member>
+    <member refid="module1_8cpp_1acda4681f0015fcd724b071ffa89aa6f9" kind="variable"><name>nMaxPos</name></member>
+    <member refid="module1_8cpp_1a4def5424ee31dcbf679522161eae2e9d" kind="variable"><name>hWndScrollBar</name></member>
+    <member refid="module1_8cpp_1afb1dfa24057a1b2a1825abb45a93f3fa" kind="variable"><name>canWrite</name></member>
+    <member refid="module1_8cpp_1a8ed6bae30130be7f7a028ff8efe1b028" kind="function"><name>Work1_MOD1</name></member>
+  </compound>
+  <compound refid="module1_8h" kind="file"><name>module1.h</name>
+    <member refid="module1_8h_1a234cadf76bba50e94533cadf8188a64f" kind="define"><name>IDD_DIALOG1_MOD1</name></member>
+    <member refid="module1_8h_1afa6e04a58f72ef6fb8fdbe0ceee80809" kind="define"><name>IDD_WORK_MOD1</name></member>
+    <member refid="module1_8h_1ad123446cb35c803caf42a339fc842813" kind="define"><name>IDC_EDIT1</name></member>
+    <member refid="module1_8h_1a228d335793cb6383b8c9cb51c808605e" kind="define"><name>IDC_SCROLLBAR1</name></member>
+    <member refid="module1_8h_1a8da8a8dedd5bd0bbdeae5580575ae307" kind="define"><name>IDC_STATIC_MOD1</name></member>
+    <member refid="module1_8h_1aefb48d8b78bd368899a2848d5e6ca4b8" kind="variable"><name>tempPlaceForText</name></member>
+    <member refid="module1_8h_1af2b399ef4b0bba54892820e9d68b040d" kind="variable"><name>maxSymbols</name></member>
+    <member refid="module1_8h_1a1910d262855b71da353ed0d07a6c7823" kind="variable"><name>pos</name></member>
+    <member refid="module1_8h_1afb1dfa24057a1b2a1825abb45a93f3fa" kind="variable"><name>canWrite</name></member>
+    <member refid="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" kind="function"><name>Work1_MOD1</name></member>
+  </compound>
+  <compound refid="module2_8cpp" kind="file"><name>module2.cpp</name>
+  </compound>
+  <compound refid="module2_8h" kind="file"><name>module2.h</name>
+  </compound>
+  <compound refid="pch_8cpp" kind="file"><name>pch.cpp</name>
+  </compound>
+  <compound refid="pch_8h" kind="file"><name>pch.h</name>
+  </compound>
+  <compound refid="resource_8h" kind="file"><name>resource.h</name>
+    <member refid="resource_8h_1abb326bd165140b31acf04b893ef655ca" kind="define"><name>IDC_MYICON</name></member>
+    <member refid="resource_8h_1ae2467fdadfec868284a44921b2355565" kind="define"><name>IDD_LAB1_DIALOG</name></member>
+    <member refid="resource_8h_1a636c9aea2a8d16b73e43df39b3e0e7bd" kind="define"><name>IDS_APP_TITLE</name></member>
+    <member refid="resource_8h_1a77a06326b569136edbb6c766bc98c33c" kind="define"><name>IDD_ABOUTBOX</name></member>
+    <member refid="resource_8h_1a589e0105bc3e8681893dbf51210ceeec" kind="define"><name>IDM_ABOUT</name></member>
+    <member refid="resource_8h_1aa65940151a991f3bd52c15d8814dbd23" kind="define"><name>IDD_ABOUTBOX1</name></member>
+    <member refid="resource_8h_1a771b99e978c372f88bf9f2aebb473754" kind="define"><name>IDD_WORK</name></member>
+    <member refid="resource_8h_1a79aeed168a959b22b32169e25f8c1f4d" kind="define"><name>IDM_EXIT</name></member>
+    <member refid="resource_8h_1a9e5c8e8424fe864a75412df15ddc6a85" kind="define"><name>IDI_LAB1</name></member>
+    <member refid="resource_8h_1a861a8cb71616b4615a5823bcf4bff6e3" kind="define"><name>IDI_SMALL</name></member>
+    <member refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" kind="define"><name>IDC_LAB1</name></member>
+    <member refid="resource_8h_1a9772c84d39896ad00b9aeb34b15d324d" kind="define"><name>IDR_MAINFRAME</name></member>
+    <member refid="resource_8h_1a722a8e74d94d4e048b68ad231d95e882" kind="define"><name>IDM_WORK</name></member>
+    <member refid="resource_8h_1a52b319debc48e785567a8e983273bb0d" kind="define"><name>IDM_WORK1</name></member>
+    <member refid="resource_8h_1add889da9072e818ecdfdb7993e7ca082" kind="define"><name>IDM_WORK2</name></member>
+    <member refid="resource_8h_1a992476690115046210a42f6946f7b2de" kind="define"><name>IDM_WORK_MOD1</name></member>
+    <member refid="resource_8h_1abf58c6c4216fe838528dd3521a05cbf7" kind="define"><name>IDM_WORK_MOD2</name></member>
+    <member refid="resource_8h_1ac93033490bc8943cfc82ec3b40e5cd74" kind="define"><name>IDC_STATIC</name></member>
+  </compound>
+  <compound refid="targetver_8h" kind="file"><name>targetver.h</name>
+  </compound>
+  <compound refid="dir_275089585c7fc1b5fd5d7d42c69cb1da" kind="dir"><name>D:</name>
+  </compound>
+  <compound refid="dir_91694b49233c1a7e9cc7c08912fdd139" kind="dir"><name>D:/ForStudy</name>
+  </compound>
+  <compound refid="dir_f411310f8735ca6b136b5650341b15fc" kind="dir"><name>D:/ForStudy/OOP/KPI-OOP</name>
+  </compound>
+  <compound refid="dir_d8b03ba28eb9a48e88147a50053eb1fc" kind="dir"><name>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1</name>
+  </compound>
+  <compound refid="dir_3b0cb01cd318ca2cae166d112b72a84f" kind="dir"><name>D:/ForStudy/OOP/KPI-OOP/Lab1</name>
+  </compound>
+  <compound refid="dir_d9320ac65e48a4af5fc8f73a87672a6a" kind="dir"><name>D:/ForStudy/OOP</name>
+  </compound>
+</doxygenindex>

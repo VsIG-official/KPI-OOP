@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="module1_8h" kind="file">
+    <compoundname>module1.h</compoundname>
+    <includedby refid="_lab1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</includedby>
+    <includedby refid="module1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</includedby>
+    <invincdepgraph>
+      <node id="48">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</label>
+        <link refid="module1_8cpp"/>
+      </node>
+      <node id="47">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="_lab1_8cpp"/>
+      </node>
+      <node id="46">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h</label>
+        <link refid="module1.h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="module1_8h_1a234cadf76bba50e94533cadf8188a64f" prot="public" static="no">
+        <name>IDD_DIALOG1_MOD1</name>
+        <initializer>101</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="5" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="module1_8h_1afa6e04a58f72ef6fb8fdbe0ceee80809" prot="public" static="no">
+        <name>IDD_WORK_MOD1</name>
+        <initializer>101</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="6" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" bodystart="6" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" compoundref="_lab1_8cpp" startline="227" endline="231">Work1</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="module1_8h_1ad123446cb35c803caf42a339fc842813" prot="public" static="no">
+        <name>IDC_EDIT1</name>
+        <initializer>1001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="7" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="module1_8h_1a228d335793cb6383b8c9cb51c808605e" prot="public" static="no">
+        <name>IDC_SCROLLBAR1</name>
+        <initializer>1002</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="8" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" bodystart="8" bodyend="-1"/>
+        <referencedby refid="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" compoundref="module1_8cpp" startline="15" endline="61">Work1_MOD1</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="module1_8h_1a8da8a8dedd5bd0bbdeae5580575ae307" prot="public" static="no">
+        <name>IDC_STATIC_MOD1</name>
+        <initializer>1003</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="9" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" compoundref="module1_8cpp" startline="15" endline="61">Work1_MOD1</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="module1_8h_1aefb48d8b78bd368899a2848d5e6ca4b8" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char tempPlaceForText[]</definition>
+        <argsstring>[]</argsstring>
+        <name>tempPlaceForText</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="12" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp" bodystart="6" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="module1_8h_1af2b399ef4b0bba54892820e9d68b040d" prot="public" static="no" mutable="no">
+        <type>int const</type>
+        <definition>int const maxSymbols</definition>
+        <argsstring></argsstring>
+        <name>maxSymbols</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="13" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp" bodystart="5" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="module1_8h_1a1910d262855b71da353ed0d07a6c7823" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int pos</definition>
+        <argsstring></argsstring>
+        <name>pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="14" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp" bodystart="8" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+        <referencedby refid="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" compoundref="module1_8cpp" startline="15" endline="61">Work1_MOD1</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="module1_8h_1afb1dfa24057a1b2a1825abb45a93f3fa" prot="public" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL canWrite</definition>
+        <argsstring></argsstring>
+        <name>canWrite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="15" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp" bodystart="12" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+        <referencedby refid="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" compoundref="module1_8cpp" startline="15" endline="61">Work1_MOD1</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT_PTR CALLBACK</type>
+        <definition>INT_PTR CALLBACK Work1_MOD1</definition>
+        <argsstring>(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)</argsstring>
+        <name>Work1_MOD1</name>
+        <param>
+          <type>HWND</type>
+          <declname>hDlg</declname>
+        </param>
+        <param>
+          <type>UINT</type>
+          <declname>iMessage</declname>
+        </param>
+        <param>
+          <type>WPARAM</type>
+          <declname>wParam</declname>
+        </param>
+        <param>
+          <type>LPARAM</type>
+          <declname>lParam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h" line="11" column="1" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp" bodystart="15" bodyend="61"/>
+        <references refid="module1_8cpp_1afb1dfa24057a1b2a1825abb45a93f3fa" compoundref="module1_8cpp" startline="12">canWrite</references>
+        <references refid="module1_8cpp_1a4def5424ee31dcbf679522161eae2e9d" compoundref="module1_8cpp" startline="11">hWndScrollBar</references>
+        <references refid="module1_8h_1a228d335793cb6383b8c9cb51c808605e" compoundref="module1_8h" startline="8">IDC_SCROLLBAR1</references>
+        <references refid="module1_8h_1a8da8a8dedd5bd0bbdeae5580575ae307" compoundref="module1_8h" startline="9">IDC_STATIC_MOD1</references>
+        <references refid="module1_8cpp_1acda4681f0015fcd724b071ffa89aa6f9" compoundref="module1_8cpp" startline="10">nMaxPos</references>
+        <references refid="module1_8cpp_1afb4e1f366284c31a7f1b799ea8286f57" compoundref="module1_8cpp" startline="9">nMinPos</references>
+        <references refid="module1_8cpp_1a1910d262855b71da353ed0d07a6c7823" compoundref="module1_8cpp" startline="8">pos</references>
+        <referencedby refid="_lab1_8cpp_1afba5f5883334078ab7f0a3fc9e3751ab" compoundref="_lab1_8cpp" startline="227" endline="231">Work1</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//{{NO_DEPENDENCIES}}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Включаемый<sp/>файл,<sp/>созданный<sp/>в<sp/>Microsoft<sp/>Visual<sp/>C++.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Using<sp/>module1.rc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="module1_8h_1a234cadf76bba50e94533cadf8188a64f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IDD_DIALOG1_MOD1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>101</highlight></codeline>
+<codeline lineno="6" refid="module1_8h_1afa6e04a58f72ef6fb8fdbe0ceee80809" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDD_WORK_MOD1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>101</highlight></codeline>
+<codeline lineno="7" refid="module1_8h_1ad123446cb35c803caf42a339fc842813" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDC_EDIT1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1001</highlight></codeline>
+<codeline lineno="8" refid="module1_8h_1a228d335793cb6383b8c9cb51c808605e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDC_SCROLLBAR1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1002</highlight></codeline>
+<codeline lineno="9" refid="module1_8h_1a8da8a8dedd5bd0bbdeae5580575ae307" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDC_STATIC_MOD1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1003</highlight></codeline>
+<codeline lineno="10"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>INT_PTR<sp/>CALLBACK<sp/><ref refid="module1_8h_1a8ed6bae30130be7f7a028ff8efe1b028" kindref="member">Work1_MOD1</ref>(HWND<sp/>hDlg,<sp/>UINT<sp/>iMessage,<sp/>WPARAM<sp/>wParam,<sp/>LPARAM<sp/>lParam);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="module1_8h_1aefb48d8b78bd368899a2848d5e6ca4b8" kindref="member">tempPlaceForText</ref>[];</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="module1_8h_1af2b399ef4b0bba54892820e9d68b040d" kindref="member">maxSymbols</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="module1_8h_1a1910d262855b71da353ed0d07a6c7823" kindref="member">pos</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="module1_8h_1afb1dfa24057a1b2a1825abb45a93f3fa" kindref="member">canWrite</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Next<sp/>default<sp/>values<sp/>for<sp/>new<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>APSTUDIO_INVOKED</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>APSTUDIO_READONLY_SYMBOLS</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_RESOURCE_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>103</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_COMMAND_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40001</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_CONTROL_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1005</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_SYMED_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>101</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.h"/>
+  </compounddef>
+</doxygen>

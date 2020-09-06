@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dir_3b0cb01cd318ca2cae166d112b72a84f" kind="dir">
+    <compoundname>D:/ForStudy/OOP/KPI-OOP/Lab1</compoundname>
+    <innerdir refid="dir_d8b03ba28eb9a48e88147a50053eb1fc">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/"/>
+  </compounddef>
+</doxygen>

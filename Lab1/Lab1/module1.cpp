@@ -3,12 +3,14 @@
 #include "module1.h"
 
 int const maxSymbols = 255;
-TCHAR tempPlaceForText[maxSymbols] = { 0 };
+char tempPlaceForText[maxSymbols] = { 0 };
 
-int pos;
+int pos=1;
 int nMinPos = 1;
 int nMaxPos = 100;
 HWND hWndScrollBar;
+BOOL canWrite = FALSE;
+int numOfDig;
 
 //Callback-function
 INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -47,7 +49,14 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         SetScrollPos(hWndScrollBar, SB_CTL, pos, TRUE);
         break;
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+        if (LOWORD(wParam) == IDOK)
+        {
+            canWrite = TRUE;
+            numOfDig=Count(pos);
+            EndDialog(hDlg, LOWORD(wParam));
+            return (INT_PTR)TRUE;
+        }
+        else if (LOWORD(wParam) == IDCANCEL)
         {
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
@@ -56,4 +65,15 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     default: break;
     }
     return FALSE;
+}
+
+int Count(int pos)
+{
+    int count = 0;
+    while (pos != 0)
+    {
+        pos = pos / 10;
+        ++count;
+    }
+    return count;
 }

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="pch_8h" kind="file">
+    <compoundname>pch.h</compoundname>
+    <includes refid="framework_8h" local="yes">framework.h</includes>
+    <includedby refid="_lab1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</includedby>
+    <includedby refid="module1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</includedby>
+    <includedby refid="module2_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module2.cpp</includedby>
+    <includedby refid="pch_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.cpp</includedby>
+    <incdepgraph>
+      <node id="76">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.h</label>
+        <link refid="pch.h"/>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>windows.h</label>
+      </node>
+      <node id="81">
+        <label>stdlib.h</label>
+      </node>
+      <node id="79">
+        <label>SDKDDKVer.h</label>
+      </node>
+      <node id="82">
+        <label>malloc.h</label>
+      </node>
+      <node id="78">
+        <label>targetver.h</label>
+        <link refid="targetver_8h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>memory.h</label>
+      </node>
+      <node id="84">
+        <label>tchar.h</label>
+      </node>
+      <node id="77">
+        <label>framework.h</label>
+        <link refid="framework_8h"/>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="85">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.h</label>
+        <link refid="pch.h"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.cpp</label>
+        <link refid="pch_8cpp"/>
+      </node>
+      <node id="87">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module1.cpp</label>
+        <link refid="module1_8cpp"/>
+      </node>
+      <node id="88">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/module2.cpp</label>
+        <link refid="module2_8cpp"/>
+      </node>
+      <node id="86">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="_lab1_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>pch.h:<sp/>это<sp/>предварительно<sp/>скомпилированный<sp/>заголовочный<sp/>файл.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Перечисленные<sp/>ниже<sp/>файлы<sp/>компилируются<sp/>только<sp/>один<sp/>раз,<sp/>что<sp/>ускоряет<sp/>последующие<sp/>сборки.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Это<sp/>также<sp/>влияет<sp/>на<sp/>работу<sp/>IntelliSense,<sp/>включая<sp/>многие<sp/>функции<sp/>просмотра<sp/>и<sp/>завершения<sp/>кода.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Однако<sp/>изменение<sp/>любого<sp/>из<sp/>приведенных<sp/>здесь<sp/>файлов<sp/>между<sp/>операциями<sp/>сборки<sp/>приведет<sp/>к<sp/>повторной<sp/>компиляции<sp/>всех(!)<sp/>этих<sp/>файлов.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Не<sp/>добавляйте<sp/>сюда<sp/>файлы,<sp/>которые<sp/>планируете<sp/>часто<sp/>изменять,<sp/>так<sp/>как<sp/>в<sp/>этом<sp/>случае<sp/>выигрыша<sp/>в<sp/>производительности<sp/>не<sp/>будет.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>PCH_H</highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PCH_H</highlight></codeline>
+<codeline lineno="9"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Добавьте<sp/>сюда<sp/>заголовочные<sp/>файлы<sp/>для<sp/>предварительной<sp/>компиляции</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="framework_8h" kindref="compound">framework.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//PCH_H</highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/pch.h"/>
+  </compounddef>
+</doxygen>

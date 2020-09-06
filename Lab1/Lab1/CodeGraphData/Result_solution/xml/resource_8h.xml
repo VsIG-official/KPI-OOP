@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="resource_8h" kind="file">
+    <compoundname>resource.h</compoundname>
+    <includedby refid="_lab1_8h" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.h</includedby>
+    <invincdepgraph>
+      <node id="93">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="_lab1_8cpp"/>
+      </node>
+      <node id="91">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h</label>
+        <link refid="resource.h"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.h</label>
+        <link refid="_lab1_8h"/>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="resource_8h_1abb326bd165140b31acf04b893ef655ca" prot="public" static="no">
+        <name>IDC_MYICON</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="5" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1ae2467fdadfec868284a44921b2355565" prot="public" static="no">
+        <name>IDD_LAB1_DIALOG</name>
+        <initializer>102</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="6" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a636c9aea2a8d16b73e43df39b3e0e7bd" prot="public" static="no">
+        <name>IDS_APP_TITLE</name>
+        <initializer>103</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="7" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="7" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a77a06326b569136edbb6c766bc98c33c" prot="public" static="no">
+        <name>IDD_ABOUTBOX</name>
+        <initializer>103</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="8" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="8" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a589e0105bc3e8681893dbf51210ceeec" prot="public" static="no">
+        <name>IDM_ABOUT</name>
+        <initializer>104</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="9" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1aa65940151a991f3bd52c15d8814dbd23" prot="public" static="no">
+        <name>IDD_ABOUTBOX1</name>
+        <initializer>104</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="10" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a771b99e978c372f88bf9f2aebb473754" prot="public" static="no">
+        <name>IDD_WORK</name>
+        <initializer>104</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="11" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a79aeed168a959b22b32169e25f8c1f4d" prot="public" static="no">
+        <name>IDM_EXIT</name>
+        <initializer>105</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="12" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a9e5c8e8424fe864a75412df15ddc6a85" prot="public" static="no">
+        <name>IDI_LAB1</name>
+        <initializer>107</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="13" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" compoundref="_lab1_8cpp" startline="80" endline="99">MyRegisterClass</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a861a8cb71616b4615a5823bcf4bff6e3" prot="public" static="no">
+        <name>IDI_SMALL</name>
+        <initializer>108</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="14" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" compoundref="_lab1_8cpp" startline="80" endline="99">MyRegisterClass</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" prot="public" static="no">
+        <name>IDC_LAB1</name>
+        <initializer>109</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="15" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1aa0d0c9beb94350f8eac8fc4026a65375" compoundref="_lab1_8cpp" startline="80" endline="99">MyRegisterClass</referencedby>
+        <referencedby refid="_lab1_8cpp_1a1e683c5a19c00d05cd803e46b805e339" compoundref="_lab1_8cpp" startline="37" endline="73">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a9772c84d39896ad00b9aeb34b15d324d" prot="public" static="no">
+        <name>IDR_MAINFRAME</name>
+        <initializer>128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="16" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a722a8e74d94d4e048b68ad231d95e882" prot="public" static="no">
+        <name>IDM_WORK</name>
+        <initializer>32771</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="17" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a52b319debc48e785567a8e983273bb0d" prot="public" static="no">
+        <name>IDM_WORK1</name>
+        <initializer>32772</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="18" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1add889da9072e818ecdfdb7993e7ca082" prot="public" static="no">
+        <name>IDM_WORK2</name>
+        <initializer>32773</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="19" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1a992476690115046210a42f6946f7b2de" prot="public" static="no">
+        <name>IDM_WORK_MOD1</name>
+        <initializer>32775</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="20" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1abf58c6c4216fe838528dd3521a05cbf7" prot="public" static="no">
+        <name>IDM_WORK_MOD2</name>
+        <initializer>32776</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="21" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="_lab1_8cpp_1a9135ea2a0d6fce68ba3b858226a31a4f" compoundref="_lab1_8cpp" startline="139" endline="199">WndProc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="resource_8h_1ac93033490bc8943cfc82ec3b40e5cd74" prot="public" static="no">
+        <name>IDC_STATIC</name>
+        <initializer>-1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" line="22" column="9" bodyfile="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//{{NO_DEPENDENCIES}}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Включаемый<sp/>файл,<sp/>созданный<sp/>в<sp/>Microsoft<sp/>Visual<sp/>C++.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Используется<sp/>Lab1.rc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="resource_8h_1abb326bd165140b31acf04b893ef655ca" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IDC_MYICON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="6" refid="resource_8h_1ae2467fdadfec868284a44921b2355565" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDD_LAB1_DIALOG<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>102</highlight></codeline>
+<codeline lineno="7" refid="resource_8h_1a636c9aea2a8d16b73e43df39b3e0e7bd" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDS_APP_TITLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>103</highlight></codeline>
+<codeline lineno="8" refid="resource_8h_1a77a06326b569136edbb6c766bc98c33c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDD_ABOUTBOX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>103</highlight></codeline>
+<codeline lineno="9" refid="resource_8h_1a589e0105bc3e8681893dbf51210ceeec" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_ABOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>104</highlight></codeline>
+<codeline lineno="10" refid="resource_8h_1aa65940151a991f3bd52c15d8814dbd23" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDD_ABOUTBOX1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>104</highlight></codeline>
+<codeline lineno="11" refid="resource_8h_1a771b99e978c372f88bf9f2aebb473754" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDD_WORK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>104</highlight></codeline>
+<codeline lineno="12" refid="resource_8h_1a79aeed168a959b22b32169e25f8c1f4d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_EXIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>105</highlight></codeline>
+<codeline lineno="13" refid="resource_8h_1a9e5c8e8424fe864a75412df15ddc6a85" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDI_LAB1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>107</highlight></codeline>
+<codeline lineno="14" refid="resource_8h_1a861a8cb71616b4615a5823bcf4bff6e3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDI_SMALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>108</highlight></codeline>
+<codeline lineno="15" refid="resource_8h_1a3b32af830cdfe8c0bf4886696271aee0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDC_LAB1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>109</highlight></codeline>
+<codeline lineno="16" refid="resource_8h_1a9772c84d39896ad00b9aeb34b15d324d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDR_MAINFRAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>128</highlight></codeline>
+<codeline lineno="17" refid="resource_8h_1a722a8e74d94d4e048b68ad231d95e882" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_WORK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32771</highlight></codeline>
+<codeline lineno="18" refid="resource_8h_1a52b319debc48e785567a8e983273bb0d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_WORK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32772</highlight></codeline>
+<codeline lineno="19" refid="resource_8h_1add889da9072e818ecdfdb7993e7ca082" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_WORK2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32773</highlight></codeline>
+<codeline lineno="20" refid="resource_8h_1a992476690115046210a42f6946f7b2de" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_WORK_MOD1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32775</highlight></codeline>
+<codeline lineno="21" refid="resource_8h_1abf58c6c4216fe838528dd3521a05cbf7" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDM_WORK_MOD2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32776</highlight></codeline>
+<codeline lineno="22" refid="resource_8h_1ac93033490bc8943cfc82ec3b40e5cd74" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IDC_STATIC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-1</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Next<sp/>default<sp/>values<sp/>for<sp/>new<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>APSTUDIO_INVOKED</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>APSTUDIO_READONLY_SYMBOLS</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NO_MFC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_RESOURCE_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>132</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_COMMAND_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32777</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_CONTROL_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_APS_NEXT_SYMED_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>110</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/resource.h"/>
+  </compounddef>
+</doxygen>

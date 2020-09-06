@@ -27,6 +27,7 @@ char fontName[] = "Arial";
 int textHeightPosition = 0;
 int textWidthPosition = 0;
 HFONT hFont = CreateFont(fontHeight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, fontName);
+
 //Create the font
 
 
@@ -177,10 +178,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HDC hdc = BeginPaint(hWnd, &ps);
 
         SelectObject(hdc, hFont);
-        //TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, maxSymbols);
+
+        if (canWrite)
+        {
+            _itoa_s(pos, tempPlaceForText, sizeof(pos), 10);
+            canWrite = FALSE;
+        }
+
+        TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
 
         EndPaint(hWnd, &ps);
-        //ZeroMemory(tempPlaceForText, maxSymbols);
+        ZeroMemory(tempPlaceForText, maxSymbols);
     }
     break;
     case WM_DESTROY:
@@ -223,3 +231,5 @@ void Work1(HWND hWnd)
     // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
 }
+
+

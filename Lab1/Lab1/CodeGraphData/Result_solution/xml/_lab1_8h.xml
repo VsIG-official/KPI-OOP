@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_lab1_8h" kind="file">
+    <compoundname>Lab1.h</compoundname>
+    <includes refid="resource_8h" local="yes">resource.h</includes>
+    <includedby refid="_lab1_8cpp" local="yes">D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</includedby>
+    <incdepgraph>
+      <node id="30">
+        <label>resource.h</label>
+        <link refid="resource_8h"/>
+      </node>
+      <node id="29">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.h</label>
+        <link refid="Lab1.h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="32">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.cpp</label>
+        <link refid="_lab1_8cpp"/>
+      </node>
+      <node id="31">
+        <label>D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.h</label>
+        <link refid="Lab1.h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="resource_8h" kindref="compound">resource.h</ref>&quot;</highlight></codeline>
+    </programlisting>
+    <location file="D:/ForStudy/OOP/KPI-OOP/Lab1/Lab1/Lab1.h"/>
+  </compounddef>
+</doxygen>
