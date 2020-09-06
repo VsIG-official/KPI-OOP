@@ -14,7 +14,6 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
-
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
@@ -22,9 +21,9 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 void Work1(HWND hWnd);      // Declaration of our function
+void Work2(HWND hWnd);      // Declaration of our function
 int textHeightPosition = 0;
 int textWidthPosition = 0;
-
 
 // LPCWSTR string;
 
@@ -225,4 +224,11 @@ void Work1(HWND hWnd)
 {
     // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
+}
+
+// Function-handler of the menu item "Work"
+void Work2(HWND hWnd)
+{
+    // What we program here that will be done
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
 }

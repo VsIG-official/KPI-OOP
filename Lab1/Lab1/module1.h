@@ -9,7 +9,7 @@
 #define IDC_STATIC_MOD1                 1003
 
 extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-extern int Count(int pos);
+int Count(int pos);
 extern char tempPlaceForText[];
 extern int const maxSymbols;
 extern int pos;
