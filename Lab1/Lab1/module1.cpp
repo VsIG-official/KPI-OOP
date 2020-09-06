@@ -5,7 +5,7 @@
 int const maxSymbols = 255;
 char tempPlaceForText[maxSymbols] = { 0 };
 
-int pos=1;
+int pos;
 int nMinPos = 1;
 int nMaxPos = 100;
 HWND hWndScrollBar;
@@ -19,6 +19,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     {
     case WM_INITDIALOG:
         hWndScrollBar = GetDlgItem(hDlg, IDC_SCROLLBAR1);
+        pos = 1;
         SetScrollRange(hWndScrollBar, SB_CTL, nMinPos, nMaxPos, TRUE);
         break;
     case WM_HSCROLL:

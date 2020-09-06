@@ -22,13 +22,8 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 void Work1(HWND hWnd);      // Declaration of our function
-int fontHeight = 50;
-char fontName[] = "Arial";
 int textHeightPosition = 0;
 int textWidthPosition = 0;
-HFONT hFont = CreateFont(fontHeight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, fontName);
-
-//Create the font
 
 
 // LPCWSTR string;
@@ -177,16 +172,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        //SelectObject(hdc, hFont);
-
         if (canWrite)
         {
             _itoa_s(pos, tempPlaceForText, sizeof(pos), 10);
             canWrite = FALSE;
         }
 
-        TextOutA(hdc, textHeightPosition, textWidthPosition, "", 7);
-        TextOutA(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
+        TextOut(hdc, textHeightPosition, textWidthPosition, "", 7);
+        TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
 
         ZeroMemory(tempPlaceForText, pos);
 
@@ -233,5 +226,3 @@ void Work1(HWND hWnd)
     // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
 }
-
-
