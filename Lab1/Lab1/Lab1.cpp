@@ -14,6 +14,7 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
+
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
@@ -24,6 +25,7 @@ void Work1(HWND hWnd);      // Declaration of our function
 void Work2(HWND hWnd);      // Declaration of our function
 int textHeightPosition = 0;
 int textWidthPosition = 0;
+
 
 // LPCWSTR string;
 

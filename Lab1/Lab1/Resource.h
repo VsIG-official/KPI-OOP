@@ -21,7 +21,8 @@
 #define IDM_WORK_MOD2                   32776
 #define IDC_STATIC                      -1
 
-//extern HINSTANCE hInst;
+extern HINSTANCE hInst;
+
 // Next default values for new objects
 //
 #ifdef APSTUDIO_INVOKED

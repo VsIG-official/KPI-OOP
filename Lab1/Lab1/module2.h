@@ -11,7 +11,8 @@
 #define IDC_CANCEL1_MOD2                1004
 
 extern INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
-INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+extern INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
 // Next default values for new objects
 //
 #ifdef APSTUDIO_INVOKED

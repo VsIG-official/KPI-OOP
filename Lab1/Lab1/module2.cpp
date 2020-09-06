@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "module2.h"
-
-//HINSTANCE hInst;
+#include "Resource.h"
 
 // First callback
 INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
@@ -18,7 +17,7 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             return (INT_PTR)TRUE;
         case IDC_NEXT_MOD2:
             EndDialog(hDlg, LOWORD(wParam));
-            //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hDlg, Work2_MOD2);
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hDlg, Work2_MOD2);
             return (INT_PTR)TRUE;
         }
         break;
@@ -43,7 +42,7 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
             EndDialog(hDlg, LOWORD(wParam));
-            //DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK2_MOD2), hDlg, Work1_MOD2);
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK2_MOD2), hDlg, Work1_MOD2);
             return (INT_PTR)TRUE;
         }
         break;
