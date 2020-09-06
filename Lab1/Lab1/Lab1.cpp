@@ -153,6 +153,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case IDM_WORK_MOD2:
             // second menu
+            Work2(hWnd);
+
+            // The update region represents the portion of the window's
+            // client area that must be redrawn.
+            InvalidateRect(hWnd, 0, TRUE);
             break;
         case IDM_ABOUT:
             // About Menu
@@ -179,7 +184,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             canWrite = FALSE;
         }
 
-        TextOut(hdc, textHeightPosition, textWidthPosition, "", 7);
+        TextOut(hdc, textHeightPosition, textWidthPosition, "     ", 5);
         TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
 
         ZeroMemory(tempPlaceForText, pos);
