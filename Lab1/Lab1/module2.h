@@ -1,7 +1,11 @@
 //{{NO_DEPENDENCIES}}
-// Включаемый файл, созданный в Microsoft Visual C++.
-// Используется module2.rc
+// Included file created in Microsoft Visual C++.
+// Using module2.rc
 //
+
+#ifndef MODULE_2_H
+#define MODULE_2_H
+
 #define IDC_BACK_MOD2                   3
 #define IDD_WORK2_MOD2                  103
 #define IDD_DIALOG1                     105
@@ -26,5 +30,6 @@ extern INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARA
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1008
 #define _APS_NEXT_SYMED_VALUE           101
+#endif
 #endif
 #endif
