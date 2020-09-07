@@ -63,17 +63,18 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         SetScrollPos(hWndScrollBar, SB_CTL, pos, TRUE);
         break;
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK)
+        switch (LOWORD(wParam))
         {
+        case IDOK:
             canWrite = TRUE;
             numOfDig = Count(pos);
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
-        }
-        else if (LOWORD(wParam) == IDCANCEL)
-        {
+            break;
+        case IDCANCEL:
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
+            break;
         }
         break;
     default: break;
