@@ -21,14 +21,14 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+static INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-void Work1(HWND hWnd);      // Declaration of our function
-void Work2(HWND hWnd);      // Declaration of our function
-void DrawTextOnScreen(HWND hWnd);      // Declaration of our function
+static void Work1(HWND hWnd);      // Declaration of our function
+static void Work2(HWND hWnd);      // Declaration of our function
+static void DrawTextOnScreen(HWND hWnd);      // Declaration of our function
 
-int textHeightPosition = 0;
-int textWidthPosition = 0;
+static int textHeightPosition = 0;
+static int textWidthPosition = 0;
 
 #pragma endregion
 
@@ -275,16 +275,16 @@ void DrawTextOnScreen(HWND hWnd)
     UpdateWindow(hWnd);
     HDC hdc = BeginPaint(hWnd, &ps);
 
-    if (canWrite)
+    if (canWrite_MOD1)
     {
-        _itoa_s(pos, tempPlaceForText, sizeof(pos), 10);
-        canWrite = FALSE;
+        _itoa_s(pos_MOD1, tempPlaceForText_MOD1, sizeof(pos_MOD1), 10);
+        canWrite_MOD1 = FALSE;
     }
 
     TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
-    TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
+    TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText_MOD1, numOfDig_MOD1);
 
-    ZeroMemory(tempPlaceForText, pos);
+    ZeroMemory(tempPlaceForText_MOD1, pos_MOD1);
 
     EndPaint(hWnd, &ps);
 }

@@ -4,15 +4,15 @@
 
 #pragma region Variables
 
-int const maxSymbols = 255;
-char tempPlaceForText[maxSymbols] = { 0 };
+int const maxSymbols_MOD1 = 255;
+char tempPlaceForText_MOD1[maxSymbols_MOD1] = { 0 };
 
-int pos;
-int nMinPos = 1;
-int nMaxPos = 100;
-HWND hWndScrollBar;
-BOOL canWrite = FALSE;
-int numOfDig;
+int pos_MOD1;
+int nMinPos_MOD1 = 1;
+int nMaxPos_MOD1 = 100;
+HWND hWndScrollBar_MOD1;
+BOOL canWrite_MOD1 = FALSE;
+int numOfDig_MOD1;
 
 #pragma endregion
 
@@ -31,31 +31,31 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     switch (iMessage)
     {
     case WM_INITDIALOG:
-        OnInit(hDlg);
+        OnInit_MOD1(hDlg);
         break;
     case WM_HSCROLL:
-        pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
+        pos_MOD1 = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
         switch (LOWORD(wParam))
         {
         case SB_LINELEFT:
-            OnLineLeft(hDlg);
+            OnLineLeft_MOD1(hDlg);
             break;
         case SB_LINERIGHT:
-            OnLineRight(hDlg);
+            OnLineRight_MOD1(hDlg);
             break;
         case SB_THUMBPOSITION:
         case SB_THUMBTRACK:
-            OnThumbPosAndTrack(hDlg, wParam);
+            OnThumbPosAndTrack_MOD1(hDlg, wParam);
             break;
         default: break;
         }
-        SetScrollPos(hWndScrollBar, SB_CTL, pos, TRUE);
+        SetScrollPos(hWndScrollBar_MOD1, SB_CTL, pos_MOD1, TRUE);
         break;
     case WM_COMMAND:
         switch (LOWORD(wParam))
         {
         case IDOK:
-            OnOkMod2(hDlg);
+            OnOkMod2_MOD1(hDlg);
             return (INT_PTR)TRUE;
             break;
         case IDCANCEL:
@@ -73,37 +73,37 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
 /// Called on initializing
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnInit(HWND hDlg)
+void OnInit_MOD1(HWND hDlg)
 {
-    hWndScrollBar = GetDlgItem(hDlg, IDC_SCROLLBAR1);
-    pos = 1;
-    SetScrollRange(hWndScrollBar, SB_CTL, nMinPos, nMaxPos, TRUE);
+    hWndScrollBar_MOD1 = GetDlgItem(hDlg, IDC_SCROLLBAR1);
+    pos_MOD1 = 1;
+    SetScrollRange(hWndScrollBar_MOD1, SB_CTL, nMinPos_MOD1, nMaxPos_MOD1, TRUE);
 }
 
 /// <summary>
 /// Called when scroll pos goes to the left.
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnLineLeft(HWND hDlg)
+void OnLineLeft_MOD1(HWND hDlg)
 {
-    if (pos != nMinPos)
+    if (pos_MOD1 != nMinPos_MOD1)
     {
-        pos--;
+        pos_MOD1--;
     }
-    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos_MOD1, TRUE);
 }
 
 /// <summary>
 /// Called when scroll pos goes to the right.
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnLineRight(HWND hDlg)
+void OnLineRight_MOD1(HWND hDlg)
 {
-    if (pos != nMaxPos)
+    if (pos_MOD1 != nMaxPos_MOD1)
     {
-        pos++;
+        pos_MOD1++;
     }
-    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos_MOD1, TRUE);
 }
 
 /// <summary>
@@ -111,20 +111,20 @@ void OnLineRight(HWND hDlg)
 /// </summary>
 /// <param name="hDlg">The h dialog.</param>
 /// <param name="wParam">The w parameter.</param>
-void OnThumbPosAndTrack(HWND hDlg, WPARAM wParam)
+void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam)
 {
-    pos = HIWORD(wParam);
-    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+    pos_MOD1 = HIWORD(wParam);
+    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos_MOD1, TRUE);
 }
 
 /// <summary>
 /// Called when IDOK clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnOkMod2(HWND hDlg)
+void OnOkMod2_MOD1(HWND hDlg)
 {
-    canWrite = TRUE;
-    numOfDig = Count(pos);
+    canWrite_MOD1 = TRUE;
+    numOfDig_MOD1 = Count_MOD1(pos_MOD1);
     EndDialog(hDlg, 1);
 }
 
@@ -133,15 +133,15 @@ void OnOkMod2(HWND hDlg)
 /// </summary>
 /// <param name="pos"></param>
 /// <returns></returns>
-int Count(int pos)
+int Count_MOD1(int pos_MOD1)
 {
-    int count = 0;
-    while (pos != 0)
+    int count_MOD1 = 0;
+    while (pos_MOD1 != 0)
     {
-        pos = pos / 10;
-        ++count;
+        pos_MOD1 = pos_MOD1 / 10;
+        ++count_MOD1;
     }
-    return count;
+    return count_MOD1;
 }
 
 #pragma endregion
