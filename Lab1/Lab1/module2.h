@@ -14,7 +14,7 @@
 #define IDC_NEXT_MOD2                   1006
 #define IDC_CANCEL1_MOD2                1007
 
-#pragma region Funtions
+#pragma region Functions
 
 extern int Func_MOD2(HINSTANCE hInst, HWND hWnd);
 

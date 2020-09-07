@@ -7,7 +7,6 @@
 #define MODULE_1_H
 
 #define IDD_WORK_MOD1                   101
-#define IDC_EDIT1                       1001
 #define IDC_SCROLLBAR1_MOD1             1002
 #define IDC_STATIC_MOD1                 1003
 
@@ -16,7 +15,6 @@
 extern int Func_MOD1(HINSTANCE hInst, HWND hWnd);
 
 extern char tempPlaceForText_MOD1[];
-extern int const maxSymbols_MOD1;
 extern int pos_MOD1;
 extern int numOfDig_MOD1;
 extern BOOL canWrite_MOD1;
