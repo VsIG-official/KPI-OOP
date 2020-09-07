@@ -36,7 +36,7 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 /// <summary>
 /// Called when IDC_NEXT_MOD2 clicked
 /// </summary>
-/// <param name="hDlg">The h dialog.</param>
+/// <param name="hDlg">The dialog.</param>
 void OnNextMod2(HWND hDlg)
 {
     EndDialog(hDlg, 1);
@@ -66,13 +66,22 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
-            EndDialog(hDlg, LOWORD(wParam));
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hDlg, Work1_MOD2);
+            OnBackMod2(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+/// <summary>
+/// Called when IDC_BACK_MOD2 clicked
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnBackMod2(HWND hDlg)
+{
+    EndDialog(hDlg, 1);
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hDlg, Work1_MOD2);
 }
 
 #pragma endregion
