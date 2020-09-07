@@ -8,7 +8,6 @@
 
 #define IDC_BACK_MOD2                   3
 #define IDD_WORK2_MOD2                  103
-#define IDD_DIALOG1                     105
 #define IDD_WORK1_MOD2                  105
 #define IDC_CANCEL2_MOD2                1002
 #define IDC_OK2_MOD2                    1003

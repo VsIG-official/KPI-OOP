@@ -9,7 +9,7 @@
 #define IDD_DIALOG1_MOD1                101
 #define IDD_WORK_MOD1                   101
 #define IDC_EDIT1                       1001
-#define IDC_SCROLLBAR1                  1002
+#define IDC_SCROLLBAR1_MOD1             1002
 #define IDC_STATIC_MOD1                 1003
 
 #pragma region VariablesAndFuntions

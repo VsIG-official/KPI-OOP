@@ -41,7 +41,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         OnInit_MOD1(hDlg);
         break;
     case WM_HSCROLL:
-        pos_MOD1 = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
+        pos_MOD1 = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1_MOD1), SB_CTL);
         switch (LOWORD(wParam))
         {
         case SB_LINELEFT:
@@ -82,7 +82,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
 /// <param name="hDlg">The dialog.</param>
 void OnInit_MOD1(HWND hDlg)
 {
-    hWndScrollBar_MOD1 = GetDlgItem(hDlg, IDC_SCROLLBAR1);
+    hWndScrollBar_MOD1 = GetDlgItem(hDlg, IDC_SCROLLBAR1_MOD1);
     pos_MOD1 = 1;
     SetScrollRange(hWndScrollBar_MOD1, SB_CTL, nMinPos_MOD1, nMaxPos_MOD1, TRUE);
 }
