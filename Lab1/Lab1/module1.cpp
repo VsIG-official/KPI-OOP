@@ -31,27 +31,17 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     switch (iMessage)
     {
     case WM_INITDIALOG:
-        hWndScrollBar = GetDlgItem(hDlg, IDC_SCROLLBAR1);
-        pos = 1;
-        SetScrollRange(hWndScrollBar, SB_CTL, nMinPos, nMaxPos, TRUE);
+        OnInit(hDlg);
         break;
     case WM_HSCROLL:
         pos = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1), SB_CTL);
         switch (LOWORD(wParam))
         {
         case SB_LINELEFT:
-            if (pos != nMinPos)
-            {
-                pos--;
-            }
-            SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+            OnLineLeft(hDlg);
             break;
         case SB_LINERIGHT:
-            if (pos != nMaxPos)
-            {
-                pos++;
-            }
-            SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+            OnLineRight(hDlg);
             break;
         case SB_THUMBPOSITION:
         case SB_THUMBTRACK:
@@ -80,6 +70,43 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     default: break;
     }
     return FALSE;
+}
+
+/// <summary>
+/// Called on initializing
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnInit(HWND hDlg)
+{
+    hWndScrollBar = GetDlgItem(hDlg, IDC_SCROLLBAR1);
+    pos = 1;
+    SetScrollRange(hWndScrollBar, SB_CTL, nMinPos, nMaxPos, TRUE);
+}
+
+/// <summary>
+/// Called when scroll pos goes to the left.
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnLineLeft(HWND hDlg)
+{
+    if (pos != nMinPos)
+    {
+        pos--;
+    }
+    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+}
+
+/// <summary>
+/// Called when scroll pos goes to the right.
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnLineRight(HWND hDlg)
+{
+    if (pos != nMaxPos)
+    {
+        pos++;
+    }
+    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
 }
 
 /// <summary>

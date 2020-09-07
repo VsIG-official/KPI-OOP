@@ -11,6 +11,9 @@
 #pragma region VariablesAndFuntions
 
 extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+void OnInit(HWND hDlg);
+void OnLineLeft(HWND hDlg);
+void OnLineRight(HWND hDlg);
 
 int Count(int pos);
 extern char tempPlaceForText[];
