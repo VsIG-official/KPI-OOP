@@ -14,7 +14,7 @@ extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPAR
 
 int Count(int pos);
 extern char tempPlaceForText[];
-int const maxSymbols;
+extern int const maxSymbols;
 extern int pos;
 extern int numOfDig;
 extern BOOL canWrite;
