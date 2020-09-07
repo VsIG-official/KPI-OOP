@@ -56,9 +56,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         switch (LOWORD(wParam))
         {
         case IDOK:
-            canWrite = TRUE;
-            numOfDig = Count(pos);
-            EndDialog(hDlg, LOWORD(wParam));
+            OnOkMod2(hDlg);
             return (INT_PTR)TRUE;
             break;
         case IDCANCEL:
@@ -107,6 +105,17 @@ void OnLineRight(HWND hDlg)
         pos++;
     }
     SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+}
+
+/// <summary>
+/// Called when IDOK clicked
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnOkMod2(HWND hDlg)
+{
+    canWrite = TRUE;
+    numOfDig = Count(pos);
+    EndDialog(hDlg, 1);
 }
 
 /// <summary>
