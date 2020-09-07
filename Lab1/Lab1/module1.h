@@ -6,7 +6,6 @@
 #ifndef MODULE_1_H
 #define MODULE_1_H
 
-#define IDD_DIALOG1_MOD1                101
 #define IDD_WORK_MOD1                   101
 #define IDC_EDIT1                       1001
 #define IDC_SCROLLBAR1_MOD1             1002
