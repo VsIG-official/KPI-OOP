@@ -43,13 +43,18 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
         switch (LOWORD(wParam))
         {
         case IDC_CANCEL1_MOD2:
-            EndDialog(hDlg, LOWORD(wParam));
+            EndDialog(hDlg, 0);
             return (INT_PTR)TRUE;
         case IDC_NEXT_MOD2:
             OnNextMod2(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
+    case WM_CLOSE:
+    {
+        EndDialog(hDlg, 0);
+    }
+    break;
     }
     return (INT_PTR)FALSE;
 }
@@ -85,13 +90,18 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
         case IDC_CANCEL2_MOD2:   // Cancel button
-            EndDialog(hDlg, LOWORD(wParam));
+            EndDialog(hDlg, 0);
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
             OnBackMod2(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
+    case WM_CLOSE:
+    {
+        EndDialog(hDlg, 0);
+    }
+    break;
     }
     return (INT_PTR)FALSE;
 }

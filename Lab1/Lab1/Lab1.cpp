@@ -234,13 +234,24 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
         // When OK is clicked
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+        if (LOWORD(wParam) == IDOK)
         {
             // End dialog window
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
         }
+        else if (LOWORD(wParam) == IDCANCEL)
+        {
+            // End dialog window
+            EndDialog(hDlg, 0);
+            return (INT_PTR)TRUE;
+        }
         break;
+    case WM_CLOSE:
+    {
+        EndDialog(hDlg, 0);
+    }
+    break;
     }
     return (INT_PTR)FALSE;
 }

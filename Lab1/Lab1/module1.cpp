@@ -78,11 +78,16 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
             return (INT_PTR)TRUE;
             break;
         case IDCANCEL:
-            EndDialog(hDlg, LOWORD(wParam));
+            EndDialog(hDlg, 0);
             return (INT_PTR)TRUE;
             break;
         }
         break;
+    case WM_CLOSE:
+    {
+        EndDialog(hDlg, 0);
+    }
+    break;
     default: break;
     }
     return FALSE;
