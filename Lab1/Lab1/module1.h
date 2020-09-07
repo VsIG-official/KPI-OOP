@@ -13,7 +13,7 @@
 
 #pragma region VariablesAndFuntions
 
-extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+extern int Func_MOD1(HINSTANCE hInst, HWND hWnd);
 
 extern char tempPlaceForText_MOD1[];
 extern int const maxSymbols_MOD1;

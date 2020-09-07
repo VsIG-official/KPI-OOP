@@ -14,6 +14,7 @@ static HWND hWndScrollBar_MOD1;
 BOOL canWrite_MOD1 = FALSE;
 int numOfDig_MOD1;
 
+static INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static void OnInit_MOD1(HWND hDlg);
 static void OnLineLeft_MOD1(HWND hDlg);
 static void OnLineRight_MOD1(HWND hDlg);
@@ -23,7 +24,18 @@ static int Count_MOD1(int pos_MOD1);
 
 #pragma endregion
 
-#pragma region Funtions
+#pragma region Functions
+
+/// <summary>
+/// dialog box creation function
+/// </summary>
+/// <param name="hInst">The hinst.</param>
+/// <param name="hWnd">The hWND.</param>
+/// <returns></returns>
+int Func_MOD1(HINSTANCE hInst, HWND hWnd)
+{
+    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
+}
 
 /// <summary>
 /// Callback-function for hor.scrollbar

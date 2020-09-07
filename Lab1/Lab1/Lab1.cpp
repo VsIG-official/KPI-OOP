@@ -252,7 +252,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 void Work1(HWND hWnd)
 {
     // What we program here that will be done
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
+    Func_MOD1(hInst,hWnd);
 }
 
 /// <summary>
