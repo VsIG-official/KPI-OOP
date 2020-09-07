@@ -15,13 +15,7 @@
 #pragma region VariablesAndFuntions
 
 extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-void OnInit_MOD1(HWND hDlg);
-void OnLineLeft_MOD1(HWND hDlg);
-void OnLineRight_MOD1(HWND hDlg);
-void OnOkMod2_MOD1(HWND hDlg);
-void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam);
 
-int Count_MOD1(int pos_MOD1);
 extern char tempPlaceForText_MOD1[];
 extern int const maxSymbols_MOD1;
 extern int pos_MOD1;

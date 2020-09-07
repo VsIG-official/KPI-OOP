@@ -3,6 +3,13 @@
 #include "module2.h"
 #include "Resource.h"
 
+#pragma region FunctionsDeclaration
+
+static void OnNextMod2(HWND hDlg);
+static void OnBackMod2(HWND hDlg);
+
+#pragma endregion
+
 #pragma region Functions
 
 /// <summary>

@@ -2,17 +2,24 @@
 #include "framework.h"
 #include "module1.h"
 
-#pragma region Variables
+#pragma region VariablesAndFunctionsDeclarations
 
-int const maxSymbols_MOD1 = 255;
+static int const maxSymbols_MOD1 = 255;
 char tempPlaceForText_MOD1[maxSymbols_MOD1] = { 0 };
 
 int pos_MOD1;
-int nMinPos_MOD1 = 1;
-int nMaxPos_MOD1 = 100;
-HWND hWndScrollBar_MOD1;
+static int nMinPos_MOD1 = 1;
+static int nMaxPos_MOD1 = 100;
+static HWND hWndScrollBar_MOD1;
 BOOL canWrite_MOD1 = FALSE;
 int numOfDig_MOD1;
+
+static void OnInit_MOD1(HWND hDlg);
+static void OnLineLeft_MOD1(HWND hDlg);
+static void OnLineRight_MOD1(HWND hDlg);
+static void OnOkMod2_MOD1(HWND hDlg);
+static void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam);
+static int Count_MOD1(int pos_MOD1);
 
 #pragma endregion
 
