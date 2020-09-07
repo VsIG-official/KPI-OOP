@@ -11,8 +11,12 @@
 #define IDC_NEXT_MOD2                   1006
 #define IDC_CANCEL1_MOD2                1007
 
+#pragma region Funtions
+
 extern INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 extern INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
+#pragma endregion
 
 // Next default values for new objects
 //

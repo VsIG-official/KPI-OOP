@@ -1,4 +1,4 @@
-﻿// Lab1.cpp : Определяет точку входа для приложения.
+﻿// Lab1.cpp : Defines the input point for the application.
 //
 // First Part
 #include "pch.h"
@@ -8,6 +8,8 @@
 #include "module2.h"
 
 #define MAX_LOADSTRING 100
+
+#pragma region Variables
 
 // Global variables:
 HINSTANCE hInst;                                // Current instance
@@ -26,8 +28,9 @@ void Work2(HWND hWnd);      // Declaration of our function
 int textHeightPosition = 0;
 int textWidthPosition = 0;
 
+#pragma endregion
 
-// LPCWSTR string;
+#pragma region DefaultFunctions
 
 // Second Part
 // Enter Point "wWinMain"
@@ -74,6 +77,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  OBJECTIVE: To register the window class.
 // Text of Function
+/// <summary>
+/// Register the window class.
+/// </summary>
+/// <param name="hInstance">The h instance.</param>
+/// <returns></returns>
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
@@ -105,6 +113,12 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //        In this function, the instance marker is saved in a global variable, and also
 //        the main program window is created and displayed.
 //
+/// <summary>
+/// Saves the instance marker and creates the main window
+/// </summary>
+/// <param name="hInstance">The h instance.</param>
+/// <param name="nCmdShow">The n command show.</param>
+/// <returns></returns>
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Save instance marker in global variable
@@ -123,6 +137,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     return TRUE;
 }
 
+#pragma endregion
+
+#pragma region ModifiedFuntions
+
 // Third Part
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -133,6 +151,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - Send message about exit and return
 //
 //
+/// <summary>
+/// Processes messages in the main window.
+/// </summary>
+/// <param name="hWnd">The h WND.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -184,7 +210,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             canWrite = FALSE;
         }
 
-        TextOut(hdc, textHeightPosition, textWidthPosition, "     ", 5);
+        TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
         TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
 
         ZeroMemory(tempPlaceForText, pos);
@@ -202,8 +228,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 }
 
 // Fourth Part
-// Message handler for "About" window.
-// Callback
+/// <summary>
+/// Message handler for "About" window.
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
@@ -226,16 +258,24 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
-// Function-handler of the menu item "Work"
+/// <summary>
+/// Function-handler of the menu item "Work1"
+/// </summary>
+/// <param name="hWnd">The h WND.</param>
 void Work1(HWND hWnd)
 {
     // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
 }
 
-// Function-handler of the menu item "Work"
+/// <summary>
+/// Function-handler of the menu item "Work2"
+/// </summary>
+/// <param name="hWnd">The h WND.</param>
 void Work2(HWND hWnd)
 {
     // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
 }
+
+#pragma endregion

@@ -2,6 +2,8 @@
 #include "framework.h"
 #include "module1.h"
 
+#pragma region Variables
+
 int const maxSymbols = 255;
 char tempPlaceForText[maxSymbols] = { 0 };
 
@@ -12,7 +14,18 @@ HWND hWndScrollBar;
 BOOL canWrite = FALSE;
 int numOfDig;
 
-//Callback-function
+#pragma endregion
+
+#pragma region Funtions
+
+/// <summary>
+/// Callback-function for hor.scrollbar
+/// </summary>
+/// <param name="hDlg"></param>
+/// <param name="iMessage"></param>
+/// <param name="wParam"></param>
+/// <param name="lParam"></param>
+/// <returns></returns>
 INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     switch (iMessage)
@@ -53,7 +66,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         if (LOWORD(wParam) == IDOK)
         {
             canWrite = TRUE;
-            numOfDig=Count(pos);
+            numOfDig = Count(pos);
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
         }
@@ -68,6 +81,11 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     return FALSE;
 }
 
+/// <summary>
+/// Function to Count how many digits are in int
+/// </summary>
+/// <param name="pos"></param>
+/// <returns></returns>
 int Count(int pos)
 {
     int count = 0;
@@ -78,3 +96,5 @@ int Count(int pos)
     }
     return count;
 }
+
+#pragma endregion

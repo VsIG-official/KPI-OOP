@@ -1,5 +1,5 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Включаемый файл, созданный в Microsoft Visual C++.
+// Included file created in Microsoft Visual C++.
 // Using module1.rc
 //
 #define IDD_DIALOG1_MOD1                101
@@ -8,13 +8,18 @@
 #define IDC_SCROLLBAR1                  1002
 #define IDC_STATIC_MOD1                 1003
 
+#pragma region VariablesAndFuntions
+
 extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+
 int Count(int pos);
 extern char tempPlaceForText[];
-extern int const maxSymbols;
+int const maxSymbols;
 extern int pos;
 extern int numOfDig;
 extern BOOL canWrite;
+
+#pragma endregion
 
 // Next default values for new objects
 //

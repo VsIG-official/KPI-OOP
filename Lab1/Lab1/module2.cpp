@@ -3,7 +3,16 @@
 #include "module2.h"
 #include "Resource.h"
 
-// First callback
+#pragma region Functions
+
+/// <summary>
+/// Callback-function for first dialog window
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
 INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
@@ -25,7 +34,14 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
     return (INT_PTR)FALSE;
 }
 
-// Second callback
+/// <summary>
+/// Callback-function for second dialog window
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
 INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
@@ -49,3 +65,5 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
     }
     return (INT_PTR)FALSE;
 }
+
+#pragma endregion
