@@ -39,8 +39,8 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 /// <param name="hDlg">The dialog.</param>
 void OnNextMod2(HWND hDlg)
 {
-    EndDialog(hDlg, 1);
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK2_MOD2), hDlg, Work2_MOD2);
+    EndDialog(hDlg, 1);
 }
 
 /// <summary>
@@ -80,8 +80,8 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 /// <param name="hDlg">The dialog.</param>
 void OnBackMod2(HWND hDlg)
 {
-    EndDialog(hDlg, 1);
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hDlg, Work1_MOD2);
+    EndDialog(hDlg, 1);
 }
 
 #pragma endregion
