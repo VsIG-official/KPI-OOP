@@ -45,8 +45,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
             break;
         case SB_THUMBPOSITION:
         case SB_THUMBTRACK:
-            pos = HIWORD(wParam);
-            SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+            OnThumbPosAndTrack(hDlg, wParam);
             break;
         default: break;
         }
@@ -104,6 +103,17 @@ void OnLineRight(HWND hDlg)
     {
         pos++;
     }
+    SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
+}
+
+/// <summary>
+/// Called when thumb position has changed
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+/// <param name="wParam">The w parameter.</param>
+void OnThumbPosAndTrack(HWND hDlg, WPARAM wParam)
+{
+    pos = HIWORD(wParam);
     SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos, TRUE);
 }
 

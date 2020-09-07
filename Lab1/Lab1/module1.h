@@ -14,6 +14,8 @@ extern INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPAR
 void OnInit(HWND hDlg);
 void OnLineLeft(HWND hDlg);
 void OnLineRight(HWND hDlg);
+void OnOkMod2(HWND hDlg);
+void OnThumbPosAndTrack(HWND hDlg, WPARAM wParam);
 
 int Count(int pos);
 extern char tempPlaceForText[];
