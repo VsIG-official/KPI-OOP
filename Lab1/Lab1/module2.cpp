@@ -25,13 +25,22 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
         case IDC_NEXT_MOD2:
-            EndDialog(hDlg, LOWORD(wParam));
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK2_MOD2), hDlg, Work2_MOD2);
+            OnNextMod2(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+/// <summary>
+/// Called when IDC_NEXT_MOD2 clicked
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+void OnNextMod2(HWND hDlg)
+{
+    EndDialog(hDlg, 1);
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK2_MOD2), hDlg, Work2_MOD2);
 }
 
 /// <summary>

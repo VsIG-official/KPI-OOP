@@ -15,6 +15,7 @@
 
 extern INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 extern INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+void OnNextMod2(HWND hDlg);
 
 #pragma endregion
 

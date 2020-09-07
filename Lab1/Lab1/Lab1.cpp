@@ -25,6 +25,8 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 void Work1(HWND hWnd);      // Declaration of our function
 void Work2(HWND hWnd);      // Declaration of our function
+void DrawTextOnScreen(HWND hWnd);      // Declaration of our function
+
 int textHeightPosition = 0;
 int textWidthPosition = 0;
 
@@ -200,22 +202,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_PAINT:
     {
-        PAINTSTRUCT ps;
-        UpdateWindow(hWnd);
-        HDC hdc = BeginPaint(hWnd, &ps);
-
-        if (canWrite)
-        {
-            _itoa_s(pos, tempPlaceForText, sizeof(pos), 10);
-            canWrite = FALSE;
-        }
-
-        TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
-        TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
-
-        ZeroMemory(tempPlaceForText, pos);
-
-        EndPaint(hWnd, &ps);
+        DrawTextOnScreen(hWnd);
     }
     break;
     case WM_DESTROY:
@@ -276,6 +263,30 @@ void Work2(HWND hWnd)
 {
     // What we program here that will be done
     DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
+}
+
+/// <summary>
+/// Draws the text on screen.
+/// </summary>
+/// <param name="hWnd">hWND</param>
+void DrawTextOnScreen(HWND hWnd)
+{
+    PAINTSTRUCT ps;
+    UpdateWindow(hWnd);
+    HDC hdc = BeginPaint(hWnd, &ps);
+
+    if (canWrite)
+    {
+        _itoa_s(pos, tempPlaceForText, sizeof(pos), 10);
+        canWrite = FALSE;
+    }
+
+    TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
+    TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText, numOfDig);
+
+    ZeroMemory(tempPlaceForText, pos);
+
+    EndPaint(hWnd, &ps);
 }
 
 #pragma endregion
