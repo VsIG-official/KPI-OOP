@@ -262,7 +262,7 @@ void Work1(HWND hWnd)
 void Work2(HWND hWnd)
 {
     // What we program here that will be done
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
+    Func_MOD2(hInst, hWnd);
 }
 
 /// <summary>

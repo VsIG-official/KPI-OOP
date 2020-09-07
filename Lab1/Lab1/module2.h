@@ -16,8 +16,7 @@
 
 #pragma region Funtions
 
-extern INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
-extern INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+extern int Func_MOD2(HINSTANCE hInst, HWND hWnd);
 
 #pragma endregion
 

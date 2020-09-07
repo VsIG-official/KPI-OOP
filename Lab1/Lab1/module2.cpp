@@ -8,9 +8,23 @@
 static void OnNextMod2(HWND hDlg);
 static void OnBackMod2(HWND hDlg);
 
+static INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
 #pragma endregion
 
 #pragma region Functions
+
+/// <summary>
+/// dialog box creation function
+/// </summary>
+/// <param name="hInst">The hinst.</param>
+/// <param name="hWnd">The hWND.</param>
+/// <returns></returns>
+int Func_MOD2(HINSTANCE hInst, HWND hWnd)
+{
+    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
+}
 
 /// <summary>
 /// Callback-function for first dialog window
