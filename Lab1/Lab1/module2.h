@@ -6,12 +6,12 @@
 #ifndef MODULE_2_H
 #define MODULE_2_H
 
-#define IDC_BACK_MOD2                   3
+#define IDC_BACK_MOD2                   104
 #define IDD_WORK2_MOD2                  103
 #define IDD_WORK1_MOD2                  105
 #define IDC_CANCEL2_MOD2                1002
 #define IDC_OK2_MOD2                    1003
-#define IDC_NEXT_MOD2                   1006
+#define IDC_NEXT_MOD2                   1008
 #define IDC_CANCEL1_MOD2                1007
 
 #pragma region Functions

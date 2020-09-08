@@ -91,6 +91,7 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             return (INT_PTR)TRUE;
         case IDC_CANCEL2_MOD2:   // Cancel button
             EndDialog(hDlg, 0);
+            DefWindowProc(hDlg, message, wParam, lParam);
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
             OnBackMod2(hDlg);
