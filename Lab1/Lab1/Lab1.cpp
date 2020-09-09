@@ -4,6 +4,8 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
+#include "resource1.h"
+#include "resource2.h"
 #include "module1.h"
 #include "module2.h"
 
