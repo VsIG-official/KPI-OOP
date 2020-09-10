@@ -176,18 +176,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case IDM_WORK_MOD1:
             // first menu
             Work1(hWnd);
-
-            // The update region represents the portion of the window's
-            // client area that must be redrawn.
-            InvalidateRect(hWnd, 0, TRUE);
             break;
         case IDM_WORK_MOD2:
             // second menu
             Work2(hWnd);
-
-            // The update region represents the portion of the window's
-            // client area that must be redrawn.
-            InvalidateRect(hWnd, 0, TRUE);
             break;
         case IDM_ABOUT:
             // About Menu
@@ -266,6 +258,10 @@ void Work1(HWND hWnd)
 {
     // What we program here that will be done
     Func_MOD1(hInst,hWnd);
+
+    // The update region represents the portion of the window's
+    // client area that must be redrawn.
+    InvalidateRect(hWnd, 0, TRUE);
 }
 
 /// <summary>
@@ -276,6 +272,10 @@ void Work2(HWND hWnd)
 {
     // What we program here that will be done
     Func_MOD2(hInst, hWnd);
+
+    // The update region represents the portion of the window's
+    // client area that must be redrawn.
+    InvalidateRect(hWnd, 0, TRUE);
 }
 
 /// <summary>

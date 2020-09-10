@@ -6,7 +6,7 @@
 
 #pragma region FunctionsDeclaration
 
-static void OnBackMod3(HWND hDlg);
+static void OnBack(HWND hDlg);
 
 static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -49,7 +49,7 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             DefWindowProc(hDlg, message, wParam, lParam);
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
-            OnBackMod3(hDlg);
+            OnBack(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
@@ -66,7 +66,7 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 /// Called when IDC_BACK_MOD2 clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnBackMod3(HWND hDlg)
+void OnBack(HWND hDlg)
 {
     EndDialog(hDlg, 1);
 

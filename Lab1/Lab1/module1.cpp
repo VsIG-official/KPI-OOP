@@ -19,6 +19,9 @@ static void OnInit_MOD1(HWND hDlg);
 static void OnLineLeft_MOD1(HWND hDlg);
 static void OnLineRight_MOD1(HWND hDlg);
 static void OnOkMod2_MOD1(HWND hDlg);
+static void OnCancelMod2(HWND hDlg);
+static void OnCloseMod2(HWND hDlg);
+
 static void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam);
 static int Count_MOD1(int pos_MOD1);
 
@@ -34,7 +37,7 @@ static int Count_MOD1(int pos_MOD1);
 /// <returns></returns>
 int Func_MOD1(HINSTANCE hInst, HWND hWnd)
 {
-    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
+    return DialogBox(hInst , MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
 }
 
 /// <summary>
@@ -150,6 +153,24 @@ void OnOkMod2_MOD1(HWND hDlg)
     canWrite_MOD1 = TRUE;
     numOfDig_MOD1 = Count_MOD1(pos_MOD1);
     EndDialog(hDlg, 1);
+}
+
+/// <summary>
+/// Called when IDC_NEXT_MOD2 clicked
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnCancelMod1(HWND hDlg)
+{
+    EndDialog(hDlg, 0);
+}
+
+/// <summary>
+/// Called when window is closing
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnCloseMod1(HWND hDlg)
+{
+    EndDialog(hDlg, 0);
 }
 
 /// <summary>

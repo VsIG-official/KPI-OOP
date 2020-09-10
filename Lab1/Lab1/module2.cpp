@@ -6,7 +6,9 @@
 
 #pragma region FunctionsDeclaration
 
-static void OnNextMod2(HWND hDlg);
+static void OnNext(HWND hDlg);
+static void OnCancel(HWND hDlg);
+static void OnClose(HWND hDlg);
 
 static INT_PTR CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -42,16 +44,16 @@ INT_PTR CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
         switch (LOWORD(wParam))
         {
         case IDC_CANCEL1_MOD2:
-            EndDialog(hDlg, 0);
+            OnCancel(hDlg);
             return (INT_PTR)TRUE;
         case IDC_NEXT_MOD2:
-            OnNextMod2(hDlg);
+            OnNext(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
     case WM_CLOSE:
     {
-        EndDialog(hDlg, 0);
+        OnClose(hDlg);
     }
     break;
     }
@@ -59,14 +61,32 @@ INT_PTR CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
 }
 
 /// <summary>
-/// Called when IDC_NEXT_MOD2 clicked
+/// Called when IDC_CANCEL1_MOD2 clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnNextMod2(HWND hDlg)
+void OnNext(HWND hDlg)
 {
     EndDialog(hDlg, 1);
 
     Func_MOD3(hInst, hDlg);
+}
+
+/// <summary>
+/// Called when IDC_NEXT_MOD2 clicked
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnCancel(HWND hDlg)
+{
+    EndDialog(hDlg, 0);
+}
+
+/// <summary>
+/// Called when window is closing
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnClose(HWND hDlg)
+{
+    EndDialog(hDlg, 0);
 }
 
 #pragma endregion
