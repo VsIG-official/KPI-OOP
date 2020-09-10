@@ -6,7 +6,7 @@
 
 #pragma region FunctionsDeclaration
 
-static void OnBackMod2(HWND hDlg);
+static void OnBackMod3(HWND hDlg);
 
 static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -20,7 +20,7 @@ static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARA
 /// <param name="hInst">The hinst.</param>
 /// <param name="hWnd">The hWND.</param>
 /// <returns></returns>
-int Func2_MOD2(HINSTANCE hInst, HWND hWnd)
+int Func_MOD3(HINSTANCE hInst, HWND hWnd)
 {
     return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work2_MOD2);
 }
@@ -49,7 +49,7 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
             DefWindowProc(hDlg, message, wParam, lParam);
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
-            OnBackMod2(hDlg);
+            OnBackMod3(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
@@ -66,11 +66,11 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 /// Called when IDC_BACK_MOD2 clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnBackMod2(HWND hDlg)
+void OnBackMod3(HWND hDlg)
 {
     EndDialog(hDlg, 1);
 
-    int Func1_MOD2(HINSTANCE hInst, HWND hWnd);
+    int Func_MOD2(HINSTANCE hInst, HWND hWnd);
 }
 
 #pragma endregion

@@ -275,7 +275,7 @@ void Work1(HWND hWnd)
 void Work2(HWND hWnd)
 {
     // What we program here that will be done
-    Func1_MOD2(hInst, hWnd);
+    Func_MOD2(hInst, hWnd);
 }
 
 /// <summary>

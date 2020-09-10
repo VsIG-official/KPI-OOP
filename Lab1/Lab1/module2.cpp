@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "framework.h"
-#include "module2.h"
 #include "module3.h"
+#include "module2.h"
 #include "Resource.h"
 
 #pragma region FunctionsDeclaration
 
 static void OnNextMod2(HWND hDlg);
 
-static INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+static INT_PTR CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 #pragma endregion
 
@@ -20,9 +20,9 @@ static INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARA
 /// <param name="hInst">The hinst.</param>
 /// <param name="hWnd">The hWND.</param>
 /// <returns></returns>
-int Func1_MOD2(HINSTANCE hInst, HWND hWnd)
+int Func_MOD2(HINSTANCE hInst, HWND hWnd)
 {
-    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
+    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work_MOD2);
 }
 
 /// <summary>
@@ -33,7 +33,7 @@ int Func1_MOD2(HINSTANCE hInst, HWND hWnd)
 /// <param name="wParam">The w parameter.</param>
 /// <param name="lParam">The l parameter.</param>
 /// <returns></returns>
-INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
     switch (message)
@@ -66,7 +66,7 @@ void OnNextMod2(HWND hDlg)
 {
     EndDialog(hDlg, 1);
 
-    int Func2_MOD2(HINSTANCE hInst, HWND hWnd);
+    int Func_MOD3(HINSTANCE hInst, HWND hWnd);
 }
 
 #pragma endregion
