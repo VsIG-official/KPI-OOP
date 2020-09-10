@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "framework.h"
-#include "module2.h"
 #include "module3.h"
+#include "module2.h"
 #include "Resource.h"
 
 #pragma region FunctionsDeclaration
 
-static void OnNextMod2(HWND hDlg);
+static void OnBackMod2(HWND hDlg);
 
-static INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 #pragma endregion
 
@@ -20,20 +20,20 @@ static INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARA
 /// <param name="hInst">The hinst.</param>
 /// <param name="hWnd">The hWND.</param>
 /// <returns></returns>
-int Func1_MOD2(HINSTANCE hInst, HWND hWnd)
+int Func2_MOD2(HINSTANCE hInst, HWND hWnd)
 {
-    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work1_MOD2);
+    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK1_MOD2), hWnd, Work2_MOD2);
 }
 
 /// <summary>
-/// Callback-function for first dialog window
+/// Callback-function for second dialog window
 /// </summary>
 /// <param name="hDlg">The h dialog.</param>
 /// <param name="message">The message.</param>
 /// <param name="wParam">The w parameter.</param>
 /// <param name="lParam">The l parameter.</param>
 /// <returns></returns>
-INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
     switch (message)
@@ -41,11 +41,15 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
     case WM_COMMAND:
         switch (LOWORD(wParam))
         {
-        case IDC_CANCEL1_MOD2:
-            EndDialog(hDlg, 0);
+        case IDC_OK2_MOD2:       // Next button
+            EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
-        case IDC_NEXT_MOD2:
-            OnNextMod2(hDlg);
+        case IDC_CANCEL2_MOD2:   // Cancel button
+            EndDialog(hDlg, 0);
+            DefWindowProc(hDlg, message, wParam, lParam);
+            return (INT_PTR)TRUE;
+        case IDC_BACK_MOD2:     // Back button
+            OnBackMod2(hDlg);
             return (INT_PTR)TRUE;
         }
         break;
@@ -59,14 +63,14 @@ INT_PTR CALLBACK Work1_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 }
 
 /// <summary>
-/// Called when IDC_NEXT_MOD2 clicked
+/// Called when IDC_BACK_MOD2 clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnNextMod2(HWND hDlg)
+void OnBackMod2(HWND hDlg)
 {
     EndDialog(hDlg, 1);
 
-    int Func2_MOD2(HINSTANCE hInst, HWND hWnd);
+    int Func1_MOD2(HINSTANCE hInst, HWND hWnd);
 }
 
 #pragma endregion

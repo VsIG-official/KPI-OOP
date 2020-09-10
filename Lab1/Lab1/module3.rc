@@ -1,6 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include "module2.h"
+#include "resource3.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -27,7 +27,7 @@ LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
 
 1 TEXTINCLUDE 
 BEGIN
-    "module2.h\0"
+    "resource3.h\0"
 END
 
 2 TEXTINCLUDE 
@@ -60,13 +60,25 @@ LANGUAGE LANG_UKRAINIAN, SUBLANG_DEFAULT
 // Dialog
 //
 
-IDD_WORK1_MOD2 DIALOGEX 0, 0, 310, 176
+IDD_WORK2_MOD2 DIALOGEX 0, 0, 310, 176
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Work1_MOD2"
+CAPTION "Work2_MOD2"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "Далі",IDC_NEXT_MOD2,199,155,50,14
-    PUSHBUTTON      "Відміна",IDC_CANCEL1_MOD2,253,155,50,14
+    DEFPUSHBUTTON   "ОК",IDC_OK2_MOD2,199,155,50,14
+    PUSHBUTTON      "Відміна",IDC_CANCEL2_MOD2,253,155,50,14
+    DEFPUSHBUTTON   "Назад",IDC_BACK_MOD2,146,155,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_WORK2_MOD2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
 END
 
 
@@ -78,7 +90,7 @@ END
 #ifdef APSTUDIO_INVOKED
 GUIDELINES DESIGNINFO
 BEGIN
-    IDD_WORK1_MOD2, DIALOG
+    IDD_WORK2_MOD2, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 303
@@ -87,17 +99,6 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// AFX_DIALOG_LAYOUT
-//
-
-IDD_WORK1_MOD2 AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
 
 #endif    // Украинский (Украина) resources
 /////////////////////////////////////////////////////////////////////////////

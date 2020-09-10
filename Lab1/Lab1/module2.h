@@ -3,6 +3,6 @@
 
 #pragma region Functions
 
-extern int Func_MOD2(HINSTANCE hInst, HWND hWnd);
+extern int Func1_MOD2(HINSTANCE hInst, HWND hWnd);
 
 #pragma endregion
