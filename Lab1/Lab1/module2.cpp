@@ -66,7 +66,7 @@ void OnNextMod2(HWND hDlg)
 {
     EndDialog(hDlg, 1);
 
-    int Func_MOD3(HINSTANCE hInst, HWND hWnd);
+    Func_MOD3(hInst, hDlg);
 }
 
 #pragma endregion

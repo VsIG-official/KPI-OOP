@@ -7,7 +7,7 @@
 #define IDS_APP_TITLE                   1003
 #define IDD_ABOUTBOX                    103
 #define IDM_ABOUT                       1004
-#define IDD_ABOUTBOX1                   104
+#define IDD_ABOUTBOX1                   42
 #define IDD_WORK                        104
 #define IDM_EXIT                        105
 #define IDI_LAB1                        107
