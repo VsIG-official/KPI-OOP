@@ -61,7 +61,7 @@ INT_PTR CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
 }
 
 /// <summary>
-/// Called when IDC_CANCEL1_MOD2 clicked
+/// Called when IDC_NEXT_MOD2 clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
 void OnNext(HWND hDlg)
@@ -72,7 +72,7 @@ void OnNext(HWND hDlg)
 }
 
 /// <summary>
-/// Called when IDC_NEXT_MOD2 clicked
+/// Called when IDC_CANCEL1_MOD2 clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
 void OnCancel(HWND hDlg)
