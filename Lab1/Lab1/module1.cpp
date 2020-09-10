@@ -15,15 +15,16 @@ BOOL canWrite_MOD1 = FALSE;
 int numOfDig_MOD1;
 
 static INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-static void OnInit_MOD1(HWND hDlg);
-static void OnLineLeft_MOD1(HWND hDlg);
-static void OnLineRight_MOD1(HWND hDlg);
-static void OnOkMod2_MOD1(HWND hDlg);
-static void OnCancelMod2(HWND hDlg);
-static void OnCloseMod2(HWND hDlg);
+static void OnInit(HWND hDlg);
+static void OnLineLeft(HWND hDlg);
+static void OnLineRight(HWND hDlg);
+static void OnOk(HWND hDlg);
+static void OnCancel(HWND hDlg);
+static void OnClose(HWND hDlg);
+static void GetPos(HWND hDlg);
 
-static void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam);
-static int Count_MOD1(int pos_MOD1);
+static void OnThumbPosAndTrack(HWND hDlg, WPARAM wParam);
+static int Count(int pos_MOD1);
 
 #pragma endregion
 
@@ -53,21 +54,21 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
     switch (iMessage)
     {
     case WM_INITDIALOG:
-        OnInit_MOD1(hDlg);
+        OnInit(hDlg);
         break;
     case WM_HSCROLL:
-        pos_MOD1 = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1_MOD1), SB_CTL);
+        GetPos(hDlg);
         switch (LOWORD(wParam))
         {
         case SB_LINELEFT:
-            OnLineLeft_MOD1(hDlg);
+            OnLineLeft(hDlg);
             break;
         case SB_LINERIGHT:
-            OnLineRight_MOD1(hDlg);
+            OnLineRight(hDlg);
             break;
         case SB_THUMBPOSITION:
         case SB_THUMBTRACK:
-            OnThumbPosAndTrack_MOD1(hDlg, wParam);
+            OnThumbPosAndTrack(hDlg, wParam);
             break;
         default: break;
         }
@@ -77,18 +78,18 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
         switch (LOWORD(wParam))
         {
         case IDOK:
-            OnOkMod2_MOD1(hDlg);
+            OnOk(hDlg);
             return (INT_PTR)TRUE;
             break;
         case IDCANCEL:
-            EndDialog(hDlg, 0);
+            OnCancel(hDlg);
             return (INT_PTR)TRUE;
             break;
         }
         break;
     case WM_CLOSE:
     {
-        EndDialog(hDlg, 0);
+        OnClose(hDlg);
     }
     break;
     default: break;
@@ -100,7 +101,7 @@ INT_PTR CALLBACK Work1_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lPar
 /// Called on initializing
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnInit_MOD1(HWND hDlg)
+void OnInit(HWND hDlg)
 {
     hWndScrollBar_MOD1 = GetDlgItem(hDlg, IDC_SCROLLBAR1_MOD1);
     pos_MOD1 = 1;
@@ -111,7 +112,7 @@ void OnInit_MOD1(HWND hDlg)
 /// Called when scroll pos goes to the left.
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnLineLeft_MOD1(HWND hDlg)
+void OnLineLeft(HWND hDlg)
 {
     if (pos_MOD1 != nMinPos_MOD1)
     {
@@ -124,7 +125,7 @@ void OnLineLeft_MOD1(HWND hDlg)
 /// Called when scroll pos goes to the right.
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnLineRight_MOD1(HWND hDlg)
+void OnLineRight(HWND hDlg)
 {
     if (pos_MOD1 != nMaxPos_MOD1)
     {
@@ -138,7 +139,7 @@ void OnLineRight_MOD1(HWND hDlg)
 /// </summary>
 /// <param name="hDlg">The h dialog.</param>
 /// <param name="wParam">The w parameter.</param>
-void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam)
+void OnThumbPosAndTrack(HWND hDlg, WPARAM wParam)
 {
     pos_MOD1 = HIWORD(wParam);
     SetDlgItemInt(hDlg, IDC_STATIC_MOD1, pos_MOD1, TRUE);
@@ -148,18 +149,18 @@ void OnThumbPosAndTrack_MOD1(HWND hDlg, WPARAM wParam)
 /// Called when IDOK clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnOkMod2_MOD1(HWND hDlg)
+void OnOk(HWND hDlg)
 {
     canWrite_MOD1 = TRUE;
-    numOfDig_MOD1 = Count_MOD1(pos_MOD1);
+    numOfDig_MOD1 = Count(pos_MOD1);
     EndDialog(hDlg, 1);
 }
 
 /// <summary>
-/// Called when IDC_NEXT_MOD2 clicked
+/// Called when IDCANCEL clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnCancelMod1(HWND hDlg)
+void OnCancel(HWND hDlg)
 {
     EndDialog(hDlg, 0);
 }
@@ -168,9 +169,18 @@ void OnCancelMod1(HWND hDlg)
 /// Called when window is closing
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnCloseMod1(HWND hDlg)
+void OnClose(HWND hDlg)
 {
     EndDialog(hDlg, 0);
+}
+
+/// <summary>
+/// Get pos of scroll
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void GetPos(HWND hDlg)
+{
+    pos_MOD1 = GetScrollPos(GetDlgItem(hDlg, IDC_SCROLLBAR1_MOD1), SB_CTL);
 }
 
 /// <summary>
@@ -178,7 +188,7 @@ void OnCloseMod1(HWND hDlg)
 /// </summary>
 /// <param name="pos"></param>
 /// <returns></returns>
-int Count_MOD1(int pos_MOD1)
+int Count(int pos_MOD1)
 {
     int count_MOD1 = 0;
     while (pos_MOD1 != 0)
