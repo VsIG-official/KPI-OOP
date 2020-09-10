@@ -8,7 +8,7 @@
 
 static void OnBack(HWND hDlg);
 static void OnOk(HWND hDlg);
-static void OnCancel(HWND hDlg);
+static void OnCancel(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
