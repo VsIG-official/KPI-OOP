@@ -7,6 +7,8 @@
 #pragma region FunctionsDeclaration
 
 static void OnBack(HWND hDlg);
+static void OnOk(HWND hDlg);
+static void OnCancel(HWND hDlg);
 
 static INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -42,11 +44,10 @@ INT_PTR CALLBACK Work2_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
         switch (LOWORD(wParam))
         {
         case IDC_OK2_MOD2:       // Next button
-            EndDialog(hDlg, LOWORD(wParam));
+            OnOk(hDlg);
             return (INT_PTR)TRUE;
         case IDC_CANCEL2_MOD2:   // Cancel button
-            EndDialog(hDlg, 0);
-            DefWindowProc(hDlg, message, wParam, lParam);
+            OnCancel(hDlg, message, wParam, lParam);
             return (INT_PTR)TRUE;
         case IDC_BACK_MOD2:     // Back button
             OnBack(hDlg);
@@ -71,6 +72,25 @@ void OnBack(HWND hDlg)
     EndDialog(hDlg, 1);
 
     Func_MOD2(hInst, hDlg);
+}
+
+/// <summary>
+/// Called when IDOK clicked
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnOk(HWND hDlg)
+{
+    EndDialog(hDlg, 1);
+}
+
+/// <summary>
+/// Called when IDCANCEL clicked
+/// </summary>
+/// <param name="hDlg">The dialog.</param>
+void OnCancel(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    EndDialog(hDlg, 0);
+    DefWindowProc(hDlg, message, wParam, lParam);
 }
 
 #pragma endregion
