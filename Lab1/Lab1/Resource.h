@@ -1,7 +1,8 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Включаемый файл, созданный в Microsoft Visual C++.
-// Используется Lab1.rc
+// Include file created in Microsoft Visual C++.
+// Lab1.rc is used.
 //
+
 #define IDC_MYICON                      2
 #define IDD_LAB1_DIALOG                 102
 #define IDS_APP_TITLE                   1003

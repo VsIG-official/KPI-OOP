@@ -1,13 +1,13 @@
-﻿// pch.h: это предварительно скомпилированный заголовочный файл.
-// Перечисленные ниже файлы компилируются только один раз, что ускоряет последующие сборки.
-// Это также влияет на работу IntelliSense, включая многие функции просмотра и завершения кода.
-// Однако изменение любого из приведенных здесь файлов между операциями сборки приведет к повторной компиляции всех(!) этих файлов.
-// Не добавляйте сюда файлы, которые планируете часто изменять, так как в этом случае выигрыша в производительности не будет.
+﻿// pch.h: this is a precompiled header file.
+// The files listed below are compiled only once, which speeds up subsequent builds.
+// It also affects the operation of IntelliSense, including many code review and termination functions.
+// However, changing any of the files listed here between build operations will result in a second compilation of all (!) of these files.
+// Do not add files that you plan to change frequently, as there will be no performance gain.
 
 #ifndef PCH_H
 #define PCH_H
 
-// Добавьте сюда заголовочные файлы для предварительной компиляции
+// Add header files for pre-compilation here
 #include "framework.h"
 
 #endif //PCH_H

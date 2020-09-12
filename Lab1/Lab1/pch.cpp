@@ -1,5 +1,5 @@
-﻿// pch.cpp: файл исходного кода, соответствующий предварительно скомпилированному заголовочному файлу
+﻿// pch.cpp: source code file corresponding to the pre-compiled header file
 
 #include "pch.h"
 
-// При использовании предварительно скомпилированных заголовочных файлов необходим следующий файл исходного кода для выполнения сборки.
+// When using precompiled header files, the following source code file is required to perform the build.

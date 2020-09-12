@@ -11,7 +11,7 @@
 #define IDC_CANCEL2_MOD2                1002
 #define IDC_OK2_MOD2                    1003
 
-#endif
+#endif // MODULE_3_H
 
 // Next default values for new objects
 //
