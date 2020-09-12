@@ -25,6 +25,7 @@ static INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 static void Work1(HWND hWnd);      // Declaration of our function
 static void Work2(HWND hWnd);      // Declaration of our function
+static void About1(HWND hWnd);      // Declaration of our function
 static void DrawTextOnScreen(HWND hWnd);      // Declaration of our function
 
 static int textHeightPosition = 0;
@@ -181,7 +182,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case IDM_ABOUT:
             // About Menu
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            About1(hWnd);
             break;
         case IDM_EXIT:
             // Exit menu
@@ -274,6 +275,15 @@ void Work2(HWND hWnd)
     // The update region represents the portion of the window's
     // client area that must be redrawn.
     InvalidateRect(hWnd, 0, TRUE);
+}
+
+/// <summary>
+/// Function-handler of the menu item "About"
+/// </summary>
+/// <param name="hWnd">The h WND.</param>
+void About1(HWND hWnd)
+{
+    DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 }
 
 /// <summary>
