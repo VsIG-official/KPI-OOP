@@ -31,9 +31,6 @@ static void DrawTextOnScreen(HWND hWnd);      // Declaration of our function
 static int textHeightPosition = 0;
 static int textWidthPosition = 0;
 static TCHAR buffer[255] = { 0 };
-static int pos;
-static BOOL canWrite = FALSE;
-static int numOfDig;
 
 #pragma endregion
 
