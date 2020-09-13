@@ -30,6 +30,10 @@ static void DrawTextOnScreen(HWND hWnd);      // Declaration of our function
 
 static int textHeightPosition = 0;
 static int textWidthPosition = 0;
+static TCHAR buffer[255] = { 0 };
+static int pos;
+static BOOL canWrite = FALSE;
+static int numOfDig;
 
 #pragma endregion
 
@@ -256,7 +260,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 void Work1(HWND hWnd)
 {
     // What we program here that will be done
-    Func_MOD1(hInst,hWnd);
+    Func_MOD1(hInst,hWnd,buffer);
 
     // The update region represents the portion of the window's
     // client area that must be redrawn.
@@ -298,14 +302,14 @@ void DrawTextOnScreen(HWND hWnd)
 
     if (canWrite_MOD1)
     {
-        _itoa_s(pos_MOD1, tempPlaceForText_MOD1, sizeof(pos_MOD1), 10);
+        _itoa_s(pos_MOD1, buffer, sizeof(pos_MOD1), 10);
         canWrite_MOD1 = FALSE;
     }
 
     TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
-    TextOut(hdc, textHeightPosition, textWidthPosition, tempPlaceForText_MOD1, numOfDig_MOD1);
+    TextOut(hdc, textHeightPosition, textWidthPosition, buffer, numOfDig_MOD1);
 
-    ZeroMemory(tempPlaceForText_MOD1, pos_MOD1);
+    ZeroMemory(buffer, pos_MOD1);
 
     EndPaint(hWnd, &ps);
 }

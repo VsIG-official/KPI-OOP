@@ -10,7 +10,6 @@
 #define IDC_SCROLLBAR1_MOD1             1002
 #define IDC_STATIC_MOD1                 1003
 
-extern char tempPlaceForText_MOD1[];
 extern int pos_MOD1;
 extern int numOfDig_MOD1;
 extern BOOL canWrite_MOD1;

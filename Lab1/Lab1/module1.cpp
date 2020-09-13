@@ -5,7 +5,7 @@
 #pragma region VariablesAndFunctionsDeclarations
 
 static int const maxSymbols_MOD1 = 255;
-char tempPlaceForText_MOD1[maxSymbols_MOD1] = { 0 };
+static char tempPlaceForText_MOD1[maxSymbols_MOD1] = { 0 };
 
 int pos_MOD1;
 static int nMinPos_MOD1 = 1;
@@ -36,9 +36,10 @@ static int Count(int pos_MOD1);
 /// <param name="hInst">The hinst.</param>
 /// <param name="hWnd">The hWND.</param>
 /// <returns></returns>
-int Func_MOD1(HINSTANCE hInst, HWND hWnd)
+int Func_MOD1(HINSTANCE hInst, HWND hWnd, char *dest)
 {
     return DialogBox(hInst , MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work1_MOD1);
+    dest = tempPlaceForText_MOD1;
 }
 
 /// <summary>
