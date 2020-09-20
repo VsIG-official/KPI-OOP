@@ -1,8 +1,6 @@
 //---Файл shape.h---
-//оголошення класу
-Shape class Shape;
+#include "pch.h"
 
-/*
 //---оголошення класу---
 class Shape
 {
@@ -20,4 +18,4 @@ void Shape::Set(long x1, long y1, long x2, long y2)
 	ys1 = y1;
 	xs2 = x2;
 	ys2 = y2;
-}*/
+}
