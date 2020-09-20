@@ -129,46 +129,38 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_LBUTTONDOWN:     //натиснуто ліву кнопку миші у клієнтській частині вікна
-    shapeObjectEditor.OnLBdown(hWnd);
+        shapeObjectEditor.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:        //відпущено ліву кнопку миші у клієнтській частині вікна
-    shapeObjectEditor.OnLBup(hWnd);
+        shapeObjectEditor.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:       //пересунуто мишу у клієнтській частині вікна
-    shapeObjectEditor.OnMouseMove(hWnd);
+        shapeObjectEditor.OnMouseMove(hWnd);
         break;
     case WM_PAINT:           //потрібно оновлення зображення клієнтської частині вікна
         shapeObjectEditor.OnPaint(hWnd);
-            break;   case WM_INITMENUPOPUP:   //позначка пунктів меню - для окремих варіантів завдань
+        break;
+    case WM_INITMENUPOPUP:   //позначка пунктів меню - для окремих варіантів завдань
         shapeObjectEditor.OnInitMenuPopup(hWnd,wParam);
-            break;
+        break;
     case WM_COMMAND:
         {
         int wmId = LOWORD(wParam);
         int wmEvent = HIWORD(wParam);     // Parse the menu selections:
     switch (wmId)
     {
-    case IDM_POINT:
-        shapeObjectEditor.StartPointEditor();         //початок вводу точкових об’єктів
-    break;
-    case IDM_LINE:
-        shapeObjectEditor.StartLineEditor();          //початок вводу об’єктів-ліній
-    break;
-    case IDM_RECT:
-        shapeObjectEditor.StartRectEditor();          //початок вводу прямокутників
-    break;
-    case IDM_ELLIPSE:
-        shapeObjectEditor.StartEllipseEditor();       //початок вводу еліпсів
-        break;
-
-        }
-        break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            EndPaint(hWnd, &ps);
+        case IDM_POINT:
+            shapeObjectEditor.StartPointEditor();         //початок вводу точкових об’єктів
+            break;
+        case IDM_LINE:
+            shapeObjectEditor.StartLineEditor();          //початок вводу об’єктів-ліній
+            break;
+        case IDM_RECT:
+            shapeObjectEditor.StartRectEditor();          //початок вводу прямокутників
+            break;
+        case IDM_ELLIPSE:
+            shapeObjectEditor.StartEllipseEditor();       //початок вводу еліпсів
+            break;
         }
         break;
     case WM_DESTROY:
