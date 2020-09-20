@@ -144,19 +144,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
     case WM_COMMAND:
         {
-            int wmId = LOWORD(wParam);
-            // Разобрать выбор в меню:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
+        int wmId = LOWORD(wParam);
+        int wmEvent = HIWORD(wParam);     // Parse the menu selections:
+    switch (wmId)
+    {
+    case IDM_POINT:
+        shapeObjectEditor.StartPointEditor();         //початок вводу точкових об’єктів
+    break;
+    case IDM_LINE:
+        shapeObjectEditor.StartLineEditor();          //початок вводу об’єктів-ліній
+    break;
+    case IDM_RECT:
+        shapeObjectEditor.StartRectEditor();          //початок вводу прямокутників
+    break;
+    case IDM_ELLIPSE:
+        shapeObjectEditor.StartEllipseEditor();       //початок вводу еліпсів
+        break;
+
         }
         break;
     case WM_PAINT:
