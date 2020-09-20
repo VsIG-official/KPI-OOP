@@ -12,6 +12,7 @@
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+ShapeObjectsEditor shapeObjectEditor;   //для варіанту статичного екземпляру редактора
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -127,6 +128,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_LBUTTONDOWN:     //натиснуто ліву кнопку миші у клієнтській частині вікна
+    shapeObjectEditor.OnLBdown(hWnd);
+        break;
+    case WM_LBUTTONUP:        //відпущено ліву кнопку миші у клієнтській частині вікна
+    shapeObjectEditor.OnLBup(hWnd);
+        break;
+    case WM_MOUSEMOVE:       //пересунуто мишу у клієнтській частині вікна
+    shapeObjectEditor.OnMouseMove(hWnd);
+        break;
+    case WM_PAINT:           //потрібно оновлення зображення клієнтської частині вікна
+        shapeObjectEditor.OnPaint(hWnd);
+            break;   case WM_INITMENUPOPUP:   //позначка пунктів меню - для окремих варіантів завдань
+        shapeObjectEditor.OnInitMenuPopup(hWnd,wParam);
+            break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
