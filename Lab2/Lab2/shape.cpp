@@ -9,8 +9,7 @@ protected:
 public:
 	void Set(long x1, long y1, long x2, long y2);
 	virtual void Show(HDC) = 0;
-	ShapeObjectsEditor(void);
-	~ShapeObjectsEditor();
+
 	void StartPointEditor();
 	void StartLineEditor();
 	void StartRectEditor();
@@ -20,6 +19,11 @@ public:
 	void OnMouseMove(HWND);
 	void OnPaint(HWND);
 	void OnInitMenuPopup(HWND, WPARAM);   //відповідно варіанту завдання
+
+	/*
+	ShapeObjectsEditor(void);
+	~ShapeObjectsEditor();
+	*/
 };
 
 //---визначення методу Set---
