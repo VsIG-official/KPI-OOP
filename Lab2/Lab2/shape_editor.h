@@ -15,3 +15,23 @@ public:
     void OnPaint(HWND);
     void OnInitMenuPopup(HWND,WPARAM);      //додатковий інтерфейсний метод
 };
+
+class PointEditor : public ShapeEditor
+{
+
+};
+
+class LineEditor : public ShapeEditor
+{
+
+};
+
+class RectEditor : public ShapeEditor
+{
+
+};
+
+class EllipseEditor : public ShapeEditor
+{
+
+};
