@@ -4,9 +4,27 @@
 
 //---Файл shape_editor.h---
 
+class ShapeObjectsEditor
+{
+private:
+    ShapeEditor* pse;
+public:
+    ShapeObjectsEditor(void);
+    ~ShapeObjectsEditor();
+    void StartPointEditor();
+    void StartLineEditor();
+    void StartRectEditor();
+    void StartEllipseEditor();
+    void OnLBdown(HWND);
+    void OnLBup(HWND);
+    void OnMouseMove(HWND);
+    void OnPaint(HWND);
+    void OnInitMenuPopup(HWND, WPARAM);   //відповідно варіанту завдання
+};
+
 class ShapeEditor : public Editor {
 protected:
-    //корисні члени, які враховують специфіку Windows-програм
+    long x1, y1, x2, y2;
 public:
     ShapeEditor(void);
     void OnLBdown(HWND);
