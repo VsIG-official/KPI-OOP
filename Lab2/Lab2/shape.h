@@ -19,3 +19,23 @@ void Shape::Set(long x1, long y1, long x2, long y2)
 	xs2 = x2;
 	ys2 = y2;
 };
+
+class PointShape : public Shape
+{
+	void Show(HDC);
+};
+
+class LineShape : public Shape
+{
+	void Show(HDC);
+};
+
+class RectShape : public Shape
+{
+	void Show(HDC);
+};
+
+class EllipseShape : public Shape
+{
+	void Show(HDC);
+};
