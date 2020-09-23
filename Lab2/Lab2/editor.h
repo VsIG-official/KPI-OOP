@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
 
-//---Файл editor.h---
+//---”айл editor.h---
 //оголошення класу
 
 class Editor
