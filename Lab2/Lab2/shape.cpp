@@ -30,7 +30,6 @@ void LineShape::Show(HDC hdc)
 	DeleteObject(hPen);
 }
 
-
 void RectShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
