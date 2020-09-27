@@ -1,18 +1,20 @@
 ﻿// Lab2.cpp : Определяет точку входа для приложения.
 //
 
-#include "pch.h"
 #include "framework.h"
+#include "pch.h"
 #include "Lab2.h"
-#include "shape_editor.h"
+#include "resource.h"
+#include "shape_editor.h" // import shape_editor class
 
 #define MAX_LOADSTRING 100
 
 // Глобальные переменные:
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
-WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
-ShapeObjectsEditor shapeObjectEditor;   //для варіанту статичного екземпляру редактора
+WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
+
+ShapeObjectsEditor editorShape;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -21,9 +23,9 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+    _In_opt_ HINSTANCE hPrevInstance,
+    _In_ LPWSTR    lpCmdLine,
+    _In_ int       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
@@ -36,7 +38,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
-    if (!InitInstance (hInstance, nCmdShow))
+    if (!InitInstance(hInstance, nCmdShow))
     {
         return FALSE;
     }
@@ -55,7 +57,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    return (int) msg.wParam;
+    return (int)msg.wParam;
 }
 
 
@@ -71,17 +73,17 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_LAB2));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_LAB2);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc = WndProc;
+    wcex.cbClsExtra = 0;
+    wcex.cbWndExtra = 0;
+    wcex.hInstance = hInstance;
+    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_LAB2));
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_LAB2);
+    wcex.lpszClassName = szWindowClass;
+    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
 }
@@ -98,20 +100,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
+    hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+    if (!hWnd)
+    {
+        return FALSE;
+    }
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+    ShowWindow(hWnd, nCmdShow);
+    UpdateWindow(hWnd);
 
-   return TRUE;
+    return TRUE;
 }
 
 //
@@ -128,41 +130,47 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_LBUTTONDOWN:     //натиснуто ліву кнопку миші у клієнтській частині вікна
-        shapeObjectEditor.OnLBdown(hWnd);
+    case WM_LBUTTONDOWN: //натиснуто ліву кнопку миші у клієнтській частині вікна
+        editorShape.OnLBdown(hWnd);
         break;
-    case WM_LBUTTONUP:        //відпущено ліву кнопку миші у клієнтській частині вікна
-        shapeObjectEditor.OnLBup(hWnd);
+    case WM_LBUTTONUP: //відпущено ліву кнопку миші у клієнтській частині вікна
+        editorShape.OnLBup(hWnd);
         break;
-    case WM_MOUSEMOVE:       //пересунуто мишу у клієнтській частині вікна
-        shapeObjectEditor.OnMouseMove(hWnd);
+    case WM_MOUSEMOVE: //пересунуто мишу у клієнтській частині вікна
+        editorShape.OnMouseMove(hWnd);
         break;
-    case WM_PAINT:           //потрібно оновлення зображення клієнтської частині вікна
-        shapeObjectEditor.OnPaint(hWnd);
-        break;
-    case WM_INITMENUPOPUP:   //позначка пунктів меню - для окремих варіантів завдань
-        shapeObjectEditor.OnInitMenuPopup(hWnd,wParam);
+    case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
+        editorShape.OnPaint(hWnd);
         break;
     case WM_COMMAND:
-        {
-        int wmId = LOWORD(wParam);
-        int wmEvent = HIWORD(wParam);     // Parse the menu selections:
-    switch (wmId)
     {
+        int wmId = LOWORD(wParam);
+        // Разобрать выбор в меню:
+        switch (wmId)
+        {
         case IDM_POINT:
-            shapeObjectEditor.StartPointEditor();         //початок вводу точкових об’єктів
+            editorShape.StartPointEditor(); //початок вводу точкових об’єктів
             break;
         case IDM_LINE:
-            shapeObjectEditor.StartLineEditor();          //початок вводу об’єктів-ліній
+            editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
             break;
         case IDM_RECT:
-            shapeObjectEditor.StartRectEditor();          //початок вводу прямокутників
+            editorShape.StartRectEditor(); //початок вводу прямокутників
             break;
         case IDM_ELLIPSE:
-            shapeObjectEditor.StartEllipseEditor();       //початок вводу еліпсів
+            editorShape.StartEllipseEditor(); //початок вводу еліпсів
             break;
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
         }
-        break;
+    }
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
