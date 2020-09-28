@@ -7,7 +7,7 @@
 class ShapeEditor : public Editor // Shape editor class for figures
 {
 protected:
-	int x1, x2, y1, y2;
+	long x1, x2, y1, y2;
 public:
 	void OnLBdown(HWND);
 	void OnLBup(HWND);
