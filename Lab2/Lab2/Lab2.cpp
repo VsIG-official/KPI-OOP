@@ -135,6 +135,33 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     return TRUE;
 }
 
+/// <summary>
+/// Message handler for "About" window.
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
+INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    UNREFERENCED_PARAMETER(lParam);
+    switch (message)
+    {
+    case WM_INITDIALOG:
+        return (INT_PTR)TRUE;
+
+    case WM_COMMAND:
+        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+        {
+            EndDialog(hDlg, LOWORD(wParam));
+            return (INT_PTR)TRUE;
+        }
+        break;
+    }
+    return (INT_PTR)FALSE;
+}
+
 #pragma endregion
 
 #pragma region ModifiedFuntions
@@ -228,30 +255,4 @@ void ChangeWindowText(HWND hWnd, LPCSTR name)
     SetWindowTextA(hWnd, name);
 }
 
-// Fourth Part
-/// <summary>
-/// Message handler for "About" window.
-/// </summary>
-/// <param name="hDlg">The h dialog.</param>
-/// <param name="message">The message.</param>
-/// <param name="wParam">The w parameter.</param>
-/// <param name="lParam">The l parameter.</param>
-/// <returns></returns>
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
-
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
-}
+#pragma endregion ModifiedFuntions
