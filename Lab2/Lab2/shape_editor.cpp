@@ -2,13 +2,19 @@
 #include "pch.h"
 #include "shape_editor.h"
 
-// Variables
+#pragma region Variables
+
 const int Size_Of_Array = 109;
 Shape** pcshape = new Shape * [Size_Of_Array];
 int size = 0;
 bool isPressed;
 
-// Constructor
+#pragma endregion Variables
+
+#pragma region Functions
+
+#pragma region SOE
+
 ShapeObjectsEditor::ShapeObjectsEditor()
 {
 	pse = new PointEditor;
@@ -80,6 +86,8 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 	ShapeEditor* draw = new ShapeEditor;
 	draw->OnPaint(hWnd);
 }
+
+#pragma endregion SOE
 
 // ShapeEditor Functions
 void ShapeEditor::OnLBdown(HWND hWnd)
