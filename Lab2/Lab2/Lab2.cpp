@@ -19,6 +19,10 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
 ShapeObjectsEditor editorShape;
 LPCSTR currentShape;
+const LPCSTR POINT_NAME = "Крапка";
+const LPCSTR LINE_NAME = "Лінія";
+const LPCSTR RECTANGLE_NAME = "Прямокутник";
+const LPCSTR ELLIPSE_NAME = "Овал";
 
 #pragma endregion
 
@@ -207,22 +211,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case IDM_POINT:
             editorShape.StartPointEditor();
-            currentShape = "Точка";
+            currentShape = POINT_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_LINE:
             editorShape.StartLineEditor();
-            currentShape = "Лінія";
+            currentShape = LINE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_RECTANGLE:
             editorShape.StartRectangleEditor();
-            currentShape = "Прямокутник";
+            currentShape = RECTANGLE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_ELLIPSE:
             editorShape.StartEllipseEditor();
-            currentShape = "Овал";
+            currentShape = ELLIPSE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_ABOUT:

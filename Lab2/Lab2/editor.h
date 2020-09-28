@@ -1,10 +1,10 @@
 #pragma once
 #include "pch.h"
 
-//---”айл editor.h---
-//оголошення класу
-
-class Editor // Main class
+/// <summary>
+/// Main interface
+/// </summary>
+class Editor
 {
 public:
 	virtual void OnLBdown(HWND) = 0;
