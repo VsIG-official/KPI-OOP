@@ -1,7 +1,6 @@
 #pragma once
 #include "pch.h"
 #include "editor.h"
-#include "shape.h"
 #include "Resource.h"
 
 #pragma region Editors

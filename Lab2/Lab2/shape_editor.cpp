@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "pch.h"
 #include "shape_editor.h"
+#include "shape.h"
 
 #pragma region Variables
 
