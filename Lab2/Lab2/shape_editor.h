@@ -4,7 +4,12 @@
 #include "shape.h"
 #include "Resource.h"
 
-class ShapeEditor : public Editor // Shape editor class for figures
+#pragma region Editors
+
+/// <summary>
+/// Shape editor class for figures
+/// </summary>
+class ShapeEditor : public Editor
 {
 protected:
 	long x1, x2, y1, y2;
@@ -15,7 +20,10 @@ public:
 	void OnPaint(HWND);
 };
 
-class ShapeObjectsEditor // Shape editor class for figure objects
+/// <summary>
+/// Shape editor class for figure objects
+/// </summary>
+class ShapeObjectsEditor
 {
 private:
 	ShapeEditor* pse;
@@ -32,6 +40,9 @@ public:
 	void OnPaint(HWND);
 };
 
+/// <summary>
+/// Point editor class for points
+/// </summary>
 class PointEditor : public ShapeEditor
 {
 public:
@@ -39,6 +50,9 @@ public:
 	void OnLBup(HWND);
 };
 
+/// <summary>
+/// Line editor class for lines
+/// </summary>
 class LineEditor : public ShapeEditor
 {
 public:
@@ -47,6 +61,9 @@ public:
 	void OnMouseMove(HWND);
 };
 
+/// <summary>
+/// Rectangle editor class for rectangles
+/// </summary>
 class RectangleEditor : public ShapeEditor
 {
 public:
@@ -55,6 +72,9 @@ public:
 	void OnMouseMove(HWND);
 };
 
+/// <summary>
+/// Ellipse editor class for ellipses
+/// </summary>
 class EllipseEditor : public ShapeEditor
 {
 public:
@@ -62,3 +82,5 @@ public:
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
 };
+
+#pragma endregion Editors
