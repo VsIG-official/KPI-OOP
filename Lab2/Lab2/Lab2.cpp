@@ -188,8 +188,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             currentShape = "Лінія";
             ChangeWindowText(hWnd, currentShape);
             break;
-        case IDM_RECT:
-            editorShape.StartRectEditor();
+        case IDM_RECTANGLE:
+            editorShape.StartRectangleEditor();
             currentShape = "Прямокутник";
             ChangeWindowText(hWnd, currentShape);
             break;

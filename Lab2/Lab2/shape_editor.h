@@ -24,7 +24,7 @@ public:
 	~ShapeObjectsEditor();
 	void StartPointEditor();
 	void StartLineEditor();
-	void StartRectEditor();
+	void StartRectangleEditor();
 	void StartEllipseEditor();
 	void OnLBdown(HWND);
 	void OnLBup(HWND);
@@ -47,7 +47,7 @@ public:
 	void OnMouseMove(HWND);
 };
 
-class RectEditor : public ShapeEditor
+class RectangleEditor : public ShapeEditor
 {
 public:
 	void OnLBdown(HWND);

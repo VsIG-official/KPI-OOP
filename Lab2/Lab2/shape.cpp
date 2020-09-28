@@ -31,7 +31,7 @@ void LineShape::Show(HDC hdc)
 	DeleteObject(hPen);
 }
 
-void RectShape::Show(HDC hdc)
+void RectangleShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
 	HBRUSH hBrush, hBrushOld;

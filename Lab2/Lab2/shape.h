@@ -21,7 +21,7 @@ public:
 	void Show(HDC);
 };
 
-class RectShape : public Shape
+class RectangleShape : public Shape
 {
 public:
 	void Show(HDC);

@@ -13,14 +13,13 @@ bool isPressed;
 
 #pragma region Functions
 
-#pragma region SOE
+#pragma region ShapeObjectsEditor
 
 ShapeObjectsEditor::ShapeObjectsEditor()
 {
 	pse = new PointEditor;
 }
 
-// Destructor
 ShapeObjectsEditor::~ShapeObjectsEditor()
 {
 	for (int i = 0; i < size; i++)
@@ -29,7 +28,6 @@ ShapeObjectsEditor::~ShapeObjectsEditor()
 	}
 }
 
-// ShapeObjectsEditor functions
 void ShapeObjectsEditor::StartPointEditor()
 {
 	if (pse) delete pse;
@@ -42,10 +40,10 @@ void ShapeObjectsEditor::StartLineEditor()
 	pse = new LineEditor;
 }
 
-void ShapeObjectsEditor::StartRectEditor()
+void ShapeObjectsEditor::StartRectangleEditor()
 {
 	if (pse) delete pse;
-	pse = new RectEditor;
+	pse = new RectangleEditor;
 }
 
 void ShapeObjectsEditor::StartEllipseEditor()
@@ -87,9 +85,10 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 	draw->OnPaint(hWnd);
 }
 
-#pragma endregion SOE
+#pragma endregion ShapeObjectsEditor
 
-// ShapeEditor Functions
+#pragma region ShapeEditor
+
 void ShapeEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -127,7 +126,10 @@ void ShapeEditor::OnPaint(HWND hWnd)
 	EndPaint(hWnd, &ps);
 }
 
-// Point:
+#pragma endregion ShapeEditor
+
+#pragma region PointEditor
+
 void PointEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -154,7 +156,10 @@ void PointEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
-// Line:
+#pragma endregion PointEditor
+
+#pragma region LineEditor
+
 void LineEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -202,8 +207,11 @@ void LineEditor::OnMouseMove(HWND hWnd)
 	ReleaseDC(hWnd, hdc);
 }
 
-// Rect:
-void RectEditor::OnLBdown(HWND hWnd)
+#pragma endregion LineEditor
+
+#pragma region RectangleEditor
+
+void RectangleEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
 	POINT pt;
@@ -213,7 +221,7 @@ void RectEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
-void RectEditor::OnLBup(HWND hWnd)
+void RectangleEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
 	GetCursorPos(&pt);
@@ -222,14 +230,14 @@ void RectEditor::OnLBup(HWND hWnd)
 	y2 = pt.y;
 	isPressed = FALSE;
 
-	RectShape* Rect = new RectShape;
-	Rect->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
-	pcshape[size] = Rect;
+	RectangleShape* Rectangle = new RectangleShape;
+	Rectangle->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
+	pcshape[size] = Rectangle;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
-void RectEditor::OnMouseMove(HWND hWnd)
+void RectangleEditor::OnMouseMove(HWND hWnd)
 {
 	POINT pt;
 	HPEN hPen, hPenOld;

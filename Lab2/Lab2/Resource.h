@@ -18,7 +18,7 @@
 #define ID_32774                        32774
 #define IDM_POINT                       32775
 #define IDM_LINE                        32776
-#define IDM_RECT                        32777
+#define IDM_RECTANGLE                   32777
 #define IDM_ELLIPSE                     32778
 #define IDC_STATIC                      -1
 
