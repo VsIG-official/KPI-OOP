@@ -39,9 +39,6 @@
     <ClInclude Include="editor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="colors.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>

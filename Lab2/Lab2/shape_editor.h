@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "editor.h"
 #include "shape.h"
-#include "resource1.h"
+#include "Resource.h"
 
 class ShapeEditor : public Editor // Shape editor class for figures
 {
