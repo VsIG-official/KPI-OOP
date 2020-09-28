@@ -6,7 +6,7 @@
 const int Size_Of_Array = 109;
 Shape** pcshape = new Shape * [Size_Of_Array];
 int size = 0;
-bool pressed;
+bool isPressed;
 
 // Constructor
 ShapeObjectsEditor::ShapeObjectsEditor()
@@ -17,7 +17,10 @@ ShapeObjectsEditor::ShapeObjectsEditor()
 // Destructor
 ShapeObjectsEditor::~ShapeObjectsEditor()
 {
-	for (int i = 0; i < size; i++) delete pcshape[i];
+	for (int i = 0; i < size; i++)
+	{
+		delete pcshape[i];
+	}
 }
 
 // ShapeObjectsEditor functions
@@ -41,23 +44,35 @@ void ShapeObjectsEditor::StartRectEditor()
 
 void ShapeObjectsEditor::StartEllipseEditor()
 {
-	if (pse) delete pse;
+	if (pse)
+	{
+		delete pse;
+	}
 	pse = new EllipseEditor;
 }
 
 void ShapeObjectsEditor::OnLBdown(HWND hWnd)
 {
-	if (pse) pse->OnLBdown(hWnd);
+	if (pse)
+	{
+		pse->OnLBdown(hWnd);
+	}
 }
 
 void ShapeObjectsEditor::OnLBup(HWND hWnd)
 {
-	if (pse) pse->OnLBup(hWnd);
+	if (pse)
+	{
+		pse->OnLBup(hWnd);
+	}
 }
 
 void ShapeObjectsEditor::OnMouseMove(HWND hWnd)
 {
-	if (pse && pressed) pse->OnMouseMove(hWnd);
+	if (pse && isPressed)
+	{
+		pse->OnMouseMove(hWnd);
+	}
 }
 
 void ShapeObjectsEditor::OnPaint(HWND hWnd)
@@ -69,7 +84,7 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 // ShapeEditor Functions
 void ShapeEditor::OnLBdown(HWND hWnd)
 {
-	pressed = true;
+	isPressed = true;
 	POINT pt;
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
@@ -84,7 +99,7 @@ void ShapeEditor::OnLBup(HWND hWnd)
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
-	pressed = false;
+	isPressed = false;
 }
 
 void ShapeEditor::OnMouseMove(HWND hWnd) {}
@@ -95,20 +110,35 @@ void ShapeEditor::OnPaint(HWND hWnd)
 	HDC hdc;
 	hdc = BeginPaint(hWnd, &ps);
 	for (int i = 0; i < size; i++)
+	{
 		if (pcshape[i])
+		{
 			pcshape[i]->Show(hdc);
+		}
+	}
 	EndPaint(hWnd, &ps);
 }
 
 // Point:
 void PointEditor::OnLBdown(HWND hWnd)
 {
-	__super::OnLBdown(hWnd); // Calling a base-class implementation
+	isPressed = true;
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x1 = x2 = pt.x;
+	y1 = y2 = pt.y;
 }
 
 void PointEditor::OnLBup(HWND hWnd)
 {
-	__super::OnLBup(hWnd); // Calling a base-class implementation
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x2 = pt.x;
+	y2 = pt.y;
+	isPressed = false;
+
 	PointShape* Point = new PointShape;
 	Point->Set(x1, y1, x2, y2);
 	pcshape[size] = Point;
@@ -119,12 +149,23 @@ void PointEditor::OnLBup(HWND hWnd)
 // Line:
 void LineEditor::OnLBdown(HWND hWnd)
 {
-	__super::OnLBdown(hWnd); // Calling a base-class implementation
+	isPressed = true;
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x1 = x2 = pt.x;
+	y1 = y2 = pt.y;
 }
 
 void LineEditor::OnLBup(HWND hWnd)
 {
-	__super::OnLBup(hWnd); // Calling a base-class implementation
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x2 = pt.x;
+	y2 = pt.y;
+	isPressed = false;
+
 	LineShape* Line = new LineShape;
 	Line->Set(x1, y1, x2, y2);
 	pcshape[size] = Line;
@@ -156,7 +197,12 @@ void LineEditor::OnMouseMove(HWND hWnd)
 // Rect:
 void RectEditor::OnLBdown(HWND hWnd)
 {
-	__super::OnLBdown(hWnd); // Calling a base-class implementation
+	isPressed = true;
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x1 = x2 = pt.x;
+	y1 = y2 = pt.y;
 }
 
 void RectEditor::OnLBup(HWND hWnd)
@@ -166,12 +212,13 @@ void RectEditor::OnLBup(HWND hWnd)
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
+	isPressed = FALSE;
+
 	RectShape* Rect = new RectShape;
 	Rect->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	pcshape[size] = Rect;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
-	pressed = FALSE;
 }
 
 void RectEditor::OnMouseMove(HWND hWnd)
@@ -196,7 +243,12 @@ void RectEditor::OnMouseMove(HWND hWnd)
 // Ellipse:
 void EllipseEditor::OnLBdown(HWND hWnd)
 {
-	__super::OnLBdown(hWnd); // Calling a base-class implementation
+	isPressed = true;
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x1 = x2 = pt.x;
+	y1 = y2 = pt.y;
 }
 
 void EllipseEditor::OnLBup(HWND hWnd)
@@ -206,12 +258,13 @@ void EllipseEditor::OnLBup(HWND hWnd)
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
+	isPressed = FALSE;
+
 	EllipseShape* Ellipse = new EllipseShape;
 	Ellipse->Set(x1, y1, x2, y2);
 	pcshape[size] = Ellipse;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
-	pressed = FALSE;
 }
 
 void EllipseEditor::OnMouseMove(HWND hWnd)

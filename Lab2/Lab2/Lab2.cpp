@@ -4,7 +4,7 @@
 #include "framework.h"
 #include "pch.h"
 #include "Lab2.h"
-#include "resource.h"
+#include "Resource.h"
 #include "shape_editor.h" // import shape_editor class
 
 #define MAX_LOADSTRING 100
@@ -15,6 +15,7 @@ WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки за�
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
 
 ShapeObjectsEditor editorShape;
+LPCSTR currentShape;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -59,8 +60,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     return (int)msg.wParam;
 }
-
-
 
 //
 //  ФУНКЦИЯ: MyRegisterClass()
@@ -130,16 +129,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_LBUTTONDOWN: //натиснуто ліву кнопку миші у клієнтській частині вікна
+    case WM_LBUTTONDOWN:
         editorShape.OnLBdown(hWnd);
         break;
-    case WM_LBUTTONUP: //відпущено ліву кнопку миші у клієнтській частині вікна
+    case WM_LBUTTONUP:
         editorShape.OnLBup(hWnd);
         break;
-    case WM_MOUSEMOVE: //пересунуто мишу у клієнтській частині вікна
+    case WM_MOUSEMOVE:
         editorShape.OnMouseMove(hWnd);
         break;
-    case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
+    case WM_PAINT:
         editorShape.OnPaint(hWnd);
         break;
     case WM_COMMAND:
@@ -150,15 +149,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case IDM_POINT:
             editorShape.StartPointEditor(); //початок вводу точкових об’єктів
+            currentShape = "Точка";
+            ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_LINE:
             editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
+            currentShape = "Лінія";
+            ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_RECT:
             editorShape.StartRectEditor(); //початок вводу прямокутників
+            currentShape = "Прямокутник";
+            ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_ELLIPSE:
             editorShape.StartEllipseEditor(); //початок вводу еліпсів
+            currentShape = "Овал";
+            ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -167,7 +174,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             DestroyWindow(hWnd);
             break;
         default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
+            return DefWindowProcW(hWnd, message, wParam, lParam);
         }
     }
     break;
@@ -175,9 +182,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PostQuitMessage(0);
         break;
     default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+void ChangeWindowText(HWND hWnd, LPCSTR name)
+{
+    SetWindowTextA(hWnd, name);
 }
 
 // Обработчик сообщений для окна "О программе".
