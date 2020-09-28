@@ -15,11 +15,17 @@ bool isPressed;
 
 #pragma region ShapeObjectsEditor
 
+/// <summary>
+/// Constructor
+/// </summary>
 ShapeObjectsEditor::ShapeObjectsEditor()
 {
 	pse = new PointEditor;
 }
 
+/// <summary>
+/// Destructor
+/// </summary>
 ShapeObjectsEditor::~ShapeObjectsEditor()
 {
 	for (int i = 0; i < size; i++)
@@ -28,24 +34,36 @@ ShapeObjectsEditor::~ShapeObjectsEditor()
 	}
 }
 
+/// <summary>
+/// Starts the PointEditor
+/// </summary>
 void ShapeObjectsEditor::StartPointEditor()
 {
 	if (pse) delete pse;
 	pse = new PointEditor;
 }
 
+/// <summary>
+/// Starts the LineEditor
+/// </summary>
 void ShapeObjectsEditor::StartLineEditor()
 {
 	if (pse) delete pse;
 	pse = new LineEditor;
 }
 
+/// <summary>
+/// Starts the RectangleEditor
+/// </summary>
 void ShapeObjectsEditor::StartRectangleEditor()
 {
 	if (pse) delete pse;
 	pse = new RectangleEditor;
 }
 
+/// <summary>
+/// Starts the EllipseEditor
+/// </summary>
 void ShapeObjectsEditor::StartEllipseEditor()
 {
 	if (pse)
@@ -55,6 +73,10 @@ void ShapeObjectsEditor::StartEllipseEditor()
 	pse = new EllipseEditor;
 }
 
+/// <summary>
+/// Do something on left mouse button clicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeObjectsEditor::OnLBdown(HWND hWnd)
 {
 	if (pse)
@@ -63,6 +85,10 @@ void ShapeObjectsEditor::OnLBdown(HWND hWnd)
 	}
 }
 
+/// <summary>
+/// Do something on left mouse button unclicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeObjectsEditor::OnLBup(HWND hWnd)
 {
 	if (pse)
@@ -71,6 +97,10 @@ void ShapeObjectsEditor::OnLBup(HWND hWnd)
 	}
 }
 
+/// <summary>
+/// Do something on left mouse moving
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeObjectsEditor::OnMouseMove(HWND hWnd)
 {
 	if (pse && isPressed)
@@ -79,6 +109,10 @@ void ShapeObjectsEditor::OnMouseMove(HWND hWnd)
 	}
 }
 
+/// <summary>
+/// Do something on paint
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeObjectsEditor::OnPaint(HWND hWnd)
 {
 	ShapeEditor* draw = new ShapeEditor;
@@ -89,6 +123,10 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 
 #pragma region ShapeEditor
 
+/// <summary>
+/// Do something on left mouse button clicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -99,6 +137,10 @@ void ShapeEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
+/// <summary>
+/// Do something on left mouse button unclicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
@@ -109,8 +151,16 @@ void ShapeEditor::OnLBup(HWND hWnd)
 	isPressed = false;
 }
 
+/// <summary>
+/// Do something on Mouse moving
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeEditor::OnMouseMove(HWND hWnd) {}
 
+/// <summary>
+/// Do something on paint
+/// </summary>
+/// <param name="hWnd">window</param>
 void ShapeEditor::OnPaint(HWND hWnd)
 {
 	PAINTSTRUCT ps;
@@ -130,6 +180,10 @@ void ShapeEditor::OnPaint(HWND hWnd)
 
 #pragma region PointEditor
 
+/// <summary>
+/// Do something on left mouse button clicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void PointEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -140,6 +194,10 @@ void PointEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
+/// <summary>
+/// Do something on left mouse button unclicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void PointEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
@@ -160,6 +218,10 @@ void PointEditor::OnLBup(HWND hWnd)
 
 #pragma region LineEditor
 
+/// <summary>
+/// Do something on left mouse button clicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void LineEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -170,6 +232,10 @@ void LineEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
+/// <summary>
+/// Do something on left mouse button unclicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void LineEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
@@ -186,6 +252,10 @@ void LineEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+/// <summary>
+/// Do something on Mouse moving
+/// </summary>
+/// <param name="hWnd">window</param>
 void LineEditor::OnMouseMove(HWND hWnd)
 {
 	POINT pt;
@@ -211,6 +281,10 @@ void LineEditor::OnMouseMove(HWND hWnd)
 
 #pragma region RectangleEditor
 
+/// <summary>
+/// Do something on left mouse button clicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void RectangleEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -221,6 +295,10 @@ void RectangleEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
+/// <summary>
+/// Do something on left mouse button unclicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void RectangleEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
@@ -237,6 +315,10 @@ void RectangleEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+/// <summary>
+/// Do something on Mouse moving
+/// </summary>
+/// <param name="hWnd">window</param>
 void RectangleEditor::OnMouseMove(HWND hWnd)
 {
 	POINT pt;
@@ -256,7 +338,14 @@ void RectangleEditor::OnMouseMove(HWND hWnd)
 	ReleaseDC(hWnd, hdc);
 }
 
-// Ellipse:
+#pragma endregion RectangleEditor
+
+#pragma region EllipseEditor
+
+/// <summary>
+/// Do something on left mouse button clicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void EllipseEditor::OnLBdown(HWND hWnd)
 {
 	isPressed = true;
@@ -267,6 +356,10 @@ void EllipseEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
+/// <summary>
+/// Do something on left mouse button unclicked
+/// </summary>
+/// <param name="hWnd">window</param>
 void EllipseEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
@@ -283,6 +376,10 @@ void EllipseEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+/// <summary>
+/// Do something on Mouse moving
+/// </summary>
+/// <param name="hWnd">window</param>
 void EllipseEditor::OnMouseMove(HWND hWnd)
 {
 	POINT pt;
@@ -301,3 +398,7 @@ void EllipseEditor::OnMouseMove(HWND hWnd)
 	DeleteObject(hPen);
 	ReleaseDC(hWnd, hdc);
 }
+
+#pragma endregion EllipseEditor
+
+#pragma endregion Functions
