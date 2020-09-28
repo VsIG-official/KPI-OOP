@@ -1,28 +1,37 @@
-﻿// Lab2.cpp : Определяет точку входа для приложения.
+﻿// Lab1.cpp : Defines the input point for the application.
 //
+// First Part
 
 #include "framework.h"
 #include "pch.h"
 #include "Lab2.h"
 #include "Resource.h"
-#include "shape_editor.h" // import shape_editor class
+#include "shape_editor.h"
 
 #define MAX_LOADSTRING 100
 
-// Глобальные переменные:
-HINSTANCE hInst;                                // текущий экземпляр
-WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
-WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
+#pragma region Variables
+
+// Global variables:
+HINSTANCE hInst;                                // Current instance
+WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
+WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
 ShapeObjectsEditor editorShape;
 LPCSTR currentShape;
 
-// Отправить объявления функций, включенных в этот модуль кода:
+#pragma endregion
+
+// Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+#pragma region DefaultFunctions
+
+// Second Part
+// Enter Point "wWinMain"
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPWSTR    lpCmdLine,
@@ -31,14 +40,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: Разместите код здесь.
+    // TODO: Place the code here.
 
-    // Инициализация глобальных строк
+    // Global line initialization
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_LAB2, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-    // Выполнить инициализацию приложения:
+    // Perform application initialization:
     if (!InitInstance(hInstance, nCmdShow))
     {
         return FALSE;
@@ -48,7 +57,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // Цикл основного сообщения:
+    // Main message cycle:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -62,10 +71,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 }
 
 //
-//  ФУНКЦИЯ: MyRegisterClass()
+//  FUNCTION: MyRegisterClass()
 //
-//  ЦЕЛЬ: Регистрирует класс окна.
-//
+//  OBJECTIVE: To register the window class.
+// Text of Function
+/// <summary>
+/// Register the window class.
+/// </summary>
+/// <param name="hInstance">The h instance.</param>
+/// <returns></returns>
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
@@ -88,18 +102,24 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 }
 
 //
-//   ФУНКЦИЯ: InitInstance(HINSTANCE, int)
+//   FUNCTION: InitInstance(HINSTANCE, int)
 //
-//   ЦЕЛЬ: Сохраняет маркер экземпляра и создает главное окно
+//   OBJECTIVE: Saves the instance marker and creates the main window
 //
-//   КОММЕНТАРИИ:
+//   COMMENTARIES:
 //
-//        В этой функции маркер экземпляра сохраняется в глобальной переменной, а также
-//        создается и выводится главное окно программы.
+//        In this function, the instance marker is saved in a global variable, and also
+//        the main program window is created and displayed.
 //
+/// <summary>
+/// Saves the instance marker and creates the main window
+/// </summary>
+/// <param name="hInstance">The h instance.</param>
+/// <param name="nCmdShow">The n command show.</param>
+/// <returns></returns>
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-    hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
+    hInst = hInstance; // Save instance marker in global variable
 
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
@@ -115,16 +135,28 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     return TRUE;
 }
 
+#pragma endregion
+
+#pragma region ModifiedFuntions
+
+// Third Part
+//  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
-//  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)
+//  OBJECTIVE: Processes messages in the main window.
 //
-//  ЦЕЛЬ: Обрабатывает сообщения в главном окне.
-//
-//  WM_COMMAND  - обработать меню приложения
-//  WM_PAINT    - Отрисовка главного окна
-//  WM_DESTROY  - отправить сообщение о выходе и вернуться
+//  WM_COMMAND  - Process the application menu
+//  WM_PAINT    - Drawing of the main window
+//  WM_DESTROY  - Send message about exit and return
 //
 //
+/// <summary>
+/// Processes messages in the main window.
+/// </summary>
+/// <param name="hWnd">The h WND.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -144,26 +176,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_COMMAND:
     {
         int wmId = LOWORD(wParam);
-        // Разобрать выбор в меню:
         switch (wmId)
         {
         case IDM_POINT:
-            editorShape.StartPointEditor(); //початок вводу точкових об’єктів
+            editorShape.StartPointEditor();
             currentShape = "Точка";
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_LINE:
-            editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
+            editorShape.StartLineEditor();
             currentShape = "Лінія";
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_RECT:
-            editorShape.StartRectEditor(); //початок вводу прямокутників
+            editorShape.StartRectEditor();
             currentShape = "Прямокутник";
             ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_ELLIPSE:
-            editorShape.StartEllipseEditor(); //початок вводу еліпсів
+            editorShape.StartEllipseEditor();
             currentShape = "Овал";
             ChangeWindowText(hWnd, currentShape);
             break;
@@ -187,12 +218,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
+/// <summary>
+/// Set main window text
+/// </summary>
+/// <param name="hWnd">window</param>
+/// <param name="name">name</param>
 void ChangeWindowText(HWND hWnd, LPCSTR name)
 {
     SetWindowTextA(hWnd, name);
 }
 
-// Обработчик сообщений для окна "О программе".
+// Fourth Part
+/// <summary>
+/// Message handler for "About" window.
+/// </summary>
+/// <param name="hDlg">The h dialog.</param>
+/// <param name="message">The message.</param>
+/// <param name="wParam">The w parameter.</param>
+/// <param name="lParam">The l parameter.</param>
+/// <returns></returns>
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
