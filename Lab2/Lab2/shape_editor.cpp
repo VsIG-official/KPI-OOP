@@ -130,6 +130,8 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 
 #pragma region ShapeEditor
 
+void ShapeEditor::OnMouseMove(HWND hWnd) {};
+
 /// <summary>
 /// Do something on left mouse button clicked
 /// </summary>
@@ -182,15 +184,6 @@ void ShapeEditor::OnPaint(HWND hWnd)
 #pragma region PointEditor
 
 /// <summary>
-/// Do something on left mouse button clicked
-/// </summary>
-/// <param name="hWnd">window</param>
-void PointEditor::OnLBdown(HWND hWnd)
-{
-	__super::OnLBdown(hWnd);
-}
-
-/// <summary>
 /// Do something on left mouse button unclicked
 /// </summary>
 /// <param name="hWnd">window</param>
@@ -207,15 +200,6 @@ void PointEditor::OnLBup(HWND hWnd)
 #pragma endregion PointEditor
 
 #pragma region LineEditor
-
-/// <summary>
-/// Do something on left mouse button clicked
-/// </summary>
-/// <param name="hWnd">window</param>
-void LineEditor::OnLBdown(HWND hWnd)
-{
-	__super::OnLBdown(hWnd);
-}
 
 /// <summary>
 /// Do something on left mouse button unclicked
@@ -261,15 +245,6 @@ void LineEditor::OnMouseMove(HWND hWnd)
 #pragma region RectangleEditor
 
 /// <summary>
-/// Do something on left mouse button clicked
-/// </summary>
-/// <param name="hWnd">window</param>
-void RectangleEditor::OnLBdown(HWND hWnd)
-{
-	__super::OnLBdown(hWnd);
-}
-
-/// <summary>
 /// Do something on left mouse button unclicked
 /// </summary>
 /// <param name="hWnd">window</param>
@@ -309,15 +284,6 @@ void RectangleEditor::OnMouseMove(HWND hWnd)
 #pragma endregion RectangleEditor
 
 #pragma region EllipseEditor
-
-/// <summary>
-/// Do something on left mouse button clicked
-/// </summary>
-/// <param name="hWnd">window</param>
-void EllipseEditor::OnLBdown(HWND hWnd)
-{
-	__super::OnLBdown(hWnd);
-}
 
 /// <summary>
 /// Do something on left mouse button unclicked
