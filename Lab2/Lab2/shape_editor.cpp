@@ -187,12 +187,7 @@ void ShapeEditor::OnPaint(HWND hWnd)
 /// <param name="hWnd">window</param>
 void PointEditor::OnLBdown(HWND hWnd)
 {
-	isPressed = TRUE;
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x1 = x2 = pt.x;
-	y1 = y2 = pt.y;
+	__super::OnLBdown(hWnd);
 }
 
 /// <summary>
@@ -201,13 +196,7 @@ void PointEditor::OnLBdown(HWND hWnd)
 /// <param name="hWnd">window</param>
 void PointEditor::OnLBup(HWND hWnd)
 {
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x2 = pt.x;
-	y2 = pt.y;
-	isPressed = FALSE;
-
+	__super::OnLBup(hWnd);
 	PointShape* Point = new PointShape;
 	Point->Set(x1, y1, x2, y2);
 	pcshape[size] = Point;
@@ -225,12 +214,7 @@ void PointEditor::OnLBup(HWND hWnd)
 /// <param name="hWnd">window</param>
 void LineEditor::OnLBdown(HWND hWnd)
 {
-	isPressed = TRUE;
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x1 = x2 = pt.x;
-	y1 = y2 = pt.y;
+	__super::OnLBdown(hWnd);
 }
 
 /// <summary>
@@ -239,13 +223,7 @@ void LineEditor::OnLBdown(HWND hWnd)
 /// <param name="hWnd">window</param>
 void LineEditor::OnLBup(HWND hWnd)
 {
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x2 = pt.x;
-	y2 = pt.y;
-	isPressed = FALSE;
-
+	__super::OnLBup(hWnd);
 	LineShape* Line = new LineShape;
 	Line->Set(x1, y1, x2, y2);
 	pcshape[size] = Line;
@@ -288,12 +266,7 @@ void LineEditor::OnMouseMove(HWND hWnd)
 /// <param name="hWnd">window</param>
 void RectangleEditor::OnLBdown(HWND hWnd)
 {
-	isPressed = TRUE;
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x1 = x2 = pt.x;
-	y1 = y2 = pt.y;
+	__super::OnLBdown(hWnd);
 }
 
 /// <summary>
@@ -302,13 +275,7 @@ void RectangleEditor::OnLBdown(HWND hWnd)
 /// <param name="hWnd">window</param>
 void RectangleEditor::OnLBup(HWND hWnd)
 {
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x2 = pt.x;
-	y2 = pt.y;
-	isPressed = FALSE;
-
+	__super::OnLBup(hWnd);
 	RectangleShape* Rectangle = new RectangleShape;
 	Rectangle->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	pcshape[size] = Rectangle;
@@ -349,12 +316,7 @@ void RectangleEditor::OnMouseMove(HWND hWnd)
 /// <param name="hWnd">window</param>
 void EllipseEditor::OnLBdown(HWND hWnd)
 {
-	isPressed = TRUE;
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x1 = x2 = pt.x;
-	y1 = y2 = pt.y;
+	__super::OnLBdown(hWnd);
 }
 
 /// <summary>
@@ -363,13 +325,7 @@ void EllipseEditor::OnLBdown(HWND hWnd)
 /// <param name="hWnd">window</param>
 void EllipseEditor::OnLBup(HWND hWnd)
 {
-	POINT pt;
-	GetCursorPos(&pt);
-	ScreenToClient(hWnd, &pt);
-	x2 = pt.x;
-	y2 = pt.y;
-	isPressed = FALSE;
-
+	__super::OnLBup(hWnd);
 	EllipseShape* Ellipse = new EllipseShape;
 	Ellipse->Set(x1, y1, x2, y2);
 	pcshape[size] = Ellipse;
