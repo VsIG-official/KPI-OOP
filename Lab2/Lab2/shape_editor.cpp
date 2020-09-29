@@ -40,7 +40,10 @@ ShapeObjectsEditor::~ShapeObjectsEditor()
 /// </summary>
 void ShapeObjectsEditor::StartPointEditor()
 {
-	if (pse) delete pse;
+	if (pse)
+	{
+		delete pse;
+	}
 	pse = new PointEditor;
 }
 
@@ -49,7 +52,10 @@ void ShapeObjectsEditor::StartPointEditor()
 /// </summary>
 void ShapeObjectsEditor::StartLineEditor()
 {
-	if (pse) delete pse;
+	if (pse)
+	{
+		delete pse;
+	}
 	pse = new LineEditor;
 }
 
