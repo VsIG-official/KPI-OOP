@@ -159,12 +159,6 @@ void ShapeEditor::OnLBup(HWND hWnd)
 }
 
 /// <summary>
-/// Do something on Mouse moving
-/// </summary>
-/// <param name="hWnd">window</param>
-void ShapeEditor::OnMouseMove(HWND hWnd) {}
-
-/// <summary>
 /// Do something on paint
 /// </summary>
 /// <param name="hWnd">window</param>
