@@ -64,7 +64,10 @@ void ShapeObjectsEditor::StartLineEditor()
 /// </summary>
 void ShapeObjectsEditor::StartRectangleEditor()
 {
-	if (pse) delete pse;
+	if (pse)
+	{
+		delete pse;
+	}
 	pse = new RectangleEditor;
 }
 
