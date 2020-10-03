@@ -159,6 +159,7 @@
     <ClInclude Include="shape.h" />
     <ClInclude Include="shape_editor.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="toolbar.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab3.cpp" />
@@ -170,11 +171,13 @@
     </ClCompile>
     <ClCompile Include="shape.cpp" />
     <ClCompile Include="shape_editor.cpp" />
+    <ClCompile Include="toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab2.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\BITMAP.ico" />
     <Image Include="bitmap1.bmp" />
     <Image Include="Lab2.ico" />
     <Image Include="small.ico" />
