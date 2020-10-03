@@ -220,8 +220,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
-
-            break;
         case IDM_POINT:
             editorShape.StartPointEditor();
             currentShape = POINT_NAME;
@@ -248,6 +246,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case IDM_EXIT:
             DestroyWindow(hWnd);
             break;
+        case ID_TOOL_RECTANGLE:
+            //OnToolPoint(hWnd, press);
+            break;
         default:
             return DefWindowProcW(hWnd, message, wParam, lParam);
         }
@@ -261,9 +262,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return 0;
 }
-
-
-
 
 /// <summary>
 /// Set main window text
