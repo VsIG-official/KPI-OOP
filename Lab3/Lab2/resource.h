@@ -1,6 +1,6 @@
 ﻿//{{NO_DEPENDENCIES}}
 // Включаемый файл, созданный в Microsoft Visual C++.
-// Используется Lab3.rc
+// Используется Lab2.rc
 //
 
 #include "colors.h"
