@@ -27,9 +27,8 @@
 
 void ChangeWindowText(HWND hWnd, LPCSTR name);
 void OnCreate(HWND hWnd);
-void OnFileNew(HWND hWnd);
-void OnFileOpen(HWND hWnd);
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
+void OnToolMove(HWND hWnd);
 
 // Next default values for new objects
 //
