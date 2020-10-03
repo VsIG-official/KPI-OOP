@@ -23,6 +23,7 @@ const LPCSTR POINT_NAME = "Крапка";
 const LPCSTR LINE_NAME = "Лінія";
 const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
+HWND hwndToolBar = NULL;
 
 #pragma endregion
 
@@ -44,6 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+    InitCommonControls();
     // TODO: Place the code here.
 
     // Global line initialization
@@ -192,6 +194,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+        OnCreate(hWnd); //тут створимо Toolbar
+        break;
+    case WM_SIZE: //це повідомлення надсилається, якщо вікно змінить розмір
+        OnSize(hWnd);
+        break;
+    case WM_NOTIFY: //повідомлення від кнопок
+        OnNotify(hWnd, wParam, lParam);
+        break;
     case WM_LBUTTONDOWN:
         editorShape.OnLBdown(hWnd);
         break;
@@ -209,6 +220,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
+        case IDM_NEW:
+        case ID_TOOL_FILE_NEW:
+            OnFileNew(hWnd);
+            break;
+        case IDM_OPEN: //ID пункту меню
+        case ID_TOOL_FILE_OPEN: //ID кнопки Toolbar
+            OnFileOpen(hWnd); //функція-обробник
+            break;
+        case IDM_SAVEAS:
+        case ID_TOOL_FILE_SAVEAS:
+            OnFileSaveAs(hWnd);
+            break;
         case IDM_POINT:
             editorShape.StartPointEditor();
             currentShape = POINT_NAME;
@@ -247,6 +270,89 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+
+void OnCreate(HWND hWnd)
+{
+        TBBUTTON tbb[4]; //масив опису кнопок вікна Toolbar
+        ZeroMemory(tbb, sizeof(tbb));
+        tbb[0].iBitmap = STD_FILENEW; //стандартне зображення
+        tbb[0].fsState = TBSTATE_ENABLED;
+        tbb[0].fsStyle = TBSTYLE_BUTTON; //тип елементу - кнопка
+        tbb[0].idCommand = ID_TOOL_FILE_NEW; //цей ID буде у повідомленні WM_COMMAND
+        tbb[1].iBitmap = STD_FILEOPEN;
+        tbb[1].fsState = TBSTATE_ENABLED;
+        tbb[1].fsStyle = TBSTYLE_BUTTON;
+        tbb[1].idCommand = ID_TOOL_FILE_OPEN;
+        tbb[2].iBitmap = STD_FILESAVE;
+        tbb[2].fsState = TBSTATE_ENABLED;
+        tbb[2].fsStyle = TBSTYLE_BUTTON;
+        tbb[2].idCommand = ID_TOOL_FILE_SAVEAS;
+        tbb[3].iBitmap = STD_PRINT;
+        tbb[3].fsState = TBSTATE_ENABLED;
+        tbb[3].fsStyle = TBSTYLE_BUTTON;
+        tbb[3].idCommand = ID_TOOL_FILE_PRINT;
+        hwndToolBar = CreateToolbarEx(hWnd, //батьківське вікно
+            WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP,
+            IDC_MY_TOOLBAR, //ID дочірнього вікна Toolbar
+            1, HINST_COMMCTRL, IDB_STD_SMALL_COLOR,
+            tbb, //
+            4, //кількість кнопок
+            0, 0, 0, 0, //розташування та розміри
+            sizeof(TBBUTTON));
+}
+
+void OnFileNew(HWND hWnd)
+{
+ 
+}
+
+void OnFileOpen(HWND hWnd)
+{
+
+}
+
+//---обробник повідомлення WM_SIZE---
+void OnSize(HWND hWnd)
+{
+    RECT rc, rw;
+    if (hwndToolBar)
+    {
+        GetClientRect(hWnd, &rc); //нові розміри головного вікна
+        GetWindowRect(hwndToolBar, &rw); //нам потрібно знати висоту Toolbar
+        MoveWindow(hwndToolBar, 0, 0, rc.right - rc.left, rw.bottom - rw.top, FALSE);
+    }
+}
+
+void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+    LPNMHDR pnmh = (LPNMHDR)lParam;
+    LPSTR pText;
+    if (pnmh->code == TTN_NEEDTEXT)
+    {
+        LPTOOLTIPTEXT lpttt = (LPTOOLTIPTEXT)lParam;
+        switch (lpttt->hdr.idFrom)
+        {
+        case ID_TOOL_ZOOMPLUS:
+            pText = "Збільшити";
+            break;
+        case ID_TOOL_ZOOMINUS:
+            pText = "Зменшити";
+            break;
+        case ID_TOOL_MOVE:
+            pText = "Пересунути";
+            break;
+        case ID_TOOL_LAYERS:
+            pText = "Вибрати";
+            break;
+        case IDM_ABOUT:
+            pText = "Довідка";
+            break;
+        default: pText = "Щось невідоме";
+        }
+        lstrcpy(lpttt->szText, pText);
+    }
 }
 
 /// <summary>
