@@ -9,3 +9,4 @@
 void OnSize(HWND hWnd);
 void OnCreate(HWND hWnd);
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
+void OnToolPoint(HWND hWnd, int currentPress);
