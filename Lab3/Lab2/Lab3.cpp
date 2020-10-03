@@ -24,6 +24,7 @@ const LPCSTR LINE_NAME = "Лінія";
 const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
 HWND hwndToolBar = NULL;
+int press = 0;
 
 #pragma endregion
 
@@ -220,17 +221,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
-        case IDM_NEW:
-        case ID_TOOL_FILE_NEW:
-            OnFileNew(hWnd);
-            break;
-        case IDM_OPEN: //ID пункту меню
-        case ID_TOOL_FILE_OPEN: //ID кнопки Toolbar
-            OnFileOpen(hWnd); //функція-обробник
-            break;
-        case IDM_SAVEAS:
-        case ID_TOOL_FILE_SAVEAS:
-            OnFileSaveAs(hWnd);
+
             break;
         case IDM_POINT:
             editorShape.StartPointEditor();
@@ -275,42 +266,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void OnCreate(HWND hWnd)
 {
-        TBBUTTON tbb[4]; //масив опису кнопок вікна Toolbar
-        ZeroMemory(tbb, sizeof(tbb));
-        tbb[0].iBitmap = STD_FILENEW; //стандартне зображення
-        tbb[0].fsState = TBSTATE_ENABLED;
-        tbb[0].fsStyle = TBSTYLE_BUTTON; //тип елементу - кнопка
-        tbb[0].idCommand = ID_TOOL_FILE_NEW; //цей ID буде у повідомленні WM_COMMAND
-        tbb[1].iBitmap = STD_FILEOPEN;
-        tbb[1].fsState = TBSTATE_ENABLED;
-        tbb[1].fsStyle = TBSTYLE_BUTTON;
-        tbb[1].idCommand = ID_TOOL_FILE_OPEN;
-        tbb[2].iBitmap = STD_FILESAVE;
-        tbb[2].fsState = TBSTATE_ENABLED;
-        tbb[2].fsStyle = TBSTYLE_BUTTON;
-        tbb[2].idCommand = ID_TOOL_FILE_SAVEAS;
-        tbb[3].iBitmap = STD_PRINT;
-        tbb[3].fsState = TBSTATE_ENABLED;
-        tbb[3].fsStyle = TBSTYLE_BUTTON;
-        tbb[3].idCommand = ID_TOOL_FILE_PRINT;
-        hwndToolBar = CreateToolbarEx(hWnd, //батьківське вікно
-            WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP,
-            IDC_MY_TOOLBAR, //ID дочірнього вікна Toolbar
-            1, HINST_COMMCTRL, IDB_STD_SMALL_COLOR,
-            tbb, //
-            4, //кількість кнопок
-            0, 0, 0, 0, //розташування та розміри
-            sizeof(TBBUTTON));
-}
-
-void OnFileNew(HWND hWnd)
-{
- 
-}
-
-void OnFileOpen(HWND hWnd)
-{
-
+    TBBUTTON tbb[6];
+    ZeroMemory(tbb, sizeof(tbb));
+    tbb[0].iBitmap = 0;
+    tbb[0].fsState = TBSTATE_ENABLED;
+    tbb[0].fsStyle = TBSTYLE_BUTTON;
+    tbb[0].idCommand = ID_TOOL_POINT;
+    tbb[1].iBitmap = 1;
+    tbb[1].fsState = TBSTATE_ENABLED;
+    tbb[1].fsStyle = TBSTYLE_BUTTON;
+    tbb[1].idCommand = ID_TOOL_LINE;
+    tbb[2].iBitmap = 3; //індекс зображення у BITMAP
+    tbb[2].fsState = TBSTATE_ENABLED;
+    tbb[2].fsStyle = TBSTYLE_BUTTON;
+    tbb[2].idCommand = ID_TOOL_RECTANGLE;
+    tbb[3].iBitmap = 2;
+    tbb[3].fsState = TBSTATE_ENABLED;
+    tbb[3].fsStyle = TBSTYLE_BUTTON;
+    tbb[3].idCommand = ID_TOOL_ELLIPSE;
+    tbb[4].iBitmap = 0;
+    tbb[4].fsState = TBSTATE_ENABLED;
+    tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
+    tbb[4].idCommand = 0;
+    tbb[5].iBitmap = 4;
+    tbb[5].fsState = TBSTATE_ENABLED;
+    tbb[5].fsStyle = TBSTYLE_BUTTON;
+    tbb[5].idCommand = IDM_ABOUT;
+    hwndToolBar = CreateToolbarEx(hWnd,
+        WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
+        IDC_MY_TOOLBAR,
+        5, //кількість зображень у BITMAP
+        hInst,
+        IDB_BITMAP1, //ID ресурсу BITMAP
+        tbb,
+        6, //кількість кнопок (разом з роздільником)
+        24, 24, 24, 24, //розміри кнопок та зображень BITMAP
+        sizeof(TBBUTTON));
 }
 
 //---обробник повідомлення WM_SIZE---
@@ -353,6 +344,12 @@ void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
         }
         lstrcpy(lpttt->szText, pText);
     }
+}
+
+void OnToolMove(HWND hWnd)
+{
+    press = !press;
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_MOVE, press);
 }
 
 /// <summary>
