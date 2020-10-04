@@ -55,40 +55,52 @@ void OnSize(HWND hWnd)
     }
 }
 
-void OnToolPoint(HWND hWnd, int point)
+void OnToolPoint(HWND hWnd)
 {
     point = !point;
 
     line, rectangle, ellipse = 0;
 
     SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, rectangle, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, line, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ellipse, 0);
 }
 
-void OnToolLine(HWND hWnd, int point)
+void OnToolLine(HWND hWnd)
 {
     line = !line;
 
     point, rectangle, ellipse = 0;
 
     SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, point, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, rectangle, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ellipse, 0);
 }
 
-void OnToolRectangle(HWND hWnd, int rectangle)
+void OnToolRectangle(HWND hWnd)
 {
     rectangle = !rectangle;
 
     point, line, ellipse = 0;
 
     SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, rectangle);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, point, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, line, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ellipse, 0);
 }
 
-void OnToolEllipse(HWND hWnd, int ellipse)
+void OnToolEllipse(HWND hWnd)
 {
     ellipse = !ellipse;
 
     line, rectangle, point = 0;
 
     SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, ellipse);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, point, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, line, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, rectangle, 0);
 }
 
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)

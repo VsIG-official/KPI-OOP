@@ -9,7 +9,7 @@
 void OnSize(HWND hWnd);
 void OnCreate(HWND hWnd);
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
-void OnToolPoint(HWND hWnd, int currentPress);
-void OnToolLine(HWND hWnd, int currentPress);
-void OnToolRectangle(HWND hWnd, int currentPress);
-void OnToolEllipse(HWND hWnd, int currentPress);
+void OnToolPoint(HWND hWnd);
+void OnToolLine(HWND hWnd);
+void OnToolRectangle(HWND hWnd);
+void OnToolEllipse(HWND hWnd);
