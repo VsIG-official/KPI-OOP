@@ -26,7 +26,7 @@ void Shape::Set(long x1, long y1, long x2, long y2)
 /// <param name="hdc">handle to a device context</param>
 void PointShape::Show(HDC hdc)
 {
-	SetPixel(hdc, xs1, ys1, black); // Show point
+	SetPixel(hdc, xs1, ys1, black);
 }
 
 /// <summary>
@@ -37,11 +37,11 @@ void LineShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
 
-	hPen = CreatePen(PS_SOLID, 1, black); // Create pen
+	hPen = CreatePen(PS_SOLID, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 
 	MoveToEx(hdc, xs1, ys1, NULL);
-	LineTo(hdc, xs2, ys2); 			     // Create line
+	LineTo(hdc, xs2, ys2);
 
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
@@ -54,15 +54,15 @@ void LineShape::Show(HDC hdc)
 void RectangleShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_SOLID, 1, black); 	// Create pen
+	HBRUSH hBrush, hBrushOld;
+	hPen = CreatePen(PS_SOLID, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-
-	MoveToEx(hdc, xs1, ys1, NULL);
-	LineTo(hdc, xs1, ys2);
-	LineTo(hdc, xs2, ys2);
-	LineTo(hdc, xs2, ys1);
-	LineTo(hdc, xs1, ys1); 		// Create rectangle
-
+	hBrush = CreateSolidBrush(white);
+	hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
+	SelectObject(hdc, hBrush);
+	Rectangle(hdc, xs1, ys1, xs2, ys2);
+	SelectObject(hdc, hBrushOld);
+	DeleteObject(hBrush);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }

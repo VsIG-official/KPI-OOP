@@ -82,9 +82,6 @@ void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
         case ID_TOOL_ELLIPSE:
             pText = "Овал";
             break;
-        case IDM_ABOUT:
-            pText = "Довідка";
-            break;
         default: pText = "Щось невідоме";
         }
         lstrcpy(lpttt->szText, pText);

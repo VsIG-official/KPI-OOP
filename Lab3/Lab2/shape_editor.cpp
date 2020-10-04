@@ -5,7 +5,7 @@
 
 #pragma region Variables
 
-const int Size_Of_Array = 109;
+const int Size_Of_Array = 110;
 Shape* pcshape[Size_Of_Array];
 int size = 0;
 bool isPressed;
@@ -255,10 +255,11 @@ void RectangleEditor::OnLBup(HWND hWnd)
 {
 	__super::OnLBup(hWnd);
 	RectangleShape* Rectangle = new RectangleShape;
-	Rectangle->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
+	Rectangle->Set(x1, y1, x2, y2);
 	pcshape[size] = Rectangle;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
+
 }
 
 /// <summary>
@@ -273,12 +274,12 @@ void RectangleEditor::OnMouseMove(HWND hWnd)
 	SetROP2(hdc, R2_NOTXORPEN);
 	hPen = CreatePen(PS_SOLID, 1, blue);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Rectangle(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2);
+	Rectangle(hdc, x1, y1, x2, y2);
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
-	Rectangle(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2);
+	Rectangle(hdc, x1, y1, x2, y2);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 	ReleaseDC(hWnd, hdc);
