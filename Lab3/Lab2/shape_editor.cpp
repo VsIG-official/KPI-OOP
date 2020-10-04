@@ -228,7 +228,7 @@ void LineEditor::OnMouseMove(HWND hWnd)
 	HPEN hPen, hPenOld;
 	HDC hdc = GetDC(hWnd);
 	SetROP2(hdc, R2_NOTXORPEN);
-	hPen = CreatePen(PS_SOLID, 1, red);
+	hPen = CreatePen(PS_SOLID, 1, blue);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	MoveToEx(hdc, x1, y1, NULL);
 	LineTo(hdc, x2, y2);
@@ -271,7 +271,7 @@ void RectangleEditor::OnMouseMove(HWND hWnd)
 	HPEN hPen, hPenOld;
 	HDC hdc = GetDC(hWnd);
 	SetROP2(hdc, R2_NOTXORPEN);
-	hPen = CreatePen(PS_SOLID, 1, red);
+	hPen = CreatePen(PS_SOLID, 1, blue);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	Rectangle(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	GetCursorPos(&pt);
@@ -312,7 +312,7 @@ void EllipseEditor::OnMouseMove(HWND hWnd)
 	HPEN hPen, hPenOld;
 	HDC hdc = GetDC(hWnd);
 	SetROP2(hdc, R2_NOTXORPEN);
-	hPen = CreatePen(PS_SOLID, 1, red);
+	hPen = CreatePen(PS_SOLID, 1, blue);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	Ellipse(hdc, x1, y1, x2, y2);
 	GetCursorPos(&pt);

@@ -2,13 +2,14 @@
 #include "pch.h"
 #include "lab3.h"
 #include "toolbar.h"
+#include "resource1.h"
 
 HWND hwndToolBar = NULL;
 int press = 0;
 
 void OnCreate(HWND hWnd)
 {
-    TBBUTTON tbb[6];
+    TBBUTTON tbb[5];
     ZeroMemory(tbb, sizeof(tbb));
     tbb[0].iBitmap = 0;
     tbb[0].fsState = TBSTATE_ENABLED;
@@ -18,11 +19,11 @@ void OnCreate(HWND hWnd)
     tbb[1].fsState = TBSTATE_ENABLED;
     tbb[1].fsStyle = TBSTYLE_BUTTON;
     tbb[1].idCommand = ID_TOOL_LINE;
-    tbb[2].iBitmap = 3; //індекс зображення у BITMAP
+    tbb[2].iBitmap = 2; //індекс зображення у BITMAP
     tbb[2].fsState = TBSTATE_ENABLED;
     tbb[2].fsStyle = TBSTYLE_BUTTON;
     tbb[2].idCommand = ID_TOOL_RECTANGLE;
-    tbb[3].iBitmap = 2;
+    tbb[3].iBitmap = 3;
     tbb[3].fsState = TBSTATE_ENABLED;
     tbb[3].fsStyle = TBSTYLE_BUTTON;
     tbb[3].idCommand = ID_TOOL_ELLIPSE;
@@ -30,18 +31,14 @@ void OnCreate(HWND hWnd)
     tbb[4].fsState = TBSTATE_ENABLED;
     tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
     tbb[4].idCommand = 0;
-    tbb[5].iBitmap = 4;
-    tbb[5].fsState = TBSTATE_ENABLED;
-    tbb[5].fsStyle = TBSTYLE_BUTTON;
-    tbb[5].idCommand = IDM_ABOUT;
     hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
         IDC_MY_TOOLBAR,
-        5, //кількість зображень у BITMAP
+        4, //кількість зображень у BITMAP
         hInst,
         IDB_BITMAP1, //ID ресурсу BITMAP
         tbb,
-        6, //кількість кнопок (разом з роздільником)
+        5, //кількість кнопок (разом з роздільником)
         24, 24, 24, 24, //розміри кнопок та зображень BITMAP
         sizeof(TBBUTTON));
 }

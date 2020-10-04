@@ -180,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\shapes.bmp" />
+    <Image Include="bitmap1.bmp" />
     <Image Include="Lab2.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

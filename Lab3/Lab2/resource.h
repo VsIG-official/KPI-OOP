@@ -19,7 +19,7 @@
 #define IDM_RECTANGLE                   32777
 #define IDM_ELLIPSE                     32778
 #define IDC_STATIC                      -1
-#define IDB_BITMAP1                     130
+//#define IDB_BITMAP1                     132
 
 void ChangeWindowText(HWND hWnd, LPCSTR name);
 void OnCreate(HWND hWnd);
