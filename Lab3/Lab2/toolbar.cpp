@@ -5,7 +5,7 @@
 #include "resource1.h"
 
 HWND hwndToolBar = NULL;
-int press = 0;
+int point, line, rectangle, ellipse = 0;
 
 void OnCreate(HWND hWnd)
 {
@@ -27,10 +27,10 @@ void OnCreate(HWND hWnd)
     tbb[3].fsState = TBSTATE_ENABLED;
     tbb[3].fsStyle = TBSTYLE_BUTTON;
     tbb[3].idCommand = ID_TOOL_ELLIPSE;
-    tbb[4].iBitmap = 0;
+    tbb[4].iBitmap = 4;
     tbb[4].fsState = TBSTATE_ENABLED;
     tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
-    tbb[4].idCommand = 0;
+    tbb[4].idCommand = 4;
     hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
         IDC_MY_TOOLBAR,
@@ -55,10 +55,40 @@ void OnSize(HWND hWnd)
     }
 }
 
-void OnToolPoint(HWND hWnd, int currentPress)
+void OnToolPoint(HWND hWnd, int point)
 {
-    currentPress = !currentPress;
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, currentPress);
+    point = !point;
+
+    line, rectangle, ellipse = 0;
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
+}
+
+void OnToolLine(HWND hWnd, int point)
+{
+    line = !line;
+
+    point, rectangle, ellipse = 0;
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
+}
+
+void OnToolRectangle(HWND hWnd, int rectangle)
+{
+    rectangle = !rectangle;
+
+    point, line, ellipse = 0;
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, rectangle);
+}
+
+void OnToolEllipse(HWND hWnd, int ellipse)
+{
+    ellipse = !ellipse;
+
+    line, rectangle, point = 0;
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, ellipse);
 }
 
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)

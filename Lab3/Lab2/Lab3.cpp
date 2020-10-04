@@ -220,21 +220,29 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
+        case ID_TOOL_POINT:
+            OnToolPoint(hWnd, 1);
         case IDM_POINT:
             editorShape.StartPointEditor();
             currentShape = POINT_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
+        case ID_TOOL_LINE:
+            OnToolLine(hWnd, 1);
         case IDM_LINE:
             editorShape.StartLineEditor();
             currentShape = LINE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
+        case ID_TOOL_RECTANGLE:
+            OnToolRectangle(hWnd, 1);
         case IDM_RECTANGLE:
             editorShape.StartRectangleEditor();
             currentShape = RECTANGLE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
+        case ID_TOOL_ELLIPSE:
+            OnToolEllipse(hWnd, 1);
         case IDM_ELLIPSE:
             editorShape.StartEllipseEditor();
             currentShape = ELLIPSE_NAME;
@@ -245,9 +253,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case IDM_EXIT:
             DestroyWindow(hWnd);
-            break;
-        case ID_TOOL_RECTANGLE:
-            //OnToolPoint(hWnd, press);
             break;
         default:
             return DefWindowProcW(hWnd, message, wParam, lParam);
