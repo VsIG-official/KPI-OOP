@@ -297,7 +297,7 @@ void EllipseEditor::OnLBup(HWND hWnd)
 {
 	__super::OnLBup(hWnd);
 	EllipseShape* Ellipse = new EllipseShape;
-	Ellipse->Set(x1, y1, x2, y2);
+	Ellipse->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	pcshape[size] = Ellipse;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
@@ -315,12 +315,12 @@ void EllipseEditor::OnMouseMove(HWND hWnd)
 	SetROP2(hdc, R2_NOTXORPEN);
 	hPen = CreatePen(PS_SOLID, 1, blue);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Ellipse(hdc, x1, y1, x2, y2);
+	Arc(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2, 0, 0, 0, 0);
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
-	Ellipse(hdc, x1, y1, x2, y2);
+	Arc(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2, 0, 0, 0, 0);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 	ReleaseDC(hWnd, hdc);

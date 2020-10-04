@@ -36,13 +36,10 @@ void PointShape::Show(HDC hdc)
 void LineShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
-
 	hPen = CreatePen(PS_SOLID, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-
 	MoveToEx(hdc, xs1, ys1, NULL);
 	LineTo(hdc, xs2, ys2);
-
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }
@@ -75,16 +72,9 @@ void EllipseShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
 	HBRUSH hBrush, hBrushOld;
-	hPen = CreatePen(PS_SOLID, 1, black); // Create pen
+	hPen = CreatePen(PS_SOLID, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-
-	hBrush = CreateSolidBrush(blue);
-	hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
-	SelectObject(hdc, hBrush);
-	Ellipse(hdc, xs1, ys1, xs2, ys2);
-	SelectObject(hdc, hBrushOld);
-	DeleteObject(hBrush);
-
+	Arc(hdc, xs1, ys1, xs2, ys2, 0, 0, 0, 0);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 };
