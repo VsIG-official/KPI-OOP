@@ -45,6 +45,9 @@
     <ClInclude Include="toolbar.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -67,6 +70,9 @@
     <ResourceCompile Include="Lab2.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="toolbar.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -75,10 +81,7 @@
     <Image Include="Lab2.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="bitmap1.bmp">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\BITMAP.ico">
+    <Image Include="..\shapes.bmp">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
