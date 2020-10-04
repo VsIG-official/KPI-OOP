@@ -10,6 +10,9 @@ int point, line, rectangle, ellipse, currentButton = 0;
 const int allShapes = 5;
 int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,currentButton };
 
+static void SetToZeros();
+static void ChangeButton(int button, int shape);
+
 void OnCreate(HWND hWnd)
 {
     TBBUTTON tbb[5];
@@ -58,11 +61,13 @@ void OnSize(HWND hWnd)
     }
 }
 
-static void UnPress(int button)
+void ChangeButton(int button, int shape)
 {
     SendMessage(hwndToolBar, TB_PRESSBUTTON, currentButton, 0);
 
     currentButton = button;
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, currentButton, shape);
 }
 
 void SetToZeros()
@@ -79,9 +84,7 @@ void OnToolPoint(HWND hWnd)
 
     point = !point;
 
-    UnPress(ID_TOOL_POINT);
-
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
+    ChangeButton(ID_TOOL_POINT,point);
 }
 
 void OnToolLine(HWND hWnd)
@@ -90,9 +93,7 @@ void OnToolLine(HWND hWnd)
 
     line = !line;
 
-    UnPress(ID_TOOL_LINE);
-
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
+    ChangeButton(ID_TOOL_LINE,line);
 }
 
 void OnToolRectangle(HWND hWnd)
@@ -101,9 +102,7 @@ void OnToolRectangle(HWND hWnd)
 
     rectangle = !rectangle;
 
-    UnPress(ID_TOOL_RECTANGLE);
-
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_RECTANGLE, rectangle);
+    ChangeButton(ID_TOOL_RECTANGLE,rectangle);
 }
 
 void OnToolEllipse(HWND hWnd)
@@ -112,9 +111,7 @@ void OnToolEllipse(HWND hWnd)
 
     ellipse = !ellipse;
 
-    UnPress(ID_TOOL_ELLIPSE);
-
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
+    ChangeButton(ID_TOOL_ELLIPSE,ellipse);
 }
 
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)

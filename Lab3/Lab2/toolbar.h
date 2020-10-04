@@ -6,10 +6,10 @@
 #define ID_TOOL_ELLIPSE                 32809
 #define IDC_MY_TOOLBAR                  32811
 
-void OnSize(HWND hWnd);
-void OnCreate(HWND hWnd);
-void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
-void OnToolPoint(HWND hWnd);
-void OnToolLine(HWND hWnd);
-void OnToolRectangle(HWND hWnd);
-void OnToolEllipse(HWND hWnd);
+extern void OnSize(HWND hWnd);
+extern void OnCreate(HWND hWnd);
+extern void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
+extern void OnToolPoint(HWND hWnd);
+extern void OnToolLine(HWND hWnd);
+extern void OnToolRectangle(HWND hWnd);
+extern void OnToolEllipse(HWND hWnd);
