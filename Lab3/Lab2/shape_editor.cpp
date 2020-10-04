@@ -6,7 +6,7 @@
 #pragma region Variables
 
 const int Size_Of_Array = 109;
-Shape** pcshape = new Shape * [Size_Of_Array];
+Shape* pcshape[Size_Of_Array];
 int size = 0;
 bool isPressed;
 
