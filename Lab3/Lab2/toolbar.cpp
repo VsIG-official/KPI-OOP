@@ -5,7 +5,7 @@
 #include "resource1.h"
 
 HWND hwndToolBar = NULL;
-int point, line, rectangle, ellipse = 0;
+int point, line, rectangle, ellipse, currentButton = 0;
 
 void OnCreate(HWND hWnd)
 {
@@ -55,16 +55,22 @@ void OnSize(HWND hWnd)
     }
 }
 
+static void UnPress(int button)
+{
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, currentButton, 0);
+
+    currentButton = button;
+}
+
 void OnToolPoint(HWND hWnd)
 {
     point = !point;
 
     line, rectangle, ellipse = 0;
 
+    UnPress(ID_TOOL_POINT);
+
     SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, rectangle, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, line, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ellipse, 0);
 }
 
 void OnToolLine(HWND hWnd)
@@ -73,10 +79,9 @@ void OnToolLine(HWND hWnd)
 
     point, rectangle, ellipse = 0;
 
+    UnPress(ID_TOOL_LINE);
+
     SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, point, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, rectangle, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ellipse, 0);
 }
 
 void OnToolRectangle(HWND hWnd)
@@ -85,10 +90,9 @@ void OnToolRectangle(HWND hWnd)
 
     point, line, ellipse = 0;
 
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, rectangle);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, point, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, line, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ellipse, 0);
+    UnPress(ID_TOOL_RECTANGLE);
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_RECTANGLE, rectangle);
 }
 
 void OnToolEllipse(HWND hWnd)
@@ -97,10 +101,9 @@ void OnToolEllipse(HWND hWnd)
 
     line, rectangle, point = 0;
 
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, ellipse);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, point, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, line, 0);
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, rectangle, 0);
+    UnPress(ID_TOOL_ELLIPSE);
+
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
 }
 
 void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
