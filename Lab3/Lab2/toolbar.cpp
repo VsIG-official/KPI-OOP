@@ -3,9 +3,12 @@
 #include "lab3.h"
 #include "toolbar.h"
 #include "resource1.h"
+#include <iostream>
 
 HWND hwndToolBar = NULL;
 int point, line, rectangle, ellipse, currentButton = 0;
+const int allShapes = 5;
+int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,currentButton };
 
 void OnCreate(HWND hWnd)
 {
@@ -30,7 +33,7 @@ void OnCreate(HWND hWnd)
     tbb[4].iBitmap = 4;
     tbb[4].fsState = TBSTATE_ENABLED;
     tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
-    tbb[4].idCommand = 4;
+    tbb[4].idCommand = 0;
     hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
         IDC_MY_TOOLBAR,
@@ -62,11 +65,19 @@ static void UnPress(int button)
     currentButton = button;
 }
 
+void SetToZeros()
+{
+    for (auto& item : shapes)
+    {
+        item = 0;
+    }
+}
+
 void OnToolPoint(HWND hWnd)
 {
-    point = !point;
+    void SetToZeros();
 
-    line, rectangle, ellipse = 0;
+    point = !point;
 
     UnPress(ID_TOOL_POINT);
 
@@ -75,9 +86,9 @@ void OnToolPoint(HWND hWnd)
 
 void OnToolLine(HWND hWnd)
 {
-    line = !line;
+    void SetToZeros();
 
-    point, rectangle, ellipse = 0;
+    line = !line;
 
     UnPress(ID_TOOL_LINE);
 
@@ -86,9 +97,9 @@ void OnToolLine(HWND hWnd)
 
 void OnToolRectangle(HWND hWnd)
 {
-    rectangle = !rectangle;
+    void SetToZeros();
 
-    point, line, ellipse = 0;
+    rectangle = !rectangle;
 
     UnPress(ID_TOOL_RECTANGLE);
 
@@ -97,9 +108,9 @@ void OnToolRectangle(HWND hWnd)
 
 void OnToolEllipse(HWND hWnd)
 {
-    ellipse = !ellipse;
+    void SetToZeros();
 
-    line, rectangle, point = 0;
+    ellipse = !ellipse;
 
     UnPress(ID_TOOL_ELLIPSE);
 
