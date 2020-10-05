@@ -11,7 +11,7 @@
 
 #define MAX_LOADSTRING 100
 
-#pragma region Variables
+#pragma region VariablesAndFunctions
 
 // Global variables:
 HINSTANCE hInst;                                // Current instance
@@ -26,13 +26,13 @@ const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
 Toolbar toolbar;
 
-#pragma endregion
-
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+#pragma endregion VariablesAndFunctions
 
 #pragma region DefaultFunctions
 
@@ -196,12 +196,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        toolbar.OnCreate(hWnd); //тут створимо Toolbar
+        toolbar.OnCreate(hWnd); // here we will create Toolbar
         break;
-    case WM_SIZE: //це повідомлення надсилається, якщо вікно змінить розмір
+    case WM_SIZE: // this message is sent if the window resizes
         toolbar.OnSize(hWnd);
         break;
-    case WM_NOTIFY: //повідомлення від кнопок
+    case WM_NOTIFY: // message from the buttons
         toolbar.OnNotify(hWnd, lParam);
         break;
     case WM_LBUTTONDOWN:
@@ -215,6 +215,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_PAINT:
         editorShape.OnPaint(hWnd);
+        break;
+    case WM_INITMENUPOPUP:
+        editorShape.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_COMMAND:
     {

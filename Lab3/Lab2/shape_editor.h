@@ -17,6 +17,7 @@ public:
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
 	void OnPaint(HWND);
+	virtual void OnInitMenuPopup(HWND, WPARAM);
 };
 
 /// <summary>
@@ -37,6 +38,7 @@ public:
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
 	void OnPaint(HWND);
+	void OnInitMenuPopup(HWND, WPARAM);
 };
 
 /// <summary>
@@ -46,6 +48,7 @@ class PointEditor : public ShapeEditor
 {
 public:
 	void OnLBup(HWND);
+	void OnInitMenuPopup(HWND, WPARAM);
 };
 
 /// <summary>
@@ -56,6 +59,7 @@ class LineEditor : public ShapeEditor
 public:
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
+	void OnInitMenuPopup(HWND, WPARAM);
 };
 
 /// <summary>
@@ -66,6 +70,7 @@ class RectangleEditor : public ShapeEditor
 public:
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
+	void OnInitMenuPopup(HWND, WPARAM);
 };
 
 /// <summary>
@@ -76,6 +81,7 @@ class EllipseEditor : public ShapeEditor
 public:
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
+	void OnInitMenuPopup(HWND, WPARAM);
 };
 
 #pragma endregion Editors

@@ -6,6 +6,9 @@
 #define ID_TOOL_ELLIPSE                 32809
 #define IDC_MY_TOOLBAR                  32811
 
+/// <summary>
+/// Toolbar class for creating toolbar
+/// </summary>
 class Toolbar
 {
 private:

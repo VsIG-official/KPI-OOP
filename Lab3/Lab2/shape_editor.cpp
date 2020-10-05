@@ -129,6 +129,19 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 	draw->OnPaint(hWnd);
 }
 
+/// <summary>
+/// Sets the mark in figures menu
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
+void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
+{
+	if (pse)
+	{
+		pse->OnInitMenuPopup(hWnd, wParams);
+	}
+}
+
 #pragma endregion ShapeObjectsEditor
 
 #pragma region ShapeEditor
@@ -162,6 +175,13 @@ void ShapeEditor::OnLBup(HWND hWnd)
 	y2 = pt.y;
 	isPressed = FALSE;
 }
+
+/// <summary>
+/// InitMenu Popup
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
+void ShapeEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {};
 
 /// <summary>
 /// Do something on paint
@@ -200,6 +220,20 @@ void PointEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
+{
+	HMENU hMenu, hSubMenu;
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu)
+	{
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+	}
+}
+
 #pragma endregion PointEditor
 
 #pragma region LineEditor
@@ -216,6 +250,55 @@ void LineEditor::OnLBup(HWND hWnd)
 	pcshape[size] = Line;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
+}
+
+
+void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
+{
+	HMENU hMenu, hSubMenu;
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu)
+	{
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+	}
+}
+
+void CheckMenuItem(LPCSTR menuToCheck,HMENU hSubMenu)
+{
+	switch (menuToCheck)
+	{
+	case ("Крапка"):
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+		break;
+	case ("Лінія"):
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+		break;
+	case ("Прямокутник"):
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+		break;
+	case ("Овал"):
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
+		break;
+	default:
+
+		break;
+	}
 }
 
 /// <summary>
@@ -262,6 +345,20 @@ void RectangleEditor::OnLBup(HWND hWnd)
 
 }
 
+void RectangleEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
+{
+	HMENU hMenu, hSubMenu;
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu)
+	{
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+	}
+}
+
 /// <summary>
 /// Do something on Mouse moving
 /// </summary>
@@ -301,6 +398,20 @@ void EllipseEditor::OnLBup(HWND hWnd)
 	pcshape[size] = Ellipse;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
+}
+
+void EllipseEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
+{
+	HMENU hMenu, hSubMenu;
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu)
+	{
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
+	}
 }
 
 /// <summary>
