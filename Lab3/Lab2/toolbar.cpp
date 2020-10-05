@@ -3,7 +3,7 @@
 #include "lab3.h"
 #include "toolbar.h"
 #include "resource1.h"
-#include <iostream>
+//#include <iostream>
 
 #pragma region Variables
 
