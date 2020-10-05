@@ -11,6 +11,7 @@ const int allShapes = 5;
 int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,currentButton };
 
 static void SetToZeros();
+static void SetToOpposite(int value);
 static void ChangeButton(int button, int shape);
 
 void OnCreate(HWND hWnd)
@@ -78,11 +79,16 @@ void SetToZeros()
     }
 }
 
+void SetToOpposite(int value)
+{
+    value = !value;
+}
+
 void OnToolPoint(HWND hWnd)
 {
     void SetToZeros();
 
-    point = !point;
+    SetToOpposite(point);
 
     ChangeButton(ID_TOOL_POINT,point);
 }
@@ -91,7 +97,7 @@ void OnToolLine(HWND hWnd)
 {
     void SetToZeros();
 
-    line = !line;
+    SetToOpposite(line);
 
     ChangeButton(ID_TOOL_LINE,line);
 }
@@ -100,7 +106,7 @@ void OnToolRectangle(HWND hWnd)
 {
     void SetToZeros();
 
-    rectangle = !rectangle;
+    SetToOpposite(rectangle);
 
     ChangeButton(ID_TOOL_RECTANGLE,rectangle);
 }
@@ -109,7 +115,7 @@ void OnToolEllipse(HWND hWnd)
 {
     void SetToZeros();
 
-    ellipse = !ellipse;
+    SetToOpposite(ellipse);
 
     ChangeButton(ID_TOOL_ELLIPSE,ellipse);
 }
