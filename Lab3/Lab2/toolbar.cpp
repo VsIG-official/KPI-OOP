@@ -5,11 +5,21 @@
 #include "resource1.h"
 #include <iostream>
 
+#pragma region Variables
+
 HWND hwndToolBar = NULL;
 int point, line, rectangle, ellipse, buttonToChange = 0;
 const int allShapes = 5;
 int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,buttonToChange };
 
+#pragma endregion Variables
+
+#pragma region Functions
+
+/// <summary>
+/// Creates toolbar
+/// </summary>
+/// <param name="hWnd"></param>
 void Toolbar::OnCreate(HWND hWnd)
 {
     TBBUTTON tbb[5];
@@ -22,7 +32,7 @@ void Toolbar::OnCreate(HWND hWnd)
     tbb[1].fsState = TBSTATE_ENABLED;
     tbb[1].fsStyle = TBSTYLE_BUTTON;
     tbb[1].idCommand = ID_TOOL_LINE;
-    tbb[2].iBitmap = 2; //індекс зображення у BITMAP
+    tbb[2].iBitmap = 2; // image index in BITMAP
     tbb[2].fsState = TBSTATE_ENABLED;
     tbb[2].fsStyle = TBSTYLE_BUTTON;
     tbb[2].idCommand = ID_TOOL_RECTANGLE;
@@ -32,32 +42,41 @@ void Toolbar::OnCreate(HWND hWnd)
     tbb[3].idCommand = ID_TOOL_ELLIPSE;
     tbb[4].iBitmap = 4;
     tbb[4].fsState = TBSTATE_ENABLED;
-    tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
+    tbb[4].fsStyle = TBSTYLE_SEP; // separator of groups of buttons
     tbb[4].idCommand = 0;
     hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
         IDC_MY_TOOLBAR,
-        4, //кількість зображень у BITMAP
+        4, // number of images in BITMAP
         hInst,
-        IDB_BITMAP1, //ID ресурсу BITMAP
+        IDB_BITMAP1, // BITMAP resource ID
         tbb,
-        5, //кількість кнопок (разом з роздільником)
-        24, 24, 24, 24, //розміри кнопок та зображень BITMAP
+        5, // number of buttons (with separator)
+        24, 24, 24, 24, // BITMAP button and image sizes
         sizeof(TBBUTTON));
 }
 
-//---обробник повідомлення WM_SIZE---
+// --- message handler WM_SIZE ---
+/// <summary>
+/// Change size of toolbar
+/// </summary>
+/// <param name="hWnd"></param>
 void Toolbar::OnSize(HWND hWnd)
 {
     RECT rc, rw;
     if (hwndToolBar)
     {
-        GetClientRect(hWnd, &rc); //нові розміри головного вікна
-        GetWindowRect(hwndToolBar, &rw); //нам потрібно знати висоту Toolbar
+        GetClientRect(hWnd, &rc); // new dimensions of the main window
+        GetWindowRect(hwndToolBar, &rw); // we need to know the height of the Toolbar
         MoveWindow(hwndToolBar, 0, 0, rc.right - rc.left, rw.bottom - rw.top, FALSE);
     }
 }
 
+/// <summary>
+/// UnClick button and click button
+/// </summary>
+/// <param name="button"> button to unclick/click </param>
+/// <param name="shape"> shape element </param>
 void Toolbar::ChangeButton(int button, int shape)
 {
     SendMessage(hwndToolBar, TB_PRESSBUTTON, buttonToChange, 0);
@@ -67,6 +86,9 @@ void Toolbar::ChangeButton(int button, int shape)
     SendMessage(hwndToolBar, TB_PRESSBUTTON, buttonToChange, shape);
 }
 
+/// <summary>
+/// Set all elements to zero
+/// </summary>
 void Toolbar::SetToZeros()
 {
     for (auto& item : shapes)
@@ -75,11 +97,18 @@ void Toolbar::SetToZeros()
     }
 }
 
+/// <summary>
+/// Sets value to opposite value
+/// </summary>
+/// <param name="value"></param>
 void Toolbar::SetToOpposite(int value)
 {
     shapes[value] = !shapes[value];
 }
 
+/// <summary>
+/// Function for drawing points with buttons animation
+/// </summary>
 void Toolbar::OnToolPoint()
 {
     SetToZeros();
@@ -89,6 +118,9 @@ void Toolbar::OnToolPoint()
     ChangeButton(ID_TOOL_POINT,shapes[0]);
 }
 
+/// <summary>
+/// Function for drawing lines with buttons animation
+/// </summary>
 void Toolbar::OnToolLine()
 {
     SetToZeros();
@@ -98,6 +130,9 @@ void Toolbar::OnToolLine()
     ChangeButton(ID_TOOL_LINE, shapes[1]);
 }
 
+/// <summary>
+/// Function for drawing rectangles with buttons animation
+/// </summary>
 void Toolbar::OnToolRectangle()
 {
     SetToZeros();
@@ -107,6 +142,9 @@ void Toolbar::OnToolRectangle()
     ChangeButton(ID_TOOL_RECTANGLE, shapes[2]);
 }
 
+/// <summary>
+/// Function for drawing ellipses with buttons animation
+/// </summary>
 void Toolbar::OnToolEllipse()
 {
     SetToZeros();
@@ -116,7 +154,12 @@ void Toolbar::OnToolEllipse()
     ChangeButton(ID_TOOL_ELLIPSE, shapes[3]);
 }
 
-void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
+/// <summary>
+/// Function for tooltips
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="lParam"></param>
+void Toolbar::OnNotify(HWND hWnd, LPARAM lParam)
 {
     LPNMHDR pnmh = (LPNMHDR)lParam;
     LPCSTR pText;
@@ -142,3 +185,5 @@ void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
         lstrcpy(lpttt->szText, pText);
     }
 }
+
+#pragma endregion Functions
