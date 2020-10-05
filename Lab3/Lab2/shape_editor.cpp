@@ -317,7 +317,6 @@ void RectangleEditor::OnLBup(HWND hWnd)
 	pcshape[size] = Rectangle;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
-
 }
 
 /// <summary>
