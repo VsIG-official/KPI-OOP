@@ -252,7 +252,6 @@ void LineEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
-
 void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	HMENU hMenu, hSubMenu;
@@ -264,40 +263,6 @@ void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 		CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
 		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
 		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-	}
-}
-
-void CheckMenuItem(LPCSTR menuToCheck,HMENU hSubMenu)
-{
-	switch (menuToCheck)
-	{
-	case ("Крапка"):
-		CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
-		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		break;
-	case ("Лінія"):
-		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
-		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		break;
-	case ("Прямокутник"):
-		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_CHECKED);
-		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		break;
-	case ("Овал"):
-		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
-		break;
-	default:
-
-		break;
 	}
 }
 

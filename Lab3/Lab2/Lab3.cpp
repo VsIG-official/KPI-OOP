@@ -229,28 +229,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             toolbar.OnToolPoint();
             editorShape.StartPointEditor();
             currentShape = POINT_NAME;
-            ChangeWindowText(hWnd, currentShape);
             break;
         case ID_TOOL_LINE:
         case IDM_LINE:
             toolbar.OnToolLine();
             editorShape.StartLineEditor();
             currentShape = LINE_NAME;
-            ChangeWindowText(hWnd, currentShape);
             break;
         case ID_TOOL_RECTANGLE:
         case IDM_RECTANGLE:
             toolbar.OnToolRectangle();
             editorShape.StartRectangleEditor();
             currentShape = RECTANGLE_NAME;
-            ChangeWindowText(hWnd, currentShape);
             break;
         case ID_TOOL_ELLIPSE:
         case IDM_ELLIPSE:
             toolbar.OnToolEllipse();
             editorShape.StartEllipseEditor();
             currentShape = ELLIPSE_NAME;
-            ChangeWindowText(hWnd, currentShape);
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -270,16 +266,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
-}
-
-/// <summary>
-/// Set main window text
-/// </summary>
-/// <param name="hWnd">window</param>
-/// <param name="name">name</param>
-void ChangeWindowText(HWND hWnd, LPCSTR name)
-{
-    SetWindowTextA(hWnd, name);
 }
 
 #pragma endregion ModifiedFuntions

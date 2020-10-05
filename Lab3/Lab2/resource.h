@@ -20,10 +20,6 @@
 #define IDM_ELLIPSE                     32778
 #define IDC_STATIC                      -1
 
-void ChangeWindowText(HWND hWnd, LPCSTR name);
-void OnCreate(HWND hWnd);
-void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
-
 extern HINSTANCE hInst;
 
 // Next default values for new objects
