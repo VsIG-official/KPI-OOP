@@ -24,6 +24,7 @@ const LPCSTR POINT_NAME = "Крапка";
 const LPCSTR LINE_NAME = "Лінія";
 const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
+Toolbar toolbar;
 
 #pragma endregion
 
@@ -195,13 +196,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        OnCreate(hWnd); //тут створимо Toolbar
+        toolbar.OnCreate(hWnd); //тут створимо Toolbar
         break;
     case WM_SIZE: //це повідомлення надсилається, якщо вікно змінить розмір
-        OnSize(hWnd);
+        toolbar.OnSize(hWnd);
         break;
     case WM_NOTIFY: //повідомлення від кнопок
-        OnNotify(hWnd, wParam, lParam);
+        toolbar.OnNotify(hWnd, wParam, lParam);
         break;
     case WM_LBUTTONDOWN:
         editorShape.OnLBdown(hWnd);
@@ -222,28 +223,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case ID_TOOL_POINT:
         case IDM_POINT:
-            OnToolPoint(hWnd);
+            toolbar.OnToolPoint();
             editorShape.StartPointEditor();
             currentShape = POINT_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case ID_TOOL_LINE:
         case IDM_LINE:
-            OnToolLine(hWnd);
+            toolbar.OnToolLine();
             editorShape.StartLineEditor();
             currentShape = LINE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case ID_TOOL_RECTANGLE:
         case IDM_RECTANGLE:
-            OnToolRectangle(hWnd);
+            toolbar.OnToolRectangle();
             editorShape.StartRectangleEditor();
             currentShape = RECTANGLE_NAME;
             ChangeWindowText(hWnd, currentShape);
             break;
         case ID_TOOL_ELLIPSE:
         case IDM_ELLIPSE:
-            OnToolEllipse(hWnd);
+            toolbar.OnToolEllipse();
             editorShape.StartEllipseEditor();
             currentShape = ELLIPSE_NAME;
             ChangeWindowText(hWnd, currentShape);

@@ -6,15 +6,11 @@
 #include <iostream>
 
 HWND hwndToolBar = NULL;
-int point, line, rectangle, ellipse, currentButton = 0;
+int point, line, rectangle, ellipse, buttonToChange = 0;
 const int allShapes = 5;
-int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,currentButton };
+int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,buttonToChange };
 
-static void SetToZeros();
-static void SetToOpposite(int value);
-static void ChangeButton(int button, int shape);
-
-void OnCreate(HWND hWnd)
+void Toolbar::OnCreate(HWND hWnd)
 {
     TBBUTTON tbb[5];
     ZeroMemory(tbb, sizeof(tbb));
@@ -51,7 +47,7 @@ void OnCreate(HWND hWnd)
 }
 
 //---обробник повідомлення WM_SIZE---
-void OnSize(HWND hWnd)
+void Toolbar::OnSize(HWND hWnd)
 {
     RECT rc, rw;
     if (hwndToolBar)
@@ -62,16 +58,16 @@ void OnSize(HWND hWnd)
     }
 }
 
-void ChangeButton(int button, int shape)
+void Toolbar::ChangeButton(int button, int shape)
 {
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, currentButton, 0);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, buttonToChange, 0);
 
-    currentButton = button;
+    buttonToChange = button;
 
-    SendMessage(hwndToolBar, TB_PRESSBUTTON, currentButton, shape);
+    SendMessage(hwndToolBar, TB_PRESSBUTTON, buttonToChange, shape);
 }
 
-void SetToZeros()
+void Toolbar::SetToZeros()
 {
     for (auto& item : shapes)
     {
@@ -79,48 +75,48 @@ void SetToZeros()
     }
 }
 
-void SetToOpposite(int value)
+void Toolbar::SetToOpposite(int value)
 {
-    value = !value;
+    shapes[value] = !shapes[value];
 }
 
-void OnToolPoint(HWND hWnd)
+void Toolbar::OnToolPoint()
 {
-    void SetToZeros();
+    SetToZeros();
 
-    SetToOpposite(point);
+    SetToOpposite(0);
 
-    ChangeButton(ID_TOOL_POINT,point);
+    ChangeButton(ID_TOOL_POINT,shapes[0]);
 }
 
-void OnToolLine(HWND hWnd)
+void Toolbar::OnToolLine()
 {
-    void SetToZeros();
+    SetToZeros();
 
-    SetToOpposite(line);
+    SetToOpposite(1);
 
-    ChangeButton(ID_TOOL_LINE,line);
+    ChangeButton(ID_TOOL_LINE, shapes[1]);
 }
 
-void OnToolRectangle(HWND hWnd)
+void Toolbar::OnToolRectangle()
 {
-    void SetToZeros();
+    SetToZeros();
 
-    SetToOpposite(rectangle);
+    SetToOpposite(2);
 
-    ChangeButton(ID_TOOL_RECTANGLE,rectangle);
+    ChangeButton(ID_TOOL_RECTANGLE, shapes[2]);
 }
 
-void OnToolEllipse(HWND hWnd)
+void Toolbar::OnToolEllipse()
 {
-    void SetToZeros();
+    SetToZeros();
 
-    SetToOpposite(ellipse);
+    SetToOpposite(3);
 
-    ChangeButton(ID_TOOL_ELLIPSE,ellipse);
+    ChangeButton(ID_TOOL_ELLIPSE, shapes[3]);
 }
 
-void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
+void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
     LPNMHDR pnmh = (LPNMHDR)lParam;
     LPCSTR pText;

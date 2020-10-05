@@ -6,10 +6,18 @@
 #define ID_TOOL_ELLIPSE                 32809
 #define IDC_MY_TOOLBAR                  32811
 
-extern void OnSize(HWND hWnd);
-extern void OnCreate(HWND hWnd);
-extern void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
-extern void OnToolPoint(HWND hWnd);
-extern void OnToolLine(HWND hWnd);
-extern void OnToolRectangle(HWND hWnd);
-extern void OnToolEllipse(HWND hWnd);
+class Toolbar
+{
+private:
+	static void SetToZeros();
+	static void SetToOpposite(int value);
+	static void ChangeButton(int button, int shape);
+public:
+	void OnSize(HWND hWnd);
+	void OnCreate(HWND hWnd);
+	void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnToolPoint();
+	void OnToolLine();
+	void OnToolRectangle();
+	void OnToolEllipse();
+};
