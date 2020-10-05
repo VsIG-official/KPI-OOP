@@ -220,6 +220,11 @@ void PointEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+/// <summary>
+/// Sets the Check
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
 void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	HMENU hMenu, hSubMenu;
@@ -252,6 +257,11 @@ void LineEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+/// <summary>
+/// Sets the Check
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
 void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	HMENU hMenu, hSubMenu;
@@ -310,6 +320,11 @@ void RectangleEditor::OnLBup(HWND hWnd)
 
 }
 
+/// <summary>
+/// Sets the Check
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
 void RectangleEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	HMENU hMenu, hSubMenu;
@@ -365,6 +380,11 @@ void EllipseEditor::OnLBup(HWND hWnd)
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
+/// <summary>
+/// Sets the Check
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
 void EllipseEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	HMENU hMenu, hSubMenu;
