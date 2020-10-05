@@ -15,7 +15,7 @@ private:
 public:
 	void OnSize(HWND hWnd);
 	void OnCreate(HWND hWnd);
-	void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnNotify(HWND hWnd, LPARAM lParam);
 	void OnToolPoint();
 	void OnToolLine();
 	void OnToolRectangle();

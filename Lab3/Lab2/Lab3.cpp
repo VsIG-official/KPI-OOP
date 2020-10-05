@@ -202,7 +202,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         toolbar.OnSize(hWnd);
         break;
     case WM_NOTIFY: //повідомлення від кнопок
-        toolbar.OnNotify(hWnd, wParam, lParam);
+        toolbar.OnNotify(hWnd, lParam);
         break;
     case WM_LBUTTONDOWN:
         editorShape.OnLBdown(hWnd);
