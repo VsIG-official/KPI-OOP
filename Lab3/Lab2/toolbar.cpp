@@ -11,6 +11,11 @@ HWND hwndToolBar = NULL;
 int point, line, rectangle, ellipse, buttonToChange = 0;
 const int allShapes = 5;
 int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,buttonToChange };
+const LPCSTR pointName = "Крапка";
+const LPCSTR lineName = "Лінія";
+const LPCSTR rectangleName = "Прямокутник";
+const LPCSTR ellipseName = "Овал";
+const LPCSTR unnkownName = "Щось невідоме";
 
 #pragma endregion Variables
 
@@ -169,18 +174,18 @@ void Toolbar::OnNotify(HWND hWnd, LPARAM lParam)
         switch (lpttt->hdr.idFrom)
         {
         case ID_TOOL_POINT:
-            pText = "Крапка";
+            pText = pointName;
             break;
         case ID_TOOL_LINE:
-            pText = "Лінія";
+            pText = lineName;
             break;
         case ID_TOOL_RECTANGLE:
-            pText = "Прямокутник";
+            pText = rectangleName;
             break;
         case ID_TOOL_ELLIPSE:
-            pText = "Овал";
+            pText = ellipseName;
             break;
-        default: pText = "Щось невідоме";
+        default: pText = unnkownName;
         }
         lstrcpy(lpttt->szText, pText);
     }
