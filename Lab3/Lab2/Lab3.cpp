@@ -226,22 +226,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wmId)
         {
         case ID_TOOL_POINT:
-        case IDM_POINT:
             toolbar.OnToolPoint();
             editorShape.StartPointEditor();
             break;
         case ID_TOOL_LINE:
-        case IDM_LINE:
             toolbar.OnToolLine();
             editorShape.StartLineEditor();
             break;
         case ID_TOOL_RECTANGLE:
-        case IDM_RECTANGLE:
             toolbar.OnToolRectangle();
             editorShape.StartRectangleEditor();
             break;
         case ID_TOOL_ELLIPSE:
-        case IDM_ELLIPSE:
             toolbar.OnToolEllipse();
             editorShape.StartEllipseEditor();
             break;
@@ -265,6 +261,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
+/// <summary>
+/// Sets the shape name
+/// </summary>
 void SetShape(int ShapeNumber)
 {
     switch (ShapeNumber)

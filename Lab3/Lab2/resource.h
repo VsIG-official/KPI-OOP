@@ -14,10 +14,10 @@
 #define IDI_LAB3                        107
 #define IDI_SMALL                       108
 #define IDC_LAB3                        109
-#define IDM_POINT                       32775
-#define IDM_LINE                        32776
-#define IDM_RECTANGLE                   32777
-#define IDM_ELLIPSE                     32778
+#define IDM_POINT                       32805
+#define IDM_LINE                        32806
+#define IDM_RECTANGLE                   32807
+#define IDM_ELLIPSE                     32809
 #define IDC_STATIC                      -1
 
 extern HINSTANCE hInst;
