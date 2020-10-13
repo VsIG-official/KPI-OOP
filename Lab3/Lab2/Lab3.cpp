@@ -31,7 +31,10 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-void SetShape(int ShapeNumber);
+static void CallToolPoint();
+static void CallToolLine();
+static void CallToolRectangle();
+static void CallToolEllipse();
 
 #pragma endregion VariablesAndFunctions
 
@@ -226,20 +229,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wmId)
         {
         case ID_TOOL_POINT:
-            toolbar.OnToolPoint();
-            editorShape.StartPointEditor();
+            CallToolPoint();
             break;
         case ID_TOOL_LINE:
-            toolbar.OnToolLine();
-            editorShape.StartLineEditor();
+            CallToolLine();
             break;
         case ID_TOOL_RECTANGLE:
-            toolbar.OnToolRectangle();
-            editorShape.StartRectangleEditor();
+            CallToolRectangle();
             break;
         case ID_TOOL_ELLIPSE:
-            toolbar.OnToolEllipse();
-            editorShape.StartEllipseEditor();
+            CallToolEllipse();
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -259,6 +258,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+/// <summary>
+/// Do something when Point tool is used
+/// </summary>
+void CallToolPoint()
+{
+    toolbar.OnToolPoint();
+    editorShape.StartPointEditor();
+}
+
+/// <summary>
+/// Do something when Line tool is used
+/// </summary>
+void CallToolLine()
+{
+    toolbar.OnToolLine();
+    editorShape.StartLineEditor();
+}
+
+/// <summary>
+/// Do something when Rectangle tool is used
+/// </summary>
+void CallToolRectangle()
+{
+    toolbar.OnToolRectangle();
+    editorShape.StartRectangleEditor();
+}
+
+/// <summary>
+/// Do something when Ellipse tool is used
+/// </summary>
+void CallToolEllipse()
+{
+    toolbar.OnToolEllipse();
+    editorShape.StartEllipseEditor();
 }
 
 /// <summary>
