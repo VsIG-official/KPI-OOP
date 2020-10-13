@@ -31,6 +31,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+void SetShape(int ShapeNumber);
 
 #pragma endregion VariablesAndFunctions
 
@@ -128,7 +129,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Save instance marker in global variable
 
-    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
     if (!hWnd)
@@ -228,25 +229,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case IDM_POINT:
             toolbar.OnToolPoint();
             editorShape.StartPointEditor();
-            currentShape = POINT_NAME;
             break;
         case ID_TOOL_LINE:
         case IDM_LINE:
             toolbar.OnToolLine();
             editorShape.StartLineEditor();
-            currentShape = LINE_NAME;
             break;
         case ID_TOOL_RECTANGLE:
         case IDM_RECTANGLE:
             toolbar.OnToolRectangle();
             editorShape.StartRectangleEditor();
-            currentShape = RECTANGLE_NAME;
             break;
         case ID_TOOL_ELLIPSE:
         case IDM_ELLIPSE:
             toolbar.OnToolEllipse();
             editorShape.StartEllipseEditor();
-            currentShape = ELLIPSE_NAME;
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -266,6 +263,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+void SetShape(int ShapeNumber)
+{
+    switch (ShapeNumber)
+    {
+    case(0):
+        currentShape = POINT_NAME;
+        break;
+    case(1):
+        currentShape = LINE_NAME;
+        break;
+    case(2):
+        currentShape = RECTANGLE_NAME;
+        break;
+    case(3):
+        currentShape = ELLIPSE_NAME;
+        break;
+    default:
+        break;
+    }
 }
 
 #pragma endregion ModifiedFuntions

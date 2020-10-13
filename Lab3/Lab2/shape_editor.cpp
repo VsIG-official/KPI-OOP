@@ -45,6 +45,7 @@ void ShapeObjectsEditor::StartPointEditor()
 		delete pse;
 	}
 	pse = new PointEditor;
+	SetShape(0);
 }
 
 /// <summary>
@@ -57,6 +58,7 @@ void ShapeObjectsEditor::StartLineEditor()
 		delete pse;
 	}
 	pse = new LineEditor;
+	SetShape(1);
 }
 
 /// <summary>
@@ -69,6 +71,7 @@ void ShapeObjectsEditor::StartRectangleEditor()
 		delete pse;
 	}
 	pse = new RectangleEditor;
+	SetShape(2);
 }
 
 /// <summary>
@@ -81,6 +84,7 @@ void ShapeObjectsEditor::StartEllipseEditor()
 		delete pse;
 	}
 	pse = new EllipseEditor;
+	SetShape(3);
 }
 
 /// <summary>
