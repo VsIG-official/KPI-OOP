@@ -12,39 +12,56 @@ public:
 	virtual void Show(HDC) = 0;
 };
 
-class PointShape : public Shape
+/// <summary>
+/// Class for points
+/// </summary>
+class PointShape : public virtual Shape
 {
 public:
-	void Show(HDC hdc);
+	void Show(HDC);
 };
 
+/// <summary>
+/// Class for lines
+/// </summary>
 class LineShape : public virtual Shape
 {
 public:
-	virtual void Show(HDC hdc);
+	void Show(HDC);
 };
 
+/// <summary>
+/// Class for rectangles
+/// </summary>
 class RectangleShape : public virtual Shape
 {
 public:
-	virtual void Show(HDC hdc);
+	void Show(HDC);
 };
 
+/// <summary>
+/// Class for ellipses
+/// </summary>
 class EllipseShape : public virtual Shape
 {
 public:
-	virtual void Show(HDC hdc);
+	void Show(HDC);
 };
 
+/// <summary>
+/// Class for rectangles
+/// </summary>
 class LineOOShape : public LineShape, public EllipseShape
 {
 public:
-	virtual void Show(HDC hdc);
+	void Show(HDC);
 };
 
+/// <summary>
+/// Class for ellipses
+/// </summary>
 class CubeShape : public LineShape, public RectangleShape
 {
 public:
-	virtual void Show(HDC hdc);
+	void Show(HDC);
 };
-

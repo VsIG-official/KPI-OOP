@@ -37,6 +37,8 @@ static void CallToolPoint();
 static void CallToolLine();
 static void CallToolRectangle();
 static void CallToolEllipse();
+static void CallToolLineOO();
+static void CallToolCube();
 
 #pragma endregion VariablesAndFunctions
 
@@ -241,6 +243,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case ID_TOOL_ELLIPSE:
             CallToolEllipse();
+            break;
+        case ID_TOOL_LINEOO:
+            CallToolLineOO();
+            break;
+        case ID_TOOL_CUBE:
+            CallToolCube();
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

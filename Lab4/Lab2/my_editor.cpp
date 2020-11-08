@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "pch.h"
 #include "my_editor.h"
-#include "shape.h"
 
 #pragma region Variables
 
@@ -31,10 +30,10 @@ void MyEditor::Start(Shape* shape)
 /// <summary>
 /// Constructor
 /// </summary>
-MyEditor::MyEditor()
-{
-	pse = new PointEditor;
-}
+//MyEditor::MyEditor()
+//{
+//	pse = new PointEditor;
+//}
 
 /// <summary>
 /// Destructor

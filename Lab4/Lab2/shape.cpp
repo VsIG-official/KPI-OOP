@@ -79,4 +79,34 @@ void EllipseShape::Show(HDC hdc)
 	DeleteObject(hPen);
 };
 
+/// <summary>
+/// Shows the ellipse
+/// </summary>
+/// <param name="hdc">handle to a device context</param>
+void LineOOShape::Show(HDC hdc)
+{
+	HPEN hPen, hPenOld;
+	HBRUSH hBrush, hBrushOld;
+	hPen = CreatePen(PS_SOLID, 1, black);
+	hPenOld = (HPEN)SelectObject(hdc, hPen);
+	Arc(hdc, xs1, ys1, xs2, ys2, 0, 0, 0, 0);
+	SelectObject(hdc, hPenOld);
+	DeleteObject(hPen);
+};
+
+/// <summary>
+/// Shows the ellipse
+/// </summary>
+/// <param name="hdc">handle to a device context</param>
+void CubeShape::Show(HDC hdc)
+{
+	HPEN hPen, hPenOld;
+	HBRUSH hBrush, hBrushOld;
+	hPen = CreatePen(PS_SOLID, 1, black);
+	hPenOld = (HPEN)SelectObject(hdc, hPen);
+	Arc(hdc, xs1, ys1, xs2, ys2, 0, 0, 0, 0);
+	SelectObject(hdc, hPenOld);
+	DeleteObject(hPen);
+};
+
 #pragma endregion Functions
