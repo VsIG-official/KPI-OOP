@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "Lab3.h"
 #include "Resource.h"
-#include "shape_editor.h"
+#include "my_editor.h"
 #include "toolbar.h"
 
 #define MAX_LOADSTRING 100
@@ -18,12 +18,14 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
-MyEditor editorShape;
+MyEditor ED;
 LPCSTR currentShape;
 const LPCSTR POINT_NAME = "Крапка";
 const LPCSTR LINE_NAME = "Лінія";
 const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
+const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
+const LPCSTR CUBE_NAME = "Куб";
 Toolbar toolbar;
 
 // Send declarations of functions included in this code module:
@@ -209,19 +211,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         toolbar.OnNotify(hWnd, lParam);
         break;
     case WM_LBUTTONDOWN:
-        editorShape.OnLBdown(hWnd);
+        ED.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        editorShape.OnLBup(hWnd);
+        ED.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
-        editorShape.OnMouseMove(hWnd);
+        ED.OnMouseMove(hWnd);
         break;
     case WM_PAINT:
-        editorShape.OnPaint(hWnd);
+        ED.OnPaint(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        editorShape.OnInitMenuPopup(hWnd, wParam);
+        ED.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_COMMAND:
     {
@@ -266,7 +268,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void CallToolPoint()
 {
     toolbar.OnToolPoint();
-    editorShape.StartPointEditor();
+    ED.Start(new PointShape);
 }
 
 /// <summary>
@@ -275,7 +277,7 @@ void CallToolPoint()
 void CallToolLine()
 {
     toolbar.OnToolLine();
-    editorShape.StartLineEditor();
+    ED.Start(new LineShape);
 }
 
 /// <summary>
@@ -284,7 +286,7 @@ void CallToolLine()
 void CallToolRectangle()
 {
     toolbar.OnToolRectangle();
-    editorShape.StartRectangleEditor();
+    ED.Start(new RectangleShape);
 }
 
 /// <summary>
@@ -293,7 +295,25 @@ void CallToolRectangle()
 void CallToolEllipse()
 {
     toolbar.OnToolEllipse();
-    editorShape.StartEllipseEditor();
+    ED.Start(new EllipseShape);
+}
+
+/// <summary>
+/// Do something when LineOO tool is used
+/// </summary>
+void CallToolLineOO()
+{
+    toolbar.OnToolLineOO();
+    ED.Start(new LineOOShape);
+}
+
+/// <summary>
+/// Do something when Cube tool is used
+/// </summary>
+void CallToolCube()
+{
+    toolbar.OnToolCube();
+    ED.Start(new CubeShape);
 }
 
 /// <summary>
@@ -314,6 +334,12 @@ void SetShape(int ShapeNumber)
         break;
     case(3):
         currentShape = ELLIPSE_NAME;
+        break;
+    case(4):
+        currentShape = LINEOO_NAME;
+        break;
+    case(5):
+        currentShape = CUBE_NAME;
         break;
     default:
         break;

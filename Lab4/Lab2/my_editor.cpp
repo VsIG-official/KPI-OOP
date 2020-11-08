@@ -18,8 +18,11 @@ bool isPressed;
 
 void MyEditor::Start(Shape* shape)
 {
-	pcshape[c] = shape;
-}
+	//ID = id;
+	//if (object) delete object;
+	//object = shape;
+};
+
 
 /// <summary>
 /// Constructor
