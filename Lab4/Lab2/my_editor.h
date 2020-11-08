@@ -26,6 +26,7 @@ public:
 class MyEditor
 {
 private:
+	Shape** pshape;
 	ShapeEditor* pse;
 public:
 	MyEditor(void);

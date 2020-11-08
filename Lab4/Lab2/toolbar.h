@@ -21,8 +21,11 @@ public:
 	void OnSize(HWND hWnd);
 	void OnCreate(HWND hWnd);
 	void OnNotify(HWND hWnd, LPARAM lParam);
+	//void OnToolMove();
 	void OnToolPoint();
 	void OnToolLine();
 	void OnToolRectangle();
 	void OnToolEllipse();
+	void OnToolLineOO();
+	void OnToolCube();
 };

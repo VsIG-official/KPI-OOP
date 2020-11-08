@@ -171,6 +171,30 @@ void Toolbar::OnToolEllipse()
 }
 
 /// <summary>
+/// Function for drawing lines with ellipses with buttons animation
+/// </summary>
+void Toolbar::OnToolLineOO()
+{
+    SetToZeros();
+
+    SetToOpposite(4);
+
+    ChangeButton(ID_TOOL_LINEOO, shapes[4]);
+}
+
+/// <summary>
+/// Function for drawing cubes with buttons animation
+/// </summary>
+void Toolbar::OnToolCube()
+{
+    SetToZeros();
+
+    SetToOpposite(5);
+
+    ChangeButton(ID_TOOL_CUBE, shapes[5]);
+}
+
+/// <summary>
 /// Function for tooltips
 /// </summary>
 /// <param name="hWnd"></param>

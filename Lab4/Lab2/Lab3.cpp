@@ -18,7 +18,7 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
-ShapeObjectsEditor editorShape;
+MyEditor editorShape;
 LPCSTR currentShape;
 const LPCSTR POINT_NAME = "Крапка";
 const LPCSTR LINE_NAME = "Лінія";
