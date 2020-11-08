@@ -30,6 +30,7 @@ private:
 public:
 	MyEditor(void);
 	~MyEditor();
+	void Start(Shape *);
 	void StartPointEditor();
 	void StartLineEditor();
 	void StartRectangleEditor();

@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "pch.h"
-#include "shape_editor.h"
+#include "my_editor.h"
 #include "shape.h"
 
 #pragma region Variables
@@ -15,6 +15,11 @@ bool isPressed;
 #pragma region Functions
 
 #pragma region ShapeObjectsEditor
+
+void MyEditor::Start(Shape* shape)
+{
+	pcshape[c] = shape;
+}
 
 /// <summary>
 /// Constructor
