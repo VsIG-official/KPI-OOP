@@ -2,6 +2,7 @@
 #include "pch.h"
 #include "editor.h"
 #include "Resource.h"
+#include "shape.h"
 
 #pragma region Editors
 
@@ -31,7 +32,7 @@ private:
 public:
 	MyEditor(void);
 	~MyEditor();
-	void Start(Shape *);
+	void Start(Shape* shape);
 	void StartPointEditor();
 	void StartLineEditor();
 	void StartRectangleEditor();
