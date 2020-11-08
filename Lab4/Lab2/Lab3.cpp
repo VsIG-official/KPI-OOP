@@ -304,7 +304,7 @@ void CallToolEllipse()
 void CallToolLineOO()
 {
     toolbar.OnToolLineOO();
-    ED.Start(new LineOOShape);
+    //ED.Start(new LineOOShape);
 }
 
 /// <summary>
@@ -313,7 +313,7 @@ void CallToolLineOO()
 void CallToolCube()
 {
     toolbar.OnToolCube();
-    ED.Start(new CubeShape);
+    //ED.Start(new CubeShape);
 }
 
 /// <summary>

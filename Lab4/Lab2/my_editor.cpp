@@ -16,6 +16,10 @@ bool isPressed;
 
 #pragma region ShapeObjectsEditor
 
+MyEditor::MyEditor(void)
+{
+}
+
 void MyEditor::Start(Shape* shape)
 {
 	//ID = id;
@@ -27,7 +31,7 @@ void MyEditor::Start(Shape* shape)
 /// <summary>
 /// Constructor
 /// </summary>
-ShapeObjectsEditor::ShapeObjectsEditor()
+MyEditor::MyEditor()
 {
 	pse = new PointEditor;
 }
@@ -35,7 +39,7 @@ ShapeObjectsEditor::ShapeObjectsEditor()
 /// <summary>
 /// Destructor
 /// </summary>
-ShapeObjectsEditor::~ShapeObjectsEditor()
+MyEditor::~MyEditor()
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -46,7 +50,7 @@ ShapeObjectsEditor::~ShapeObjectsEditor()
 /// <summary>
 /// Starts the PointEditor
 /// </summary>
-void ShapeObjectsEditor::StartPointEditor()
+void MyEditor::StartPointEditor()
 {
 	if (pse)
 	{
@@ -59,7 +63,7 @@ void ShapeObjectsEditor::StartPointEditor()
 /// <summary>
 /// Starts the LineEditor
 /// </summary>
-void ShapeObjectsEditor::StartLineEditor()
+void MyEditor::StartLineEditor()
 {
 	if (pse)
 	{
@@ -72,7 +76,7 @@ void ShapeObjectsEditor::StartLineEditor()
 /// <summary>
 /// Starts the RectangleEditor
 /// </summary>
-void ShapeObjectsEditor::StartRectangleEditor()
+void MyEditor::StartRectangleEditor()
 {
 	if (pse)
 	{
@@ -85,7 +89,7 @@ void ShapeObjectsEditor::StartRectangleEditor()
 /// <summary>
 /// Starts the EllipseEditor
 /// </summary>
-void ShapeObjectsEditor::StartEllipseEditor()
+void MyEditor::StartEllipseEditor()
 {
 	if (pse)
 	{
@@ -99,7 +103,7 @@ void ShapeObjectsEditor::StartEllipseEditor()
 /// Do something on left mouse button clicked
 /// </summary>
 /// <param name="hWnd">window</param>
-void ShapeObjectsEditor::OnLBdown(HWND hWnd)
+void MyEditor::OnLBdown(HWND hWnd)
 {
 	if (pse)
 	{
@@ -111,7 +115,7 @@ void ShapeObjectsEditor::OnLBdown(HWND hWnd)
 /// Do something on left mouse button unclicked
 /// </summary>
 /// <param name="hWnd">window</param>
-void ShapeObjectsEditor::OnLBup(HWND hWnd)
+void MyEditor::OnLBup(HWND hWnd)
 {
 	if (pse)
 	{
@@ -123,7 +127,7 @@ void ShapeObjectsEditor::OnLBup(HWND hWnd)
 /// Do something on left mouse moving
 /// </summary>
 /// <param name="hWnd">window</param>
-void ShapeObjectsEditor::OnMouseMove(HWND hWnd)
+void MyEditor::OnMouseMove(HWND hWnd)
 {
 	if (pse && isPressed)
 	{
@@ -135,7 +139,7 @@ void ShapeObjectsEditor::OnMouseMove(HWND hWnd)
 /// Do something on paint
 /// </summary>
 /// <param name="hWnd">window</param>
-void ShapeObjectsEditor::OnPaint(HWND hWnd)
+void MyEditor::OnPaint(HWND hWnd)
 {
 	ShapeEditor* draw = new ShapeEditor;
 	draw->OnPaint(hWnd);
@@ -146,7 +150,7 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd)
 /// </summary>
 /// <param name="hWnd"></param>
 /// <param name="wParams"></param>
-void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
+void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	if (pse)
 	{
