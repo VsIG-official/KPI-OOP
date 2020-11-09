@@ -220,6 +220,12 @@ void Toolbar::OnNotify(HWND hWnd, LPARAM lParam)
         case ID_TOOL_ELLIPSE:
             pText = ellipseName;
             break;
+        case ID_TOOL_LINEOO:
+            pText = lineOOName;
+            break;
+        case ID_TOOL_CUBE:
+            pText = cubeName;
+            break;
         default: pText = unnkownName;
         }
         lstrcpy(lpttt->szText, pText);
