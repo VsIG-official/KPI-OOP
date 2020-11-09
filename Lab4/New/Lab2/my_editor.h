@@ -10,13 +10,9 @@
 /// Shape editor class for figures
 /// </summary>
 class MyEditor {
-private:
-	static MyEditor* instance;
-	MyEditor() {};
-	MyEditor(const MyEditor&);
 public:
-	static MyEditor* getInstance();
-	int x1, y1, x2, y2;
+	//MyEditor() {};
+	long x1, y1, x2, y2;
 	~MyEditor();
 	void Start(Shape*);
 	void OnLBdown(HWND);
@@ -25,8 +21,5 @@ public:
 	void OnPaint(HWND);
 	void OnInitMenuPopup(HWND, WPARAM);
 };
-
-//extern Shape** pcshape;
-//extern int c;
 
 #pragma endregion Editors

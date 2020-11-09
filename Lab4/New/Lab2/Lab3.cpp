@@ -27,7 +27,7 @@ const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях
 const LPCSTR CUBE_NAME = "Куб";
 
 Toolbar toolbar;
-MyEditor* ED = MyEditor::getInstance();
+MyEditor ED;
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -40,6 +40,7 @@ static void CallToolRectangle();
 static void CallToolEllipse();
 static void CallToolLineOO();
 static void CallToolCube();
+static void OnWMCreateCall(HWND);
 
 #pragma endregion VariablesAndFunctions
 
@@ -214,19 +215,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         toolbar.OnNotify(hWnd, lParam);
         break;
     case WM_LBUTTONDOWN:
-        if (ED) ED->OnLBdown(hWnd);
+        ED.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        if (ED) ED->OnLBup(hWnd);
+        ED.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
-        if (ED) ED->OnMouseMove(hWnd);
+        ED.OnMouseMove(hWnd);
         break;
     case WM_PAINT:
-        if (ED) ED->OnPaint(hWnd);
+        ED.OnPaint(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        if (ED) ED->OnInitMenuPopup(hWnd, wParam);
+        ED.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_COMMAND:
     {
@@ -286,7 +287,7 @@ void OnWMCreateCall(HWND hWnd)
 void CallToolPoint()
 {
     toolbar.OnToolPoint();
-    if (ED) ED->Start(new PointShape);
+    ED.Start(new PointShape);
 }
 
 /// <summary>
@@ -295,7 +296,7 @@ void CallToolPoint()
 void CallToolLine()
 {
     toolbar.OnToolLine();
-    if (ED) ED->Start(new LineShape);
+    ED.Start(new LineShape);
 }
 
 /// <summary>
@@ -304,7 +305,7 @@ void CallToolLine()
 void CallToolRectangle()
 {
     toolbar.OnToolRectangle();
-    if (ED) ED->Start(new RectangleShape);
+    ED.Start(new RectangleShape);
 }
 
 /// <summary>
@@ -313,7 +314,7 @@ void CallToolRectangle()
 void CallToolEllipse()
 {
     toolbar.OnToolEllipse();
-    if (ED) ED->Start(new EllipseShape);
+    ED.Start(new EllipseShape);
 }
 
 /// <summary>
@@ -322,7 +323,7 @@ void CallToolEllipse()
 void CallToolLineOO()
 {
     toolbar.OnToolLineOO();
-    if (ED) ED->Start(new LineOOShape);
+    ED.Start(new LineOOShape);
 }
 
 /// <summary>
@@ -331,7 +332,7 @@ void CallToolLineOO()
 void CallToolCube()
 {
     toolbar.OnToolCube();
-    if (ED) ED->Start(new CubeShape);
+    ED.Start(new CubeShape);
 }
 
 /// <summary>

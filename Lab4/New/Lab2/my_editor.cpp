@@ -13,27 +13,31 @@ bool isPressed;
 
 #pragma region Functions
 
-#pragma region ShapeObjectsEditor
-
-MyEditor* MyEditor::instance = 0;
-
-MyEditor* MyEditor::getInstance()
-{
-	if (!instance) instance = new MyEditor();
-	return instance;
-}
-
+/// <summary>
+/// Destructor
+/// </summary>
 MyEditor::~MyEditor()
 {
-	for (int i = 0; i < size; i++) delete pcshape[i];
-	delete pcshape;
+	for (int i = 0; i < size; i++)
+	{
+		delete pcshape[i];
+	}
+	delete *pcshape;
 }
 
+/// <summary>
+/// Starts new Shape
+/// </summary>
+/// <param name="shape"></param>
 void MyEditor::Start(Shape* shape)
 {
 	pcshape[size] = shape;
 }
 
+/// <summary>
+/// Do something, when LB is clicked
+/// </summary>
+/// <param name="hWnd"></param>
 void MyEditor::OnLBdown(HWND hWnd)
 {
 	POINT pt;
@@ -44,6 +48,10 @@ void MyEditor::OnLBdown(HWND hWnd)
 	isPressed = true;
 }
 
+/// <summary>
+/// Do something, when LB is unclicked
+/// </summary>
+/// <param name="hWnd"></param>
 void MyEditor::OnLBup(HWND hWnd)
 {
 	POINT pt;
@@ -58,12 +66,15 @@ void MyEditor::OnLBup(HWND hWnd)
 	pcshape[size] = pcshape[size - 1]->Copy();
 }
 
+/// <summary>
+/// Do something, when mouse is moved
+/// </summary>
+/// <param name="hWnd"></param>
 void MyEditor::OnMouseMove(HWND hWnd)
 {
 	if (isPressed)
 	{
 		POINT pt;
-		HPEN hPen, hPenOld;
 		HDC hdc = GetDC(hWnd);
 		SetROP2(hdc, R2_NOTXORPEN);
 		MoveToEx(hdc, x1, y1, NULL);
@@ -80,6 +91,10 @@ void MyEditor::OnMouseMove(HWND hWnd)
 	}
 }
 
+/// <summary>
+/// Do something, when paint is called
+/// </summary>
+/// <param name="hWnd"></param>
 void MyEditor::OnPaint(HWND hWnd)
 {
 	PAINTSTRUCT ps;
@@ -92,6 +107,11 @@ void MyEditor::OnPaint(HWND hWnd)
 	EndPaint(hWnd, &ps);
 }
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParams"></param>
 void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 {
 	HMENU hMenu, hSubMenu;

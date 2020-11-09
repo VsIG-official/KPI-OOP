@@ -226,7 +226,9 @@ void Toolbar::OnNotify(HWND hWnd, LPARAM lParam)
         case ID_TOOL_CUBE:
             pText = cubeName;
             break;
-        default: pText = unnkownName;
+        default: 
+            pText = unnkownName;
+            break;
         }
         lstrcpy(lpttt->szText, pText);
     }
