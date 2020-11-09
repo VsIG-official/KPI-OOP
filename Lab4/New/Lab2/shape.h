@@ -5,7 +5,7 @@
 /// </summary>
 class Shape {
 protected:
-	long xs1, ys1, xs2, ys2;
+	long XS1, YS1, XS2, YS2;
 public:
 	~Shape();
 	void Set(long, long, long, long);

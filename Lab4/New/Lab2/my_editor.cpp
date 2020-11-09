@@ -47,8 +47,8 @@ void MyEditor::OnLBdown(HWND hWnd)
 	POINT pt;
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
-	x1 = x2 = pt.x;
-	y1 = y2 = pt.y;
+	X1 = X2 = pt.x;
+	Y1 = Y2 = pt.y;
 	isPressed = true;
 }
 
@@ -61,10 +61,10 @@ void MyEditor::OnLBup(HWND hWnd)
 	POINT pt;
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
-	x2 = pt.x;
-	y2 = pt.y;
+	X2 = pt.x;
+	Y2 = pt.y;
 	isPressed = false;
-	pcshape[size]->Set(x1, y1, x2, y2);
+	pcshape[size]->Set(X1, Y1, X2, Y2);
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
 	pcshape[size] = pcshape[size - 1]->Copy();
@@ -81,15 +81,15 @@ void MyEditor::OnMouseMove(HWND hWnd)
 		POINT pt;
 		HDC hdc = GetDC(hWnd);
 		SetROP2(hdc, R2_NOTXORPEN);
-		MoveToEx(hdc, x1, y1, NULL);
-		pcshape[size]->Set(x1, y1, x2, y2);
+		MoveToEx(hdc, X1, Y1, NULL);
+		pcshape[size]->Set(X1, Y1, X2, Y2);
 		pcshape[size]->Trail(hdc);
 		GetCursorPos(&pt);
 		ScreenToClient(hWnd, &pt);
-		x2 = pt.x;
-		y2 = pt.y;
-		MoveToEx(hdc, x1, y1, NULL);
-		pcshape[size]->Set(x1, y1, x2, y2);
+		X2 = pt.x;
+		Y2 = pt.y;
+		MoveToEx(hdc, X1, Y1, NULL);
+		pcshape[size]->Set(X1, Y1, X2, Y2);
 		pcshape[size]->Trail(hdc);
 		ReleaseDC(hWnd, hdc);
 	}
@@ -131,22 +131,22 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 		
 		switch (pcshape[size]->InitMenuPopup())
 		{
-		case 0:
+		case ID_TOOL_POINT:
 			CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
 			break;
-		case 1:
+		case ID_TOOL_LINE:
 			CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
 			break;
-		case 2:
+		case ID_TOOL_RECTANGLE:
 			CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_CHECKED);
 			break;
-		case 3:
+		case ID_TOOL_ELLIPSE:
 			CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
 			break;
-		case 4:
+		case ID_TOOL_LINEOO:
 			CheckMenuItem(hSubMenu, IDM_LINEOO, MF_CHECKED);
 			break;
-		case 5:
+		case ID_TOOL_CUBE:
 			CheckMenuItem(hSubMenu, IDM_CUBE, MF_CHECKED);
 			break;
 		}

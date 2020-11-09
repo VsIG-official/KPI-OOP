@@ -12,7 +12,7 @@
 class MyEditor {
 public:
 	//MyEditor() {};
-	long x1, y1, x2, y2;
+	long X1, Y1, X2, Y2;
 	~MyEditor();
 	void Start(Shape*);
 	void OnLBdown(HWND);
