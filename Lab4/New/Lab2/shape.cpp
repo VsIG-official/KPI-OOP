@@ -281,7 +281,6 @@ Shape* LineOOShape::Duplicate()
 /// <param name="hdc"></param>
 void CubeShape::Show(HDC hdc)
 {
-	//long X1, X2, Y1, Y2;
 	X1 = XS1; Y1 = YS1; X2 = XS2; Y2 = YS2;
 	RectangleShape::Set(X1 - cubeInt, Y1 - cubeInt,
 		X1 + cubeInt, Y1 + cubeInt);
@@ -310,26 +309,26 @@ void CubeShape::Show(HDC hdc)
 /// <param name="hdc"></param>
 void CubeShape::Trail(HDC hdc)
 {
-	X1 = XS1; Y1 = YS1;
-	X2 = XS2; Y2 = YS2;
-	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, black);
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Rectangle(hdc, X1 - cubeInt, Y1 - cubeInt,
+	X1 = XS1; Y1 = YS1; X2 = XS2; Y2 = YS2;
+	RectangleShape::Set(X1 - cubeInt, Y1 - cubeInt,
 		X1 + cubeInt, Y1 + cubeInt);
-	Rectangle(hdc, X2 - cubeInt, Y2 - cubeInt,
+	RectangleShape::Trail(hdc);
+	RectangleShape::Set(X2 - cubeInt, Y2 - cubeInt,
 		X2 + cubeInt, Y2 + cubeInt);
-	LineTo(hdc, X1, Y1);
-	MoveToEx(hdc, X1 - cubeInt, Y1 - cubeInt, NULL);
-	LineTo(hdc, X2 - cubeInt, Y2 - cubeInt);
-	MoveToEx(hdc, X1 - cubeInt, Y1 + cubeInt, NULL);
-	LineTo(hdc, X2 - cubeInt, Y2 + cubeInt);
-	MoveToEx(hdc, X1 + cubeInt, Y1 + cubeInt, NULL);
-	LineTo(hdc, X2 + cubeInt, Y2 + cubeInt);
-	MoveToEx(hdc, X1 + cubeInt, Y1 - cubeInt, NULL);
-	LineTo(hdc, X2 + cubeInt, Y2 - cubeInt);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
+	RectangleShape::Trail(hdc);
+	LineShape::Set(X1 - cubeInt, Y1 - cubeInt,
+		X2 - cubeInt, Y2 - cubeInt);
+	LineShape::Trail(hdc);
+	LineShape::Set(X1 - cubeInt, Y1 + cubeInt,
+		X2 - cubeInt, Y2 + cubeInt);
+	LineShape::Trail(hdc);
+	LineShape::Set(X1 + cubeInt, Y1 + cubeInt,
+		X2 + cubeInt, Y2 + cubeInt);
+	LineShape::Trail(hdc);
+	LineShape::Set(X1 + cubeInt, Y1 - cubeInt,
+		X2 + cubeInt, Y2 - cubeInt);
+	LineShape::Trail(hdc);
+	LineShape::Set(X1, Y1, X2, Y2);
 }
 
 /// <summary>
