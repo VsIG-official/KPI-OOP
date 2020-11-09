@@ -11,15 +11,14 @@
 /// </summary>
 class MyEditor {
 public:
-	//MyEditor() {};
-	long X1, Y1, X2, Y2;
-	~MyEditor();
 	void Start(Shape*);
 	void OnLBdown(HWND);
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
 	void OnPaint(HWND);
 	void OnInitMenuPopup(HWND, WPARAM);
+	~MyEditor();
+	long X1, Y1, X2, Y2;
 };
 
 #pragma endregion Editors

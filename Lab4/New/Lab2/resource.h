@@ -23,7 +23,6 @@
 #define IDC_STATIC                      -1
 
 extern HINSTANCE hInst;
-extern void SetShape(int ShapeNumber);
 
 // Next default values for new objects
 //
