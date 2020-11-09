@@ -31,7 +31,7 @@ void PointShape::Show(HDC hdc)
 	SetPixel(hdc, xs1, ys1, black);
 }
 
-void PointShape::RubberTrack(HDC hdc) {}
+void PointShape::Trail(HDC hdc) {}
 
 int PointShape::InitMenuPopup()
 {
@@ -58,7 +58,7 @@ void LineShape::Show(HDC hdc)
 	DeleteObject(hPen);
 }
 
-void LineShape::RubberTrack(HDC hdc)
+void LineShape::Trail(HDC hdc)
 {
 	HPEN hPen, hPenOld;
 	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
@@ -99,7 +99,7 @@ void RectangleShape::Show(HDC hdc)
 	DeleteObject(hPen);
 }
 
-void RectangleShape::RubberTrack(HDC hdc)
+void RectangleShape::Trail(HDC hdc)
 {
 	HPEN hPen, hPenOld;
 	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
@@ -138,7 +138,7 @@ void EllipseShape::Show(HDC hdc)
 	DeleteObject(hPen);
 };
 
-void EllipseShape::RubberTrack(HDC hdc)
+void EllipseShape::Trail(HDC hdc)
 {
 	HPEN hPen, hPenOld;
 	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
@@ -175,7 +175,7 @@ void LineOOShape::Show(HDC hdc)
 	LineShape::Set(x1, y1, x2, y2);
 }
 
-void LineOOShape::RubberTrack(HDC hdc)
+void LineOOShape::Trail(HDC hdc)
 {
 	long x1, x2, y1, y2;
 	x1 = xs1;
@@ -222,7 +222,7 @@ void CubeShape::Show(HDC hdc)
 	LineShape::Set(x1, y1, x2, y2);
 }
 
-void CubeShape::RubberTrack(HDC hdc)
+void CubeShape::Trail(HDC hdc)
 {
 	long x1, x2, y1, y2;
 	x1 = xs1;

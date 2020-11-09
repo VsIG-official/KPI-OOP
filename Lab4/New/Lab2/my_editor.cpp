@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "pch.h"
 #include "my_editor.h"
+#include "toolbar.h"
 
 #pragma region Variables
 
@@ -8,6 +9,9 @@ const int Size_Of_Array = 110;
 Shape* pcshape[Size_Of_Array];
 int size = 0;
 bool isPressed;
+int const menuCount = 6;
+int allMenus[menuCount] = { ID_TOOL_POINT, ID_TOOL_LINE, 
+ID_TOOL_RECTANGLE, ID_TOOL_ELLIPSE, ID_TOOL_LINEOO, ID_TOOL_CUBE};
 
 #pragma endregion Variables
 
@@ -79,14 +83,14 @@ void MyEditor::OnMouseMove(HWND hWnd)
 		SetROP2(hdc, R2_NOTXORPEN);
 		MoveToEx(hdc, x1, y1, NULL);
 		pcshape[size]->Set(x1, y1, x2, y2);
-		pcshape[size]->RubberTrack(hdc);
+		pcshape[size]->Trail(hdc);
 		GetCursorPos(&pt);
 		ScreenToClient(hWnd, &pt);
 		x2 = pt.x;
 		y2 = pt.y;
 		MoveToEx(hdc, x1, y1, NULL);
 		pcshape[size]->Set(x1, y1, x2, y2);
-		pcshape[size]->RubberTrack(hdc);
+		pcshape[size]->Trail(hdc);
 		ReleaseDC(hWnd, hdc);
 	}
 }
@@ -108,7 +112,7 @@ void MyEditor::OnPaint(HWND hWnd)
 }
 
 /// <summary>
-/// 
+/// Change InitMenuPopup
 /// </summary>
 /// <param name="hWnd"></param>
 /// <param name="wParams"></param>
@@ -117,16 +121,15 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 	HMENU hMenu, hSubMenu;
 	hMenu = GetMenu(hWnd);
 	hSubMenu = GetSubMenu(hMenu, 1);
+
 	if ((HMENU)wParams == hSubMenu)
 	{
-		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_RECTANGLE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_LINEOO, MF_UNCHECKED);
-		CheckMenuItem(hSubMenu, IDM_CUBE, MF_UNCHECKED);
-		int smth = pcshape[size]->InitMenuPopup();
-		switch (smth)
+		for (auto& item : allMenus)
+		{
+			CheckMenuItem(hSubMenu, item, MF_UNCHECKED);
+		}
+		
+		switch (pcshape[size]->InitMenuPopup())
 		{
 		case 0:
 			CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
