@@ -53,10 +53,10 @@ int PointShape::InitMenuPopup()
 }
 
 /// <summary>
-/// Function for copying
+/// Function for duplicating
 /// </summary>
 /// <returns></returns>
-Shape* PointShape::Copy()
+Shape* PointShape::Duplicate()
 {
 	return new PointShape();
 }
@@ -101,10 +101,10 @@ int LineShape::InitMenuPopup()
 }
 
 /// <summary>
-/// Function for copying
+/// Function for duplicating
 /// </summary>
 /// <returns></returns>
-Shape* LineShape::Copy()
+Shape* LineShape::Duplicate()
 {
 	return new LineShape();
 }
@@ -157,10 +157,10 @@ int RectangleShape::InitMenuPopup()
 }
 
 /// <summary>
-/// Function for copying
+/// Function for duplicating
 /// </summary>
 /// <returns></returns>
-Shape* RectangleShape::Copy()
+Shape* RectangleShape::Duplicate()
 {
 	return new RectangleShape();
 }
@@ -205,10 +205,10 @@ int EllipseShape::InitMenuPopup()
 }
 
 /// <summary>
-/// Function for copying
+/// Function for duplicating
 /// </summary>
 /// <returns></returns>
-Shape* EllipseShape::Copy()
+Shape* EllipseShape::Duplicate()
 {
 	return new EllipseShape();
 }
@@ -269,10 +269,10 @@ int LineOOShape::InitMenuPopup()
 }
 
 /// <summary>
-/// Function for copying
+/// Function for duplicating
 /// </summary>
 /// <returns></returns>
-Shape* LineOOShape::Copy()
+Shape* LineOOShape::Duplicate()
 {
 	return new LineOOShape();
 }
@@ -347,10 +347,10 @@ int CubeShape::InitMenuPopup()
 }
 
 /// <summary>
-/// Function for copying
+/// Function for duplicating
 /// </summary>
 /// <returns></returns>
-Shape* CubeShape::Copy()
+Shape* CubeShape::Duplicate()
 {
 	return new CubeShape();
 }

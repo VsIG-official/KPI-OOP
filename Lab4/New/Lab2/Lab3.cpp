@@ -335,34 +335,4 @@ void CallToolCube()
     ED.Start(new CubeShape);
 }
 
-/// <summary>
-/// Sets the shape name
-/// </summary>
-void SetShape(int ShapeNumber)
-{
-    switch (ShapeNumber)
-    {
-    case(0):
-        currentShape = POINT_NAME;
-        break;
-    case(1):
-        currentShape = LINE_NAME;
-        break;
-    case(2):
-        currentShape = RECTANGLE_NAME;
-        break;
-    case(3):
-        currentShape = ELLIPSE_NAME;
-        break;
-    case(4):
-        currentShape = LINEOO_NAME;
-        break;
-    case(5):
-        currentShape = CUBE_NAME;
-        break;
-    default:
-        break;
-    }
-}
-
 #pragma endregion ModifiedFuntions

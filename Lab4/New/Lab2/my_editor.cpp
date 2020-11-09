@@ -67,7 +67,7 @@ void MyEditor::OnLBup(HWND hWnd)
 	pcshape[size]->Set(X1, Y1, X2, Y2);
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
-	pcshape[size] = pcshape[size - 1]->Copy();
+	pcshape[size] = pcshape[size - 1]->Duplicate();
 }
 
 /// <summary>
@@ -106,7 +106,10 @@ void MyEditor::OnPaint(HWND hWnd)
 	hdc = BeginPaint(hWnd, &ps);
 	for (int i = 0; i < size; i++)
 	{
-		if (pcshape[i]) pcshape[i]->Show(hdc);
+		if (pcshape[i])
+		{
+			pcshape[i]->Show(hdc);
+		}
 	}
 	EndPaint(hWnd, &ps);
 }
