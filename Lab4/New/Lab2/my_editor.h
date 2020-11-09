@@ -1,6 +1,5 @@
 #pragma once
 #include "pch.h"
-#include "editor.h"
 #include "Resource.h"
 #include "shape.h"
 
