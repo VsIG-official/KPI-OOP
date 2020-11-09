@@ -205,7 +205,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        toolbar.OnCreate(hWnd); // here we will create Toolbar
+        OnWMCreateCall(hWnd);
         break;
     case WM_SIZE: // this message is sent if the window resizes
         toolbar.OnSize(hWnd);
@@ -269,6 +269,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+/// <summary>
+/// Do something when WM_CREATE is called
+/// </summary>
+void OnWMCreateCall(HWND hWnd)
+{
+    toolbar.OnCreate(hWnd); // here we will create Toolbar
+    CallToolPoint();
 }
 
 /// <summary>
