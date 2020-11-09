@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "Lab3.h"
 #include "Resource.h"
-#include "shape_editor.h"
+#include "my_editor.h"
 #include "toolbar.h"
 
 #define MAX_LOADSTRING 100
@@ -18,13 +18,16 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
-ShapeObjectsEditor editorShape;
 LPCSTR currentShape;
 const LPCSTR POINT_NAME = "Крапка";
 const LPCSTR LINE_NAME = "Лінія";
 const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
+const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
+const LPCSTR CUBE_NAME = "Куб";
+
 Toolbar toolbar;
+MyEditor* ED = MyEditor::getInstance();
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -35,6 +38,8 @@ static void CallToolPoint();
 static void CallToolLine();
 static void CallToolRectangle();
 static void CallToolEllipse();
+static void CallToolLineOO();
+static void CallToolCube();
 
 #pragma endregion VariablesAndFunctions
 
@@ -209,19 +214,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         toolbar.OnNotify(hWnd, lParam);
         break;
     case WM_LBUTTONDOWN:
-        editorShape.OnLBdown(hWnd);
+        if (ED) ED->OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        editorShape.OnLBup(hWnd);
+        if (ED) ED->OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
-        editorShape.OnMouseMove(hWnd);
+        if (ED) ED->OnMouseMove(hWnd);
         break;
     case WM_PAINT:
-        editorShape.OnPaint(hWnd);
+        if (ED) ED->OnPaint(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        editorShape.OnInitMenuPopup(hWnd, wParam);
+        if (ED) ED->OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_COMMAND:
     {
@@ -239,6 +244,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case ID_TOOL_ELLIPSE:
             CallToolEllipse();
+            break;
+        case ID_TOOL_LINEOO:
+            CallToolLineOO();
+            break;
+        case ID_TOOL_CUBE:
+            CallToolCube();
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -266,7 +277,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void CallToolPoint()
 {
     toolbar.OnToolPoint();
-    editorShape.StartPointEditor();
+    //ED.Start(new PointShape, ID_TOOL_POINT);
 }
 
 /// <summary>
@@ -275,7 +286,7 @@ void CallToolPoint()
 void CallToolLine()
 {
     toolbar.OnToolLine();
-    editorShape.StartLineEditor();
+    //ED.Start(new LineShape, ID_TOOL_LINE);
 }
 
 /// <summary>
@@ -284,7 +295,7 @@ void CallToolLine()
 void CallToolRectangle()
 {
     toolbar.OnToolRectangle();
-    editorShape.StartRectangleEditor();
+    //ED.Start(new RectangleShape, ID_TOOL_RECTANGLE);
 }
 
 /// <summary>
@@ -293,7 +304,25 @@ void CallToolRectangle()
 void CallToolEllipse()
 {
     toolbar.OnToolEllipse();
-    editorShape.StartEllipseEditor();
+    //ED.Start(new EllipseShape, ID_TOOL_ELLIPSE);
+}
+
+/// <summary>
+/// Do something when LineOO tool is used
+/// </summary>
+void CallToolLineOO()
+{
+    toolbar.OnToolLineOO();
+    //ED.Start(new LineOOShape, ID_TOOL_LINEOO);
+}
+
+/// <summary>
+/// Do something when Cube tool is used
+/// </summary>
+void CallToolCube()
+{
+    toolbar.OnToolCube();
+    //ED.Start(new CubeShape, ID_TOOL_CUBE);
 }
 
 /// <summary>
@@ -314,6 +343,12 @@ void SetShape(int ShapeNumber)
         break;
     case(3):
         currentShape = ELLIPSE_NAME;
+        break;
+    case(4):
+        currentShape = LINEOO_NAME;
+        break;
+    case(5):
+        currentShape = CUBE_NAME;
         break;
     default:
         break;

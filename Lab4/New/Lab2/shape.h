@@ -3,47 +3,65 @@
 /// <summary>
 /// Main class for shapes
 /// </summary>
-class Shape
-{
+class Shape {
 protected:
 	long xs1, ys1, xs2, ys2;
 public:
-	void Set(long x1, long y1, long x2, long y2);
+	~Shape();
+	void Set(long, long, long, long);
 	virtual void Show(HDC) = 0;
+	virtual Shape* Copy() = 0;
+	virtual void RubberTrack(HDC) = 0;
+	virtual int InitMenuPopup() = 0;
 };
 
-/// <summary>
-/// Class for points
-/// </summary>
 class PointShape : public Shape
 {
-public:
 	void Show(HDC);
+	virtual Shape* Copy();
+	void RubberTrack(HDC);
+	int InitMenuPopup();
 };
 
-/// <summary>
-/// Class for lines
-/// </summary>
-class LineShape : public Shape
+class LineShape : public virtual Shape
 {
 public:
-	void Show(HDC);
+	virtual void Show(HDC);
+	virtual Shape* Copy();
+	void RubberTrack(HDC);
+	int InitMenuPopup();
 };
 
-/// <summary>
-/// Class for rectangles
-/// </summary>
-class RectangleShape : public Shape
+class RectangleShape : public virtual Shape
 {
 public:
-	void Show(HDC);
+	virtual void Show(HDC);
+	virtual Shape* Copy();
+	void RubberTrack(HDC);
+	int InitMenuPopup();
 };
 
-/// <summary>
-/// Class for ellipses
-/// </summary>
-class EllipseShape : public Shape
+class EllipseShape : public virtual Shape
 {
 public:
+	virtual void Show(HDC);
+	virtual Shape* Copy();
+	void RubberTrack(HDC);
+	int InitMenuPopup();
+};
+
+class LineOOShape : public LineShape, public EllipseShape {
+public:
 	void Show(HDC);
+	virtual Shape* Copy();
+	void RubberTrack(HDC);
+	int InitMenuPopup();
+};
+
+class CubeShape : public RectangleShape, public LineShape {
+public:
+	void Show(HDC);
+	virtual Shape* Copy();
+	void RubberTrack(HDC);
+	int InitMenuPopup();
 };

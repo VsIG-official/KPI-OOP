@@ -53,7 +53,7 @@ void Toolbar::OnCreate(HWND hWnd)
     tbb[4].idCommand = ID_TOOL_LINEOO;
     tbb[5].iBitmap = 5;
     tbb[5].fsState = TBSTATE_ENABLED;
-    tbb[5].fsStyle = TBSTYLE_BUTTON; // separator of groups of buttons
+    tbb[5].fsStyle = TBSTYLE_BUTTON;
     tbb[5].idCommand = ID_TOOL_CUBE;
     tbb[6].iBitmap = 6;
     tbb[6].fsState = TBSTATE_ENABLED;

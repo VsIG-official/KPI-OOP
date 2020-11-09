@@ -4,8 +4,8 @@
 #define ID_TOOL_LINE                    32806
 #define ID_TOOL_RECTANGLE               32807
 #define ID_TOOL_ELLIPSE                 32809
-#define ID_TOOL_LINEOO                  32822
-#define ID_TOOL_CUBE                    32823
+#define ID_TOOL_LINEOO                  32781
+#define ID_TOOL_CUBE                    32782
 #define IDC_MY_TOOLBAR                  32811
 
 /// <summary>
