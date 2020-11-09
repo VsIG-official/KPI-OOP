@@ -7,13 +7,16 @@
 #pragma region Variables
 
 HWND hwndToolBar = NULL;
-int point, line, rectangle, ellipse, buttonToChange = 0;
-const int allShapes = 5;
-int shapes[allShapes] = { point ,line ,rectangle ,ellipse ,buttonToChange };
+int point, line, rectangle, ellipse, lineOO, cube, buttonToChange = 0;
+const int allShapes = 7;
+int shapes[allShapes] = { point, line, rectangle, ellipse,
+                            lineOO, cube, buttonToChange };
 const LPCSTR pointName = "Крапка";
 const LPCSTR lineName = "Лінія";
 const LPCSTR rectangleName = "Прямокутник";
 const LPCSTR ellipseName = "Овал";
+const LPCSTR lineOOName = "Лінія з кружочками на кінцях";
+const LPCSTR cubeName = "Куб";
 const LPCSTR unnkownName = "Щось невідоме";
 
 #pragma endregion Variables
@@ -26,7 +29,7 @@ const LPCSTR unnkownName = "Щось невідоме";
 /// <param name="hWnd"></param>
 void Toolbar::OnCreate(HWND hWnd)
 {
-    TBBUTTON tbb[5];
+    TBBUTTON tbb[7];
     ZeroMemory(tbb, sizeof(tbb));
     tbb[0].iBitmap = 0;
     tbb[0].fsState = TBSTATE_ENABLED;
@@ -46,16 +49,25 @@ void Toolbar::OnCreate(HWND hWnd)
     tbb[3].idCommand = ID_TOOL_ELLIPSE;
     tbb[4].iBitmap = 4;
     tbb[4].fsState = TBSTATE_ENABLED;
-    tbb[4].fsStyle = TBSTYLE_SEP; // separator of groups of buttons
-    tbb[4].idCommand = 0;
+    tbb[4].fsStyle = TBSTYLE_BUTTON;
+    tbb[4].idCommand = ID_TOOL_LINEOO;
+    tbb[5].iBitmap = 5;
+    tbb[5].fsState = TBSTATE_ENABLED;
+    tbb[5].fsStyle = TBSTYLE_BUTTON; // separator of groups of buttons
+    tbb[5].idCommand = ID_TOOL_CUBE;
+    tbb[6].iBitmap = 6;
+    tbb[6].fsState = TBSTATE_ENABLED;
+    tbb[6].fsStyle = TBSTYLE_SEP; // separator of groups of buttons
+    tbb[6].idCommand = 0;
+
     hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
         IDC_MY_TOOLBAR,
-        4, // number of images in BITMAP
+        6, // number of images in BITMAP
         hInst,
         IDB_BITMAP1, // BITMAP resource ID
         tbb,
-        5, // number of buttons (with separator)
+        7, // number of buttons (with separator)
         24, 24, 24, 24, // BITMAP button and image sizes
         sizeof(TBBUTTON));
 }
@@ -119,7 +131,7 @@ void Toolbar::OnToolPoint()
 
     SetToOpposite(0);
 
-    ChangeButton(ID_TOOL_POINT,shapes[0]);
+    ChangeButton(ID_TOOL_POINT, shapes[0]);
 }
 
 /// <summary>
@@ -156,6 +168,30 @@ void Toolbar::OnToolEllipse()
     SetToOpposite(3);
 
     ChangeButton(ID_TOOL_ELLIPSE, shapes[3]);
+}
+
+/// <summary>
+/// Function for drawing lines with ellipses with buttons animation
+/// </summary>
+void Toolbar::OnToolLineOO()
+{
+    SetToZeros();
+
+    SetToOpposite(4);
+
+    ChangeButton(ID_TOOL_LINEOO, shapes[4]);
+}
+
+/// <summary>
+/// Function for drawing cubes with buttons animation
+/// </summary>
+void Toolbar::OnToolCube()
+{
+    SetToZeros();
+
+    SetToOpposite(5);
+
+    ChangeButton(ID_TOOL_CUBE, shapes[5]);
 }
 
 /// <summary>
