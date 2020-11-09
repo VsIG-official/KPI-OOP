@@ -26,7 +26,7 @@ public:
 	void OnInitMenuPopup(HWND, WPARAM);
 };
 
-extern Shape** pcshape;
+//extern Shape** pcshape;
 //extern int c;
 
 #pragma endregion Editors

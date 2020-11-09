@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "pch.h"
 #include "my_editor.h"
-//#include "shape.h"
 
 #pragma region Variables
 
@@ -69,14 +68,14 @@ void MyEditor::OnMouseMove(HWND hWnd)
 		SetROP2(hdc, R2_NOTXORPEN);
 		MoveToEx(hdc, x1, y1, NULL);
 		pcshape[size]->Set(x1, y1, x2, y2);
-		//pcshape[size]->RubberTrack(hdc);
+		pcshape[size]->RubberTrack(hdc);
 		GetCursorPos(&pt);
 		ScreenToClient(hWnd, &pt);
 		x2 = pt.x;
 		y2 = pt.y;
 		MoveToEx(hdc, x1, y1, NULL);
 		pcshape[size]->Set(x1, y1, x2, y2);
-		//pcshape[size]->RubberTrack(hdc);
+		pcshape[size]->RubberTrack(hdc);
 		ReleaseDC(hWnd, hdc);
 	}
 }

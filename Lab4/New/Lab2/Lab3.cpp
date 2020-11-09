@@ -277,7 +277,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void CallToolPoint()
 {
     toolbar.OnToolPoint();
-    //ED.Start(new PointShape, ID_TOOL_POINT);
+    if (ED) ED->Start(new PointShape);
 }
 
 /// <summary>
@@ -286,7 +286,7 @@ void CallToolPoint()
 void CallToolLine()
 {
     toolbar.OnToolLine();
-    //ED.Start(new LineShape, ID_TOOL_LINE);
+    if (ED) ED->Start(new LineShape);
 }
 
 /// <summary>
@@ -295,7 +295,7 @@ void CallToolLine()
 void CallToolRectangle()
 {
     toolbar.OnToolRectangle();
-    //ED.Start(new RectangleShape, ID_TOOL_RECTANGLE);
+    if (ED) ED->Start(new RectangleShape);
 }
 
 /// <summary>
@@ -304,7 +304,7 @@ void CallToolRectangle()
 void CallToolEllipse()
 {
     toolbar.OnToolEllipse();
-    //ED.Start(new EllipseShape, ID_TOOL_ELLIPSE);
+    if (ED) ED->Start(new EllipseShape);
 }
 
 /// <summary>
@@ -313,7 +313,7 @@ void CallToolEllipse()
 void CallToolLineOO()
 {
     toolbar.OnToolLineOO();
-    //ED.Start(new LineOOShape, ID_TOOL_LINEOO);
+    if (ED) ED->Start(new LineOOShape);
 }
 
 /// <summary>
@@ -322,7 +322,7 @@ void CallToolLineOO()
 void CallToolCube()
 {
     toolbar.OnToolCube();
-    //ED.Start(new CubeShape, ID_TOOL_CUBE);
+    if (ED) ED->Start(new CubeShape);
 }
 
 /// <summary>
