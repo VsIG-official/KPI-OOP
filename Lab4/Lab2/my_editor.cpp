@@ -46,53 +46,56 @@ MyEditor::~MyEditor()
 	delete pcshape;
 }
 
-/// <summary>
-/// Do something on left mouse button clicked
-/// </summary>
-/// <param name="hWnd">window</param>
-void MyEditor::OnLBdown(HWND hWnd)
-{
-	if (object)
-	{
-		object->OnLBdown(hWnd);
+void MyEditor::OnLBdown(HWND hWnd) {
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x1 = x2 = pt.x;
+	y1 = y2 = pt.y;
+	isPressed = true;
+}
+
+void MyEditor::OnLBup(HWND hWnd) {
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	x2 = pt.x;
+	y2 = pt.y;
+	isPressed = false;
+	pcshape[size]->Set(x1, y1, x2, y2);
+	size++;
+	InvalidateRect(hWnd, NULL, TRUE);
+}
+
+void MyEditor::OnMouseMove(HWND hWnd) {
+	if (isPressed) {
+		POINT pt;
+		HPEN hPen, hPenOld;
+		HDC hdc = GetDC(hWnd);
+		SetROP2(hdc, R2_NOTXORPEN);
+		MoveToEx(hdc, x1, y1, NULL);
+		pcshape[size]->Set(x1, y1, x2, y2);
+		//pcshape[size]->RubberTrack(hdc);
+		GetCursorPos(&pt);
+		ScreenToClient(hWnd, &pt);
+		x2 = pt.x;
+		y2 = pt.y;
+		MoveToEx(hdc, x1, y1, NULL);
+		pcshape[size]->Set(x1, y1, x2, y2);
+		//pcshape[c]->RubberTrack(hdc);
+		ReleaseDC(hWnd, hdc);
 	}
 }
 
-/// <summary>
-/// Do something on left mouse button unclicked
-/// </summary>
-/// <param name="hWnd">window</param>
-void MyEditor::OnLBup(HWND hWnd)
-{
-	Add(*&object);
-	if (object)
-		object = object->OnLBup(hWnd);
-};
-
-/// <summary>
-/// Do something on left mouse moving
-/// </summary>
-/// <param name="hWnd">window</param>
-void MyEditor::OnMouseMove(HWND hWnd)
-{
-	if (object) object->OnMouseMove(hWnd);
-};
-
-/// <summary>
-/// Do something on paint
-/// </summary>
-/// <param name="hWnd">window</param>
-void MyEditor::OnPaint(HWND hWnd)
-{
+void MyEditor::OnPaint(HWND hWnd) {
 	PAINTSTRUCT ps;
 	HDC hdc;
 	hdc = BeginPaint(hWnd, &ps);
-	for (int i = 0; i < Size_Of_Array; i++)
-		if (i < size)
-			ReturnObject(i)->Show(hdc);
+	for (int i = 0; i < size; i++) {
+		if (pcshape[i]) pcshape[i]->Show(hdc);
+	}
 	EndPaint(hWnd, &ps);
-	ReleaseDC(hWnd, hdc);
-};
+}
 
 /// <summary>
 /// Sets the mark in figures menu
