@@ -8,6 +8,7 @@
 
 int lineOOInt = 20;
 int cubeInt = 50;
+long X1, X2, Y1, Y2;
 
 #pragma endregion Variables
 
@@ -175,7 +176,7 @@ void EllipseShape::Show(HDC hdc)
 	HBRUSH hBrush, hBrushOld;
 	hPen = CreatePen(PS_SOLID, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Arc(hdc, XS1, YS1, XS2, YS2, 0, 0, 0, 0);
+	Arc(hdc, 2 * XS1 - XS2, 2 * YS1 - YS2, XS2, YS2, 0, 0, 0, 0);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 };
@@ -190,7 +191,8 @@ void EllipseShape::Trail(HDC hdc)
 	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	MoveToEx(hdc, XS1, YS1, NULL);
-	Ellipse(hdc, XS1, YS1, XS2, YS2);
+	Arc(hdc, 2 * XS1 - XS2, 2 * YS1 - YS2, XS2, YS2, 0, 0, 0, 0);
+
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }
@@ -219,17 +221,16 @@ Shape* EllipseShape::Duplicate()
 /// <param name="hdc"></param>
 void LineOOShape::Show(HDC hdc)
 {
-	long X1, X2, Y1, Y2;
 	X1 = XS1;
 	Y1 = YS1;
 	X2 = XS2;
 	Y2 = YS2;
 	LineShape::Set(X1, Y1, X2, Y2);
 	LineShape::Show(hdc);
-	EllipseShape::Set(X1 + lineOOInt, Y1 + lineOOInt, 
+	EllipseShape::Set(X1, Y1, 
 		X1 - lineOOInt, Y1 - lineOOInt);
 	EllipseShape::Show(hdc);
-	EllipseShape::Set(X2 + lineOOInt, Y2 + lineOOInt,
+	EllipseShape::Set(X2, Y2,
 		X2 - lineOOInt, Y2 - lineOOInt);
 	EllipseShape::Show(hdc);
 	LineShape::Set(X1, Y1, X2, Y2);
@@ -241,22 +242,19 @@ void LineOOShape::Show(HDC hdc)
 /// <param name="hdc"></param>
 void LineOOShape::Trail(HDC hdc)
 {
-	long X1, X2, Y1, Y2;
 	X1 = XS1;
 	Y1 = YS1;
 	X2 = XS2;
 	Y2 = YS2;
-	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, black);
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	MoveToEx(hdc, X1, Y1, NULL);
-	LineTo(hdc, X2, Y2);
-	Ellipse(hdc, X1 + lineOOInt, Y1 + lineOOInt,
+	LineShape::Set(X1, Y1, X2, Y2);
+	LineShape::Trail(hdc);
+	EllipseShape::Set(X1, Y1,
 		X1 - lineOOInt, Y1 - lineOOInt);
-	Ellipse(hdc, X2 + lineOOInt, Y2 + lineOOInt,
+	EllipseShape::Trail(hdc);
+	EllipseShape::Set(X2, Y2,
 		X2 - lineOOInt, Y2 - lineOOInt);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
+	EllipseShape::Trail(hdc);
+	LineShape::Set(X1, Y1, X2, Y2);
 }
 
 /// <summary>
@@ -283,7 +281,7 @@ Shape* LineOOShape::Duplicate()
 /// <param name="hdc"></param>
 void CubeShape::Show(HDC hdc)
 {
-	long X1, X2, Y1, Y2;
+	//long X1, X2, Y1, Y2;
 	X1 = XS1; Y1 = YS1; X2 = XS2; Y2 = YS2;
 	RectangleShape::Set(X1 - cubeInt, Y1 - cubeInt,
 		X1 + cubeInt, Y1 + cubeInt);
@@ -312,11 +310,8 @@ void CubeShape::Show(HDC hdc)
 /// <param name="hdc"></param>
 void CubeShape::Trail(HDC hdc)
 {
-	long X1, X2, Y1, Y2;
-	X1 = XS1;
-	Y1 = YS1;
-	X2 = XS2;
-	Y2 = YS2;
+	X1 = XS1; Y1 = YS1;
+	X2 = XS2; Y2 = YS2;
 	HPEN hPen, hPenOld;
 	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
