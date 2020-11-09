@@ -20,6 +20,8 @@ void Shape::Set(long x1, long y1, long x2, long y2)
 	ys2 = y2;
 }
 
+#pragma region Point
+
 /// <summary>
 /// Shows the pixel
 /// </summary>
@@ -28,6 +30,27 @@ void PointShape::Show(HDC hdc)
 {
 	SetPixel(hdc, xs1, ys1, black);
 }
+
+void PointShape::OnLBdown(HWND hWnd)
+{
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	int x = pt.x;
+	int y = pt.y;
+	this->Set(x, y, x, y);
+	InvalidateRect(hWnd, NULL, TRUE);
+}
+Shape* PointShape::OnLBup(HWND hWnd)
+{
+	return 	new PointShape;
+}
+
+void PointShape::OnMouseMove(HWND hWnd) {};
+
+#pragma endregion Point
+
+#pragma region Line
 
 /// <summary>
 /// Shows the line
@@ -43,6 +66,62 @@ void LineShape::Show(HDC hdc)
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }
+
+void LineShape::OnLBdown(HWND hWnd)
+{
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	xstart = pt.x;
+	ystart = pt.y;
+	start = TRUE;
+	InvalidateRect(hWnd, NULL, TRUE);
+}
+void LineShape::OnMouseMove(HWND hWnd)
+{
+	if (start)
+	{
+		HDC hdc;
+		HPEN hPenOld, hPen;
+		POINT pt;
+		hdc = GetDC(hWnd);
+		SetROP2(hdc, R2_NOTXORPEN);
+		hPen = CreatePen(PS_DASH, 1, RGB(255, 0, 0));
+		hPenOld = (HPEN)SelectObject(hdc, hPen);
+		if (xend, yend)
+		{
+			this->Set(xstart, ystart, xend, yend);
+			this->Show(hdc);
+		}
+		GetCursorPos(&pt);
+		ScreenToClient(hWnd, &pt);
+		xend = pt.x;
+		yend = pt.y;
+		this->Set(xstart, ystart, xend, yend);
+		this->Show(hdc);
+		SelectObject(hdc, hPenOld);
+		DeleteObject(hPen);
+		ReleaseDC(hWnd, hdc);
+	}
+}
+Shape* LineShape::OnLBup(HWND hWnd)
+{
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	start = FALSE;
+	xstart = NULL;
+	ystart = NULL;
+	xend = NULL;
+	yend = NULL;
+	InvalidateRect(hWnd, NULL, TRUE);
+	return new LineShape;
+}
+
+
+#pragma endregion Line
+
+#pragma region Rectangle
 
 /// <summary>
 /// Shows the rectangle
@@ -64,6 +143,10 @@ void RectangleShape::Show(HDC hdc)
 	DeleteObject(hPen);
 }
 
+#pragma endregion Rectangle
+
+#pragma region Ellipse
+
 /// <summary>
 /// Shows the ellipse
 /// </summary>
@@ -78,6 +161,10 @@ void EllipseShape::Show(HDC hdc)
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 };
+
+#pragma endregion Ellipse
+
+#pragma region LineOO
 
 /// <summary>
 /// Shows the ellipse
@@ -94,6 +181,10 @@ void LineOOShape::Show(HDC hdc)
 	DeleteObject(hPen);
 };
 
+#pragma endregion LineOO
+
+#pragma region Cube
+
 /// <summary>
 /// Shows the ellipse
 /// </summary>
@@ -108,5 +199,9 @@ void CubeShape::Show(HDC hdc)
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 };
+
+#pragma endregion Cube
+
+Shape::~Shape() {};
 
 #pragma endregion Functions

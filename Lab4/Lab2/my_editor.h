@@ -7,36 +7,13 @@
 #pragma region Editors
 
 /// <summary>
-/// Shape editor class for figures
-/// </summary>
-class ShapeEditor : public Editor
-{
-protected:
-	long x1, x2, y1, y2;
-public:
-	void OnLBdown(HWND);
-	void OnLBup(HWND);
-	void OnMouseMove(HWND);
-	void OnPaint(HWND);
-	virtual void OnInitMenuPopup(HWND, WPARAM);
-};
-
-/// <summary>
 /// Shape editor class for figure objects
 /// </summary>
 class MyEditor
 {
 private:
-	Shape** pshape;
-	ShapeEditor* pse;
 public:
-	MyEditor(void);
 	~MyEditor();
-	void Start(Shape* shape);
-	void StartPointEditor();
-	void StartLineEditor();
-	void StartRectangleEditor();
-	void StartEllipseEditor();
 	void OnLBdown(HWND);
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
@@ -44,49 +21,7 @@ public:
 	void OnInitMenuPopup(HWND, WPARAM);
 	void Add(Shape* object);
 	Shape* ReturnObject(int i);
-};
-
-/// <summary>
-/// Point editor class for points
-/// </summary>
-class PointEditor : public ShapeEditor
-{
-public:
-	void OnLBup(HWND);
-	void OnInitMenuPopup(HWND, WPARAM);
-};
-
-/// <summary>
-/// Line editor class for lines
-/// </summary>
-class LineEditor : public ShapeEditor
-{
-public:
-	void OnLBup(HWND);
-	void OnMouseMove(HWND);
-	void OnInitMenuPopup(HWND, WPARAM);
-};
-
-/// <summary>
-/// Rectangle editor class for rectangles
-/// </summary>
-class RectangleEditor : public ShapeEditor
-{
-public:
-	void OnLBup(HWND);
-	void OnMouseMove(HWND);
-	void OnInitMenuPopup(HWND, WPARAM);
-};
-
-/// <summary>
-/// Ellipse editor class for ellipses
-/// </summary>
-class EllipseEditor : public ShapeEditor
-{
-public:
-	void OnLBup(HWND);
-	void OnMouseMove(HWND);
-	void OnInitMenuPopup(HWND, WPARAM);
+	void Start(Shape* shape,int id);
 };
 
 #pragma endregion Editors
