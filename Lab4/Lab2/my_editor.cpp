@@ -24,14 +24,14 @@ void MyEditor::Start(Shape* shape,int id)
 	object = shape;
 };
 
-void MyEditor::Add(Shape* object)
-{
-	if (size < Size_Of_Array)
-	{
-		pcshape[size] = *&object;
-		size++;
-	}
-}
+//void MyEditor::Add(Shape* object)
+//{
+//	if (size < Size_Of_Array)
+//	{
+//		pcshape[size] = *&object;
+//		size++;
+//	}
+//}
 
 Shape* MyEditor::ReturnObject(int i)
 {

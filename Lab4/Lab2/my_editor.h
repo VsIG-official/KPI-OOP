@@ -13,13 +13,14 @@ class MyEditor
 {
 private:
 public:
+	long x1, x2, y1, y2;
 	~MyEditor();
 	void OnLBdown(HWND);
 	void OnLBup(HWND);
 	void OnMouseMove(HWND);
 	void OnPaint(HWND);
 	void OnInitMenuPopup(HWND, WPARAM);
-	void Add(Shape* object);
+	//void Add(Shape* object);
 	Shape* ReturnObject(int i);
 	void Start(Shape* shape,int id);
 };

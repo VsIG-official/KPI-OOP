@@ -20,8 +20,6 @@ void Shape::Set(long x1, long y1, long x2, long y2)
 	ys2 = y2;
 }
 
-#pragma region Point
-
 /// <summary>
 /// Shows the pixel
 /// </summary>
@@ -30,28 +28,6 @@ void PointShape::Show(HDC hdc)
 {
 	SetPixel(hdc, xs1, ys1, black);
 }
-
-//void PointShape::OnLBdown(HWND hWnd)
-//{
-//	POINT pt;
-//	GetCursorPos(&pt);
-//	ScreenToClient(hWnd, &pt);
-//	int x = pt.x;
-//	int y = pt.y;
-//	this->Set(x, y, x, y);
-//	InvalidateRect(hWnd, NULL, TRUE);
-//}
-
-//Shape* PointShape::OnLBup(HWND hWnd)
-//{
-//	return new PointShape;
-//}
-//
-//void PointShape::OnMouseMove(HWND hWnd) {};
-
-#pragma endregion Point
-
-#pragma region Line
 
 /// <summary>
 /// Shows the line
@@ -67,10 +43,6 @@ void LineShape::Show(HDC hdc)
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }
-
-#pragma endregion Line
-
-#pragma region Rectangle
 
 /// <summary>
 /// Shows the rectangle
@@ -92,10 +64,6 @@ void RectangleShape::Show(HDC hdc)
 	DeleteObject(hPen);
 }
 
-#pragma endregion Rectangle
-
-#pragma region Ellipse
-
 /// <summary>
 /// Shows the ellipse
 /// </summary>
@@ -110,47 +78,5 @@ void EllipseShape::Show(HDC hdc)
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 };
-
-#pragma endregion Ellipse
-
-#pragma region LineOO
-
-/// <summary>
-/// Shows the ellipse
-/// </summary>
-/// <param name="hdc">handle to a device context</param>
-void LineOOShape::Show(HDC hdc)
-{
-	HPEN hPen, hPenOld;
-	HBRUSH hBrush, hBrushOld;
-	hPen = CreatePen(PS_SOLID, 1, black);
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Arc(hdc, xs1, ys1, xs2, ys2, 0, 0, 0, 0);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
-};
-
-#pragma endregion LineOO
-
-#pragma region Cube
-
-/// <summary>
-/// Shows the ellipse
-/// </summary>
-/// <param name="hdc">handle to a device context</param>
-void CubeShape::Show(HDC hdc)
-{
-	HPEN hPen, hPenOld;
-	HBRUSH hBrush, hBrushOld;
-	hPen = CreatePen(PS_SOLID, 1, black);
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Arc(hdc, xs1, ys1, xs2, ys2, 0, 0, 0, 0);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
-};
-
-#pragma endregion Cube
-
-Shape::~Shape() {};
 
 #pragma endregion Functions

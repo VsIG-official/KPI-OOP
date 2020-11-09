@@ -10,10 +10,7 @@ protected:
 public:
 	void Set(long x1, long y1, long x2, long y2);
 	virtual void Show(HDC) = 0;
-	virtual ~Shape();
-	virtual void OnLBdown(HWND) = 0;
-	virtual Shape* OnLBup(HWND) = 0;
-	virtual void OnMouseMove(HWND) = 0;
+	~Shape();
 };
 
 /// <summary>
@@ -23,9 +20,9 @@ class PointShape : public virtual Shape
 {
 public:
 	void Show(HDC);
-	void OnLBdown(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	Shape* OnLBup(HWND hWnd);
+	//void OnLBdown(HWND hWnd);
+	//void OnMouseMove(HWND hWnd);
+	//Shape* OnLBup(HWND hWnd);
 };
 
 /// <summary>
@@ -35,9 +32,9 @@ class LineShape : public virtual Shape
 {
 public:
 	void Show(HDC);
-	void OnLBdown(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	Shape* OnLBup(HWND hWnd);
+	//void OnLBdown(HWND hWnd);
+	//void OnMouseMove(HWND hWnd);
+	//Shape* OnLBup(HWND hWnd);
 };
 
 /// <summary>
@@ -47,9 +44,9 @@ class RectangleShape : public virtual Shape
 {
 public:
 	void Show(HDC);
-	void OnLBdown(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	Shape* OnLBup(HWND hWnd);
+	//void OnLBdown(HWND hWnd);
+	//void OnMouseMove(HWND hWnd);
+	//Shape* OnLBup(HWND hWnd);
 };
 
 /// <summary>
@@ -59,9 +56,9 @@ class EllipseShape : public virtual Shape
 {
 public:
 	void Show(HDC);
-	void OnLBdown(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	Shape* OnLBup(HWND hWnd);
+	//void OnLBdown(HWND hWnd);
+	//void OnMouseMove(HWND hWnd);
+	//Shape* OnLBup(HWND hWnd);
 };
 
 /// <summary>
@@ -71,9 +68,9 @@ class LineOOShape : public LineShape, public EllipseShape
 {
 public:
 	void Show(HDC);
-	void OnLBdown(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	Shape* OnLBup(HWND hWnd);
+	//void OnLBdown(HWND hWnd);
+	//void OnMouseMove(HWND hWnd);
+	//Shape* OnLBup(HWND hWnd);
 };
 
 /// <summary>
@@ -83,7 +80,7 @@ class CubeShape : public LineShape, public RectangleShape
 {
 public:
 	void Show(HDC);
-	void OnLBdown(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	Shape* OnLBup(HWND hWnd);
+	//void OnLBdown(HWND hWnd);
+	//void OnMouseMove(HWND hWnd);
+	//Shape* OnLBup(HWND hWnd);
 };
