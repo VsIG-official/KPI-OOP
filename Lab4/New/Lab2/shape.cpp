@@ -4,10 +4,17 @@
 #include "colors.h"
 #include "toolbar.h"
 
+#pragma region Variables
+
+int lineOOInt = 20;
+int cubeInt = 50;
+
+#pragma endregion Variables
+
 #pragma region Functions
 
 /// <summary>
-/// // Get coords of points
+/// Get coords of points
 /// </summary>
 /// <param name="X1">first point</param>
 /// <param name="Y1">second point</param>
@@ -22,9 +29,9 @@ void Shape::Set(long X1, long Y1, long X2, long Y2)
 }
 
 /// <summary>
-/// Shows the pixel
+/// Function for showing final shape
 /// </summary>
-/// <param name="hdc">handle to a device context</param>
+/// <param name="hdc"></param>
 void PointShape::Show(HDC hdc)
 {
 	SetPixel(hdc, XS1, YS1, black);
@@ -45,15 +52,19 @@ int PointShape::InitMenuPopup()
 	return ID_TOOL_POINT;
 }
 
+/// <summary>
+/// Function for copying
+/// </summary>
+/// <returns></returns>
 Shape* PointShape::Copy()
 {
 	return new PointShape();
 }
 
 /// <summary>
-/// Shows the line
+/// Function for showing final shape
 /// </summary>
-/// <param name="hdc">handle to a device context</param>
+/// <param name="hdc"></param>
 void LineShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
@@ -72,7 +83,7 @@ void LineShape::Show(HDC hdc)
 void LineShape::Trail(HDC hdc)
 {
 	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	MoveToEx(hdc, XS1, YS1, NULL);
 	LineTo(hdc, XS2, YS2);
@@ -89,15 +100,19 @@ int LineShape::InitMenuPopup()
 	return ID_TOOL_LINE;
 }
 
+/// <summary>
+/// Function for copying
+/// </summary>
+/// <returns></returns>
 Shape* LineShape::Copy()
 {
 	return new LineShape();
 }
 
 /// <summary>
-/// Shows the rectangle
+/// Function for showing final shape
 /// </summary>
-/// <param name="hdc">handle to a device context</param>
+/// <param name="hdc"></param>
 void RectangleShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
@@ -121,7 +136,7 @@ void RectangleShape::Show(HDC hdc)
 void RectangleShape::Trail(HDC hdc)
 {
 	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	MoveToEx(hdc, XS1, YS1, NULL);
 	LineTo(hdc, XS1, YS2);
@@ -141,15 +156,19 @@ int RectangleShape::InitMenuPopup()
 	return ID_TOOL_RECTANGLE;
 }
 
+/// <summary>
+/// Function for copying
+/// </summary>
+/// <returns></returns>
 Shape* RectangleShape::Copy()
 {
 	return new RectangleShape();
 }
 
 /// <summary>
-/// Shows the ellipse
+/// Function for showing final shape
 /// </summary>
-/// <param name="hdc">handle to a device context</param>
+/// <param name="hdc"></param>
 void EllipseShape::Show(HDC hdc)
 {
 	HPEN hPen, hPenOld;
@@ -168,7 +187,7 @@ void EllipseShape::Show(HDC hdc)
 void EllipseShape::Trail(HDC hdc)
 {
 	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	MoveToEx(hdc, XS1, YS1, NULL);
 	Ellipse(hdc, XS1, YS1, XS2, YS2);
@@ -185,11 +204,19 @@ int EllipseShape::InitMenuPopup()
 	return ID_TOOL_ELLIPSE;
 }
 
+/// <summary>
+/// Function for copying
+/// </summary>
+/// <returns></returns>
 Shape* EllipseShape::Copy()
 {
 	return new EllipseShape();
 }
 
+/// <summary>
+/// Function for showing final shape
+/// </summary>
+/// <param name="hdc"></param>
 void LineOOShape::Show(HDC hdc)
 {
 	long X1, X2, Y1, Y2;
@@ -199,9 +226,11 @@ void LineOOShape::Show(HDC hdc)
 	Y2 = YS2;
 	LineShape::Set(X1, Y1, X2, Y2);
 	LineShape::Show(hdc);
-	EllipseShape::Set(X1 + 10, Y1 + 10, X1 - 10, Y1 - 10);
+	EllipseShape::Set(X1 + lineOOInt, Y1 + lineOOInt, 
+		X1 - lineOOInt, Y1 - lineOOInt);
 	EllipseShape::Show(hdc);
-	EllipseShape::Set(X2 + 10, Y2 + 10, X2 - 10, Y2 - 10);
+	EllipseShape::Set(X2 + lineOOInt, Y2 + lineOOInt,
+		X2 - lineOOInt, Y2 - lineOOInt);
 	EllipseShape::Show(hdc);
 	LineShape::Set(X1, Y1, X2, Y2);
 }
@@ -218,12 +247,14 @@ void LineOOShape::Trail(HDC hdc)
 	X2 = XS2;
 	Y2 = YS2;
 	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	MoveToEx(hdc, X1, Y1, NULL);
 	LineTo(hdc, X2, Y2);
-	Ellipse(hdc, X1 + 10, Y1 + 10, X1 - 10, Y1 - 10);
-	Ellipse(hdc, X2 + 10, Y2 + 10, X2 - 10, Y2 - 10);
+	Ellipse(hdc, X1 + lineOOInt, Y1 + lineOOInt,
+		X1 - lineOOInt, Y1 - lineOOInt);
+	Ellipse(hdc, X2 + lineOOInt, Y2 + lineOOInt,
+		X2 - lineOOInt, Y2 - lineOOInt);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }
@@ -237,26 +268,40 @@ int LineOOShape::InitMenuPopup()
 	return ID_TOOL_LINEOO;
 }
 
+/// <summary>
+/// Function for copying
+/// </summary>
+/// <returns></returns>
 Shape* LineOOShape::Copy()
 {
 	return new LineOOShape();
 }
 
+/// <summary>
+/// Function for showing final shape
+/// </summary>
+/// <param name="hdc"></param>
 void CubeShape::Show(HDC hdc)
 {
 	long X1, X2, Y1, Y2;
 	X1 = XS1; Y1 = YS1; X2 = XS2; Y2 = YS2;
-	RectangleShape::Set(X1 - 75, Y1 - 75, X1 + 75, Y1 + 75);
+	RectangleShape::Set(X1 - cubeInt, Y1 - cubeInt,
+		X1 + cubeInt, Y1 + cubeInt);
 	RectangleShape::Show(hdc);
-	RectangleShape::Set(X2 - 75, Y2 - 75, X2 + 75, Y2 + 75);
+	RectangleShape::Set(X2 - cubeInt, Y2 - cubeInt,
+		X2 + cubeInt, Y2 + cubeInt);
 	RectangleShape::Show(hdc);
-	LineShape::Set(X1 - 75, Y1 - 75, X2 - 75, Y2 - 75);
+	LineShape::Set(X1 - cubeInt, Y1 - cubeInt,
+		X2 - cubeInt, Y2 - cubeInt);
 	LineShape::Show(hdc);
-	LineShape::Set(X1 - 75, Y1 + 75, X2 - 75, Y2 + 75);
+	LineShape::Set(X1 - cubeInt, Y1 + cubeInt,
+		X2 - cubeInt, Y2 + cubeInt);
 	LineShape::Show(hdc);
-	LineShape::Set(X1 + 75, Y1 + 75, X2 + 75, Y2 + 75);
+	LineShape::Set(X1 + cubeInt, Y1 + cubeInt,
+		X2 + cubeInt, Y2 + cubeInt);
 	LineShape::Show(hdc);
-	LineShape::Set(X1 + 75, Y1 - 75, X2 + 75, Y2 - 75);
+	LineShape::Set(X1 + cubeInt, Y1 - cubeInt,
+		X2 + cubeInt, Y2 - cubeInt);
 	LineShape::Show(hdc);
 	LineShape::Set(X1, Y1, X2, Y2);
 }
@@ -273,19 +318,21 @@ void CubeShape::Trail(HDC hdc)
 	X2 = XS2;
 	Y2 = YS2;
 	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	hPen = CreatePen(PS_DOT, 1, black);
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Rectangle(hdc, X1 - 75, Y1 - 75, X1 + 75, Y1 + 75);
-	Rectangle(hdc, X2 - 75, Y2 - 75, X2 + 75, Y2 + 75);
+	Rectangle(hdc, X1 - cubeInt, Y1 - cubeInt,
+		X1 + cubeInt, Y1 + cubeInt);
+	Rectangle(hdc, X2 - cubeInt, Y2 - cubeInt,
+		X2 + cubeInt, Y2 + cubeInt);
 	LineTo(hdc, X1, Y1);
-	MoveToEx(hdc, X1 - 75, Y1 - 75, NULL);
-	LineTo(hdc, X2 - 75, Y2 - 75);
-	MoveToEx(hdc, X1 - 75, Y1 + 75, NULL);
-	LineTo(hdc, X2 - 75, Y2 + 75);
-	MoveToEx(hdc, X1 + 75, Y1 + 75, NULL);
-	LineTo(hdc, X2 + 75, Y2 + 75);
-	MoveToEx(hdc, X1 + 75, Y1 - 75, NULL);
-	LineTo(hdc, X2 + 75, Y2 - 75);
+	MoveToEx(hdc, X1 - cubeInt, Y1 - cubeInt, NULL);
+	LineTo(hdc, X2 - cubeInt, Y2 - cubeInt);
+	MoveToEx(hdc, X1 - cubeInt, Y1 + cubeInt, NULL);
+	LineTo(hdc, X2 - cubeInt, Y2 + cubeInt);
+	MoveToEx(hdc, X1 + cubeInt, Y1 + cubeInt, NULL);
+	LineTo(hdc, X2 + cubeInt, Y2 + cubeInt);
+	MoveToEx(hdc, X1 + cubeInt, Y1 - cubeInt, NULL);
+	LineTo(hdc, X2 + cubeInt, Y2 - cubeInt);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 }
@@ -299,6 +346,10 @@ int CubeShape::InitMenuPopup()
 	return ID_TOOL_CUBE;
 }
 
+/// <summary>
+/// Function for copying
+/// </summary>
+/// <returns></returns>
 Shape* CubeShape::Copy()
 {
 	return new CubeShape();
