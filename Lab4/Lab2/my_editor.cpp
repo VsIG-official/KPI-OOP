@@ -15,15 +15,14 @@ bool isPressed;
 
 #pragma region ShapeObjectsEditor
 
-MyEditor::MyEditor(void)
-{
-}
+Shape* object = NULL;
+
+MyEditor::MyEditor(void) {};
 
 void MyEditor::Start(Shape* shape)
 {
-	//ID = id;
-	//if (object) delete object;
-	//object = shape;
+	if (object) delete object;
+	object = shape;
 };
 
 
@@ -34,6 +33,20 @@ void MyEditor::Start(Shape* shape)
 //{
 //	pse = new PointEditor;
 //}
+
+void MyEditor::Add(Shape* object)
+{
+	if (size < Size_Of_Array)
+	{
+		pcshape[size] = *&object;
+		size++;
+	}
+}
+
+Shape* MyEditor::ReturnObject(int i)
+{
+	return pcshape[i];
+}
 
 /// <summary>
 /// Destructor
@@ -116,6 +129,7 @@ void MyEditor::OnLBdown(HWND hWnd)
 /// <param name="hWnd">window</param>
 void MyEditor::OnLBup(HWND hWnd)
 {
+	Add(*&object);
 	if (pse)
 	{
 		pse->OnLBup(hWnd);

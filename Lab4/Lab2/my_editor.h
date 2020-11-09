@@ -42,6 +42,8 @@ public:
 	void OnMouseMove(HWND);
 	void OnPaint(HWND);
 	void OnInitMenuPopup(HWND, WPARAM);
+	void Add(Shape* object);
+	Shape* ReturnObject(int i);
 };
 
 /// <summary>
