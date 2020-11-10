@@ -227,7 +227,7 @@ void LineOOShape::Show(HDC hdc)
 	Y2 = YS2;
 	LineShape::Set(X1, Y1, X2, Y2);
 	LineShape::Show(hdc);
-	EllipseShape::Set(X1, Y1, 
+	EllipseShape::Set(X1, Y1,
 		X1 - lineOOInt, Y1 - lineOOInt);
 	EllipseShape::Show(hdc);
 	EllipseShape::Set(X2, Y2,
