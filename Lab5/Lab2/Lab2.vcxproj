@@ -155,9 +155,11 @@
     <ClInclude Include="editor.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab3.h" />
+    <ClInclude Include="my_table.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="shape.h" />
     <ClInclude Include="my_editor.h" />
     <ClInclude Include="targetver.h" />
@@ -165,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab3.cpp" />
+    <ClCompile Include="my_table.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -177,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab2.rc" />
+    <ResourceCompile Include="my_table.rc" />
     <ResourceCompile Include="toolbar.rc" />
   </ItemGroup>
   <ItemGroup>

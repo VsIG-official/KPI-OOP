@@ -48,6 +48,12 @@
     <ClInclude Include="shape.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="my_table.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -65,12 +71,18 @@
     <ClCompile Include="my_editor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="my_table.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab2.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
     <ResourceCompile Include="toolbar.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="my_table.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>

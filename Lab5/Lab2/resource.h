@@ -4,6 +4,8 @@
 //
 
 #include "colors.h"
+#include <string>
+#include <fstream>
 
 #define IDC_MYICON                      2
 #define IDD_LAB3_DIALOG                 102
