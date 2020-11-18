@@ -8,6 +8,7 @@
 #include "Resource.h"
 #include "my_editor.h"
 #include "toolbar.h"
+#include "my_table.h"
 
 #define MAX_LOADSTRING 100
 
@@ -28,6 +29,7 @@ const LPCSTR CUBE_NAME = "Куб";
 
 Toolbar toolbar;
 MyEditor ED;
+MyTable table;
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -219,6 +221,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_LBUTTONUP:
         ED.OnLBup(hWnd);
+        table.Add(hWnd);
+        DialogBox(hInst, MAKEINTRESOURCE(IDD_TABLE), hWnd, About);
         break;
     case WM_MOUSEMOVE:
         ED.OnMouseMove(hWnd);
