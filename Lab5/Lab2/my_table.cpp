@@ -3,18 +3,21 @@
 #include "my_table.h"
 
 char shapeName, shapeColor;
-long X1, Y1, X2, Y2;
+long XI1, YI1, XI2, YI2;
 
 void MyTable::Add(HWND, std::string)
 {
 	FILE* fout;
-	fout = fopen("D://ForStudy/OOP/KPI-OOP/Lab5/objects.txt","wt");
+	errno_t err;
 
-	if (fout)
+	//fout = fopen("D://ForStudy/OOP/KPI-OOP/Lab5/objects.txt","wt");
+	err = fopen_s(&fout, "D://ForStudy/OOP/KPI-OOP/Lab5/objects.txt", "wt");
+
+	if (err)
 	{
-		fprintf(fout, "%s, %d, %d, %d, %d, %s\\n", 
-			shapeName, X1, Y1, X2, Y2, shapeColor);
+		fprintf((FILE*)err, "%s, %d, %d, %d, %d, %s\\n", 
+			shapeName, XI1, YI1, XI2, YI2, shapeColor);
 	}
 
-	fclose(fout);
+	fclose((FILE*)err);
 }
