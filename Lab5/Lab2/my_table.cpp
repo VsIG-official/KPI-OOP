@@ -3,17 +3,25 @@
 #include "my_table.h"
 using namespace std;
 
-char shapeName, shapeColor;
-long XI1, YI1, XI2, YI2;
+static string path = "D://ForStudy/OOP/KPI-OOP/Lab5/objects.txt";
 
-void MyTable::Add(HWND)
+void MyTable::Add(HWND hWndDlg, string shapeDetails)
 {	
-	ofstream myfile;
-	myfile.open("D://ForStudy/OOP/KPI-OOP/Lab5/objects.txt");
-	myfile << "Writing this to a file.\n";
-	myfile << "Writing this to a file.\n";
-	myfile << "Writing this to a file.\n";
-	myfile << "Writing this to a file.\n";
-	//DialogBox(hInst, MAKEINTRESOURCE(IDD_TABLE), hWnd, About);
-	myfile.close();
+	ofstream myTableFile;
+	myTableFile.open(path);
+
+	if (!myTableFile.is_open())
+	{
+		throw new exception("Can't open a file");
+	}
+	else
+	{
+		//myTableFile.clear();
+		myTableFile << shapeDetails << "\n";
+	}
+
+	myTableFile.close();
+
+	SendDlgItemMessage(hWndDlg, IDC_LIST, LB_ADDSTRING,
+		0, (LPARAM)shapeDetails.c_str());
 }
