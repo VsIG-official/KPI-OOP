@@ -9,7 +9,16 @@
 /// Shape editor class for figures
 /// </summary>
 class MyEditor {
+private:
+	MyEditor() {};
+	MyEditor(const MyEditor&);
+	MyEditor& operator = (MyEditor&);
 public:
+	static MyEditor& getInstance()
+	{
+		static MyEditor instance;
+		return instance;
+	}
 	void Start(Shape*);
 	void OnLBdown(HWND);
 	void OnLBup(HWND);

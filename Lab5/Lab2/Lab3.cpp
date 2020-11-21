@@ -9,6 +9,7 @@
 #include "my_editor.h"
 #include "toolbar.h"
 #include "my_table.h"
+using namespace std;
 
 #define MAX_LOADSTRING 100
 
@@ -26,9 +27,10 @@ const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
 const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
 const LPCSTR CUBE_NAME = "Куб";
+string nameOfShape;
 
 Toolbar toolbar;
-MyEditor ED;
+MyEditor& ED = ED.getInstance();
 MyTable table;
 
 // Send declarations of functions included in this code module:
@@ -221,8 +223,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_LBUTTONUP:
         ED.OnLBup(hWnd);
-        table.Add(hWnd);
-        DialogBox(hInst, MAKEINTRESOURCE(IDD_TABLE), hWnd, About);
+        //str = se->GetString();
+        //Table->Add(nomodal, str);
         break;
     case WM_MOUSEMOVE:
         ED.OnMouseMove(hWnd);
