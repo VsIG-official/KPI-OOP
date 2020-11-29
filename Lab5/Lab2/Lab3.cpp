@@ -27,11 +27,12 @@ const LPCSTR RECTANGLE_NAME = "Прямокутник";
 const LPCSTR ELLIPSE_NAME = "Овал";
 const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
 const LPCSTR CUBE_NAME = "Куб";
-string nameOfShape;
+string detailsOfShape;
 
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
-MyTable table;
+MyTable* table = new MyTable;
+HWND nomodal = NULL;
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -224,7 +225,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONUP:
         ED.OnLBup(hWnd);
         //str = se->GetString();
-        //Table->Add(nomodal, str);
+        detailsOfShape = pcshape[size].X.toString();
+        table->Add(nomodal, detailsOfShape);
         break;
     case WM_MOUSEMOVE:
         ED.OnMouseMove(hWnd);

@@ -288,6 +288,7 @@ void CubeShape::Show(HDC hdc)
 	RectangleShape::Set(X2 - cubeInt, Y2 - cubeInt,
 		X2 + cubeInt, Y2 + cubeInt);
 	RectangleShape::Show(hdc);
+
 	LineShape::Set(X1 - cubeInt, Y1 - cubeInt,
 		X2 - cubeInt, Y2 - cubeInt);
 	LineShape::Show(hdc);
