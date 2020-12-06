@@ -225,7 +225,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONUP:
         ED.OnLBup(hWnd);
         //str = se->GetString();
-        detailsOfShape = pcshape[size].X.toString();
         table->Add(nomodal, detailsOfShape);
         break;
     case WM_MOUSEMOVE:

@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "my_table.h"
 
-static string path = "./objects.txt";
+static string name = "objects.txt";
 
 /// <summary>
 /// Add shape to table
@@ -10,8 +10,7 @@ static string path = "./objects.txt";
 /// <param name="shapeDetails">name and coords</param>
 void MyTable::Add(HWND hWndDlg, string shapeDetails)
 {	
-	ofstream myTableFile;
-	myTableFile.open(path);
+	ofstream myTableFile(name);
 
 	if (!myTableFile.is_open())
 	{
