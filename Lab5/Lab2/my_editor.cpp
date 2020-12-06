@@ -156,4 +156,15 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 	}
 }
 
+LPCSTR MyEditor::GetDetails()
+{
+	LPCSTR str = "Figure: " + pcshape[size]->GetShapeName() + "|"
+		+ "x1: " + x1 + "|"
+		+ "y1: " + y1 + "|"
+		+ "x2: " + x2 + "|"
+		+ "y2: " + y2 + "|";
+	return str;
+}
+
+
 #pragma endregion Functions

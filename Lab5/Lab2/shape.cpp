@@ -63,6 +63,15 @@ Shape* PointShape::Duplicate()
 }
 
 /// <summary>
+/// Return name for table
+/// </summary>
+/// <returns></returns>
+LPCSTR PointShape::GetShapeName()
+{
+	return "Point";
+}
+
+/// <summary>
 /// Function for showing final shape
 /// </summary>
 /// <param name="hdc"></param>
@@ -108,6 +117,15 @@ int LineShape::InitMenuPopup()
 Shape* LineShape::Duplicate()
 {
 	return new LineShape();
+}
+
+/// <summary>
+/// Return name for table
+/// </summary>
+/// <returns></returns>
+LPCSTR LineShape::GetShapeName()
+{
+	return "Line";
 }
 
 /// <summary>
@@ -167,6 +185,15 @@ Shape* RectangleShape::Duplicate()
 }
 
 /// <summary>
+/// Return name for table
+/// </summary>
+/// <returns></returns>
+LPCSTR RectangleShape::GetShapeName()
+{
+	return "Rectangle";
+}
+
+/// <summary>
 /// Function for showing final shape
 /// </summary>
 /// <param name="hdc"></param>
@@ -213,6 +240,15 @@ int EllipseShape::InitMenuPopup()
 Shape* EllipseShape::Duplicate()
 {
 	return new EllipseShape();
+}
+
+/// <summary>
+/// Return name for table
+/// </summary>
+/// <returns></returns>
+LPCSTR EllipseShape::GetShapeName()
+{
+	return "Ellipse";
 }
 
 /// <summary>
@@ -273,6 +309,15 @@ int LineOOShape::InitMenuPopup()
 Shape* LineOOShape::Duplicate()
 {
 	return new LineOOShape();
+}
+
+/// <summary>
+/// Return name for table
+/// </summary>
+/// <returns></returns>
+LPCSTR LineOOShape::GetShapeName()
+{
+	return "LineOO";
 }
 
 /// <summary>
@@ -348,6 +393,15 @@ int CubeShape::InitMenuPopup()
 Shape* CubeShape::Duplicate()
 {
 	return new CubeShape();
+}
+
+/// <summary>
+/// Return name for table
+/// </summary>
+/// <returns></returns>
+LPCSTR CubeShape::GetShapeName()
+{
+	return "Cube";
 }
 
 Shape::~Shape() {};

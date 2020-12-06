@@ -13,6 +13,7 @@ public:
 	virtual void Trail(HDC) = 0;
 	virtual int InitMenuPopup() = 0;
 	virtual Shape* Duplicate() = 0;
+	virtual LPCSTR GetShapeName() = 0;
 	~Shape();
 };
 
@@ -25,6 +26,7 @@ class PointShape : public Shape
 	void Trail(HDC);
 	int InitMenuPopup();
 	virtual Shape* Duplicate();
+	virtual LPCSTR GetShapeName();
 };
 
 /// <summary>
@@ -37,6 +39,7 @@ public:
 	void Trail(HDC);
 	int InitMenuPopup();
 	virtual Shape* Duplicate();
+	virtual LPCSTR GetShapeName();
 };
 
 /// <summary>
@@ -49,6 +52,7 @@ public:
 	void Trail(HDC);
 	int InitMenuPopup();
 	virtual Shape* Duplicate();
+	virtual LPCSTR GetShapeName();
 };
 
 /// <summary>
@@ -61,6 +65,7 @@ public:
 	void Trail(HDC);
 	int InitMenuPopup();
 	virtual Shape* Duplicate();
+	virtual LPCSTR GetShapeName();
 };
 
 /// <summary>
@@ -73,6 +78,7 @@ public:
 	void Trail(HDC);
 	int InitMenuPopup();
 	virtual Shape* Duplicate();
+	virtual LPCSTR GetShapeName();
 };
 
 /// <summary>
@@ -85,4 +91,5 @@ public:
 	void Trail(HDC);
 	int InitMenuPopup();
 	virtual Shape* Duplicate();
+	virtual LPCSTR GetShapeName();
 };
