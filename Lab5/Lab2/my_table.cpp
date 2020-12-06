@@ -4,6 +4,10 @@
 
 static string path = "./objects.txt";
 
+/// <summary>
+/// Add shape to table
+/// </summary>
+/// <param name="shapeDetails">name and coords</param>
 void MyTable::Add(HWND hWndDlg, string shapeDetails)
 {	
 	ofstream myTableFile;
