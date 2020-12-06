@@ -1,6 +1,6 @@
 #pragma once
-//#include "resource.h"
 #include "resource2.h"
+using namespace std;
 
 class MyTable
 {

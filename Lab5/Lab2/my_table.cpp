@@ -1,9 +1,8 @@
 #include "framework.h"
 #include "pch.h"
 #include "my_table.h"
-using namespace std;
 
-static string path = "D://ForStudy/OOP/KPI-OOP/Lab5/objects.txt";
+static string path = "./objects.txt";
 
 void MyTable::Add(HWND hWndDlg, string shapeDetails)
 {	
@@ -16,7 +15,6 @@ void MyTable::Add(HWND hWndDlg, string shapeDetails)
 	}
 	else
 	{
-		//myTableFile.clear();
 		myTableFile << shapeDetails << "\n";
 	}
 
