@@ -1,1 +1,1 @@
-Figure: LineOO|x1: 190|y1: 102|x2: 442|y2: 270|
+Figure: LineOOx1: 193 - y1: 100 - x2: 352 - y2: 202 - Figure: LineOOx1: 463 - y1: 129 - x2: 267 - y2: 264 - Figure: LineOOx1: 205 - y1: 260 - x2: 316 - y2: 109 - 

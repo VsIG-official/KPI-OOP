@@ -2,6 +2,7 @@
 #include "pch.h"
 #include "my_editor.h"
 #include "toolbar.h"
+#include <sstream>
 
 #pragma region Variables
 
@@ -12,6 +13,7 @@ bool isPressed;
 int const menuCount = 6;
 int allMenus[menuCount] = { ID_TOOL_POINT, ID_TOOL_LINE, 
 ID_TOOL_RECTANGLE, ID_TOOL_ELLIPSE, ID_TOOL_LINEOO, ID_TOOL_CUBE};
+std::stringstream buffer;
 
 #pragma endregion Variables
 
@@ -158,12 +160,24 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 
 std::string MyEditor::GetDetails()
 {
-	std::string str = "Figure: " + pcshape[size]->GetShapeName() + "|"
-		+ "x1: " + std::to_string(X1) + "|"
-		+ "y1: " + std::to_string(Y1) + "|"
-		+ "x2: " + std::to_string(X2) + "|"
-		+ "y2: " + std::to_string(Y2) + "|";
-	return str;
+	buffer << "Figure: ";
+	buffer << pcshape[size]->GetShapeName();
+	buffer << "x1: ";
+	buffer << X1;
+	buffer << " - ";
+	buffer << "y1: ";
+	buffer << Y1;
+	buffer << " - ";
+	buffer << "x2: ";
+	buffer << X2;
+	buffer << " - ";
+	buffer << "y2: ";
+	buffer << Y2;
+	buffer << " - ";
+
+	std::string shapeString = buffer.str();
+
+	return shapeString;
 }
 
 #pragma endregion Functions
