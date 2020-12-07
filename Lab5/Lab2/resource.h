@@ -23,6 +23,7 @@
 #define IDM_LINEOO                      32824
 #define IDM_CUBE						32825
 #define IDC_STATIC                      -1
+#define IDD_TABLEINMENU                 32779
 
 extern HINSTANCE hInst;
 

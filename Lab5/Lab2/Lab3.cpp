@@ -5,10 +5,10 @@
 #include "framework.h"
 #include "pch.h"
 #include "Lab3.h"
-#include "Resource.h"
 #include "my_editor.h"
 #include "toolbar.h"
 #include "my_table.h"
+#include "Resource.h"
 
 #define MAX_LOADSTRING 100
 
@@ -242,8 +242,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
-        case IDD_TABLE:
+        case IDD_TABLEINMENU:
             CallTable();
+            //SetWindowTextA(hWnd,"some");
             break;
         case ID_TOOL_POINT:
             CallToolPoint();
@@ -368,7 +369,7 @@ void CallToolCube()
 
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    string path = "./objects.txt";
+    string path = "./Objects.txt";
     ifstream f;
     switch (uMsg)
     {
@@ -384,7 +385,7 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             while (!f.eof())
             {
                 str = "";
-                //getline(f, str);
+                getline(f, str);
                 if (str != "") SendDlgItemMessage(hWnd, IDC_LIST, LB_ADDSTRING, 0, (LPARAM)str.c_str());
             }
         }
