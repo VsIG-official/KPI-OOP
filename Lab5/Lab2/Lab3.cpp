@@ -27,6 +27,7 @@ const LPCSTR ELLIPSE_NAME = "Овал";
 const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
 const LPCSTR CUBE_NAME = "Куб";
 string detailsOfShape;
+INT countForShapes = 0;
 
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
@@ -49,6 +50,7 @@ static void CallTable();
 static void OnWMCreateCall(HWND);
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 std::string shapeDetails = "";
+string pathForShapes = "objects.txt";
 
 #pragma endregion VariablesAndFunctions
 
@@ -377,12 +379,18 @@ void CallToolCube()
 /// <returns></returns>
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    string path = "./Objects.txt";
     ifstream myTableFile;
     switch (uMsg)
     {
     case WM_INITDIALOG:
-        myTableFile.open(path);
+
+        if (countForShapes == 0)
+        {
+            myTableFile.open(pathForShapes, std::ofstream::out | std::ofstream::trunc);
+            myTableFile.close();
+        }
+
+        myTableFile.open(pathForShapes);
         if (myTableFile.is_open())
         {
             string str;
@@ -397,6 +405,9 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             throw new exception("Can't open the file");
         }
+
+        countForShapes++;
+
         myTableFile.close();
         return (INT_PTR)TRUE;
         break;
