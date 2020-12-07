@@ -159,12 +159,6 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 
 LPCSTR MyEditor::GetDetails()
 {
-	//LPCSTR str = "Figure: " + (std::string)pcshape[size]->GetShapeName() + "|"
-	//	+ "x1: " + X1 + "|"
-	//	+ "y1: " + Y1 + "|"
-	//	+ "x2: " + X2 + "|"
-	//	+ "y2: " + Y2 + "|";
-	//return str;
 	char buffer_1[MAX_PATH] = "";
 	char* lpStr1;
 	lpStr1 = buffer_1;
