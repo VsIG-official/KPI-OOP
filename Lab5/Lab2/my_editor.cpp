@@ -2,9 +2,6 @@
 #include "pch.h"
 #include "my_editor.h"
 #include "toolbar.h"
-#include <Shlwapi.h>
-#include <string.h>
-//#include "shlwapi.h"
 
 #pragma region Variables
 
@@ -159,15 +156,13 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 	}
 }
 
-wchar_t* MyEditor::GetDetails()
+std::string MyEditor::GetDetails()
 {
-	wchar_t str[1024];
-
-	wcscat_s(str, L"these ");
-	wcscat_s(str, L"wide strings ");
-	wcscat_s(str, L"are ");
-	wcscat_s(str, L"concatenated.");
-
+	std::string str = "Figure: " + pcshape[size]->GetShapeName() + "|"
+		+ "x1: " + std::to_string(X1) + "|"
+		+ "y1: " + std::to_string(Y1) + "|"
+		+ "x2: " + std::to_string(X2) + "|"
+		+ "y2: " + std::to_string(Y2) + "|";
 	return str;
 }
 

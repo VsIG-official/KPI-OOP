@@ -66,7 +66,7 @@ Shape* PointShape::Duplicate()
 /// Return name for table
 /// </summary>
 /// <returns></returns>
-LPCSTR PointShape::GetShapeName()
+std::string PointShape::GetShapeName()
 {
 	return "Point";
 }
@@ -123,7 +123,7 @@ Shape* LineShape::Duplicate()
 /// Return name for table
 /// </summary>
 /// <returns></returns>
-LPCSTR LineShape::GetShapeName()
+std::string LineShape::GetShapeName()
 {
 	return "Line";
 }
@@ -188,7 +188,7 @@ Shape* RectangleShape::Duplicate()
 /// Return name for table
 /// </summary>
 /// <returns></returns>
-LPCSTR RectangleShape::GetShapeName()
+std::string RectangleShape::GetShapeName()
 {
 	return "Rectangle";
 }
@@ -246,7 +246,7 @@ Shape* EllipseShape::Duplicate()
 /// Return name for table
 /// </summary>
 /// <returns></returns>
-LPCSTR EllipseShape::GetShapeName()
+std::string EllipseShape::GetShapeName()
 {
 	return "Ellipse";
 }
@@ -315,7 +315,7 @@ Shape* LineOOShape::Duplicate()
 /// Return name for table
 /// </summary>
 /// <returns></returns>
-LPCSTR LineOOShape::GetShapeName()
+std::string LineOOShape::GetShapeName()
 {
 	return "LineOO";
 }
@@ -399,7 +399,7 @@ Shape* CubeShape::Duplicate()
 /// Return name for table
 /// </summary>
 /// <returns></returns>
-LPCSTR CubeShape::GetShapeName()
+std::string CubeShape::GetShapeName()
 {
 	return "Cube";
 }

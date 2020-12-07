@@ -3,26 +3,27 @@
 #include "my_table.h"
 
 static string name = "objects.txt";
+static LPCSTR exceptionString = "Can't open a file or find a file";
 
 /// <summary>
 /// Add shape to table
 /// </summary>
 /// <param name="shapeDetails">name and coords</param>
-void MyTable::Add(HWND hWndDlg, wchar_t* shapeDetails[1024])
+void MyTable::Add(HWND hWndDlg, std::string shapeDetails)
 {	
 	ofstream myTableFile(name);
 
-	if (!myTableFile.is_open())
+	if (myTableFile.is_open())
 	{
-		throw new exception("Can't open a file");
+		myTableFile << shapeDetails << endl;
 	}
 	else
 	{
-		myTableFile << shapeDetails << "\n";
+		throw new exception(exceptionString);
 	}
 
 	myTableFile.close();
 
 	SendDlgItemMessage(hWndDlg, IDC_LIST, LB_ADDSTRING,
-		0, (LPARAM)shapeDetails);
+		0, (LPARAM)shapeDetails.c_str());
 }

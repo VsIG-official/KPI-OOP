@@ -27,7 +27,6 @@ const LPCSTR ELLIPSE_NAME = "Овал";
 const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
 const LPCSTR CUBE_NAME = "Куб";
 string detailsOfShape;
-wchar_t* stringForShape[1024];
 
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
@@ -45,8 +44,11 @@ static void CallToolRectangle();
 static void CallToolEllipse();
 static void CallToolLineOO();
 static void CallToolCube();
+static void CallLBUP(HWND hWnd);
+static void CallTable();
 static void OnWMCreateCall(HWND);
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+std::string shapeDetails = "";
 
 #pragma endregion VariablesAndFunctions
 
@@ -224,9 +226,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         ED.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        ED.OnLBup(hWnd);
-        *stringForShape = ED.GetDetails();
-        table->Add(hwnd, stringForShape);
+        CallLBUP(hWnd);
         break;
     case WM_MOUSEMOVE:
         ED.OnMouseMove(hWnd);
@@ -243,9 +243,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wmId)
         {
         case IDD_TABLE:
-            hwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
-            ShowWindow(hwnd, SW_SHOW);
-            SetWindowTextA(hwnd, "Таблиця");
+            CallTable();
             break;
         case ID_TOOL_POINT:
             CallToolPoint();
@@ -283,6 +281,26 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+/// <summary>
+/// Do something when Point tool is used
+/// </summary>
+void CallTable()
+{
+    hwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
+    ShowWindow(hwnd, SW_SHOW);
+    SetWindowTextA(hwnd, "Таблиця");
+}
+
+/// <summary>
+/// Do something when Point tool is used
+/// </summary>
+void CallLBUP(HWND hWnd)
+{
+    ED.OnLBup(hWnd);
+    shapeDetails = ED.GetDetails();
+    table->Add(hwnd, shapeDetails);
 }
 
 /// <summary>

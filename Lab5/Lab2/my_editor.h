@@ -27,7 +27,7 @@ public:
 	void OnInitMenuPopup(HWND, WPARAM);
 	~MyEditor();
 	long X1, Y1, X2, Y2;
-	wchar_t* GetDetails();
+	std::string GetDetails();
 };
 
 #pragma endregion Editors
