@@ -2,6 +2,7 @@
 #include "pch.h"
 #include "my_editor.h"
 #include "toolbar.h"
+#include "Shlwapi.h"
 
 #pragma region Variables
 
@@ -158,13 +159,27 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 
 LPCSTR MyEditor::GetDetails()
 {
-	LPCSTR str = "Figure: " + pcshape[size]->GetShapeName() + "|"
-		+ "x1: " + x1 + "|"
-		+ "y1: " + y1 + "|"
-		+ "x2: " + x2 + "|"
-		+ "y2: " + y2 + "|";
-	return str;
-}
+	//LPCSTR str = "Figure: " + (std::string)pcshape[size]->GetShapeName() + "|"
+	//	+ "x1: " + X1 + "|"
+	//	+ "y1: " + Y1 + "|"
+	//	+ "x2: " + X2 + "|"
+	//	+ "y2: " + Y2 + "|";
+	//return str;
+	char buffer_1[MAX_PATH] = "";
+	char* lpStr1;
+	lpStr1 = buffer_1;
 
+	char buffer_2[] = "Figure: ";
+	char* lpStr2;
+	lpStr2 = buffer_2;
+
+	PathCombine(lpStr1, lpStr2, "/");
+	PathCombine(lpStr1, (LPCSTR)X1, "/");
+	PathCombine(lpStr1, (LPCSTR)Y1, "/");
+	PathCombine(lpStr1, (LPCSTR)X2, "/");
+	PathCombine(lpStr1, (LPCSTR)Y2, "/");
+
+	return lpStr1;
+}
 
 #pragma endregion Functions
