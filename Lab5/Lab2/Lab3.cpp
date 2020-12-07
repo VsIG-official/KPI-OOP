@@ -51,6 +51,7 @@ static void OnWMCreateCall(HWND);
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 std::string shapeDetails = "";
 string pathForShapes = "objects.txt";
+static LPCSTR exceptionString = "Can't open a file or find a file";
 
 #pragma endregion VariablesAndFunctions
 
@@ -313,6 +314,15 @@ void OnWMCreateCall(HWND hWnd)
 {
     toolbar.OnCreate(hWnd); // here we will create Toolbar
     CallToolPoint();
+
+    if (countForShapes == 0)
+    {
+        ifstream myTableFile;
+
+        myTableFile.open(pathForShapes, std::ofstream::out
+            | std::ofstream::trunc);
+        myTableFile.close();
+    }
 }
 
 /// <summary>
@@ -384,35 +394,40 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     {
     case WM_INITDIALOG:
 
-        if (countForShapes == 0)
-        {
-            myTableFile.open(pathForShapes, std::ofstream::out | std::ofstream::trunc);
-            myTableFile.close();
-        }
+
 
         myTableFile.open(pathForShapes);
+
         if (myTableFile.is_open())
         {
-            string str;
+            string tempString = "";
+
             while (!myTableFile.eof())
             {
-                str = "";
-                getline(myTableFile, str);
-                if (str != "") SendDlgItemMessage(hWnd, IDC_LIST, LB_ADDSTRING, 0, (LPARAM)str.c_str());
+                getline(myTableFile, tempString);
+                if (tempString != "") SendDlgItemMessage(hWnd, IDC_LIST, 
+                    LB_ADDSTRING, 0, (LPARAM)tempString.c_str());
             }
         }
         else
         {
-            throw new exception("Can't open the file");
+            throw new exception(exceptionString);
         }
 
         countForShapes++;
 
         myTableFile.close();
+
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:
         if (LOWORD(wParam) == IDCANCEL)
+        {
+            DestroyWindow(hWnd);
+            return TRUE;
+        }
+
+        if (LOWORD(wParam) == IDC_EXIT)
         {
             DestroyWindow(hWnd);
             return TRUE;
