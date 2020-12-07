@@ -1,71 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Shape">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+  <Class Name="MyEditor">
+    <Position X="15" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AA0AAAAAAAAABAAAAAAAAAABAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AASAAAAAACBAAAAAAAADQAAAAJCBAAUAEAAgAAAAAAA=</HashCode>
+      <FileName>my_editor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyTable">
+    <Position X="13.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>my_table.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shape">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AA0AAAAAAAAABAAAAAAAAAABAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PointShape">
-    <Position X="5" Y="4.5" Width="1.5" />
+    <Position X="3.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LineShape">
-    <Position X="7.5" Y="4.5" Width="1.5" />
+    <Position X="8.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RectangleShape">
-    <Position X="2.75" Y="4.5" Width="1.5" />
+    <Position X="1" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EllipseShape">
-    <Position X="9.5" Y="4.5" Width="1.5" />
+    <Position X="6" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LineOOShape">
-    <Position X="8.75" Y="6.75" Width="1.5" />
-    <InheritanceLine Type="EllipseShape" FixedToPoint="true">
-      <Path>
-        <Point X="10.25" Y="6.31" />
-        <Point X="10.25" Y="6.51" />
-        <Point X="9.5" Y="6.51" />
-        <Point X="9.5" Y="6.75" />
-      </Path>
-    </InheritanceLine>
+    <Position X="6.75" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CubeShape">
-    <Position X="5.75" Y="6.75" Width="1.5" />
+    <Position X="3" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAFIAAAAAAAgAAAAAA=</HashCode>
       <FileName>shape.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MyEditor">
-    <Position X="11.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AASAAAAAACAAAAAAAAADQAAAAJCBAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>my_editor.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Toolbar">
-    <Position X="0.75" Y="4.5" Width="1.5" />
+    <Position X="11.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAABAAEAAEAAAAAAAAAEACABAAAAEEAAiABAAAA=</HashCode>
       <FileName>toolbar.h</FileName>
