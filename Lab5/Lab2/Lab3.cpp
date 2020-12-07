@@ -27,7 +27,7 @@ const LPCSTR ELLIPSE_NAME = "Овал";
 const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
 const LPCSTR CUBE_NAME = "Куб";
 string detailsOfShape;
-LPCSTR stringForShape = "";
+wchar_t* stringForShape[1024];
 
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
@@ -225,7 +225,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_LBUTTONUP:
         ED.OnLBup(hWnd);
-        stringForShape = ED.GetDetails();
+        *stringForShape = ED.GetDetails();
         table->Add(hwnd, stringForShape);
         break;
     case WM_MOUSEMOVE:

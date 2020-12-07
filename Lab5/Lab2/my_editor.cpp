@@ -3,6 +3,7 @@
 #include "my_editor.h"
 #include "toolbar.h"
 #include <Shlwapi.h>
+#include <string.h>
 //#include "shlwapi.h"
 
 #pragma region Variables
@@ -158,34 +159,16 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 	}
 }
 
-LPCSTR MyEditor::GetDetails()
+wchar_t* MyEditor::GetDetails()
 {
-	char buffer_1[MAX_PATH] = "";
-	char* lpStr1;
-	lpStr1 = buffer_1;
+	wchar_t str[1024];
 
-	char buffer_2[] = "Figure: ";
-	char* lpStr2;
-	lpStr2 = buffer_2;
+	wcscat_s(str, L"these ");
+	wcscat_s(str, L"wide strings ");
+	wcscat_s(str, L"are ");
+	wcscat_s(str, L"concatenated.");
 
-	PathAppend(lpStr1, lpStr2);
-	PathAppend(lpStr1, "/");
-	PathAppend(lpStr1, (LPCSTR)X1);
-	PathAppend(lpStr1, "/");
-	PathAppend(lpStr1, (LPCSTR)Y1);
-	PathAppend(lpStr1, "/");
-	PathAppend(lpStr1, (LPCSTR)X2);
-	PathAppend(lpStr1, "/");
-	PathAppend(lpStr1, (LPCSTR)Y2);
-	PathAppend(lpStr1, "/");
-
-	/*PathCombineA(lpStr1, lpStr2, "/");
-	PathCombineA(lpStr1, (LPCSTR)X1, "/");
-	PathCombineA(lpStr1, (LPCSTR)Y1, "/");
-	PathCombineA(lpStr1, (LPCSTR)X2, "/");
-	PathCombineA(lpStr1, (LPCSTR)Y2, "/");*/
-
-	return lpStr1;
+	return str;
 }
 
 #pragma endregion Functions

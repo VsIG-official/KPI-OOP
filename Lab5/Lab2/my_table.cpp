@@ -8,7 +8,7 @@ static string name = "objects.txt";
 /// Add shape to table
 /// </summary>
 /// <param name="shapeDetails">name and coords</param>
-void MyTable::Add(HWND hWndDlg, string shapeDetails)
+void MyTable::Add(HWND hWndDlg, wchar_t* shapeDetails[1024])
 {	
 	ofstream myTableFile(name);
 
@@ -24,5 +24,5 @@ void MyTable::Add(HWND hWndDlg, string shapeDetails)
 	myTableFile.close();
 
 	SendDlgItemMessage(hWndDlg, IDC_LIST, LB_ADDSTRING,
-		0, (LPARAM)shapeDetails.c_str());
+		0, (LPARAM)shapeDetails);
 }

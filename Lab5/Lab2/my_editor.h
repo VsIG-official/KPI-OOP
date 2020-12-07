@@ -27,7 +27,7 @@ public:
 	void OnInitMenuPopup(HWND, WPARAM);
 	~MyEditor();
 	long X1, Y1, X2, Y2;
-	LPCSTR GetDetails();
+	wchar_t* GetDetails();
 };
 
 #pragma endregion Editors
