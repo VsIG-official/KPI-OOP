@@ -2,7 +2,8 @@
 #include "pch.h"
 #include "my_editor.h"
 #include "toolbar.h"
-#include "Shlwapi.h"
+#include <Shlwapi.h>
+//#include "shlwapi.h"
 
 #pragma region Variables
 
@@ -167,11 +168,22 @@ LPCSTR MyEditor::GetDetails()
 	char* lpStr2;
 	lpStr2 = buffer_2;
 
-	PathCombine(lpStr1, lpStr2, "/");
-	PathCombine(lpStr1, (LPCSTR)X1, "/");
-	PathCombine(lpStr1, (LPCSTR)Y1, "/");
-	PathCombine(lpStr1, (LPCSTR)X2, "/");
-	PathCombine(lpStr1, (LPCSTR)Y2, "/");
+	PathAppend(lpStr1, lpStr2);
+	PathAppend(lpStr1, "/");
+	PathAppend(lpStr1, (LPCSTR)X1);
+	PathAppend(lpStr1, "/");
+	PathAppend(lpStr1, (LPCSTR)Y1);
+	PathAppend(lpStr1, "/");
+	PathAppend(lpStr1, (LPCSTR)X2);
+	PathAppend(lpStr1, "/");
+	PathAppend(lpStr1, (LPCSTR)Y2);
+	PathAppend(lpStr1, "/");
+
+	/*PathCombineA(lpStr1, lpStr2, "/");
+	PathCombineA(lpStr1, (LPCSTR)X1, "/");
+	PathCombineA(lpStr1, (LPCSTR)Y1, "/");
+	PathCombineA(lpStr1, (LPCSTR)X2, "/");
+	PathCombineA(lpStr1, (LPCSTR)Y2, "/");*/
 
 	return lpStr1;
 }

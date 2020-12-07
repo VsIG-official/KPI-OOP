@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Lab3\small.ico" />
+    <Image Include="..\..\Lab3\small.ico" />
     <Image Include="bitmap1.bmp" />
     <Image Include="Lab2.ico" />
     <Image Include="Lab3.ico" />

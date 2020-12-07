@@ -9,7 +9,6 @@
 #include "my_editor.h"
 #include "toolbar.h"
 #include "my_table.h"
-using namespace std;
 
 #define MAX_LOADSTRING 100
 
@@ -28,11 +27,12 @@ const LPCSTR ELLIPSE_NAME = "Овал";
 const LPCSTR LINEOO_NAME = "Лінія з кружочками на кінцях";
 const LPCSTR CUBE_NAME = "Куб";
 string detailsOfShape;
+LPCSTR stringForShape = "";
 
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
 MyTable* table = new MyTable;
-HWND nomodal = NULL;
+HWND hwnd = NULL;
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -46,6 +46,7 @@ static void CallToolEllipse();
 static void CallToolLineOO();
 static void CallToolCube();
 static void OnWMCreateCall(HWND);
+BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 #pragma endregion VariablesAndFunctions
 
@@ -224,8 +225,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_LBUTTONUP:
         ED.OnLBup(hWnd);
-        //str = se->GetString();
-        table->Add(nomodal, detailsOfShape);
+        stringForShape = ED.GetDetails();
+        table->Add(hwnd, stringForShape);
         break;
     case WM_MOUSEMOVE:
         ED.OnMouseMove(hWnd);
@@ -241,6 +242,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
+        case IDD_TABLE:
+            hwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
+            ShowWindow(hwnd, SW_SHOW);
+            SetWindowTextA(hwnd, "Таблиця");
+            break;
         case ID_TOOL_POINT:
             CallToolPoint();
             break;
@@ -341,5 +347,48 @@ void CallToolCube()
     toolbar.OnToolCube();
     ED.Start(new CubeShape);
 }
+
+BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    string path = "./objects.txt";
+    ifstream f;
+    switch (uMsg)
+    {
+    case WM_INITDIALOG:
+        f.open(path);
+        if (!f.is_open())
+        {
+            throw new exception("Can't open the file");
+        }
+        else
+        {
+            string str;
+            while (!f.eof())
+            {
+                str = "";
+                //getline(f, str);
+                if (str != "") SendDlgItemMessage(hWnd, IDC_LIST, LB_ADDSTRING, 0, (LPARAM)str.c_str());
+            }
+        }
+        f.close();
+        return (INT_PTR)TRUE;
+        break;
+    case WM_COMMAND:
+        if (LOWORD(wParam) == IDCLEAR)
+        {
+            std::ofstream clear;
+            clear.open(path, std::ofstream::out | std::ofstream::trunc);
+            clear.close();
+            SendDlgItemMessage(hWnd, IDC_LIST, LB_RESETCONTENT, 0, 0);
+        }
+        if (LOWORD(wParam) == IDCANCEL)
+        {
+            DestroyWindow(hWnd);
+            return TRUE;
+        }
+    }
+    return (INT_PTR)FALSE;
+}
+
 
 #pragma endregion ModifiedFuntions

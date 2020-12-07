@@ -102,6 +102,9 @@
     <Image Include="..\..\..\Lab3\small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="..\..\Lab3\small.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

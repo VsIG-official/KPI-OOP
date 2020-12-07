@@ -16,3 +16,4 @@
 //--підключення бібліотеки Common Control Library--
 #include <commctrl.h>
 #pragma comment(lib, "comctl32.lib")
+#pragma comment(lib, "Shlwapi.lib")
