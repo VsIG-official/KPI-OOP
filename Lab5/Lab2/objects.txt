@@ -1,1 +1,7 @@
-Figure: LineOOx1: 193 - y1: 100 - x2: 352 - y2: 202 - Figure: LineOOx1: 463 - y1: 129 - x2: 267 - y2: 264 - Figure: LineOOx1: 205 - y1: 260 - x2: 316 - y2: 109 - 
+Figure: LineOOx1: 257 - y1: 128 - x2: 398 - y2: 245 - 
+Figure: LineOOx1: 490 - y1: 150 - x2: 294 - y2: 251 - 
+Figure: LineOOx1: 210 - y1: 244 - x2: 202 - y2: 152 - 
+Figure: LineOOx1: 208 - y1: 141 - x2: 385 - y2: 248 - 
+Figure: Ellipsex1: 305 - y1: 148 - x2: 512 - y2: 248 - 
+Figure: Ellipsex1: 589 - y1: 254 - x2: 400 - y2: 173 - 
+Figure: Ellipsex1: 232 - y1: 133 - x2: 397 - y2: 244 - 

@@ -13,7 +13,6 @@ bool isPressed;
 int const menuCount = 6;
 int allMenus[menuCount] = { ID_TOOL_POINT, ID_TOOL_LINE, 
 ID_TOOL_RECTANGLE, ID_TOOL_ELLIPSE, ID_TOOL_LINEOO, ID_TOOL_CUBE};
-std::stringstream buffer;
 
 #pragma endregion Variables
 
@@ -158,10 +157,17 @@ void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams)
 	}
 }
 
+/// <summary>
+/// Get name and coords of the shape
+/// </summary>
+/// <returns></returns>
 std::string MyEditor::GetDetails()
 {
-	buffer << "Figure: ";
+	std::stringstream buffer;
+
+	buffer << "Shape: ";
 	buffer << pcshape[size]->GetShapeName();
+	buffer << " - ";
 	buffer << "x1: ";
 	buffer << X1;
 	buffer << " - ";

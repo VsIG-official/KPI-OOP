@@ -367,39 +367,40 @@ void CallToolCube()
     ED.Start(new CubeShape);
 }
 
+/// <summary>
+/// Do something with Table window
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="uMsg"></param>
+/// <param name="wParam"></param>
+/// <param name="lParam"></param>
+/// <returns></returns>
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     string path = "./Objects.txt";
-    ifstream f;
+    ifstream myTableFile;
     switch (uMsg)
     {
     case WM_INITDIALOG:
-        f.open(path);
-        if (!f.is_open())
-        {
-            throw new exception("Can't open the file");
-        }
-        else
+        myTableFile.open(path);
+        if (myTableFile.is_open())
         {
             string str;
-            while (!f.eof())
+            while (!myTableFile.eof())
             {
                 str = "";
-                getline(f, str);
+                getline(myTableFile, str);
                 if (str != "") SendDlgItemMessage(hWnd, IDC_LIST, LB_ADDSTRING, 0, (LPARAM)str.c_str());
             }
         }
-        f.close();
+        else
+        {
+            throw new exception("Can't open the file");
+        }
+        myTableFile.close();
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDCLEAR)
-        {
-            std::ofstream clear;
-            clear.open(path, std::ofstream::out | std::ofstream::trunc);
-            clear.close();
-            SendDlgItemMessage(hWnd, IDC_LIST, LB_RESETCONTENT, 0, 0);
-        }
         if (LOWORD(wParam) == IDCANCEL)
         {
             DestroyWindow(hWnd);
@@ -408,6 +409,5 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
-
 
 #pragma endregion ModifiedFuntions

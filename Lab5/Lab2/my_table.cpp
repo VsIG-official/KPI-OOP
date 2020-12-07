@@ -11,7 +11,8 @@ static LPCSTR exceptionString = "Can't open a file or find a file";
 /// <param name="shapeDetails">name and coords</param>
 void MyTable::Add(HWND hWndDlg, std::string shapeDetails)
 {	
-	ofstream myTableFile(name);
+	ofstream myTableFile;
+	myTableFile.open(name, ofstream::app);
 
 	if (myTableFile.is_open())
 	{
