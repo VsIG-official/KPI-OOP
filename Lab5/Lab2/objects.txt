@@ -1,7 +1,1 @@
-Figure: LineOOx1: 257 - y1: 128 - x2: 398 - y2: 245 - 
-Figure: LineOOx1: 490 - y1: 150 - x2: 294 - y2: 251 - 
-Figure: LineOOx1: 210 - y1: 244 - x2: 202 - y2: 152 - 
-Figure: LineOOx1: 208 - y1: 141 - x2: 385 - y2: 248 - 
-Figure: Ellipsex1: 305 - y1: 148 - x2: 512 - y2: 248 - 
-Figure: Ellipsex1: 589 - y1: 254 - x2: 400 - y2: 173 - 
-Figure: Ellipsex1: 232 - y1: 133 - x2: 397 - y2: 244 - 
+Shape: Point - x1: 200 - y1: 125 - x2: 200 - y2: 125 - 
