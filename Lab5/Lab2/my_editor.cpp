@@ -165,19 +165,20 @@ std::string MyEditor::GetDetails()
 {
 	std::stringstream buffer;
 
-	buffer << pcshape[size]->GetShapeName() << "\t";
-	buffer << "\t - ";
-	buffer << "\tx1: ";
+	buffer << pcshape[size]->GetShapeName();
+	buffer << " - ";
+	buffer << "x1: ";
 	buffer << X1;
 	buffer << " - ";
-	buffer << "\ty1: ";
+	buffer << "y1: ";
 	buffer << Y1;
 	buffer << " - ";
-	buffer << "\tx2: ";
+	buffer << "x2: ";
 	buffer << X2;
 	buffer << " - ";
-	buffer << "\ty2: ";
+	buffer << "y2: ";
 	buffer << Y2;
+	buffer << " - ";
 
 	std::string shapeString = buffer.str();
 
