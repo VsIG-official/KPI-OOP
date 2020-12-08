@@ -1,5 +1,6 @@
-Shape: Point - x1: 353 - y1: 273 - x2: 353 - y2: 273 - 
-Shape: Rectangle - x1: 138 - y1: 122 - x2: 245 - y2: 228 - 
-Shape: Rectangle - x1: 395 - y1: 260 - x2: 278 - y2: 137 - 
-Shape: LineOO - x1: 196 - y1: 170 - x2: 333 - y2: 192 - 
-Shape: Cube - x1: 647 - y1: 111 - x2: 452 - y2: 235 - 
+Cube         		 - 	x1: 186 - 	y1: 73 - 	x2: 278 - 	y2: 195
+LineOO      		 - 	x1: 115 - 	y1: 89 - 	x2: 147 - 	y2: 219
+Ellipse      		 - 	x1: 121 - 	y1: 62 - 	x2: 209 - 	y2: 217
+Rectangle		 - 	x1: 107 - 	y1: 101 - 	x2: 191 - 	y2: 246
+Line         		 - 	x1: 75 - 	y1: 121 - 	x2: 157 - 	y2: 251
+Point        		 - 	x1: 59 - 	y1: 109 - 	x2: 59 - 	y2: 109

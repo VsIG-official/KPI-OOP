@@ -389,12 +389,21 @@ void CallToolCube()
 /// <returns></returns>
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+    LVCOLUMN lvcolumns;
+    LVITEM lvitems;
+    lvcolumns.mask = LVCF_TEXT | LVCF_SUBITEM | LVCF_WIDTH | LVCF_FMT;//Стиль таблицы
+//Как будет смотреться заголовок столбца , в моем случае 
+//выравнивание по левому краю
+    lvcolumns.fmt = LVCFMT_LEFT;
+    lvcolumns.cx = (rect.right - rect.left) / 15;    //Длина столбца относительно левого края 
+
+    lvcolumns.iSubItem = 0;   //Индекс столбца
+    lvcolumns.pszText = (LPWSTR)coloms[lvcolumns.iSubItem];
+    ListView_InsertColumn(LISTVIEW, 0, &lvcolumns);   //Функция вставки столбцов
     ifstream myTableFile;
     switch (uMsg)
     {
     case WM_INITDIALOG:
-
-
 
         myTableFile.open(pathForShapes);
 
@@ -435,5 +444,33 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
+
+int CreateColumns(HWND* hwndlistbox)
+{
+    IDC_LIST.Columns.Add("ProductName", 100);
+}
+
+//void InsertItems(HWND* hwndlistbox, int* columncount)
+//{
+//    LVITEM lvi;
+//    wchar_t* items[100];
+//    int i, j;
+//
+//    items[0] = "text1";
+//    items[1] = "text2";
+//    items[2] = "text3";
+//    items[3] = "text4";
+//    items[4] = NULL;
+//
+//    lvi.mask = LVIF_TEXT;
+//    lvi.iItem = 0;
+//
+//    for (i = 0; i < *columncount; i++)
+//    {
+//        lvi.pszText = items[i];
+//        lvi.iSubItem = i;
+//        ListView_InsertItem(*hwndlistbox, &lvi);
+//    }
+//}
 
 #pragma endregion ModifiedFuntions
