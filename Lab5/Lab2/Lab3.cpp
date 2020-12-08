@@ -424,22 +424,12 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDCANCEL || LOWORD(wParam) == IDC_EXIT)
+        if (LOWORD(wParam) == IDC_EXIT)
         {
-            DestroyWindow(hWnd);
+            DestroyWindow(tableHwnd);
             return TRUE;
             tableCount--;
         }
-    case WM_PAINT:
-
-        PAINTSTRUCT ps;
-        HDC hdc;
-        hdc = BeginPaint(hWnd, &ps);
-        MoveToEx(hdc, 50, 50, NULL);
-        LineTo(hdc, 500, 500);
-        EndPaint(hWnd, &ps);
-
-        break;
     }
     return (INT_PTR)FALSE;
 }
