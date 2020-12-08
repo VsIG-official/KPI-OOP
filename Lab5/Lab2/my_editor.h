@@ -28,6 +28,7 @@ public:
 	~MyEditor();
 	long X1, Y1, X2, Y2;
 	std::string GetDetails();
+	void SelectShape(INT);
 };
 
 #pragma endregion Editors

@@ -20,6 +20,14 @@ ID_TOOL_RECTANGLE, ID_TOOL_ELLIPSE, ID_TOOL_LINEOO, ID_TOOL_CUBE};
 
 #pragma region Functions
 
+void MyEditor::SelectShape(INT ind)
+{
+	for (int i = 0; i < size; i++)
+	{
+		pcshape[i]->Show(hdc);
+	}
+}
+
 /// <summary>
 /// Destructor
 /// </summary>

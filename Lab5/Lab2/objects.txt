@@ -1,0 +1,4 @@
+Shape 	 x1 	 y1 	 x2 	 y2 
+
+LineOO 	 x1: 187 	 y1: 54 	 x2: 124 	 y2: 247 	 
+Cube 	 x1: 262 	 y1: 133 	 x2: 566 	 y2: 306 	 

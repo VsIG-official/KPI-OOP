@@ -54,6 +54,7 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 std::string shapeDetails = "";
 string pathForShapes = "objects.txt";
 static LPCSTR exceptionString = "Can't open a file or find a file";
+TCHAR buf[1024] = { 0 };
 
 #pragma endregion VariablesAndFunctions
 
@@ -440,6 +441,11 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             DestroyWindow(tableHwnd);
             tableCount--;
             return TRUE;
+        }
+        if (LOWORD(wParam) == IDC_CHOOSE)
+        {
+            INT indx = SendDlgItemMessage(hWnd, IDC_LIST, LB_GETCURSEL, 0, 0);
+            SendDlgItemMessage(hWnd, IDC_LIST, LB_GETTEXT, indx, (long)buf);
         }
     }
     return (INT_PTR)FALSE;
