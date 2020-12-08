@@ -327,6 +327,13 @@ void OnWMCreateCall(HWND hWnd)
             | std::ofstream::trunc);
         myTableFile.close();
     }
+
+    if (firstInit == 0)
+    {
+        table->Add(tableHwnd,
+            "Shape \t x1 \t y1 \t x2 \t y2");
+        firstInit++;
+    }
 }
 
 /// <summary>
@@ -402,12 +409,6 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         myTableFile.open(pathForShapes);
         if (myTableFile.is_open())
         {
-            if (firstInit==0)
-            {
-                table->Add(tableHwnd, 
-                    "Shape \t x1 \t y1 \t x2 \t y2 \n");
-                firstInit++;
-            }
             string tempString = "";
 
             while (!myTableFile.eof())

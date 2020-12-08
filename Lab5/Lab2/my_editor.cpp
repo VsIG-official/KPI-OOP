@@ -168,23 +168,16 @@ std::string MyEditor::GetDetails()
 	std::stringstream buffer;
 
 	buffer << pcshape[size]->GetShapeName();
-	buffer << " - ";
-	buffer << "x1: ";
+	buffer << " \t ";
 	buffer << X1;
-	buffer << " - ";
-	buffer << "y1: ";
+	buffer << " \t ";
 	buffer << Y1;
-	buffer << " - ";
-	buffer << "x2: ";
+	buffer << " \t ";
 	buffer << X2;
-	buffer << " - ";
-	buffer << "y2: ";
+	buffer << " \t ";
 	buffer << Y2;
-	buffer << " - ";
 
 	std::string shapeString = buffer.str();
-
-	std::replace(shapeString.begin(), shapeString.end(), '-', '\t'); // replace all 'x' to 'y'
 
 	return shapeString;
 }
