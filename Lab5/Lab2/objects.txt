@@ -1,2 +1,5 @@
-Ellipse 	 x1: 185 	 y1: 97 	 x2: 398 	 y2: 288 	 
-Ellipse 	 x1: 413 	 y1: 172 	 x2: 186 	 y2: 232 	 
+Shape 	 x1 	 y1 	 x2 	 y2 
+
+LineOO 	 x1: 188 	 y1: 78 	 x2: 385 	 y2: 232 	 
+Ellipse 	 x1: 171 	 y1: 101 	 x2: 129 	 y2: 221 	 
+Ellipse 	 x1: 486 	 y1: 142 	 x2: 360 	 y2: 232 	 

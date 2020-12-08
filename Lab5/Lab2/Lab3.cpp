@@ -29,6 +29,7 @@ const LPCSTR CUBE_NAME = "Куб";
 string detailsOfShape;
 INT countForShapes = 0;
 INT tableCount = 0;
+INT firstInit = 0;
 
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
@@ -399,9 +400,14 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_INITDIALOG:
 
         myTableFile.open(pathForShapes);
-
         if (myTableFile.is_open())
         {
+            if (firstInit==0)
+            {
+                table->Add(tableHwnd, 
+                    "Shape \t x1 \t y1 \t x2 \t y2 \n");
+                firstInit++;
+            }
             string tempString = "";
 
             while (!myTableFile.eof())
