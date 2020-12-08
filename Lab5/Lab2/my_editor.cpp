@@ -3,6 +3,8 @@
 #include "my_editor.h"
 #include "toolbar.h"
 #include <sstream>
+#include <algorithm>
+#include <string>
 
 #pragma region Variables
 
@@ -181,6 +183,8 @@ std::string MyEditor::GetDetails()
 	buffer << " - ";
 
 	std::string shapeString = buffer.str();
+
+	std::replace(shapeString.begin(), shapeString.end(), '-', '\t'); // replace all 'x' to 'y'
 
 	return shapeString;
 }

@@ -25,7 +25,6 @@ void MyTable::Add(HWND hWndDlg, std::string shapeDetails)
 	}
 	myTableFile.close();
 
-
 	SendDlgItemMessage(hWndDlg, IDC_LIST, LB_ADDSTRING,
 		0, (LPARAM)shapeDetails.c_str());
 }

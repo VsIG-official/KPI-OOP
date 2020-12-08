@@ -190,7 +190,7 @@ Shape* RectangleShape::Duplicate()
 /// <returns></returns>
 std::string RectangleShape::GetShapeName()
 {
-	return "Rectangle";
+	return "Rect";
 }
 
 /// <summary>
