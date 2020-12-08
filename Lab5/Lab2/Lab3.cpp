@@ -296,9 +296,8 @@ void CallTable()
     {
         tableHwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
         ShowWindow(tableHwnd, SW_SHOW);
+        tableCount++;
     }
-
-    tableCount++;
 }
 
 /// <summary>
@@ -424,11 +423,17 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:
+        if (LOWORD(wParam) == IDCANCEL)
+        {
+            DestroyWindow(hWnd);
+            tableCount--;
+            return TRUE;
+        }
         if (LOWORD(wParam) == IDC_EXIT)
         {
             DestroyWindow(tableHwnd);
-            return TRUE;
             tableCount--;
+            return TRUE;
         }
     }
     return (INT_PTR)FALSE;
