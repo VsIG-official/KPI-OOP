@@ -432,7 +432,7 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_COMMAND:
         if (LOWORD(wParam) == IDCANCEL)
         {
-            DestroyWindow(hWnd);
+            DestroyWindow(tableHwnd);
             tableCount--;
             return TRUE;
         }
