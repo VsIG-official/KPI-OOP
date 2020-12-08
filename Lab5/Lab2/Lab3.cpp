@@ -33,7 +33,7 @@ INT tableCount = 0;
 Toolbar toolbar;
 MyEditor& ED = ED.getInstance();
 MyTable* table = new MyTable;
-HWND hwnd = NULL;
+HWND tableHwnd = NULL;
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -294,9 +294,8 @@ void CallTable()
 {
     if (tableCount == 0)
     {
-        hwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
-        ShowWindow(hwnd, SW_SHOW);
-        SetWindowTextA(hwnd, "Таблиця");
+        tableHwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
+        ShowWindow(tableHwnd, SW_SHOW);
     }
 
     tableCount++;
@@ -309,7 +308,7 @@ void CallLBUP(HWND hWnd)
 {
     ED.OnLBup(hWnd);
     shapeDetails = ED.GetDetails();
-    table->Add(hwnd, shapeDetails);
+    table->Add(tableHwnd, shapeDetails);
 }
 
 /// <summary>
@@ -395,6 +394,7 @@ void CallToolCube()
 BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     ifstream myTableFile;
+
     switch (uMsg)
     {
     case WM_INITDIALOG:
@@ -430,6 +430,16 @@ BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             return TRUE;
             tableCount--;
         }
+    case WM_PAINT:
+
+        PAINTSTRUCT ps;
+        HDC hdc;
+        hdc = BeginPaint(hWnd, &ps);
+        MoveToEx(hdc, 50, 50, NULL);
+        LineTo(hdc, 500, 500);
+        EndPaint(hWnd, &ps);
+
+        break;
     }
     return (INT_PTR)FALSE;
 }
