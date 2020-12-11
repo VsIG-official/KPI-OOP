@@ -21,19 +21,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-static void CallToolPoint();
-static void CallToolLine();
-static void CallToolRectangle();
-static void CallToolEllipse();
-static void CallToolLineOO();
-static void CallToolCube();
-static void CallLBUP(HWND hWnd);
-static void CallTable();
-static void OnWMCreateCall(HWND);
-BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-std::string shapeDetails = "";
-string pathForShapes = "objects.txt";
-static LPCSTR exceptionString = "Can't open a file or find a file";
 
 #pragma endregion VariablesAndFunctions
 
@@ -198,57 +185,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_CREATE:
-        OnWMCreateCall(hWnd);
-        break;
-    case WM_SIZE: // this message is sent if the window resizes
-        toolbar.OnSize(hWnd);
-        break;
-    case WM_NOTIFY: // message from the buttons
-        toolbar.OnNotify(hWnd, lParam);
-        break;
-    case WM_LBUTTONDOWN:
-        ED.OnLBdown(hWnd);
-        break;
-    case WM_LBUTTONUP:
-        CallLBUP(hWnd);
-        break;
-    case WM_MOUSEMOVE:
-        ED.OnMouseMove(hWnd);
-        break;
-    case WM_PAINT:
-        ED.OnPaint(hWnd);
-        break;
-    case WM_INITMENUPOPUP:
-        ED.OnInitMenuPopup(hWnd, wParam);
-        break;
     case WM_COMMAND:
     {
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
-        case IDD_TABLEINMENU:
-            CallTable();
-            //SetWindowTextA(hWnd,"some");
-            break;
-        case ID_TOOL_POINT:
-            CallToolPoint();
-            break;
-        case ID_TOOL_LINE:
-            CallToolLine();
-            break;
-        case ID_TOOL_RECTANGLE:
-            CallToolRectangle();
-            break;
-        case ID_TOOL_ELLIPSE:
-            CallToolEllipse();
-            break;
-        case ID_TOOL_LINEOO:
-            CallToolLineOO();
-            break;
-        case ID_TOOL_CUBE:
-            CallToolCube();
-            break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
             break;
@@ -267,155 +208,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
-}
-
-/// <summary>
-/// Do something when Point tool is used
-/// </summary>
-void CallTable()
-{
-    hwnd = CreateDialog(hInst, MAKEINTRESOURCE(IDD_TABLE), 0, Table);
-    ShowWindow(hwnd, SW_SHOW);
-    SetWindowTextA(hwnd, "Таблиця");
-}
-
-/// <summary>
-/// Do something when Point tool is used
-/// </summary>
-void CallLBUP(HWND hWnd)
-{
-    ED.OnLBup(hWnd);
-    shapeDetails = ED.GetDetails();
-    table->Add(hwnd, shapeDetails);
-}
-
-/// <summary>
-/// Do something when WM_CREATE is called
-/// </summary>
-void OnWMCreateCall(HWND hWnd)
-{
-    toolbar.OnCreate(hWnd); // here we will create Toolbar
-    CallToolPoint();
-
-    if (countForShapes == 0)
-    {
-        ifstream myTableFile;
-
-        myTableFile.open(pathForShapes, std::ofstream::out
-            | std::ofstream::trunc);
-        myTableFile.close();
-    }
-}
-
-/// <summary>
-/// Do something when Point tool is used
-/// </summary>
-void CallToolPoint()
-{
-    toolbar.OnToolPoint();
-    ED.Start(new PointShape);
-}
-
-/// <summary>
-/// Do something when Line tool is used
-/// </summary>
-void CallToolLine()
-{
-    toolbar.OnToolLine();
-    ED.Start(new LineShape);
-}
-
-/// <summary>
-/// Do something when Rectangle tool is used
-/// </summary>
-void CallToolRectangle()
-{
-    toolbar.OnToolRectangle();
-    ED.Start(new RectangleShape);
-}
-
-/// <summary>
-/// Do something when Ellipse tool is used
-/// </summary>
-void CallToolEllipse()
-{
-    toolbar.OnToolEllipse();
-    ED.Start(new EllipseShape);
-}
-
-/// <summary>
-/// Do something when LineOO tool is used
-/// </summary>
-void CallToolLineOO()
-{
-    toolbar.OnToolLineOO();
-    ED.Start(new LineOOShape);
-}
-
-/// <summary>
-/// Do something when Cube tool is used
-/// </summary>
-void CallToolCube()
-{
-    toolbar.OnToolCube();
-    ED.Start(new CubeShape);
-}
-
-/// <summary>
-/// Do something with Table window
-/// </summary>
-/// <param name="hWnd"></param>
-/// <param name="uMsg"></param>
-/// <param name="wParam"></param>
-/// <param name="lParam"></param>
-/// <returns></returns>
-BOOL CALLBACK Table(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-    ifstream myTableFile;
-    switch (uMsg)
-    {
-    case WM_INITDIALOG:
-
-
-
-        myTableFile.open(pathForShapes);
-
-        if (myTableFile.is_open())
-        {
-            string tempString = "";
-
-            while (!myTableFile.eof())
-            {
-                getline(myTableFile, tempString);
-                if (tempString != "") SendDlgItemMessage(hWnd, IDC_LIST, 
-                    LB_ADDSTRING, 0, (LPARAM)tempString.c_str());
-            }
-        }
-        else
-        {
-            throw new exception(exceptionString);
-        }
-
-        countForShapes++;
-
-        myTableFile.close();
-
-        return (INT_PTR)TRUE;
-        break;
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDCANCEL)
-        {
-            DestroyWindow(hWnd);
-            return TRUE;
-        }
-
-        if (LOWORD(wParam) == IDC_EXIT)
-        {
-            DestroyWindow(hWnd);
-            return TRUE;
-        }
-    }
-    return (INT_PTR)FALSE;
 }
 
 #pragma endregion ModifiedFuntions
