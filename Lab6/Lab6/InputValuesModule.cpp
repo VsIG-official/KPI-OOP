@@ -6,9 +6,9 @@
 
 HINSTANCE hInstCurrent;
 
-static int n_MOD1;
-static int Min_MOD1;
-static int Max_MOD1;
+int n_MOD1;
+int Min_MOD1;
+int Max_MOD1;
 
 const int allValues = 3;
 int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
@@ -89,12 +89,12 @@ void OnOk(HWND hDlg)
         if (values[i] == NULL)
         {
             // call "enter a values" window
-            DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_NULL), hDlg, Warning_MOD1);
-            return;
+            //DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_NULL), hDlg, Warning_MOD1);
+            //return;
         }
     }
 
-    if (values[0] == 0)
+    if (n_MOD1 == 0)
     {
         // call "n can't be 0"
         DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_ZERO), hDlg, Warning_MOD1);
