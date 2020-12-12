@@ -12,7 +12,7 @@ const int allValues = 3;
 int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
 
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-static void OnOk(HWND hDlg);
+static BOOL OnOk(HWND hDlg);
 static void OnCancel(HWND hDlg);
 static void OnClose(HWND hDlg);
 
@@ -74,11 +74,28 @@ INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARA
 /// Called when IDOK clicked
 /// </summary>
 /// <param name="hDlg">The dialog.</param>
-void OnOk(HWND hDlg)
+BOOL OnOk(HWND hDlg)
 {
     n_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_N, NULL, FALSE);
     Min_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MIN, NULL, FALSE);
     Max_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MAX, NULL, FALSE);
+
+    // go through the loop and check, if some value == to NULL
+    for (size_t i = 0; i < sizeof(values); i++)
+    {
+        if (values[i] == NULL)
+        {
+            // call "enter a values" window
+            return FALSE;
+        }
+    }
+
+    // check if min is less or equals to max
+    if (Min_MOD1 <= Max_MOD1)
+    {
+        // call two object2 and object3 windows
+        return TRUE;
+    }
 }
 
 /// <summary>
