@@ -85,12 +85,23 @@ CAPTION "Введіть дані"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "ОК",IDOK,130,147,50,14
-    EDITTEXT        IDC_EDIT1,23,79,66,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT2,121,79,66,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT3,216,79,66,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT1,23,79,66,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT2,121,79,66,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT3,216,79,66,14,ES_AUTOHSCROLL | ES_NUMBER
     CTEXT           "n",IDC_STATIC_N,52,72,8,8
     LTEXT           "Min",IDC_STATIC_MIN,148,72,12,8
     LTEXT           "Max",IDC_STATIC_MAX,242,72,13,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_INPUT AFX_DIALOG_LAYOUT
+BEGIN
+    0
 END
 
 #endif    // Украинский (Украина) resources
