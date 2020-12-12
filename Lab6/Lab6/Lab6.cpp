@@ -5,7 +5,7 @@
 #include "framework.h"
 #include "pch.h"
 #include "Lab6.h"
-//#include "Resource.h"
+#include "InputValuesModule.h"
 
 #define MAX_LOADSTRING 100
 
@@ -192,7 +192,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case IDM_WORK:
             CallInputValues(hWnd);
-            //DialogBox(hInst, MAKEINTRESOURCE(IDD_INPUT), hWnd, About);
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -221,7 +220,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void CallInputValues(HWND hWnd)
 {
     // What we program here that will be done
-    //Func_MOD1(hInst, hWnd, buffer);
+    Func_MOD1(hInst, hWnd);
 
     // The update region represents the portion of the window's
     // client area that must be redrawn.
