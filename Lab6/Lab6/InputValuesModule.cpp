@@ -4,8 +4,12 @@
 
 #pragma region VariablesAndFunctionsDeclarations
 
-static int const maxSymbols_MOD1 = 255;
-static char tempPlaceForText_MOD1[maxSymbols_MOD1] = { 0 };
+static int n_MOD1;
+static int Min_MOD1;
+static int Max_MOD1;
+
+const int allValues = 3;
+int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
 
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static void OnOk(HWND hDlg);
@@ -29,7 +33,7 @@ int Func_MOD1(HINSTANCE hInst, HWND hWnd)
 }
 
 /// <summary>
-/// Callback-function for hor.scrollbar
+/// Callback-function for calling window with inputs
 /// </summary>
 /// <param name="hDlg"></param>
 /// <param name="iMessage"></param>
@@ -72,7 +76,9 @@ INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARA
 /// <param name="hDlg">The dialog.</param>
 void OnOk(HWND hDlg)
 {
-    EndDialog(hDlg, 1);
+    n_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_N, NULL, FALSE);
+    Min_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MIN, NULL, FALSE);
+    Max_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MAX, NULL, FALSE);
 }
 
 /// <summary>
