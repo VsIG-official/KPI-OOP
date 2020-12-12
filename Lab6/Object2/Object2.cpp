@@ -22,6 +22,16 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+LPWSTR* szArglist;
+int nArgs;
+
+int const allValues = 3;
+int values_MOD2[allValues];
+
+int n_MOD2;
+int Min_MOD2;
+int Max_MOD2;
+
 #pragma endregion VariablesAndFunctions
 
 #pragma region DefaultFunctions
@@ -116,6 +126,28 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Save instance marker in global variable
+
+    szArglist = CommandLineToArgvW(GetCommandLineW(), &nArgs);
+    if (NULL == szArglist)
+    {
+        // CommandLineToArgvW failed
+        return 0;
+    }
+    else
+    {
+        for (int i = 0; i < nArgs; i++)
+        {
+            values_MOD2[i] = (int)szArglist[i];
+        }
+
+        n_MOD2 = values_MOD2[0];
+        Min_MOD2 = values_MOD2[1];
+        Max_MOD2 = values_MOD2[2];
+    }
+
+    // Free memory allocated for CommandLineToArgvW arguments.
+
+    LocalFree(szArglist);
 
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
