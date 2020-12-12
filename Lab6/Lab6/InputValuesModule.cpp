@@ -83,15 +83,11 @@ void OnOk(HWND hDlg)
     Min_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MIN, NULL, FALSE);
     Max_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MAX, NULL, FALSE);
 
-    // go through the loop and check, if some value == to NULL
-    for (size_t i = 0; i < sizeof(values); i++)
+    if (n_MOD1 == NULL || Min_MOD1 == NULL || Max_MOD1 == NULL )
     {
-        if (values[i] == NULL)
-        {
-            // call "enter a values" window
-            //DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_NULL), hDlg, Warning_MOD1);
-            //return;
-        }
+        // call "enter a values" window
+        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_NULL), hDlg, Warning_MOD1);
+        return;
     }
 
     if (n_MOD1 == 0)
