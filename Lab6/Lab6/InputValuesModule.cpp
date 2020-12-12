@@ -14,7 +14,7 @@ const int allValues = 3;
 int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
 
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-static INT_PTR CALLBACK WarningValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static void OnOk(HWND hDlg);
 static void OnCancel(HWND hDlg);
 static void OnClose(HWND hDlg);
@@ -89,8 +89,16 @@ void OnOk(HWND hDlg)
         if (values[i] == NULL)
         {
             // call "enter a values" window
-            //return;
+            DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_NULL), hDlg, Warning_MOD1);
+            return;
         }
+    }
+
+    if (values[0] == 0)
+    {
+        // call "n can't be 0"
+        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_ZERO), hDlg, Warning_MOD1);
+        return;
     }
 
     // check if min is less or equals to max
@@ -101,7 +109,8 @@ void OnOk(HWND hDlg)
     }
     else
     {
-        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_VALUES), hDlg, WarningValues_MOD1);
+        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_VALUES), hDlg, Warning_MOD1);
+        return;
     }
 }
 
@@ -113,7 +122,7 @@ void OnOk(HWND hDlg)
 /// <param name="wParam"></param>
 /// <param name="lParam"></param>
 /// <returns></returns>
-INT_PTR CALLBACK WarningValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     switch (iMessage)
     {
