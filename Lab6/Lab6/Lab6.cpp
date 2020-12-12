@@ -21,6 +21,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+static void CallInputValues(HWND hWnd);      // Declaration of our function
 
 #pragma endregion VariablesAndFunctions
 
@@ -190,7 +191,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wmId)
         {
         case IDM_WORK:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            CallInputValues(hWnd);
+            //DialogBox(hInst, MAKEINTRESOURCE(IDD_INPUT), hWnd, About);
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -210,6 +212,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+/// <summary>
+/// Function-handler of the menu item "Work1"
+/// </summary>
+/// <param name="hWnd">The h WND.</param>
+void CallInputValues(HWND hWnd)
+{
+    // What we program here that will be done
+    //Func_MOD1(hInst, hWnd, buffer);
+
+    // The update region represents the portion of the window's
+    // client area that must be redrawn.
+    InvalidateRect(hWnd, 0, TRUE);
 }
 
 #pragma endregion ModifiedFuntions
