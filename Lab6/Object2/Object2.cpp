@@ -79,8 +79,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    ParseFromCmd();
-
     //Compiler version g++ 6.3.0
 
     return (int)msg.wParam;
@@ -204,24 +202,33 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    //case WM_PAINT:
-    //    PAINTSTRUCT ps;
-    //    UpdateWindow(hWnd);
-    //    HDC hdc = BeginPaint(hWnd, &ps);
+    case WM_CREATE:
+        ParseFromCmd();
+        SetWindowText(hWnd, "some");
+        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
+        break;
+    case WM_PAINT:
+        PAINTSTRUCT ps;
+        UpdateWindow(hWnd);
+        HDC hdc = BeginPaint(hWnd, &ps);
 
-    //    //matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
+        RECT rc = { 0 };
+        GetClientRect(hWnd, &rc);
 
-    //    //for (size_t i = 0; i < sizeof(matrix); i++)
-    //    //{
-    //    //    for (size_t j = 0; j < sizeof(matrix); j++)
-    //    //    {
-    //    //        LPCWSTR temp = (LPCWSTR)matrix[i][j];
-    //    //        TextOut(hdc, 0 + i, 0 + j, temp, 1);
-    //    //    }
-    //    //}
+        matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
 
-    //    EndPaint(hWnd, &ps);
-    //    break;
+        for (size_t i = 0; i < sizeof(matrix); i++)
+        {
+            for (size_t j = 0; j < sizeof(matrix); j++)
+            {
+                LPCWSTR temp = (LPCWSTR)matrix[i][j];
+            }
+        }
+        static char temporaryBuffer[2048] = "AAA";
+        DrawTextA(hdc, temporaryBuffer, -1, &rc, DT_TOP);
+
+        EndPaint(hWnd, &ps);
+        break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
