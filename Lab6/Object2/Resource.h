@@ -11,7 +11,7 @@
 #define IDC_OBJECT2                     109
 #define IDR_MAINFRAME                   128
 #define IDD_OBJECT2                     129
-#define IDOK                            1000
+#define IDOK                            1097
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
