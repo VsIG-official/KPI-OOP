@@ -204,7 +204,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        //ParseFromCmd();
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
     break;
@@ -282,32 +281,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
-}
-
-BOOL ParseFromCmd()
-{
-    // parsing from command line
-    szArglist = CommandLineToArgvW(GetCommandLineW(), &nArgs);
-    if (NULL == szArglist)
-    {
-        // CommandLineToArgvW failed
-        return FALSE;
-    }
-    else
-    {
-        for (int i = 0; i < nArgs; i++)
-        {
-            values_MOD2[i] = (int)szArglist[i];
-        }
-
-        n_MOD2 = values_MOD2[0];
-        Min_MOD2 = values_MOD2[1];
-        Max_MOD2 = values_MOD2[2];
-    }
-
-    // Free memory allocated for CommandLineToArgvW arguments.
-
-    LocalFree(szArglist);
 }
 
 int RandomInt(int low, int high)
