@@ -23,7 +23,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-std::vector<std::vector<int>> MakeMatrix(int, int, int, HWND);
+int RandomInt(int low, int high);
 BOOL ParseFromCmd();
 
 LPWSTR* szArglist;
@@ -205,21 +205,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         ParseFromCmd();
-        SetWindowText(hWnd, "some");
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
     break;
 
-    //case WM_PAINT:
-    //{
-    //    PAINTSTRUCT ps;
-    //    UpdateWindow(hWnd);
-    //    HDC hdc = BeginPaint(hWnd, &ps);
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        UpdateWindow(hWnd);
+        HDC hdc = BeginPaint(hWnd, &ps);
 
-    //    RECT rc = { 0 };
-    //    GetClientRect(hWnd, &rc);
+        // dynamic allocation
+        int** ary = new int* [n_MOD2];
+        for (int i = 0; i < n_MOD2; ++i)
+        {
+            ary[i] = new int[n_MOD2];
+        }
+        // fill
+        for (int i = 0; i < n_MOD2; ++i)
+        {
+            for (int j = 0; j < n_MOD2; ++j)
+            {
+                ary[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+            }
+        }
 
-    //    matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
+        //// print
+        //for (int i = 0; i < N; ++i)
+        //    for (int j = 0; j < M; ++j)
+        //        std::cout << ary[i][j] << "\n";
+
+        //// free
+        //for (int i = 0; i < N; ++i)
+        //    delete[] ary[i];
+        //delete[] ary;
+
+        //matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2);
 
     //    for (size_t i = 0; i < sizeof(matrix); i++)
     //    {
@@ -231,9 +252,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     //    static char temporaryBuffer[2048] = "AAA";
     //    DrawTextA(hdc, temporaryBuffer, -1, &rc, DT_TOP);
 
-    //    EndPaint(hWnd, &ps);
-    //}
-    //break;
+        EndPaint(hWnd, &ps);
+    }
+    break;
 
     case WM_DESTROY:
     {
@@ -281,21 +302,20 @@ int RandomInt(int low, int high)
     return distr(gen);
 }
 
-std::vector<std::vector<int>> MakeMatrix (int size, 
-    int lower, int upper, HWND hDlg)
-{
-    std::vector<std::vector<int>> res;
-    for (int i = 0; i < size; ++i)
-    {
-        auto a = std::vector<int>(size);
-        for (int j = 0; j < size; ++j)
-        {
-            a[j] = RandomInt(lower, upper);
-            //TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
-        }
-        res.push_back(a);
-    }
-    return res;
-}
+//std::vector<std::vector<int>> MakeMatrix (int size, 
+//    int lower, int upper)
+//{
+//    std::vector<std::vector<int>> res;
+//    for (int i = 0; i < size; ++i)
+//    {
+//        auto a = std::vector<int>(size);
+//        //for (int j = 0; j < size; ++j)
+//        //{
+//        //    a[j] = RandomInt(lower, upper);
+//        //}
+//        //res.push_back(a);
+//    }
+//    return res;
+//}
 
 #pragma endregion ModifiedFuntions
