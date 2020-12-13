@@ -6,15 +6,17 @@
 
 HINSTANCE hInstCurrent;
 
-static int n_MOD1;
-static int Min_MOD1;
-static int Max_MOD1;
+int n_MOD1;
+int Min_MOD1;
+int Max_MOD1;
 
 const int allValues = 3;
-int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
+//int values[allValues];
+
+HWND hWndDataCreator = NULL;
 
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
-static INT_PTR CALLBACK WarningValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
+static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static void OnOk(HWND hDlg);
 static void OnCancel(HWND hDlg);
 static void OnClose(HWND hDlg);
@@ -83,25 +85,33 @@ void OnOk(HWND hDlg)
     Min_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MIN, NULL, FALSE);
     Max_MOD1 = GetDlgItemInt(hDlg, IDC_EDIT_MAX, NULL, FALSE);
 
-    // go through the loop and check, if some value == to NULL
-    for (size_t i = 0; i < sizeof(values); i++)
+    if (n_MOD1 == NULL  || Min_MOD1 == NULL || Max_MOD1 == NULL )
     {
-        if (values[i] == NULL)
-        {
-            // call "enter a values" window
-            //return;
-        }
+        // call "enter a values" window
+        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_NULL), hDlg, Warning_MOD1);
+        return;
     }
 
     // check if min is less or equals to max
     if (Min_MOD1 <= Max_MOD1)
     {
         // call two object2 and object3 windows
-        //return;
+        hWndDataCreator = FindWindow("OBJECT2", NULL);
+        if (hWndDataCreator == NULL) // the required program is already running
+        {
+            // call to run the desired program
+            //int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
+            WinExec("Object2.exe n_MOD1 Min_MOD1 Max_MOD1", SW_SHOW);
+            hWndDataCreator = FindWindow("OBJECT2", NULL);
+        }
+
+        return;
     }
     else
     {
-        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_VALUES), hDlg, WarningValues_MOD1);
+        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_VALUES),
+            hDlg, Warning_MOD1);
+        return;
     }
 }
 
@@ -113,7 +123,7 @@ void OnOk(HWND hDlg)
 /// <param name="wParam"></param>
 /// <param name="lParam"></param>
 /// <returns></returns>
-INT_PTR CALLBACK WarningValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     switch (iMessage)
     {
