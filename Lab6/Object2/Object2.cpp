@@ -5,8 +5,9 @@
 #include "framework.h"
 #include "pch.h"
 #include "Object2.h"
-#include "Resource.h"
 #include <vector>
+#include <random>
+#include "Resource.h"
 
 #define MAX_LOADSTRING 100
 
@@ -22,6 +23,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+std::vector<std::vector<int>> MakeMatrix(int, int, int, HWND);
 
 LPWSTR* szArglist;
 int nArgs;
@@ -76,28 +78,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    // parsing from command line
-    szArglist = CommandLineToArgvW(GetCommandLineW(), &nArgs);
-    if (NULL == szArglist)
-    {
-        // CommandLineToArgvW failed
-        return FALSE;
-    }
-    else
-    {
-        for (int i = 0; i < nArgs; i++)
-        {
-            values_MOD2[i] = (int)szArglist[i];
-        }
+    ParseFromCmd();
 
-        n_MOD2 = values_MOD2[0];
-        Min_MOD2 = values_MOD2[1];
-        Max_MOD2 = values_MOD2[2];
-    }
-
-    // Free memory allocated for CommandLineToArgvW arguments.
-
-    LocalFree(szArglist);
+    //Compiler version g++ 6.3.0
 
     return (int)msg.wParam;
 }
@@ -225,17 +208,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
-        case IDM_ABOUT:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-            break;
-        case IDM_EXIT:
-            DestroyWindow(hWnd);
-            break;
         default:
             return DefWindowProcW(hWnd, message, wParam, lParam);
         }
     }
     break;
+    case WM_PAINT:
+        PAINTSTRUCT ps;
+        UpdateWindow(hWnd);
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
+
+
+        for (size_t i = 0; i < sizeof(matrix); i++)
+        {
+            for (size_t j = 0; j < sizeof(matrix); j++)
+            {
+                TextOut(hdc, 0+i, 0+j, (LPCWSTR)matrix[i][j], 1);
+
+            }
+        }
+
+
+        break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
@@ -243,6 +239,62 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+BOOL ParseFromCmd()
+{
+    // parsing from command line
+    szArglist = CommandLineToArgvW(GetCommandLineW(), &nArgs);
+    if (NULL == szArglist)
+    {
+        // CommandLineToArgvW failed
+        return FALSE;
+    }
+    else
+    {
+        for (int i = 0; i < nArgs; i++)
+        {
+            values_MOD2[i] = (int)szArglist[i];
+        }
+
+        n_MOD2 = values_MOD2[0];
+        Min_MOD2 = values_MOD2[1];
+        Max_MOD2 = values_MOD2[2];
+    }
+
+    // Free memory allocated for CommandLineToArgvW arguments.
+
+    LocalFree(szArglist);
+}
+
+int RandomInt(int low, int high)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd()); // seed the generator
+    std::uniform_int_distribution<> distr(low, high);
+    return distr(gen);
+}
+
+std::vector<std::vector<int>> MakeMatrix (int size, 
+    int lower, int upper, HWND hDlg)
+{
+    std::vector<std::vector<int>> res;
+    for (int i = 0; i < size; ++i)
+    {
+        auto a = std::vector<int>(size);
+        for (int j = 0; j < size; ++j)
+        {
+            a[j] = RandomInt(lower, upper);
+            //TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
+        }
+        res.push_back(a);
+    }
+    return res;
+}
+
+void PrintMatrix()
+{
+
 }
 
 #pragma endregion ModifiedFuntions

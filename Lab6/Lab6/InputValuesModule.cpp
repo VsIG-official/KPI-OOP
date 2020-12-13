@@ -106,6 +106,7 @@ void OnOk(HWND hDlg)
             // call to run the desired program
             //int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
             WinExec("Object2 n_MOD1 Min_MOD1 Max_MOD1", SW_SHOW);
+            hWndDataCreator = FindWindow("OBJECT2", NULL);
         }
         return;
     }
