@@ -97,22 +97,20 @@ void OnOk(HWND hDlg)
     {
         // call two object2 and object3 windows
         hWndDataCreator = FindWindow("OBJECT2", NULL);
-        if (hWndDataCreator) // the required program is already running
-        {
-            // send a message to the window address hWndDataCreator
-        }
-        else // there is no required program
+        if (hWndDataCreator == NULL) // the required program is already running
         {
             // call to run the desired program
             //int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
-            WinExec("Object2 n_MOD1 Min_MOD1 Max_MOD1", SW_SHOW);
+            WinExec("Object2.exe n_MOD1 Min_MOD1 Max_MOD1", SW_SHOW);
             hWndDataCreator = FindWindow("OBJECT2", NULL);
         }
+
         return;
     }
     else
     {
-        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_VALUES), hDlg, Warning_MOD1);
+        DialogBox(hInstCurrent, MAKEINTRESOURCE(IDD_WARNING_VALUES),
+            hDlg, Warning_MOD1);
         return;
     }
 }

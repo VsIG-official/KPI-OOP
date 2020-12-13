@@ -24,6 +24,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 std::vector<std::vector<int>> MakeMatrix(int, int, int, HWND);
+BOOL ParseFromCmd();
 
 LPWSTR* szArglist;
 int nArgs;
@@ -214,24 +215,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     break;
     case WM_PAINT:
+    {
         PAINTSTRUCT ps;
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
 
         matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
 
-
         for (size_t i = 0; i < sizeof(matrix); i++)
         {
             for (size_t j = 0; j < sizeof(matrix); j++)
             {
-                TextOut(hdc, 0+i, 0+j, (LPCWSTR)matrix[i][j], 1);
-
+                TextOut(hdc, 0 + i, 0 + j, (LPCWSTR)matrix[i][j], 1);
             }
         }
 
-
-        break;
+        EndPaint(hWnd, &ps);
+        //break;
+    }
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
@@ -290,11 +291,6 @@ std::vector<std::vector<int>> MakeMatrix (int size,
         res.push_back(a);
     }
     return res;
-}
-
-void PrintMatrix()
-{
-
 }
 
 #pragma endregion ModifiedFuntions
