@@ -204,35 +204,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_COMMAND:
-    {
-        int wmId = LOWORD(wParam);
-        switch (wmId)
-        {
-        default:
-            return DefWindowProcW(hWnd, message, wParam, lParam);
-        }
-    }
-    break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        UpdateWindow(hWnd);
-        HDC hdc = BeginPaint(hWnd, &ps);
+    //case WM_PAINT:
+    //    PAINTSTRUCT ps;
+    //    UpdateWindow(hWnd);
+    //    HDC hdc = BeginPaint(hWnd, &ps);
 
-        matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
+    //    //matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
 
-        for (size_t i = 0; i < sizeof(matrix); i++)
-        {
-            for (size_t j = 0; j < sizeof(matrix); j++)
-            {
-                TextOut(hdc, 0 + i, 0 + j, (LPCWSTR)matrix[i][j], 1);
-            }
-        }
+    //    //for (size_t i = 0; i < sizeof(matrix); i++)
+    //    //{
+    //    //    for (size_t j = 0; j < sizeof(matrix); j++)
+    //    //    {
+    //    //        LPCWSTR temp = (LPCWSTR)matrix[i][j];
+    //    //        TextOut(hdc, 0 + i, 0 + j, temp, 1);
+    //    //    }
+    //    //}
 
-        EndPaint(hWnd, &ps);
-        //break;
-    }
+    //    EndPaint(hWnd, &ps);
+    //    break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
