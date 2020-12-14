@@ -21,6 +21,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+//long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize);
 
 #pragma endregion VariablesAndFunctions
 
@@ -208,5 +209,34 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return 0;
 }
+
+//long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
+//{
+//    HGLOBAL hglb;
+//    LPTSTR lptstr;
+//    long size, res;
+//    res = 0;
+//    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0;
+//    if (!OpenClipboard(hWnd)) return 0;
+//    hglb = GetClipboardData(CF_TEXT);
+//    if (hglb != NULL)
+//    {
+//        lptstr = (char *)GlobalLock(hglb);
+//        if (lptstr != NULL)
+//        {
+//            size = strlen(lptstr);
+//            if (size > maxsize)
+//            {
+//                lptstr[maxsize] = 0;
+//                size = strlen(lptstr);
+//            }
+//            strcpy_s(dest, maxsize, lptstr);
+//            res = size;
+//            GlobalUnlock(hglb);
+//        }
+//    }
+//    CloseClipboard();
+//    return res;
+//}
 
 #pragma endregion ModifiedFuntions

@@ -15,8 +15,6 @@ const int allValues = 3;
 HWND hWndDataCreator = NULL;
 HWND hWndObj2;
 
-COPYDATASTRUCT cds;
-
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static void OnOk(HWND hDlg);
@@ -186,7 +184,7 @@ void OnClose(HWND hDlg)
 //--це наша власна функція--
 int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
 {
-    COPYDATASTRUCT cds;
+    COPYDATASTRUCT cds{};
     cds.dwData = 1; //а можна і будь-яке інше значення
     cds.cbData = cb;
     cds.lpData = lp;

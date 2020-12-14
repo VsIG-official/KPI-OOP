@@ -26,7 +26,6 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 int RandomInt(int low, int high);
 static int Count(int element);
 void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
-long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize);
 int PutTextToClipboard(HWND hWnd, char* src);
 void StartObj3(HWND hWnd);
 
@@ -36,8 +35,6 @@ int values_MOD2[allValues];
 int n_MOD2;
 int Min_MOD2;
 int Max_MOD2;
-
-std::vector<std::vector<int>> matrix(n_MOD2, std::vector<int>(n_MOD2));
 
 #pragma endregion VariablesAndFunctions
 
@@ -166,10 +163,6 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_INITDIALOG:
         return (INT_PTR)TRUE;
 
-    case WM_COPYDATA:
-        OnCopyData(hDlg, wParam, lParam); //це наша власна функція-обробник
-        break;
-
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
         {
@@ -213,8 +206,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     break;
     case WM_COPYDATA:
+    {
         OnCopyData(hWnd, wParam, lParam);
         StartObj3(hWnd);
+        InvalidateRect(hWnd, 0, TRUE);
+    }
         break;
     case WM_COMMAND:
     {
@@ -238,7 +234,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
-
+        UpdateWindow(hWnd);
         // dynamic allocation
         int** matrix = new int* [n_MOD2];
         for (int i = 0; i < n_MOD2; ++i)
@@ -277,7 +273,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         delete[] matrix;
 
         EndPaint(hWnd, &ps);
-        //InvalidateRect(hWnd, 0, TRUE);
     }
     break;
 
@@ -325,35 +320,6 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
     n_MOD2 = p[0];
     Min_MOD2 = p[1];
     Max_MOD2 = p[2];
-}
-
-long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
-{
-    HGLOBAL hglb;
-    LPTSTR lptstr;
-    long size, res;
-    res = 0;
-    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0;
-    if (!OpenClipboard(hWnd)) return 0;
-    hglb = GetClipboardData(CF_TEXT);
-    if (hglb != NULL)
-    {
-        lptstr = (char*)GlobalLock(hglb);
-        if (lptstr != NULL)
-        {
-            size = strlen(lptstr);
-            if (size > maxsize)
-            {
-                lptstr[maxsize] = 0;
-                size = strlen(lptstr);
-            }
-            strcpy_s(dest, maxsize, lptstr);
-            res = size;
-            GlobalUnlock(hglb);
-        }
-    }
-    CloseClipboard();
-    return res;
 }
 
 int PutTextToClipboard(HWND hWnd, char* src)
