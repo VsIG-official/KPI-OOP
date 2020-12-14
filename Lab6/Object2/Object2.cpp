@@ -1,4 +1,4 @@
-﻿// Lab1.cpp : Defines the input point for the application.
+﻿// Object2.cpp : Defines the input point for the application.
 //
 // First Part
 
@@ -8,6 +8,8 @@
 #include <vector>
 #include <random>
 #include "Resource.h"
+#include <sstream>
+using namespace std;
 
 #define MAX_LOADSTRING 100
 
@@ -35,6 +37,8 @@ int values_MOD2[allValues];
 int n_MOD2;
 int Min_MOD2;
 int Max_MOD2;
+
+std::string copyMatrix = "";
 
 #pragma endregion VariablesAndFunctions
 
@@ -235,18 +239,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
         UpdateWindow(hWnd);
+
         // dynamic allocation
         int** matrix = new int* [n_MOD2];
         for (int i = 0; i < n_MOD2; ++i)
         {
             matrix[i] = new int[n_MOD2];
         }
+
         // fill
         for (int i = 0; i < n_MOD2; ++i)
         {
             for (int j = 0; j < n_MOD2; ++j)
             {
                 matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+                std::stringstream ss;
+                ss <<  matrix[i][j] << ",";
+                copyMatrix = ss.str();
             }
         }
 
@@ -375,6 +384,8 @@ void StartObj3(HWND hWnd)
     if (hWndDataCreator == NULL) // the required program is already running
     {
         // call to run the desired program
+        char* buffer = new char[copyMatrix.size() + 1];
+        PutTextToClipboard(hWnd, buffer);
         WinExec("Object3.exe", SW_SHOW);
         hWndDataCreator = FindWindow("OBJECT3", NULL);
     }

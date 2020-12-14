@@ -1,4 +1,4 @@
-﻿// Lab1.cpp : Defines the input point for the application.
+﻿// Object3.cpp : Defines the input point for the application.
 //
 // First Part
 
@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Object3.h"
 #include "Resource.h"
+#include <string>
 
 #define MAX_LOADSTRING 100
 
