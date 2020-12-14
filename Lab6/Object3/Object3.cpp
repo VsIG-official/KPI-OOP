@@ -235,42 +235,42 @@ void CalculateDeterminant(HWND hWnd)
     n_MOD3 = std::count(tempBufferForMatrixString.begin(),
         tempBufferForMatrixString.end(), ';');
 
-    TCHAR buf[100];
-    _stprintf_s(buf, _T("%d"), n_MOD3);
+    //TCHAR buf[100];
+    //_stprintf_s(buf, _T("%d"), n_MOD3);
 
-    TextOutA(hdc, 1 , 1, (LPCSTR)n_MOD3, 2);
+    //TextOutA(hdc, 1 , 1, (LPCSTR)n_MOD3, 2);
 
-    // dynamic allocation
-    int** matrix = new int* [n_MOD3];
-    for (int i = 0; i < n_MOD3; ++i)
-    {
-        matrix[i] = new int[n_MOD3];
-    }
-    std::string num;
-    // fill
+    //// dynamic allocation
+    //int** matrix = new int* [n_MOD3];
     //for (int i = 0; i < n_MOD3; ++i)
     //{
-    //    for (int j = 0; j < n_MOD3; ++j)
-    //    {
-    //        while (tempBufferForMatrixString != "")
-    //        {
-    //            num = tempBufferForMatrixString.substr(0, 
-    //                tempBufferForMatrixString.find_first_of("\n"));
-    //            char buffer[100] = {};
-    //            nums.push_back(std::stod(num));
-    //            tempBufferForMatrixString = tempBufferForMatrixString.substr
-    //            (tempBufferForMatrixString.find_first_of(",") + 1);
-    //        }
-    //        matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-    //    }
+    //    matrix[i] = new int[n_MOD3];
     //}
+    //std::string num;
+    //// fill
+    ////for (int i = 0; i < n_MOD3; ++i)
+    ////{
+    ////    for (int j = 0; j < n_MOD3; ++j)
+    ////    {
+    ////        while (tempBufferForMatrixString != "")
+    ////        {
+    ////            num = tempBufferForMatrixString.substr(0, 
+    ////                tempBufferForMatrixString.find_first_of("\n"));
+    ////            char buffer[100] = {};
+    ////            nums.push_back(std::stod(num));
+    ////            tempBufferForMatrixString = tempBufferForMatrixString.substr
+    ////            (tempBufferForMatrixString.find_first_of(",") + 1);
+    ////        }
+    ////        matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+    ////    }
+    ////}
 
-    // free
-    for (int i = 0; i < n_MOD3; ++i)
-    {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
+    //// free
+    //for (int i = 0; i < n_MOD3; ++i)
+    //{
+    //    delete[] matrix[i];
+    //}
+    //delete[] matrix;
 }
 
 long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
