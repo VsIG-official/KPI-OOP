@@ -22,7 +22,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-//long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize);
+long GetTextFromClipboard(HWND, char*, long);
 
 #pragma endregion VariablesAndFunctions
 
@@ -184,8 +184,15 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 /// <returns></returns>
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    char bufferText[1024] = {};
     switch (message)
     {
+    case WM_CREATE:
+    {
+        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
+        GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
+    }
+        break;
     case WM_COMMAND:
     {
         int wmId = LOWORD(wParam);
@@ -211,33 +218,33 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-//long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
-//{
-//    HGLOBAL hglb;
-//    LPTSTR lptstr;
-//    long size, res;
-//    res = 0;
-//    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0;
-//    if (!OpenClipboard(hWnd)) return 0;
-//    hglb = GetClipboardData(CF_TEXT);
-//    if (hglb != NULL)
-//    {
-//        lptstr = (char *)GlobalLock(hglb);
-//        if (lptstr != NULL)
-//        {
-//            size = strlen(lptstr);
-//            if (size > maxsize)
-//            {
-//                lptstr[maxsize] = 0;
-//                size = strlen(lptstr);
-//            }
-//            strcpy_s(dest, maxsize, lptstr);
-//            res = size;
-//            GlobalUnlock(hglb);
-//        }
-//    }
-//    CloseClipboard();
-//    return res;
-//}
+long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
+{
+    HGLOBAL hglb;
+    LPTSTR lptstr;
+    long size, res;
+    res = 0;
+    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0;
+    if (!OpenClipboard(hWnd)) return 0;
+    hglb = GetClipboardData(CF_TEXT);
+    if (hglb != NULL)
+    {
+        lptstr = (LPTSTR)GlobalLock(hglb);
+        if (lptstr != NULL)
+        {
+            size = strlen((char*)lptstr);
+            if (size > maxsize)
+            {
+                lptstr[maxsize] = 0;
+                size = strlen((char*)lptstr);
+            }
+            strcpy_s(dest, maxsize, (char*)lptstr);
+            res = size;
+            GlobalUnlock(hglb);
+        }
+    }
+    CloseClipboard();
+    return res;
+}
 
 #pragma endregion ModifiedFuntions

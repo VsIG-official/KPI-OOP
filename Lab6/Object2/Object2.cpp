@@ -247,16 +247,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             matrix[i] = new int[n_MOD2];
         }
 
+        std::stringstream ss;
+
         // fill
         for (int i = 0; i < n_MOD2; ++i)
         {
             for (int j = 0; j < n_MOD2; ++j)
             {
                 matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-                std::stringstream ss;
                 ss <<  matrix[i][j] << ",";
                 copyMatrix = ss.str();
             }
+            ss <<  ";";
+            copyMatrix = ss.str();
         }
 
         // print
