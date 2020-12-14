@@ -288,6 +288,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
+/// <summary>
+/// Creates random number for matrix
+/// </summary>
+/// <param name="low"></param>
+/// <param name="high"></param>
+/// <returns></returns>
 int RandomInt(int low, int high)
 {
     std::random_device rd;
@@ -312,6 +318,12 @@ int Count(int element)
     return count_MOD1;
 }
 
+/// <summary>
+/// Copy the data from another window
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParam"></param>
+/// <param name="lParam"></param>
 void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
     COPYDATASTRUCT* cds;
@@ -322,6 +334,12 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
     Max_MOD2 = p[2];
 }
 
+/// <summary>
+/// Put text to clipboard
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="src"></param>
+/// <returns></returns>
 int PutTextToClipboard(HWND hWnd, char* src)
 {
     HGLOBAL hglbCopy;
@@ -346,6 +364,11 @@ int PutTextToClipboard(HWND hWnd, char* src)
     return 1;
 }
 
+/// <summary>
+/// Starts the object3
+/// </summary>
+/// <param name="hWnd"></param>
+/// <returns></returns>
 void StartObj3(HWND hWnd)
 {
     HWND hWndDataCreator = FindWindow("OBJECT3", NULL);

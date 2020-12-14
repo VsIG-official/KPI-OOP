@@ -181,7 +181,14 @@ void OnClose(HWND hDlg)
     EndDialog(hDlg, 0);
 }
 
-//--це наша власна функція--
+/// <summary>
+/// Sends copydata
+/// </summary>
+/// <param name="hWndDest"></param>
+/// <param name="hWndSrc"></param>
+/// <param name="lp"></param>
+/// <param name="cb"></param>
+/// <returns></returns>
 int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
 {
     COPYDATASTRUCT cds{};
