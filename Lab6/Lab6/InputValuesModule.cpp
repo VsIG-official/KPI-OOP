@@ -14,6 +14,7 @@ const int allValues = 3;
 //int values[allValues];
 
 HWND hWndDataCreator = NULL;
+HWND hWndObj2;
 
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
@@ -52,6 +53,15 @@ INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARA
     case WM_INITDIALOG:
         return (INT_PTR)TRUE;
         break;
+    case WM_DESTROY: 
+    {
+        hWndObj2 = FindWindow("OBJECT2", NULL);
+        if (hWndObj2)
+        {
+            PostMessage(hWndObj2, WM_DESTROY, (WPARAM)wParam, 0);
+        }
+        break;
+    }
     case WM_COMMAND:
         switch (LOWORD(wParam))
         {

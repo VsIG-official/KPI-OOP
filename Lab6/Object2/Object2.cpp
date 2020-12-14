@@ -24,10 +24,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 int RandomInt(int low, int high);
-BOOL ParseFromCmd();
-
-LPWSTR* szArglist;
-int nArgs;
+static int Count(int element);
 
 int const allValues = 3;
 int values_MOD2[allValues];
@@ -231,43 +228,44 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HDC hdc = BeginPaint(hWnd, &ps);
 
         // dynamic allocation
-        int** ary = new int* [n_MOD2];
+        int** matrix = new int* [n_MOD2];
         for (int i = 0; i < n_MOD2; ++i)
         {
-            ary[i] = new int[n_MOD2];
+            matrix[i] = new int[n_MOD2];
         }
         // fill
         for (int i = 0; i < n_MOD2; ++i)
         {
             for (int j = 0; j < n_MOD2; ++j)
             {
-                ary[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+                matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
             }
         }
 
-        //// print
-        //for (int i = 0; i < N; ++i)
-        //    for (int j = 0; j < M; ++j)
-        //        std::cout << ary[i][j] << "\n";
+        // print
+        for (int i = 0; i < n_MOD2; ++i)
+        {
+            LPCSTR temp = nullptr;
+            for (int j = 0; j < n_MOD2; ++j)
+            {
+                TCHAR buf[100];
+                _stprintf_s(buf, _T("%d"), matrix[i][j]);
 
-        //// free
-        //for (int i = 0; i < N; ++i)
-        //    delete[] ary[i];
-        //delete[] ary;
+                int countOfNumber = Count(matrix[i][j]);
 
-        //matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2);
+                TextOutA(hdc, 1 + i * 15, 1 + j * 15, buf, 2);
+            }
+        }
 
-    //    for (size_t i = 0; i < sizeof(matrix); i++)
-    //    {
-    //        for (size_t j = 0; j < sizeof(matrix); j++)
-    //        {
-    //            LPCWSTR temp = (LPCWSTR)matrix[i][j];
-    //        }
-    //    }
-    //    static char temporaryBuffer[2048] = "AAA";
-    //    DrawTextA(hdc, temporaryBuffer, -1, &rc, DT_TOP);
+        // free
+        for (int i = 0; i < n_MOD2; ++i)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
 
         EndPaint(hWnd, &ps);
+        //InvalidateRect(hWnd, 0, TRUE);
     }
     break;
 
@@ -291,20 +289,20 @@ int RandomInt(int low, int high)
     return distr(gen);
 }
 
-//std::vector<std::vector<int>> MakeMatrix (int size, 
-//    int lower, int upper)
-//{
-//    std::vector<std::vector<int>> res;
-//    for (int i = 0; i < size; ++i)
-//    {
-//        auto a = std::vector<int>(size);
-//        //for (int j = 0; j < size; ++j)
-//        //{
-//        //    a[j] = RandomInt(lower, upper);
-//        //}
-//        //res.push_back(a);
-//    }
-//    return res;
-//}
+/// <summary>
+/// Function to Count how many digits are in int
+/// </summary>
+/// <param name="pos"></param>
+/// <returns></returns>
+int Count(int element)
+{
+    int count_MOD1 = 0;
+    while (element != 0)
+    {
+        element = element / 10;
+        ++count_MOD1;
+    }
+    return count_MOD1;
+}
 
 #pragma endregion ModifiedFuntions
