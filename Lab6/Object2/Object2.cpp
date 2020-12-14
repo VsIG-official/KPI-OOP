@@ -28,6 +28,7 @@ static int Count(int element);
 void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
 long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize);
 int PutTextToClipboard(HWND hWnd, char* src);
+void StartObj3(HWND hWnd);
 
 int const allValues = 3;
 int values_MOD2[allValues];
@@ -211,6 +212,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
     break;
+    case WM_COPYDATA:
+        OnCopyData(hWnd, wParam, lParam);
+        StartObj3(hWnd);
+        break;
     case WM_COMMAND:
     {
         int wmId = LOWORD(wParam);
@@ -375,5 +380,15 @@ int PutTextToClipboard(HWND hWnd, char* src)
     return 1;
 }
 
+void StartObj3(HWND hWnd)
+{
+    HWND hWndDataCreator = FindWindow("OBJECT3", NULL);
+    if (hWndDataCreator == NULL) // the required program is already running
+    {
+        // call to run the desired program
+        WinExec("Object3.exe", SW_SHOW);
+        hWndDataCreator = FindWindow("OBJECT3", NULL);
+    }
+}
 
 #pragma endregion ModifiedFuntions

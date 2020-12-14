@@ -37,7 +37,6 @@ int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb);
 int Func_MOD1(HINSTANCE hInst, HWND hWnd)
 {
     return DialogBox(hInst, MAKEINTRESOURCE(IDD_INPUT), hWnd, InputValues_MOD1);
-    //dest = tempPlaceForText_MOD1;
 }
 
 /// <summary>
@@ -112,17 +111,16 @@ void OnOk(HWND hDlg)
         if (hWndDataCreator == NULL) // the required program is already running
         {
             // call to run the desired program
-            //int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
             WinExec("Object2.exe", SW_SHOW);
             hWndDataCreator = FindWindow("OBJECT2", NULL);
-
-            //сформуємо дані як суцільний масив, наприклад, так
-            long params[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
-
-            //а тепер відправимо масив params вікну hWndOther іншої програми
-            SendCopyData(hWndDataCreator, hDlg, params, sizeof(params));
         }
-        SendMessage(hWndDataCreator, WM_COPYDATA, (WPARAM)GetParent(hDlg), (LPARAM)&cds);
+
+        //сформуємо дані як суцільний масив, наприклад, так
+        long params[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
+
+        //а тепер відправимо масив params вікну hWndOther іншої програми
+        SendCopyData(hWndDataCreator, GetParent(hDlg), params, sizeof(params));
+
         return;
     }
     else
