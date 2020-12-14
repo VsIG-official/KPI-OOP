@@ -6,15 +6,16 @@
 
 HINSTANCE hInstCurrent;
 
-int n_MOD1;
-int Min_MOD1;
-int Max_MOD1;
+long n_MOD1;
+long Min_MOD1;
+long Max_MOD1;
 
 const int allValues = 3;
-//int values[allValues];
 
 HWND hWndDataCreator = NULL;
 HWND hWndObj2;
+
+COPYDATASTRUCT cds;
 
 static INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
 static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam);
@@ -111,10 +112,16 @@ void OnOk(HWND hDlg)
         {
             // call to run the desired program
             //int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
-            WinExec("Object2.exe n_MOD1 Min_MOD1 Max_MOD1", SW_SHOW);
+            WinExec("Object2.exe", SW_SHOW);
             hWndDataCreator = FindWindow("OBJECT2", NULL);
-        }
 
+            //сформуємо дані як суцільний масив, наприклад, так
+            long params[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
+
+            //а тепер відправимо масив params вікну hWndOther іншої програми
+            SendCopyData(hWndDataCreator, hDlg, params, sizeof(params));
+        }
+        SendMessage(hWndDataCreator, WM_COPYDATA, (WPARAM)GetParent(hDlg), (LPARAM)&cds);
         return;
     }
     else
@@ -175,6 +182,16 @@ void OnCancel(HWND hDlg)
 void OnClose(HWND hDlg)
 {
     EndDialog(hDlg, 0);
+}
+
+//--це наша власна функція--
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
+{
+    COPYDATASTRUCT cds;
+    cds.dwData = 1; //а можна і будь-яке інше значення
+    cds.cbData = cb;
+    cds.lpData = lp;
+    return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWndSrc, (LPARAM)&cds);
 }
 
 #pragma endregion
