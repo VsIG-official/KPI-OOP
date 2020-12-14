@@ -244,10 +244,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        //LPCSTR long_string = new TCHAR[copyMatrix.size() + 1]; //define
-        //strcpy_s(long_string, copyMatrix.size() + 1, copyMatrix.c_str());
+        LPCSTR lpcstr = copyMatrix.c_str();
+        //strcpy(lpcstr, copyMatrix.c_str());
         //copyMatrix = "Hello\nworld";
-        DrawTextA(hdc, copyMatrix.c_str(), -1, &rc, DT_TOP);
+        //TextOutA(hdc, 1 + 1 * 15, 1 + 1 * 15, copyMatrix.c_str(), sizeof(copyMatrix));
+        DrawTextA(hdc, lpcstr, -1, &rc, DT_TOP);
         EndPaint(hWnd, &ps);
     }
     break;
@@ -279,13 +280,13 @@ void CreateMatrix(HWND hWnd)
             for (int j = 0; j < n_MOD2; ++j)
             {
                 matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-                str + std::to_string(matrix[i][j]);
+                str = str + std::to_string(matrix[i][j]);
                 if (j!=n_MOD2)
                 {
-                    str + " ";
+                    str = str + " ";
                 }
             }
-            str + "\n";
+            str = str + "\n";
             copyMatrix = str;
         }
         //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
