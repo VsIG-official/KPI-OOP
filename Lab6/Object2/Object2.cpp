@@ -42,6 +42,7 @@ int Max_MOD2;
 BOOL Counter = FALSE;
 
 std::string copyMatrix = "";
+std::string str;
 
 #pragma endregion VariablesAndFunctions
 
@@ -210,7 +211,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
-        //CreateMatrix(hWnd);
+        CreateMatrix(hWnd);
     }
     break;
     case WM_COPYDATA:
@@ -238,7 +239,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     case WM_PAINT:
     {
-        CreateMatrix(hWnd);
+        RECT rc = { 0 };
+        GetClientRect(hWnd, &rc);
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        //LPCSTR long_string = new TCHAR[copyMatrix.size() + 1]; //define
+        //strcpy_s(long_string, copyMatrix.size() + 1, copyMatrix.c_str());
+        //copyMatrix = "Hello\nworld";
+        DrawTextA(hdc, copyMatrix.c_str(), -1, &rc, DT_TOP);
+        EndPaint(hWnd, &ps);
     }
     break;
 
@@ -256,10 +266,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void CreateMatrix(HWND hWnd)
 {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        UpdateWindow(hWnd);
-
         // dynamic allocation
         int** matrix = new int* [n_MOD2];
         for (int i = 0; i < n_MOD2; ++i)
@@ -267,38 +273,37 @@ void CreateMatrix(HWND hWnd)
             matrix[i] = new int[n_MOD2];
         }
 
-        std::stringstream ss;
-        //if (!Counter)
-        //{
-            // fill
-            for (int i = 0; i < n_MOD2; ++i)
-            {
-                for (int j = 0; j < n_MOD2; ++j)
-                {
-                    matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-                    ss << matrix[i][j] << ",";
-                }
-                ss << ";";
-                copyMatrix = ss.str();
-            }
-
-        //    Counter = TRUE;
-        //}
-
-        // print
+        // fill
         for (int i = 0; i < n_MOD2; ++i)
         {
-            LPCSTR temp = nullptr;
             for (int j = 0; j < n_MOD2; ++j)
             {
-                TCHAR buf[100];
-                _stprintf_s(buf, _T("%d"), matrix[i][j]);
-
-                int countOfNumber = Count(matrix[i][j]);
-
-                TextOutA(hdc, 1 + i * 15, 1 + j * 15, buf, 2);
+                matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+                str + std::to_string(matrix[i][j]);
+                if (j!=n_MOD2)
+                {
+                    str + " ";
+                }
             }
+            str + "\n";
+            copyMatrix = str;
         }
+        //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
+        
+        //// print
+        //for (int i = 0; i < n_MOD2; ++i)
+        //{
+        //    LPCSTR temp = nullptr;
+        //    for (int j = 0; j < n_MOD2; ++j)
+        //    {
+        //        TCHAR buf[100];
+        //        _stprintf_s(buf, _T("%d"), matrix[i][j]);
+
+        //        int countOfNumber = Count(matrix[i][j]);
+
+        //        TextOutA(hdc, 1 + i * 15, 1 + j * 15, buf, 2);
+        //    }
+        //}
 
         // free
         for (int i = 0; i < n_MOD2; ++i)
@@ -308,8 +313,6 @@ void CreateMatrix(HWND hWnd)
         delete[] matrix;
 
         StartObj3(hWnd);
-
-        EndPaint(hWnd, &ps);
 }
 
 /// <summary>
