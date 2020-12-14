@@ -25,6 +25,9 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 int RandomInt(int low, int high);
 static int Count(int element);
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
+long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize);
+int PutTextToClipboard(HWND hWnd, char* src);
 
 int const allValues = 3;
 int values_MOD2[allValues];
@@ -161,6 +164,10 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_INITDIALOG:
         return (INT_PTR)TRUE;
+
+    case WM_COPYDATA:
+        OnCopyData(hDlg, wParam, lParam); //це наша власна функція-обробник
+        break;
 
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
@@ -304,5 +311,69 @@ int Count(int element)
     }
     return count_MOD1;
 }
+
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+    COPYDATASTRUCT* cds;
+    cds = (COPYDATASTRUCT*)lParam;
+    long* p = (long*)cds->lpData;
+    n_MOD2 = p[0];
+    Min_MOD2 = p[1];
+    Max_MOD2 = p[2];
+}
+
+long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
+{
+    HGLOBAL hglb;
+    LPTSTR lptstr;
+    long size, res;
+    res = 0;
+    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0;
+    if (!OpenClipboard(hWnd)) return 0;
+    hglb = GetClipboardData(CF_TEXT);
+    if (hglb != NULL)
+    {
+        lptstr = (char*)GlobalLock(hglb);
+        if (lptstr != NULL)
+        {
+            size = strlen(lptstr);
+            if (size > maxsize)
+            {
+                lptstr[maxsize] = 0;
+                size = strlen(lptstr);
+            }
+            strcpy_s(dest, maxsize, lptstr);
+            res = size;
+            GlobalUnlock(hglb);
+        }
+    }
+    CloseClipboard();
+    return res;
+}
+
+int PutTextToClipboard(HWND hWnd, char* src)
+{
+    HGLOBAL hglbCopy;
+    BYTE* pTmp;
+    long len;
+    if (src == NULL) return 0;
+    if (src[0] == 0) return 0;
+    len = strlen(src);
+    hglbCopy = GlobalAlloc(GHND, len + 1);
+    if (hglbCopy == NULL) return FALSE;
+    pTmp = (BYTE*)GlobalLock(hglbCopy);
+    memcpy(pTmp, src, len + 1);
+    GlobalUnlock(hglbCopy);
+    if (!OpenClipboard(hWnd))
+    {
+        GlobalFree(hglbCopy);
+        return 0;
+    }
+    EmptyClipboard();
+    SetClipboardData(CF_TEXT, hglbCopy);
+    CloseClipboard();
+    return 1;
+}
+
 
 #pragma endregion ModifiedFuntions

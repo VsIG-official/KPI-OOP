@@ -22,6 +22,7 @@ static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LP
 static void OnOk(HWND hDlg);
 static void OnCancel(HWND hDlg);
 static void OnClose(HWND hDlg);
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb);
 
 #pragma endregion
 
