@@ -17,12 +17,16 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
+char bufferText[1024] = {};
+int n_MOD3;
+
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 long GetTextFromClipboard(HWND, char*, long);
+void CalculateDeterminant(HWND hWnd);
 
 #pragma endregion VariablesAndFunctions
 
@@ -184,13 +188,13 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 /// <returns></returns>
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    char bufferText[1024] = {};
     switch (message)
     {
     case WM_CREATE:
     {
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
         GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
+        CalculateDeterminant(hWnd);
     }
         break;
     case WM_COMMAND:
@@ -216,6 +220,57 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+void CalculateDeterminant(HWND hWnd)
+{
+    PAINTSTRUCT ps;
+    UpdateWindow(hWnd);
+    HDC hdc = BeginPaint(hWnd, &ps);
+    UpdateWindow(hWnd);
+
+    std::string tempBufferForMatrixString = bufferText;
+    //std::string num;
+
+    n_MOD3 = std::count(tempBufferForMatrixString.begin(),
+        tempBufferForMatrixString.end(), ';');
+
+    TCHAR buf[100];
+    _stprintf_s(buf, _T("%d"), n_MOD3);
+
+    TextOutA(hdc, 1 , 1, (LPCSTR)n_MOD3, 2);
+
+    // dynamic allocation
+    int** matrix = new int* [n_MOD3];
+    for (int i = 0; i < n_MOD3; ++i)
+    {
+        matrix[i] = new int[n_MOD3];
+    }
+    std::string num;
+    // fill
+    //for (int i = 0; i < n_MOD3; ++i)
+    //{
+    //    for (int j = 0; j < n_MOD3; ++j)
+    //    {
+    //        while (tempBufferForMatrixString != "")
+    //        {
+    //            num = tempBufferForMatrixString.substr(0, 
+    //                tempBufferForMatrixString.find_first_of("\n"));
+    //            char buffer[100] = {};
+    //            nums.push_back(std::stod(num));
+    //            tempBufferForMatrixString = tempBufferForMatrixString.substr
+    //            (tempBufferForMatrixString.find_first_of(",") + 1);
+    //        }
+    //        matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+    //    }
+    //}
+
+    // free
+    for (int i = 0; i < n_MOD3; ++i)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 }
 
 long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)

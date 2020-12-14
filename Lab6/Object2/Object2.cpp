@@ -30,13 +30,18 @@ static int Count(int element);
 void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
 int PutTextToClipboard(HWND hWnd, char* src);
 void StartObj3(HWND hWnd);
+void CreateMatrix(HWND hWnd);
 
 int const allValues = 3;
 int values_MOD2[allValues];
+// dynamic allocation
+int** matrix = new int* [n_MOD2];
 
 int n_MOD2;
 int Min_MOD2;
 int Max_MOD2;
+int iPos[];
+int jPos[];
 
 std::string copyMatrix = "";
 
@@ -207,12 +212,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
+        CreateMatrix(hWnd);
     }
     break;
     case WM_COPYDATA:
     {
         OnCopyData(hWnd, wParam, lParam);
-        StartObj3(hWnd);
         InvalidateRect(hWnd, 0, TRUE);
     }
         break;
@@ -236,37 +241,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:
     {
         PAINTSTRUCT ps;
-        UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
         UpdateWindow(hWnd);
 
-        // dynamic allocation
-        int** matrix = new int* [n_MOD2];
-        for (int i = 0; i < n_MOD2; ++i)
+        for (size_t i = 0; i < n_MOD2; i++)
         {
-            matrix[i] = new int[n_MOD2];
-        }
-
-        std::stringstream ss;
-
-        // fill
-        for (int i = 0; i < n_MOD2; ++i)
-        {
-            for (int j = 0; j < n_MOD2; ++j)
-            {
-                matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-                ss <<  matrix[i][j] << ",";
-                copyMatrix = ss.str();
-            }
-            ss <<  ";";
-            copyMatrix = ss.str();
-        }
-
-        // print
-        for (int i = 0; i < n_MOD2; ++i)
-        {
-            LPCSTR temp = nullptr;
-            for (int j = 0; j < n_MOD2; ++j)
+            for (size_t j = 0; j < n_MOD2; i++)
             {
                 TCHAR buf[100];
                 _stprintf_s(buf, _T("%d"), matrix[i][j]);
@@ -276,13 +256,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 TextOutA(hdc, 1 + i * 15, 1 + j * 15, buf, 2);
             }
         }
-
-        // free
-        for (int i = 0; i < n_MOD2; ++i)
-        {
-            delete[] matrix[i];
-        }
-        delete[] matrix;
 
         EndPaint(hWnd, &ps);
     }
@@ -298,6 +271,41 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+void CreateMatrix(HWND hWnd)
+{
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        matrix[i] = new int[n_MOD2];
+    }
+
+    std::stringstream ss;
+
+    // fill
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        for (int j = 0; j < n_MOD2; ++j)
+        {
+            matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+            ss << matrix[i][j] << ",";
+            jPos[j] = j;
+        }
+        iPos[i] = i;
+
+        ss << ";";
+        copyMatrix = ss.str();
+    }
+
+    // free
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+
+    StartObj3(hWnd);
+
 }
 
 /// <summary>
