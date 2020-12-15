@@ -212,7 +212,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         CreateMatrix(hWnd);
         
-        str += "Hello\nworld";
+        //str += "Hello\nworld";
 
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
@@ -277,11 +277,11 @@ void CreateMatrix(HWND hWnd)
         matrix[i] = new int[n_MOD2];
     }
 
+    std::stringstream buffer;
+
     // fill
     for (int i = 0; i < n_MOD2; ++i)
     {
-        std::stringstream buffer;
-
         for (int j = 0; j < n_MOD2; ++j)
         {
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
@@ -290,9 +290,9 @@ void CreateMatrix(HWND hWnd)
             buffer << " ";
         }
         buffer << "\n";
-
-        str = buffer.str();
     }
+
+    str += buffer.str();
 
     //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
 
