@@ -43,7 +43,8 @@ int Max_MOD2;
 BOOL Counter = FALSE;
 
 //std::string copyMatrix = "";
-std::string str;
+std::string str = "";
+wchar_t copyMatrix;
 
 #pragma endregion VariablesAndFunctions
 
@@ -248,13 +249,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         //copyMatrix = "Hello\nworld";
         if (n_MOD2==1)
         {
-            //str = "Hello\nworld";
+            str += "Hello\nworld";
+            str += "Hello\nworld";
         }
+       
+        LPCSTR temp = str.c_str();
 
-        char* cstr = new char[str.length() + 1];
-        strcpy_s(cstr,sizeof(str), str.c_str());
-        
-        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+        //TextOutA(hdc, 0,0, temp,sizeof(temp));
+
+        DrawTextA(hdc, temp, -1, &rc, DT_TOP);
+
+        //InvalidateRect(hWnd, NULL, TRUE);
 
         EndPaint(hWnd, &ps);
     }
@@ -274,38 +279,43 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void CreateMatrix(HWND hWnd)
 {
-        // dynamic allocation
-        int** matrix = new int* [n_MOD2];
-        for (int i = 0; i < n_MOD2; ++i)
+    // dynamic allocation
+    int** matrix = new int* [n_MOD2];
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        matrix[i] = new int[n_MOD2];
+    }
+
+    // fill
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        for (int j = 0; j < n_MOD2; ++j)
         {
-            matrix[i] = new int[n_MOD2];
+            matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+
+            //str += matrix[i][j];
+            //str += " ";
         }
+        //str += ";";
+    }
 
-        // fill
-        for (int i = 0; i < n_MOD2; ++i)
-        {
-            for (int j = 0; j < n_MOD2; ++j)
-            {
-                matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-                str = std::to_string(matrix[i][j]);
-                if (j!=n_MOD2)
-                {
-                    str + " ";
-                }
-            }
-            str + "\n";
-        }
 
-        //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
+    //LPCSTR temp = str.c_str();
 
-        // free
-        for (int i = 0; i < n_MOD2; ++i)
-        {
-            delete[] matrix[i];
-        }
-        delete[] matrix;
+    //MessageBox(hWnd, temp, (LPCSTR)temp, MB_OK);
 
-        StartObj3(hWnd);
+    //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
+
+    // free
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+
+    //InvalidateRect(hWnd, 0, TRUE);
+
+    StartObj3(hWnd);
 }
 
 /// <summary>
