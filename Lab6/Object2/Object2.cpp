@@ -9,6 +9,7 @@
 #include <random>
 #include "Resource.h"
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 #define MAX_LOADSTRING 100
@@ -41,7 +42,7 @@ int Max_MOD2;
 
 BOOL Counter = FALSE;
 
-std::string copyMatrix = "";
+//std::string copyMatrix = "";
 std::string str;
 
 #pragma endregion VariablesAndFunctions
@@ -244,11 +245,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        LPCSTR lpcstr = copyMatrix.c_str();
-        //strcpy(lpcstr, copyMatrix.c_str());
         //copyMatrix = "Hello\nworld";
-        //TextOutA(hdc, 1 + 1 * 15, 1 + 1 * 15, copyMatrix.c_str(), sizeof(copyMatrix));
-        DrawTextA(hdc, lpcstr, -1, &rc, DT_TOP);
+        if (n_MOD2==1)
+        {
+            //str = "Hello\nworld";
+        }
+
+        char* cstr = new char[str.length() + 1];
+        strcpy_s(cstr,sizeof(str), str.c_str());
+        
+        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+
         EndPaint(hWnd, &ps);
     }
     break;
@@ -280,31 +287,16 @@ void CreateMatrix(HWND hWnd)
             for (int j = 0; j < n_MOD2; ++j)
             {
                 matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-                str = str + std::to_string(matrix[i][j]);
+                str = std::to_string(matrix[i][j]);
                 if (j!=n_MOD2)
                 {
-                    str = str + " ";
+                    str + " ";
                 }
             }
-            str = str + "\n";
-            copyMatrix = str;
+            str + "\n";
         }
+
         //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
-        
-        //// print
-        //for (int i = 0; i < n_MOD2; ++i)
-        //{
-        //    LPCSTR temp = nullptr;
-        //    for (int j = 0; j < n_MOD2; ++j)
-        //    {
-        //        TCHAR buf[100];
-        //        _stprintf_s(buf, _T("%d"), matrix[i][j]);
-
-        //        int countOfNumber = Count(matrix[i][j]);
-
-        //        TextOutA(hdc, 1 + i * 15, 1 + j * 15, buf, 2);
-        //    }
-        //}
 
         // free
         for (int i = 0; i < n_MOD2; ++i)
@@ -403,8 +395,8 @@ void StartObj3(HWND hWnd)
     if (hWndDataCreator == NULL) // the required program is already running
     {
         // call to run the desired program
-        char* buffer = new char[copyMatrix.size() + 1];
-        PutTextToClipboard(hWnd, buffer);
+        // char* buffer = new char[copyMatrix.size() + 1];
+        //PutTextToClipboard(hWnd, buffer);
         WinExec("Object3.exe", SW_SHOW);
         hWndDataCreator = FindWindow("OBJECT3", NULL);
     }
