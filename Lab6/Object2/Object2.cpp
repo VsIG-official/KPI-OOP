@@ -280,20 +280,19 @@ void CreateMatrix(HWND hWnd)
     // fill
     for (int i = 0; i < n_MOD2; ++i)
     {
+        std::stringstream buffer;
+
         for (int j = 0; j < n_MOD2; ++j)
         {
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
 
-            str += to_string(matrix[i][j]);
-            str += " ";
+            buffer << to_string(matrix[i][j]);
+            buffer << " ";
         }
-        str += "\n";
+        buffer << "\n";
+
+        str = buffer.str();
     }
-
-
-    //LPCSTR temp = str.c_str();
-
-    //MessageBox(hWnd, temp, (LPCSTR)temp, MB_OK);
 
     //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
 
