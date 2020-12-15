@@ -42,9 +42,7 @@ int Max_MOD2;
 
 BOOL Counter = FALSE;
 
-//std::string copyMatrix = "";
 std::string str = "";
-wchar_t copyMatrix;
 
 #pragma endregion VariablesAndFunctions
 
@@ -212,13 +210,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
         CreateMatrix(hWnd);
+        
+        str += "Hello\nworld";
+
+        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
     break;
     case WM_COPYDATA:
     {
         OnCopyData(hWnd, wParam, lParam);
+
         InvalidateRect(hWnd, 0, TRUE);
     }
         break;
@@ -245,21 +247,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetClientRect(hWnd, &rc);
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-
-        //copyMatrix = "Hello\nworld";
-        if (n_MOD2==1)
-        {
-            str += "Hello\nworld";
-            str += "Hello\nworld";
-        }
        
         LPCSTR temp = str.c_str();
 
-        //TextOutA(hdc, 0,0, temp,sizeof(temp));
-
         DrawTextA(hdc, temp, -1, &rc, DT_TOP);
-
-        //InvalidateRect(hWnd, NULL, TRUE);
 
         EndPaint(hWnd, &ps);
     }
@@ -293,10 +284,10 @@ void CreateMatrix(HWND hWnd)
         {
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
 
-            //str += matrix[i][j];
-            //str += " ";
+            str += to_string(matrix[i][j]);
+            str += " ";
         }
-        //str += ";";
+        str += "\n";
     }
 
 
