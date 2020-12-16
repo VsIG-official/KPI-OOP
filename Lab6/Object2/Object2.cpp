@@ -44,6 +44,8 @@ BOOL Counter = FALSE;
 
 std::string str = "";
 
+int elements[1024];
+
 #pragma endregion VariablesAndFunctions
 
 #pragma region DefaultFunctions
@@ -211,8 +213,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         CreateMatrix(hWnd);
-        
-        //str += "Hello\nworld";
 
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
@@ -247,7 +247,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetClientRect(hWnd, &rc);
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-       
+
         LPCSTR temp = str.c_str();
 
         DrawTextA(hdc, temp, -1, &rc, DT_TOP);
@@ -285,6 +285,8 @@ void CreateMatrix(HWND hWnd)
         for (int j = 0; j < n_MOD2; ++j)
         {
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+
+            elements[i] = matrix[i][j];
 
             buffer << to_string(matrix[i][j]);
             buffer << " ";
