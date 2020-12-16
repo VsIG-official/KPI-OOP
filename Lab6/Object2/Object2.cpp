@@ -44,7 +44,7 @@ BOOL Counter = FALSE;
 
 std::string str = "";
 
-int elements[1024];
+//int elements[1024];
 
 #pragma endregion VariablesAndFunctions
 
@@ -248,9 +248,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        LPCSTR temp = str.c_str();
+        char* cstr = new char[str.size() + 1];
+        strcpy_s(cstr, str.size() + 1, str.c_str());
 
-        DrawTextA(hdc, temp, -1, &rc, DT_TOP);
+        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
 
         EndPaint(hWnd, &ps);
     }
@@ -286,15 +287,14 @@ void CreateMatrix(HWND hWnd)
         {
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
 
-            elements[i] = matrix[i][j];
+            //elements[i] = matrix[i][j];
 
-            buffer << to_string(matrix[i][j]);
-            buffer << " ";
+            std::string add = std::to_string(matrix[i][j]);
+            str += add;
+            str += " ";
         }
-        buffer << "\n";
+        str += "\r\n";
     }
-
-    str += buffer.str();
 
     //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
 
