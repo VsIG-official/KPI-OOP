@@ -295,7 +295,7 @@ void CreateMatrix(HWND hWnd)
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
 
             copyMatrix += std::to_string(matrix[i][j]);
-            if (j < n_MOD2-1)
+            if (j < n_MOD2)
             {
                 copyMatrix += " ";
             }
