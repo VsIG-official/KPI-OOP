@@ -32,9 +32,11 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
 int PutTextToClipboard(HWND hWnd, char* src);
 void StartObj3(HWND hWnd);
 void CreateMatrix(HWND hWnd);
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb);
 
 int const allValues = 3;
 int values_MOD2[allValues];
+HWND hWndDataCreator = NULL;
 
 int n_MOD2;
 int Min_MOD2;
@@ -42,9 +44,7 @@ int Max_MOD2;
 
 BOOL Counter = FALSE;
 
-std::string str = "";
-
-//int elements[1024];
+std::string copyMatrix = "";
 
 #pragma endregion VariablesAndFunctions
 
@@ -212,14 +212,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        CreateMatrix(hWnd);
-
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
     }
     break;
     case WM_COPYDATA:
     {
         OnCopyData(hWnd, wParam, lParam);
+
+        if (n_MOD2 > 0)
+        {
+            CreateMatrix(hWnd);
+        }
 
         InvalidateRect(hWnd, 0, TRUE);
     }
@@ -248,8 +251,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        char* cstr = new char[str.size() + 1];
-        strcpy_s(cstr, str.size() + 1, str.c_str());
+        char* cstr = new char[copyMatrix.size() + 1];
+        strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
+        PutTextToClipboard(hWnd, cstr);
 
         DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
 
@@ -269,6 +273,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
+/// <summary>
+/// Creates matrix
+/// </summary>
+/// <param name="hWnd"></param>
+/// <returns></returns>
 void CreateMatrix(HWND hWnd)
 {
     // dynamic allocation
@@ -278,8 +287,6 @@ void CreateMatrix(HWND hWnd)
         matrix[i] = new int[n_MOD2];
     }
 
-    std::stringstream buffer;
-
     // fill
     for (int i = 0; i < n_MOD2; ++i)
     {
@@ -287,16 +294,14 @@ void CreateMatrix(HWND hWnd)
         {
             matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
 
-            //elements[i] = matrix[i][j];
-
-            std::string add = std::to_string(matrix[i][j]);
-            str += add;
-            str += " ";
+            copyMatrix += std::to_string(matrix[i][j]);
+            if (j != n_MOD2)
+            {
+                copyMatrix += " ";
+            }
         }
-        str += "\r\n";
+        copyMatrix += "\n";
     }
-
-    //..........................................ЗРОБИ ТАК, ЩОБ МАТРИЦЯ ЗАПИСАЛАСЯ ЯК РЯДОК, А ПОТІМ ПАРСИЛАСЯ ЯК МАТРИЦЯ У ВІКНО У ДВОХ ОБ'ЄКТАХ
 
     // free
     for (int i = 0; i < n_MOD2; ++i)
@@ -305,9 +310,24 @@ void CreateMatrix(HWND hWnd)
     }
     delete[] matrix;
 
-    //InvalidateRect(hWnd, 0, TRUE);
-
     StartObj3(hWnd);
+}
+
+/// <summary>
+/// Sends copydata
+/// </summary>
+/// <param name="hWndDest"></param>
+/// <param name="hWndSrc"></param>
+/// <param name="lp"></param>
+/// <param name="cb"></param>
+/// <returns></returns>
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
+{
+    COPYDATASTRUCT cds{};
+    cds.dwData = 1; //а можна і будь-яке інше значення
+    cds.cbData = cb;
+    cds.lpData = lp;
+    return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWndSrc, (LPARAM)&cds);
 }
 
 /// <summary>
@@ -393,15 +413,17 @@ int PutTextToClipboard(HWND hWnd, char* src)
 /// <returns></returns>
 void StartObj3(HWND hWnd)
 {
-    HWND hWndDataCreator = FindWindow("OBJECT3", NULL);
+    hWndDataCreator = FindWindow("OBJECT3", NULL);
     if (hWndDataCreator == NULL) // the required program is already running
     {
         // call to run the desired program
-        // char* buffer = new char[copyMatrix.size() + 1];
-        //PutTextToClipboard(hWnd, buffer);
         WinExec("Object3.exe", SW_SHOW);
         hWndDataCreator = FindWindow("OBJECT3", NULL);
     }
+    //сформуємо дані як суцільний масив, наприклад, так
+    long params[allValues] = { n_MOD2};
+
+    SendCopyData(hWndDataCreator, hWnd, params, sizeof(params));
 }
 
 #pragma endregion ModifiedFuntions

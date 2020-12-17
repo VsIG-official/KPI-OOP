@@ -17,7 +17,7 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
-char bufferText[1024] = {};
+char bufferText[1024];
 int n_MOD3;
 
 // Send declarations of functions included in this code module:
@@ -27,6 +27,7 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 long GetTextFromClipboard(HWND, char*, long);
 void CalculateDeterminant(HWND hWnd);
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
 
 #pragma endregion VariablesAndFunctions
 
@@ -197,6 +198,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         CalculateDeterminant(hWnd);
     }
         break;
+    case WM_COPYDATA:
+    {
+        OnCopyData(hWnd, wParam, lParam);
+
+        InvalidateRect(hWnd, 0, TRUE);
+    }
+    break;
     case WM_COMMAND:
     {
         int wmId = LOWORD(wParam);
@@ -229,11 +237,10 @@ void CalculateDeterminant(HWND hWnd)
     HDC hdc = BeginPaint(hWnd, &ps);
     UpdateWindow(hWnd);
 
-    std::string tempBufferForMatrixString = bufferText;
-    //std::string num;
+    //std::string tempBufferForMatrixString = bufferText;
 
-    n_MOD3 = std::count(tempBufferForMatrixString.begin(),
-        tempBufferForMatrixString.end(), ';');
+    //n_MOD3 = std::count(tempBufferForMatrixString.begin(),
+    //    tempBufferForMatrixString.end(), " ");
 
     //TCHAR buf[100];
     //_stprintf_s(buf, _T("%d"), n_MOD3);
@@ -271,6 +278,20 @@ void CalculateDeterminant(HWND hWnd)
     //    delete[] matrix[i];
     //}
     //delete[] matrix;
+}
+
+/// <summary>
+/// Copy the data from another window
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParam"></param>
+/// <param name="lParam"></param>
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+    COPYDATASTRUCT* cds;
+    cds = (COPYDATASTRUCT*)lParam;
+    long* p = (long*)cds->lpData;
+    n_MOD3 = p[0];
 }
 
 long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
