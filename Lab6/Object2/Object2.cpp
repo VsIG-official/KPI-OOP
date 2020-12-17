@@ -300,6 +300,9 @@ void CreateMatrix(HWND hWnd)
                 copyMatrix += " ";
             }
         }
+
+        copyMatrix += ";";
+
         if (i < n_MOD2 - 1)
         {
             copyMatrix += "\n";
