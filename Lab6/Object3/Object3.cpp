@@ -7,6 +7,7 @@
 #include "Object3.h"
 #include "Resource.h"
 #include <string>
+#include <vector>
 
 #define MAX_LOADSTRING 100
 
@@ -19,6 +20,8 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
 char bufferText[1024];
 int n_MOD3;
+std::vector<int> buffer;
+int determinant;
 
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -252,18 +255,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
                 //while (tempBufferForMatrixString != "")
                 //{
-                //    for (int k = 0; k <= n_MOD3; k++)
-                //    {
-                //        num = tempBufferForMatrixString.substr(0,
-                //            tempBufferForMatrixString.find_first_of(" "));
+                    //for (int k = 0; k <= n_MOD3; k++)
+                    //{
+                        //while (tempBufferForMatrixString != "")
+                        //{
+                            num = tempBufferForMatrixString.substr(0, 
+                                tempBufferForMatrixString.find_first_of(" "));
+                            buffer.push_back(stod(num));
+                            tempBufferForMatrixString = tempBufferForMatrixString.substr(
+                                tempBufferForMatrixString.find_first_of("\n") + 1);
+                        //}
 
-                //        matrix[i][j] = stoi(num);
+                        /*num = tempBufferForMatrixString.substr(0,
+                            tempBufferForMatrixString.find_first_of(" "));
+                            */
+                        matrix[i][j] = stoi(num);
 
-                //        char* cstr = new char[12];
-                //        strcpy_s(cstr, 12 + 1, num.c_str());
+                        char* cstr = new char[12];
+                        strcpy_s(cstr, 12 + 1, num.c_str());
 
-                //        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
-                //    }
+                        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+                    //}
                 //}
             }
         }
