@@ -231,6 +231,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
+/// <summary>
+/// Calculates determinant
+/// </summary>
+/// <param name="hWnd"></param>
 void CalculateDeterminant(HWND hWnd)
 {
     PAINTSTRUCT ps;
@@ -239,15 +243,8 @@ void CalculateDeterminant(HWND hWnd)
     GetClientRect(hWnd, &rc);
     UpdateWindow(hWnd);
 
-    //std::string tempBufferForMatrixString = bufferText;
-
-    //n_MOD3 = std::count(tempBufferForMatrixString.begin(),
-    //    tempBufferForMatrixString.end(), " ");
-
-    //TCHAR buf[100];
-    //_stprintf_s(buf, _T("%d"), n_MOD3);
-
-    //TextOutA(hdc, 1 , 1, (LPCSTR)n_MOD3, 2);
+    std::string tempBufferForMatrixString;
+    tempBufferForMatrixString.assign(bufferText, sizeof(bufferText));
 
     //// dynamic allocation
     //int** matrix = new int* [n_MOD3];
@@ -281,10 +278,10 @@ void CalculateDeterminant(HWND hWnd)
     //}
     //delete[] matrix;
 
-    char* cstr = new char[copyMatrix.size() + 1];
-    strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
+    //char* cstr = new char[copyMatrix.size() + 1];
+    //strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
 
-    DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+    //DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
 
     EndPaint(hWnd, &ps);
 }
@@ -303,6 +300,12 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
     n_MOD3 = p[0];
 }
 
+/// <summary>
+/// Get text from Clipboard
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="dest"></param>
+/// <param name="maxsize"></param>
 long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
 {
     HGLOBAL hglb;
