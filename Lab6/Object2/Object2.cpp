@@ -41,7 +41,6 @@ HWND hWndDataCreator = NULL;
 int n_MOD2;
 int Min_MOD2;
 int Max_MOD2;
-int determinant;
 
 BOOL Counter = FALSE;
 
@@ -307,76 +306,6 @@ void CreateMatrix(HWND hWnd)
             copyMatrix += "\n";
         }
     }
-
-    int num1, num2, det = 1, index,
-        total = 1; // Initialize result
-
-    // temporary array for storing row
-    int** tempArr = new int* [n_MOD2 + 1];
-
-    int temp;
-
-    //// loop for traversing the diagonal elements
-    for (int k = 0; k < n_MOD2; k++)
-    {
-        index = k; // initialize the index
-
-        // finding the index which has non zero value
-        while (matrix[index][k] == 0 && index < n_MOD2)
-        {
-            index++;
-        }
-        if (index == n_MOD2) // if there is non zero element
-        {
-            // the determinat of matrix as zero
-            continue;
-        }
-        if (index != k)
-        {
-            // loop for swaping the diagonal element row and
-            // index row
-            for (int l = 0; l < n_MOD2; l++)
-            {
-                swap(matrix[index][l], matrix[k][l]);
-            }
-            // determinant sign changes when we shift rows
-            // go through determinant properties
-            det = det * pow(-1, index - k);
-        }
-
-        // storing the values of diagonal row elements
-        for (int p = 0; p < n_MOD2; p++)
-        {
-            tempArr[p] = (int*)matrix[k][p];
-        }
-        // traversing every row below the diagonal element
-        for (int r = k + 1; r < n_MOD2; r++)
-        {
-            num1 = (int)tempArr[k]; // value of diagonal element
-            num2 = matrix[r][k]; // value of next row element
-
-            // traversing every column of row
-            // and multiplying to every row
-            for (int t = 0; t < n_MOD2; t++)
-            {
-                // multiplying to make the diagonal
-                // element and next row element equal
-                matrix[r][t]
-                    = (num1 * matrix[r][t]) - (num2 * (int)tempArr[t]);
-            }
-            total = total * num1; // Det(kA)=kDet(A);
-        }
-        int temp = det;
-
-        temp = det * matrix[k][k];
-    }
-
-    // mulitplying the diagonal elements to get determinant
-    for (int i = 0; i < n_MOD2; i++)
-    {
-        temp = det * matrix[i][i];
-    }
-    determinant = (temp / total); // Det(kA)/k=Det(A);
 
     // free
     for (int i = 0; i < n_MOD2; ++i)
