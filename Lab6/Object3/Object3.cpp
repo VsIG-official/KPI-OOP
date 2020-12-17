@@ -240,37 +240,40 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetClientRect(hWnd, &rc);
         UpdateWindow(hWnd);
 
-        //// dynamic allocation
-        //int** matrix = new int* [n_MOD3];
-        //for (int i = 0; i < n_MOD3; ++i)
-        //{
-        //    matrix[i] = new int[n_MOD3];
-        //}
+        // dynamic allocation
+        int** matrix = new int* [n_MOD3];
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            matrix[i] = new int[n_MOD3];
+        }
 
         std::string tempBufferForMatrixString = bufferText;
 
         string num;
 
         std::replace(tempBufferForMatrixString.begin(), 
-            tempBufferForMatrixString.end(), '\n', ' '); // replace all 'x' to 'y'
+            tempBufferForMatrixString.end(), '\n', ' ');
 
-        // fill
-        //for (int i = 0; i < n_MOD3; ++i)
-        //{
-        //    for (int j = 0; j < n_MOD3; ++j)
-        //    {
-                while (tempBufferForMatrixString != "")
-                {
-                    num = tempBufferForMatrixString.substr(
-                        0, tempBufferForMatrixString.find_first_of(" "));
 
-                    buffer.push_back(stod(num));
+        while (tempBufferForMatrixString != "")
+        {
+            num = tempBufferForMatrixString.substr(
+                0, tempBufferForMatrixString.find_first_of(" "));
 
-                    tempBufferForMatrixString = tempBufferForMatrixString.substr(
-                        tempBufferForMatrixString.find_first_of(" ") + 1);
-                }
-        //    }
-        //}
+            buffer.push_back(stod(num));
+
+            tempBufferForMatrixString = tempBufferForMatrixString.substr(
+                tempBufferForMatrixString.find_first_of(" ") + 1);
+        }
+
+        //fill
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            for (int j = 0; j < n_MOD3; ++j)
+            {
+                matrix[i][j] = buffer[i];
+            }
+        }
 
         //for (int i = 0; i < n_MOD3; i++)
         //{
@@ -379,16 +382,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         ////}
         ////determinant = (temp / total); // Det(kA)/k=Det(A);
 
-        //// free
-        //for (int i = 0; i < n_MOD3; ++i)
-        //{
-        //    delete[] matrix[i];
-        //}
-        //delete[] matrix;
+        // free
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
 
         //char* cstr = new char[copyMatrix.size() + 1];
         //strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
-
 
         EndPaint(hWnd, &ps);
     }
