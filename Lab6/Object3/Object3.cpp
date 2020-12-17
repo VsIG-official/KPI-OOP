@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 #define MAX_LOADSTRING 100
@@ -239,16 +240,48 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetClientRect(hWnd, &rc);
         UpdateWindow(hWnd);
 
-        //std::string tempBufferForMatrixString = bufferText;
-        
-        TextOutA(hdc, 0 , 0 , bufferText, sizeof(bufferText));
-
         //// dynamic allocation
         //int** matrix = new int* [n_MOD3];
         //for (int i = 0; i < n_MOD3; ++i)
         //{
         //    matrix[i] = new int[n_MOD3];
         //}
+
+        std::string tempBufferForMatrixString = bufferText;
+
+        string num;
+
+        std::replace(tempBufferForMatrixString.begin(), 
+            tempBufferForMatrixString.end(), '\n', ' '); // replace all 'x' to 'y'
+
+        // fill
+        //for (int i = 0; i < n_MOD3; ++i)
+        //{
+        //    for (int j = 0; j < n_MOD3; ++j)
+        //    {
+                while (tempBufferForMatrixString != "")
+                {
+                    num = tempBufferForMatrixString.substr(
+                        0, tempBufferForMatrixString.find_first_of(" "));
+
+                    buffer.push_back(stod(num));
+
+                    tempBufferForMatrixString = tempBufferForMatrixString.substr(
+                        tempBufferForMatrixString.find_first_of(" ") + 1);
+                }
+        //    }
+        //}
+
+        //for (int i = 0; i < n_MOD3; i++)
+        //{
+        //    //char bufferTemp[100] = {};
+        //    //sprintf_s(bufferTemp, "%f", buffer[i]);
+        //    TextOutA(hdc, 10 + int(i / 32) * 100, (i % 32) * 20, (LPCSTR)buffer[i], 7);
+        //}
+
+        //TextOutA(hdc, 0 , 0 , bufferText, sizeof(bufferText));
+
+
 
         //std::string num;
 
