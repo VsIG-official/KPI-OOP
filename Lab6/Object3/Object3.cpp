@@ -270,76 +270,74 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             for (int j = 0; j < n_MOD3; ++j)
             {
-                int some[18];
-                some[i] = buffer[i];
                 matrix[i][j] = buffer[i];
 
                 //TextOutA(hdc, 0,0,(LPCSTR)buffer[i],1);
             }
         }
 
-        //int num1, num2, det = 1, index,
-        //    total = 1; // Initialize result
+        int num1, num2, det = 1, index,
+            total = 1; // Initialize result
 
-        //// temporary array for storing row
-        //int** tempArr = new int* [n_MOD3 + 1];
+        // temporary array for storing row
+        int** tempArr = new int* [n_MOD3 + 1];
 
-        //int temp;
+        int temp;
 
-        ////// loop for traversing the diagonal elements
-        //for (int i = 0; i < n_MOD3; i++)
-        //{
-        //    index = i; // initialize the index
+        //// loop for traversing the diagonal elements
+        for (int i = 0; i < n_MOD3; i++)
+        {
+            index = i; // initialize the index
 
-        //    // finding the index which has non zero value
-        //    while (matrix[index][i] == 0 && index < n_MOD3)
-        //    {
-        //        index++;
-        //    }
-        //    if (index == n_MOD3) // if there is non zero element
-        //    {
-        //        // the determinat of matrix as zero
-        //        continue;
-        //    }
-        //    if (index != i)
-        //    {
-        //        // loop for swaping the diagonal element row and
-        //        // index row
-        //        for (int j = 0; j < n_MOD3; j++)
-        //        {
-        //            swap(matrix[index][j], matrix[i][j]);
-        //        }
-        //        // determinant sign changes when we shift rows
-        //        // go through determinant properties
-        //        det = det * pow(-1, index - i);
-        //    }
+            // finding the index which has non zero value
+            while (matrix[index][i] == 0 && index < n_MOD3)
+            {
+                index++;
+            }
+            if (index == n_MOD3) // if there is non zero element
+            {
+                // the determinat of matrix as zero
+                continue;
+            }
+            if (index != i)
+            {
+                // loop for swaping the diagonal element row and
+                // index row
+                for (int j = 0; j < n_MOD3; j++)
+                {
+                    swap(matrix[index][j], matrix[i][j]);
+                }
+                // determinant sign changes when we shift rows
+                // go through determinant properties
+                det = det * pow(-1, index - i);
+            }
 
-        //    // storing the values of diagonal row elements
-        //    for (int j = 0; j < n_MOD3; j++)
-        //    {
-        //        tempArr[j] = (int*)matrix[i][j];
-        //    }
-        //    // traversing every row below the diagonal element
-        //    for (int j = i + 1; j < n_MOD3; j++)
-        //    {
-        //        num1 = (int)tempArr[i]; // value of diagonal element
-        //        num2 = matrix[j][i]; // value of next row element
+            // storing the values of diagonal row elements
+            for (int j = 0; j < n_MOD3; j++)
+            {
+                tempArr[j] = (int*)matrix[i][j];
+            }
+            // traversing every row below the diagonal element
+            for (int j = i + 1; j < n_MOD3; j++)
+            {
+                num1 = (int)tempArr[i]; // value of diagonal element
+                num2 = matrix[j][i]; // value of next row element
 
-        //        // traversing every column of row
-        //        // and multiplying to every row
-        //        for (int k = 0; k < n_MOD3; k++)
-        //        {
-        //            // multiplying to make the diagonal
-        //            // element and next row element equal
-        //            matrix[j][k]
-        //                = (num1 * matrix[j][k]) - (num2 * (int)tempArr[k]);
-        //        }
-        //        total = total * num1; // Det(kA)=kDet(A);
-        //    }
-        //    int temp = det;
+                // traversing every column of row
+                // and multiplying to every row
+                for (int k = 0; k < n_MOD3; k++)
+                {
+                    // multiplying to make the diagonal
+                    // element and next row element equal
+                    matrix[j][k]
+                        = (num1 * matrix[j][k]) - (num2 * (int)tempArr[k]);
+                }
+                total = total * num1; // Det(kA)=kDet(A);
+            }
+            int temp = det;
 
-        //    temp = det * matrix[i][i];
-        //}
+            temp = det * matrix[i][i];
+        }
 
 
         //// mulitplying the diagonal elements to get determinant
