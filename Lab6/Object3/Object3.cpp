@@ -198,8 +198,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
         GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
+
+        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
     }
         break;
     case WM_COPYDATA:
@@ -238,115 +239,119 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetClientRect(hWnd, &rc);
         UpdateWindow(hWnd);
 
-        std::string tempBufferForMatrixString;
-        tempBufferForMatrixString.assign(bufferText, sizeof(bufferText));
+        //std::string tempBufferForMatrixString = bufferText;
+        
+        TextOutA(hdc, 0 , 0 , bufferText, sizeof(bufferText));
 
-        // dynamic allocation
-        int** matrix = new int* [n_MOD3];
-        for (int i = 0; i < n_MOD3; ++i)
-        {
-            matrix[i] = new int[n_MOD3];
-        }
-
-        std::string num;
-
-        // fill
-        for (int i = 0; i < n_MOD3; ++i)
-        {
-            for (int j = 0; j < n_MOD3; ++j)
-            {
-                num = tempBufferForMatrixString.substr(0,
-                    tempBufferForMatrixString.find_first_of(" "));
-
-                buffer.push_back(stod(num));
-
-                tempBufferForMatrixString = tempBufferForMatrixString.substr(
-                    tempBufferForMatrixString.find_first_of(" ") + 1);
-
-                matrix[i][j] = buffer[i];
-
-                TextOutA(hdc,0+i,0+j, (LPCSTR)matrix[i][j],1);
-                //DrawTextA(hdc, (LPCSTR)matrix[i][j], i+2, &rc, DT_TOP);
-            }
-        }
-
-        //int num1, num2, det = 1, index,
-        //    total = 1; // Initialize result
-
-        //// temporary array for storing row
-        //int** tempArr = new int* [n_MOD3 + 1];
-
-        //int temp;
-
-        ////// loop for traversing the diagonal elements
-        //for (int i = 0; i < n_MOD3; i++)
+        //// dynamic allocation
+        //int** matrix = new int* [n_MOD3];
+        //for (int i = 0; i < n_MOD3; ++i)
         //{
-        //    index = i; // initialize the index
-
-        //    // finding the index which has non zero value
-        //    while (matrix[index][i] == 0 && index < n_MOD3)
-        //    {
-        //        index++;
-        //    }
-        //    if (index == n_MOD3) // if there is non zero element
-        //    {
-        //        // the determinat of matrix as zero
-        //        continue;
-        //    }
-        //    if (index != i)
-        //    {
-        //        // loop for swaping the diagonal element row and
-        //        // index row
-        //        for (int j = 0; j < n_MOD3; j++)
-        //        {
-        //            swap(matrix[index][j], matrix[i][j]);
-        //        }
-        //        // determinant sign changes when we shift rows
-        //        // go through determinant properties
-        //        det = det * pow(-1, index - i);
-        //    }
-
-        //    // storing the values of diagonal row elements
-        //    for (int j = 0; j < n_MOD3; j++)
-        //    {
-        //        tempArr[j] = (int*)matrix[i][j];
-        //    }
-        //    // traversing every row below the diagonal element
-        //    for (int j = i + 1; j < n_MOD3; j++)
-        //    {
-        //        num1 = (int)tempArr[i]; // value of diagonal element
-        //        num2 = matrix[j][i]; // value of next row element
-
-        //        // traversing every column of row
-        //        // and multiplying to every row
-        //        for (int k = 0; k < n_MOD3; k++)
-        //        {
-        //            // multiplying to make the diagonal
-        //            // element and next row element equal
-        //            matrix[j][k]
-        //                = (num1 * matrix[j][k]) - (num2 * (int)tempArr[k]);
-        //        }
-        //        total = total * num1; // Det(kA)=kDet(A);
-        //    }
-        //    int temp = det;
-
-        //    temp = det * matrix[i][i];
+        //    matrix[i] = new int[n_MOD3];
         //}
 
+        //std::string num;
 
-        // mulitplying the diagonal elements to get determinant
-        //for (int i = 0; i < n_MOD3; i++)
+        //// fill
+        //for (int i = 0; i < n_MOD3; ++i)
         //{
-        //    temp = det * matrix[i][i];
-        //}
-        //determinant = (temp / total); // Det(kA)/k=Det(A);
+        //    for (int j = 0; j < n_MOD3; ++j)
+        //    {
+        //        num = tempBufferForMatrixString.substr(0,
+        //            tempBufferForMatrixString.find_first_of(" "));
 
-        // free
-        for (int i = 0; i < n_MOD3; ++i)
-        {
-            delete[] matrix[i];
-        }
-        delete[] matrix;
+        //        buffer.push_back(stod(num));
+
+        //        tempBufferForMatrixString = tempBufferForMatrixString.substr(
+        //            tempBufferForMatrixString.find_first_of(" ") + 1);
+
+        //        matrix[i][j] = buffer[i];
+
+        //        char* some;
+
+        //        //_itoa_s(()matrix[i][j], some, 20, 2);
+        //        //TextOutA(hdc,0+i,0+j, (LPCSTR)buffer[i],1);
+        //        //DrawTextA(hdc, (LPCSTR)matrix[i][j], i+2, &rc, DT_TOP);
+        //    }
+        //}
+
+        ////int num1, num2, det = 1, index,
+        ////    total = 1; // Initialize result
+
+        ////// temporary array for storing row
+        ////int** tempArr = new int* [n_MOD3 + 1];
+
+        ////int temp;
+
+        //////// loop for traversing the diagonal elements
+        ////for (int i = 0; i < n_MOD3; i++)
+        ////{
+        ////    index = i; // initialize the index
+
+        ////    // finding the index which has non zero value
+        ////    while (matrix[index][i] == 0 && index < n_MOD3)
+        ////    {
+        ////        index++;
+        ////    }
+        ////    if (index == n_MOD3) // if there is non zero element
+        ////    {
+        ////        // the determinat of matrix as zero
+        ////        continue;
+        ////    }
+        ////    if (index != i)
+        ////    {
+        ////        // loop for swaping the diagonal element row and
+        ////        // index row
+        ////        for (int j = 0; j < n_MOD3; j++)
+        ////        {
+        ////            swap(matrix[index][j], matrix[i][j]);
+        ////        }
+        ////        // determinant sign changes when we shift rows
+        ////        // go through determinant properties
+        ////        det = det * pow(-1, index - i);
+        ////    }
+
+        ////    // storing the values of diagonal row elements
+        ////    for (int j = 0; j < n_MOD3; j++)
+        ////    {
+        ////        tempArr[j] = (int*)matrix[i][j];
+        ////    }
+        ////    // traversing every row below the diagonal element
+        ////    for (int j = i + 1; j < n_MOD3; j++)
+        ////    {
+        ////        num1 = (int)tempArr[i]; // value of diagonal element
+        ////        num2 = matrix[j][i]; // value of next row element
+
+        ////        // traversing every column of row
+        ////        // and multiplying to every row
+        ////        for (int k = 0; k < n_MOD3; k++)
+        ////        {
+        ////            // multiplying to make the diagonal
+        ////            // element and next row element equal
+        ////            matrix[j][k]
+        ////                = (num1 * matrix[j][k]) - (num2 * (int)tempArr[k]);
+        ////        }
+        ////        total = total * num1; // Det(kA)=kDet(A);
+        ////    }
+        ////    int temp = det;
+
+        ////    temp = det * matrix[i][i];
+        ////}
+
+
+        //// mulitplying the diagonal elements to get determinant
+        ////for (int i = 0; i < n_MOD3; i++)
+        ////{
+        ////    temp = det * matrix[i][i];
+        ////}
+        ////determinant = (temp / total); // Det(kA)/k=Det(A);
+
+        //// free
+        //for (int i = 0; i < n_MOD3; ++i)
+        //{
+        //    delete[] matrix[i];
+        //}
+        //delete[] matrix;
 
         //char* cstr = new char[copyMatrix.size() + 1];
         //strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
