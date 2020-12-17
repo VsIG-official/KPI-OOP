@@ -225,6 +225,65 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        RECT rc = { 0 };
+        GetClientRect(hWnd, &rc);
+        UpdateWindow(hWnd);
+
+        std::string tempBufferForMatrixString;
+        tempBufferForMatrixString.assign(bufferText, sizeof(bufferText));
+
+        // dynamic allocation
+        int** matrix = new int* [n_MOD3];
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            matrix[i] = new int[n_MOD3];
+        }
+
+        std::string num;
+
+        // fill
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            for (int j = 0; j < n_MOD3; ++j)
+            {
+                //while (tempBufferForMatrixString != "")
+                //{
+                //    for (int k = 0; k <= n_MOD3; k++)
+                //    {
+                //        num = tempBufferForMatrixString.substr(0,
+                //            tempBufferForMatrixString.find_first_of(" "));
+
+                //        matrix[i][j] = stoi(num);
+
+                //        char* cstr = new char[12];
+                //        strcpy_s(cstr, 12 + 1, num.c_str());
+
+                //        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+                //    }
+                //}
+            }
+        }
+
+        // free
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
+
+        //char* cstr = new char[copyMatrix.size() + 1];
+        //strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
+
+        //DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+
+        EndPaint(hWnd, &ps);
+    }
+
+        break;
     default:
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
@@ -237,53 +296,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 /// <param name="hWnd"></param>
 void CalculateDeterminant(HWND hWnd)
 {
-    PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hWnd, &ps);
-    RECT rc = { 0 };
-    GetClientRect(hWnd, &rc);
-    UpdateWindow(hWnd);
 
-    std::string tempBufferForMatrixString;
-    tempBufferForMatrixString.assign(bufferText, sizeof(bufferText));
-
-    //// dynamic allocation
-    //int** matrix = new int* [n_MOD3];
-    //for (int i = 0; i < n_MOD3; ++i)
-    //{
-    //    matrix[i] = new int[n_MOD3];
-    //}
-    //std::string num;
-    //// fill
-    ////for (int i = 0; i < n_MOD3; ++i)
-    ////{
-    ////    for (int j = 0; j < n_MOD3; ++j)
-    ////    {
-    ////        while (tempBufferForMatrixString != "")
-    ////        {
-    ////            num = tempBufferForMatrixString.substr(0, 
-    ////                tempBufferForMatrixString.find_first_of("\n"));
-    ////            char buffer[100] = {};
-    ////            nums.push_back(std::stod(num));
-    ////            tempBufferForMatrixString = tempBufferForMatrixString.substr
-    ////            (tempBufferForMatrixString.find_first_of(",") + 1);
-    ////        }
-    ////        matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
-    ////    }
-    ////}
-
-    //// free
-    //for (int i = 0; i < n_MOD3; ++i)
-    //{
-    //    delete[] matrix[i];
-    //}
-    //delete[] matrix;
-
-    //char* cstr = new char[copyMatrix.size() + 1];
-    //strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
-
-    //DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
-
-    EndPaint(hWnd, &ps);
 }
 
 /// <summary>
