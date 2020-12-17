@@ -195,12 +195,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
         GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
-        CalculateDeterminant(hWnd);
     }
         break;
     case WM_COPYDATA:
     {
         OnCopyData(hWnd, wParam, lParam);
+
+        CalculateDeterminant(hWnd);
 
         InvalidateRect(hWnd, 0, TRUE);
     }
@@ -233,8 +234,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void CalculateDeterminant(HWND hWnd)
 {
     PAINTSTRUCT ps;
-    UpdateWindow(hWnd);
     HDC hdc = BeginPaint(hWnd, &ps);
+    RECT rc = { 0 };
+    GetClientRect(hWnd, &rc);
     UpdateWindow(hWnd);
 
     //std::string tempBufferForMatrixString = bufferText;
@@ -278,6 +280,13 @@ void CalculateDeterminant(HWND hWnd)
     //    delete[] matrix[i];
     //}
     //delete[] matrix;
+
+    char* cstr = new char[copyMatrix.size() + 1];
+    strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
+
+    DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+
+    EndPaint(hWnd, &ps);
 }
 
 /// <summary>
