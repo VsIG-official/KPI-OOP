@@ -22,6 +22,8 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 static void CallInputValues(HWND hWnd);      // Declaration of our function
+HWND hWndObj2;
+HWND hWndObj3;
 
 #pragma endregion VariablesAndFunctions
 
@@ -206,6 +208,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_DESTROY:
         PostQuitMessage(0);
+
+        hWndObj2 = FindWindow("OBJECT2", NULL);
+        if (hWndObj2)
+        {
+            PostMessage(hWndObj2, WM_DESTROY, (WPARAM)wParam, 0);
+        }
+
+        hWndObj3 = FindWindow("OBJECT3", NULL);
+        if (hWndObj3)
+        {
+            PostMessage(hWndObj3, WM_DESTROY, (WPARAM)wParam, 0);
+        }
+
         break;
     default:
         return DefWindowProcW(hWnd, message, wParam, lParam);

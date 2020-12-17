@@ -1,4 +1,4 @@
-﻿// Lab1.cpp : Defines the input point for the application.
+﻿// Object2.cpp : Defines the input point for the application.
 //
 // First Part
 
@@ -8,6 +8,9 @@
 #include <vector>
 #include <random>
 #include "Resource.h"
+#include <sstream>
+#include <iostream>
+using namespace std;
 
 #define MAX_LOADSTRING 100
 
@@ -23,20 +26,25 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-std::vector<std::vector<int>> MakeMatrix(int, int, int, HWND);
-BOOL ParseFromCmd();
-
-LPWSTR* szArglist;
-int nArgs;
+int RandomInt(int low, int high);
+static int Count(int element);
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
+int PutTextToClipboard(HWND hWnd, char* src);
+void StartObj3(HWND hWnd);
+void CreateMatrix(HWND hWnd);
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb);
 
 int const allValues = 3;
 int values_MOD2[allValues];
+HWND hWndDataCreator = NULL;
 
 int n_MOD2;
 int Min_MOD2;
 int Max_MOD2;
 
-std::vector<std::vector<int>> matrix(n_MOD2, std::vector<int>(n_MOD2));
+BOOL Counter = FALSE;
+
+std::string copyMatrix = "";
 
 #pragma endregion VariablesAndFunctions
 
@@ -78,8 +86,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-
-    ParseFromCmd();
 
     //Compiler version g++ 6.3.0
 
@@ -204,59 +210,136 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    //case WM_PAINT:
-    //    PAINTSTRUCT ps;
-    //    UpdateWindow(hWnd);
-    //    HDC hdc = BeginPaint(hWnd, &ps);
+    case WM_CREATE:
+    {
+        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
+    }
+    break;
+    case WM_COPYDATA:
+    {
+        OnCopyData(hWnd, wParam, lParam);
 
-    //    //matrix = MakeMatrix(n_MOD2, Min_MOD2, Max_MOD2, hWnd);
+        if (n_MOD2 > 0)
+        {
+            CreateMatrix(hWnd);
+        }
 
-    //    //for (size_t i = 0; i < sizeof(matrix); i++)
-    //    //{
-    //    //    for (size_t j = 0; j < sizeof(matrix); j++)
-    //    //    {
-    //    //        LPCWSTR temp = (LPCWSTR)matrix[i][j];
-    //    //        TextOut(hdc, 0 + i, 0 + j, temp, 1);
-    //    //    }
-    //    //}
-
-    //    EndPaint(hWnd, &ps);
-    //    break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
+        InvalidateRect(hWnd, 0, TRUE);
+    }
         break;
+    case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+        switch (wmId)
+        {
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProcW(hWnd, message, wParam, lParam);
+        }
+    }
+    break;
+
+    case WM_PAINT:
+    {
+        RECT rc = { 0 };
+        GetClientRect(hWnd, &rc);
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        char* cstr = new char[copyMatrix.size() + 1];
+        strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
+        PutTextToClipboard(hWnd, cstr);
+
+        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+
+        EndPaint(hWnd, &ps);
+    }
+    break;
+
+    case WM_DESTROY:
+    {
+        PostQuitMessage(0);
+    }
+    break;
+
     default:
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
 }
 
-BOOL ParseFromCmd()
+/// <summary>
+/// Creates matrix
+/// </summary>
+/// <param name="hWnd"></param>
+/// <returns></returns>
+void CreateMatrix(HWND hWnd)
 {
-    // parsing from command line
-    szArglist = CommandLineToArgvW(GetCommandLineW(), &nArgs);
-    if (NULL == szArglist)
+    // dynamic allocation
+    int** matrix = new int* [n_MOD2];
+    for (int i = 0; i < n_MOD2; ++i)
     {
-        // CommandLineToArgvW failed
-        return FALSE;
+        matrix[i] = new int[n_MOD2];
     }
-    else
+
+    // fill
+    for (int i = 0; i < n_MOD2; ++i)
     {
-        for (int i = 0; i < nArgs; i++)
+        for (int j = 0; j < n_MOD2; ++j)
         {
-            values_MOD2[i] = (int)szArglist[i];
+            matrix[i][j] = RandomInt(Min_MOD2, Max_MOD2);
+
+            copyMatrix += std::to_string(matrix[i][j]);
+            if (j < n_MOD2-1)
+            {
+                copyMatrix += " ";
+            }
         }
 
-        n_MOD2 = values_MOD2[0];
-        Min_MOD2 = values_MOD2[1];
-        Max_MOD2 = values_MOD2[2];
+        if (i < n_MOD2)
+        {
+            copyMatrix += "\n";
+        }
     }
 
-    // Free memory allocated for CommandLineToArgvW arguments.
+    // free
+    for (int i = 0; i < n_MOD2; ++i)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 
-    LocalFree(szArglist);
+    StartObj3(hWnd);
 }
 
+/// <summary>
+/// Sends copydata
+/// </summary>
+/// <param name="hWndDest"></param>
+/// <param name="hWndSrc"></param>
+/// <param name="lp"></param>
+/// <param name="cb"></param>
+/// <returns></returns>
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
+{
+    COPYDATASTRUCT cds{};
+    cds.dwData = 1; //а можна і будь-яке інше значення
+    cds.cbData = cb;
+    cds.lpData = lp;
+    return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWndSrc, (LPARAM)&cds);
+}
+
+/// <summary>
+/// Creates random number for matrix
+/// </summary>
+/// <param name="low"></param>
+/// <param name="high"></param>
+/// <returns></returns>
 int RandomInt(int low, int high)
 {
     std::random_device rd;
@@ -265,21 +348,86 @@ int RandomInt(int low, int high)
     return distr(gen);
 }
 
-std::vector<std::vector<int>> MakeMatrix (int size, 
-    int lower, int upper, HWND hDlg)
+/// <summary>
+/// Function to Count how many digits are in int
+/// </summary>
+/// <param name="pos"></param>
+/// <returns></returns>
+int Count(int element)
 {
-    std::vector<std::vector<int>> res;
-    for (int i = 0; i < size; ++i)
+    int count_MOD1 = 0;
+    while (element != 0)
     {
-        auto a = std::vector<int>(size);
-        for (int j = 0; j < size; ++j)
-        {
-            a[j] = RandomInt(lower, upper);
-            //TextOut(hdc, textHeightPosition, textWidthPosition, "       ", 7);
-        }
-        res.push_back(a);
+        element = element / 10;
+        ++count_MOD1;
     }
-    return res;
+    return count_MOD1;
+}
+
+/// <summary>
+/// Copy the data from another window
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParam"></param>
+/// <param name="lParam"></param>
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+    COPYDATASTRUCT* cds;
+    cds = (COPYDATASTRUCT*)lParam;
+    long* p = (long*)cds->lpData;
+    n_MOD2 = p[0];
+    Min_MOD2 = p[1];
+    Max_MOD2 = p[2];
+}
+
+/// <summary>
+/// Put text to clipboard
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="src"></param>
+/// <returns></returns>
+int PutTextToClipboard(HWND hWnd, char* src)
+{
+    HGLOBAL hglbCopy;
+    BYTE* pTmp;
+    long len;
+    if (src == NULL) return 0;
+    if (src[0] == 0) return 0;
+    len = strlen(src);
+    hglbCopy = GlobalAlloc(GHND, len + 1);
+    if (hglbCopy == NULL) return FALSE;
+    pTmp = (BYTE*)GlobalLock(hglbCopy);
+    memcpy(pTmp, src, len + 1);
+    GlobalUnlock(hglbCopy);
+    if (!OpenClipboard(hWnd))
+    {
+        GlobalFree(hglbCopy);
+        return 0;
+    }
+    EmptyClipboard();
+    SetClipboardData(CF_TEXT, hglbCopy);
+    CloseClipboard();
+    return 1;
+}
+
+/// <summary>
+/// Starts the object3
+/// </summary>
+/// <param name="hWnd"></param>
+/// <returns></returns>
+void StartObj3(HWND hWnd)
+{
+    hWndDataCreator = FindWindow("OBJECT3", NULL);
+    if (hWndDataCreator == NULL) // the required program is already running
+    {
+        // call to run the desired program
+        WinExec("Object3.exe", SW_SHOW);
+        hWndDataCreator = FindWindow("OBJECT3", NULL);
+    }
+    //сформуємо дані як суцільний масив, наприклад, так
+    long params[allValues] = { n_MOD2};
+
+    SendCopyData(hWndDataCreator, hWnd, params, sizeof(params));
 }
 
 #pragma endregion ModifiedFuntions

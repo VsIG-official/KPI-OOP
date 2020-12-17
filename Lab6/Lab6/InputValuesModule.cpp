@@ -6,12 +6,11 @@
 
 HINSTANCE hInstCurrent;
 
-int n_MOD1;
-int Min_MOD1;
-int Max_MOD1;
+long n_MOD1;
+long Min_MOD1;
+long Max_MOD1;
 
 const int allValues = 3;
-//int values[allValues];
 
 HWND hWndDataCreator = NULL;
 
@@ -20,6 +19,7 @@ static INT_PTR CALLBACK Warning_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LP
 static void OnOk(HWND hDlg);
 static void OnCancel(HWND hDlg);
 static void OnClose(HWND hDlg);
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb);
 
 #pragma endregion
 
@@ -34,7 +34,6 @@ static void OnClose(HWND hDlg);
 int Func_MOD1(HINSTANCE hInst, HWND hWnd)
 {
     return DialogBox(hInst, MAKEINTRESOURCE(IDD_INPUT), hWnd, InputValues_MOD1);
-    //dest = tempPlaceForText_MOD1;
 }
 
 /// <summary>
@@ -52,6 +51,7 @@ INT_PTR CALLBACK InputValues_MOD1(HWND hDlg, UINT iMessage, WPARAM wParam, LPARA
     case WM_INITDIALOG:
         return (INT_PTR)TRUE;
         break;
+
     case WM_COMMAND:
         switch (LOWORD(wParam))
         {
@@ -100,10 +100,15 @@ void OnOk(HWND hDlg)
         if (hWndDataCreator == NULL) // the required program is already running
         {
             // call to run the desired program
-            //int values[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
-            WinExec("Object2.exe n_MOD1 Min_MOD1 Max_MOD1", SW_SHOW);
+            WinExec("Object2.exe", SW_SHOW);
             hWndDataCreator = FindWindow("OBJECT2", NULL);
         }
+
+        //сформуємо дані як суцільний масив, наприклад, так
+        long params[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
+
+        //а тепер відправимо масив params вікну hWndOther іншої програми
+        SendCopyData(hWndDataCreator, GetParent(hDlg), params, sizeof(params));
 
         return;
     }
@@ -165,6 +170,23 @@ void OnCancel(HWND hDlg)
 void OnClose(HWND hDlg)
 {
     EndDialog(hDlg, 0);
+}
+
+/// <summary>
+/// Sends copydata
+/// </summary>
+/// <param name="hWndDest"></param>
+/// <param name="hWndSrc"></param>
+/// <param name="lp"></param>
+/// <param name="cb"></param>
+/// <returns></returns>
+int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
+{
+    COPYDATASTRUCT cds{};
+    cds.dwData = 1; //а можна і будь-яке інше значення
+    cds.cbData = cb;
+    cds.lpData = lp;
+    return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWndSrc, (LPARAM)&cds);
 }
 
 #pragma endregion

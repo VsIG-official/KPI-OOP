@@ -1,4 +1,4 @@
-﻿// Lab1.cpp : Defines the input point for the application.
+﻿// Object3.cpp : Defines the input point for the application.
 //
 // First Part
 
@@ -6,6 +6,11 @@
 #include "pch.h"
 #include "Object3.h"
 #include "Resource.h"
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
 #define MAX_LOADSTRING 100
 
@@ -16,11 +21,19 @@ HINSTANCE hInst;                                // Current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // Header row text
 WCHAR szWindowClass[MAX_LOADSTRING];            // Class name of main window
 
+char bufferText[1024];
+int n_MOD3;
+std::vector<int> buffer;
+int determinant;
+
 // Send declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+long GetTextFromClipboard(HWND, char*, long);
+void CalculateDeterminant(HWND hWnd);
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
 
 #pragma endregion VariablesAndFunctions
 
@@ -184,29 +197,231 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    //case WM_COMMAND:
-    //{
-    //    int wmId = LOWORD(wParam);
-    //    switch (wmId)
-    //    {
-    //    case IDM_ABOUT:
-    //        DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-    //        break;
-    //    case IDM_EXIT:
-    //        DestroyWindow(hWnd);
-    //        break;
-    //    default:
-    //        return DefWindowProcW(hWnd, message, wParam, lParam);
-    //    }
-    //}
-    //break;
+    case WM_CREATE:
+    {
+        GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
+
+        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
+    }
+        break;
+    case WM_COPYDATA:
+    {
+        OnCopyData(hWnd, wParam, lParam);
+
+        CalculateDeterminant(hWnd);
+
+        InvalidateRect(hWnd, 0, TRUE);
+    }
+    break;
+    case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+        switch (wmId)
+        {
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProcW(hWnd, message, wParam, lParam);
+        }
+    }
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
+        break;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        RECT rc = { 0 };
+        GetClientRect(hWnd, &rc);
+        UpdateWindow(hWnd);
+
+        // dynamic allocation
+        int** matrix = new int* [n_MOD3];
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            matrix[i] = new int[n_MOD3];
+        }
+
+        std::string tempBufferForMatrixString = bufferText;
+
+        string num;
+
+        std::replace(tempBufferForMatrixString.begin(), 
+            tempBufferForMatrixString.end(), '\n', ' ');
+
+        while (tempBufferForMatrixString != "")
+        {
+            num = tempBufferForMatrixString.substr(
+                0, tempBufferForMatrixString.find_first_of(" "));
+
+            buffer.push_back(stod(num));
+
+            tempBufferForMatrixString = tempBufferForMatrixString.substr(
+                tempBufferForMatrixString.find_first_of(" ") + 1);
+        }
+
+        //fill
+        for (int i = 0; i < n_MOD3; ++i)
+        {
+            for (int j = 0; j < n_MOD3; ++j)
+            {
+                matrix[i][j] = buffer[i];
+
+                //TextOutA(hdc, 0,0,(LPCSTR)buffer[i],1);
+            }
+        }
+
+        int num1, num2, det = 1, index,
+            total = 1; // Initialize result
+
+        // temporary array for storing row
+        int** tempArr = new int* [n_MOD3 + 1];
+
+        int temp;
+
+        //// loop for traversing the diagonal elements
+        for (int k = 0; k < n_MOD3; k++)
+        {
+            index = k; // initialize the index
+
+            // finding the index which has non zero value
+            while (matrix[index][k] == 0 && index < n_MOD3)
+            {
+                index++;
+            }
+            if (index == n_MOD3) // if there is non zero element
+            {
+                // the determinat of matrix as zero
+                continue;
+            }
+            if (index != k)
+            {
+                // loop for swaping the diagonal element row and
+                // index row
+                for (int l = 0; l < n_MOD3; l++)
+                {
+                    swap(matrix[index][l], matrix[k][l]);
+                }
+                // determinant sign changes when we shift rows
+                // go through determinant properties
+                det = det * pow(-1, index - k);
+            }
+
+            // storing the values of diagonal row elements
+            for (int p = 0; p < n_MOD3; p++)
+            {
+                tempArr[p] = (int*)matrix[k][p];
+            }
+            // traversing every row below the diagonal element
+            for (int r = k + 1; r < n_MOD3; r++)
+            {
+                num1 = (int)tempArr[k]; // value of diagonal element
+                num2 = matrix[r][k]; // value of next row element
+
+                // traversing every column of row
+                // and multiplying to every row
+                for (int t = 0; t < n_MOD3; t++)
+                {
+                    // multiplying to make the diagonal
+                    // element and next row element equal
+                    matrix[r][t]
+                        = (num1 * matrix[r][t]) - (num2 * (int)tempArr[t]);
+                }
+                total = total * num1; // Det(kA)=kDet(A);
+            }
+            int temp = det;
+
+            temp = det * matrix[k][k];
+        }
+
+
+        //// mulitplying the diagonal elements to get determinant
+        //for (int i = 0; i < n_MOD3; i++)
+        //{
+        //    temp = det * matrix[i][i];
+        //}
+        //determinant = (temp / total); // Det(kA)/k=Det(A);
+
+        // free
+        for (int z = 0; z < n_MOD3; ++z)
+        {
+            delete[] matrix[z];
+        }
+        delete[] matrix;
+
+        //TextOutA(hdc,0,0, (LPCSTR)determinant,10);
+
+        EndPaint(hWnd, &ps);
+    }
+
         break;
     default:
         return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+/// <summary>
+/// Calculates determinant
+/// </summary>
+/// <param name="hWnd"></param>
+void CalculateDeterminant(HWND hWnd)
+{
+    
+}
+
+/// <summary>
+/// Copy the data from another window
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="wParam"></param>
+/// <param name="lParam"></param>
+void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+    COPYDATASTRUCT* cds;
+    cds = (COPYDATASTRUCT*)lParam;
+    long* p = (long*)cds->lpData;
+    n_MOD3 = p[0];
+}
+
+/// <summary>
+/// Get text from Clipboard
+/// </summary>
+/// <param name="hWnd"></param>
+/// <param name="dest"></param>
+/// <param name="maxsize"></param>
+long GetTextFromClipboard(HWND hWnd, char* dest, long maxsize)
+{
+    HGLOBAL hglb;
+    LPTSTR lptstr;
+    long size, res;
+    res = 0;
+    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0;
+    if (!OpenClipboard(hWnd)) return 0;
+    hglb = GetClipboardData(CF_TEXT);
+    if (hglb != NULL)
+    {
+        lptstr = (LPTSTR)GlobalLock(hglb);
+        if (lptstr != NULL)
+        {
+            size = strlen((char*)lptstr);
+            if (size > maxsize)
+            {
+                lptstr[maxsize] = 0;
+                size = strlen((char*)lptstr);
+            }
+            strcpy_s(dest, maxsize, (char*)lptstr);
+            res = size;
+            GlobalUnlock(hglb);
+        }
+    }
+    CloseClipboard();
+    return res;
 }
 
 #pragma endregion ModifiedFuntions
