@@ -285,12 +285,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int temp;
 
         //// loop for traversing the diagonal elements
-        for (int i = 0; i < n_MOD3; i++)
+        for (int k = 0; k < n_MOD3; k++)
         {
-            index = i; // initialize the index
+            index = k; // initialize the index
 
             // finding the index which has non zero value
-            while (matrix[index][i] == 0 && index < n_MOD3)
+            while (matrix[index][k] == 0 && index < n_MOD3)
             {
                 index++;
             }
@@ -299,44 +299,44 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 // the determinat of matrix as zero
                 continue;
             }
-            if (index != i)
+            if (index != k)
             {
                 // loop for swaping the diagonal element row and
                 // index row
-                for (int j = 0; j < n_MOD3; j++)
+                for (int l = 0; l < n_MOD3; l++)
                 {
-                    swap(matrix[index][j], matrix[i][j]);
+                    swap(matrix[index][l], matrix[k][l]);
                 }
                 // determinant sign changes when we shift rows
                 // go through determinant properties
-                det = det * pow(-1, index - i);
+                det = det * pow(-1, index - k);
             }
 
             // storing the values of diagonal row elements
-            for (int j = 0; j < n_MOD3; j++)
+            for (int p = 0; p < n_MOD3; p++)
             {
-                tempArr[j] = (int*)matrix[i][j];
+                tempArr[p] = (int*)matrix[k][p];
             }
             // traversing every row below the diagonal element
-            for (int j = i + 1; j < n_MOD3; j++)
+            for (int r = k + 1; r < n_MOD3; r++)
             {
-                num1 = (int)tempArr[i]; // value of diagonal element
-                num2 = matrix[j][i]; // value of next row element
+                num1 = (int)tempArr[k]; // value of diagonal element
+                num2 = matrix[r][k]; // value of next row element
 
                 // traversing every column of row
                 // and multiplying to every row
-                for (int k = 0; k < n_MOD3; k++)
+                for (int t = 0; t < n_MOD3; t++)
                 {
                     // multiplying to make the diagonal
                     // element and next row element equal
-                    matrix[j][k]
-                        = (num1 * matrix[j][k]) - (num2 * (int)tempArr[k]);
+                    matrix[r][t]
+                        = (num1 * matrix[r][t]) - (num2 * (int)tempArr[t]);
                 }
                 total = total * num1; // Det(kA)=kDet(A);
             }
             int temp = det;
 
-            temp = det * matrix[i][i];
+            temp = det * matrix[k][k];
         }
 
 
@@ -348,9 +348,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         //determinant = (temp / total); // Det(kA)/k=Det(A);
 
         // free
-        for (int i = 0; i < n_MOD3; ++i)
+        for (int z = 0; z < n_MOD3; ++z)
         {
-            delete[] matrix[i];
+            delete[] matrix[z];
         }
         delete[] matrix;
 
