@@ -8,6 +8,8 @@
 #include "Resource.h"
 #include <string>
 #include <vector>
+#include <iostream>
+using namespace std;
 
 #define MAX_LOADSTRING 100
 
@@ -253,32 +255,91 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             for (int j = 0; j < n_MOD3; ++j)
             {
-                //while (tempBufferForMatrixString != "")
-                //{
-                    //for (int k = 0; k <= n_MOD3; k++)
-                    //{
-                        //while (tempBufferForMatrixString != "")
-                        //{
-                            num = tempBufferForMatrixString.substr(0, 
-                                tempBufferForMatrixString.find_first_of(" "));
-                            buffer.push_back(stod(num));
-                            tempBufferForMatrixString = tempBufferForMatrixString.substr(
-                                tempBufferForMatrixString.find_first_of("\n") + 1);
-                        //}
+                num = tempBufferForMatrixString.substr(0,
+                    tempBufferForMatrixString.find_first_of(" "));
 
-                        /*num = tempBufferForMatrixString.substr(0,
-                            tempBufferForMatrixString.find_first_of(" "));
-                            */
-                        matrix[i][j] = stoi(num);
+                buffer.push_back(stod(num));
 
-                        char* cstr = new char[12];
-                        strcpy_s(cstr, 12 + 1, num.c_str());
+                tempBufferForMatrixString = tempBufferForMatrixString.substr(
+                    tempBufferForMatrixString.find_first_of(" ") + 1);
 
-                        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
-                    //}
-                //}
+                matrix[i][j] = buffer[i];
+
+                TextOutA(hdc,0+i,0+j, (LPCSTR)matrix[i][j],1);
+                //DrawTextA(hdc, (LPCSTR)matrix[i][j], i+2, &rc, DT_TOP);
             }
         }
+
+        //int num1, num2, det = 1, index,
+        //    total = 1; // Initialize result
+
+        //// temporary array for storing row
+        //int** tempArr = new int* [n_MOD3 + 1];
+
+        //int temp;
+
+        ////// loop for traversing the diagonal elements
+        //for (int i = 0; i < n_MOD3; i++)
+        //{
+        //    index = i; // initialize the index
+
+        //    // finding the index which has non zero value
+        //    while (matrix[index][i] == 0 && index < n_MOD3)
+        //    {
+        //        index++;
+        //    }
+        //    if (index == n_MOD3) // if there is non zero element
+        //    {
+        //        // the determinat of matrix as zero
+        //        continue;
+        //    }
+        //    if (index != i)
+        //    {
+        //        // loop for swaping the diagonal element row and
+        //        // index row
+        //        for (int j = 0; j < n_MOD3; j++)
+        //        {
+        //            swap(matrix[index][j], matrix[i][j]);
+        //        }
+        //        // determinant sign changes when we shift rows
+        //        // go through determinant properties
+        //        det = det * pow(-1, index - i);
+        //    }
+
+        //    // storing the values of diagonal row elements
+        //    for (int j = 0; j < n_MOD3; j++)
+        //    {
+        //        tempArr[j] = (int*)matrix[i][j];
+        //    }
+        //    // traversing every row below the diagonal element
+        //    for (int j = i + 1; j < n_MOD3; j++)
+        //    {
+        //        num1 = (int)tempArr[i]; // value of diagonal element
+        //        num2 = matrix[j][i]; // value of next row element
+
+        //        // traversing every column of row
+        //        // and multiplying to every row
+        //        for (int k = 0; k < n_MOD3; k++)
+        //        {
+        //            // multiplying to make the diagonal
+        //            // element and next row element equal
+        //            matrix[j][k]
+        //                = (num1 * matrix[j][k]) - (num2 * (int)tempArr[k]);
+        //        }
+        //        total = total * num1; // Det(kA)=kDet(A);
+        //    }
+        //    int temp = det;
+
+        //    temp = det * matrix[i][i];
+        //}
+
+
+        // mulitplying the diagonal elements to get determinant
+        //for (int i = 0; i < n_MOD3; i++)
+        //{
+        //    temp = det * matrix[i][i];
+        //}
+        //determinant = (temp / total); // Det(kA)/k=Det(A);
 
         // free
         for (int i = 0; i < n_MOD3; ++i)
@@ -290,7 +351,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         //char* cstr = new char[copyMatrix.size() + 1];
         //strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
 
-        //DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
 
         EndPaint(hWnd, &ps);
     }
@@ -308,7 +368,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 /// <param name="hWnd"></param>
 void CalculateDeterminant(HWND hWnd)
 {
-
+    
 }
 
 /// <summary>
