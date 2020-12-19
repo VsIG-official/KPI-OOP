@@ -203,14 +203,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
 
-        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 400, 300, SWP_DEFERERASE);
+        SetWindowPos(hWnd, HWND_BOTTOM, 810, 190, 200, 200, SWP_DEFERERASE);
     }
         break;
     case WM_COPYDATA:
     {
         OnCopyData(hWnd, wParam, lParam);
 
-        CalculateDeterminant(hWnd);
+        // CalculateDeterminant(hWnd);
 
         InvalidateRect(hWnd, 0, TRUE);
     }
@@ -240,12 +240,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        //bufferForDraw = (TCHAR)determinant;
-        wchar_t value[50];
-        //_itoa_s(determinant, bufferForDraw, sizeof(determinant), 10);
+        wchar_t tempValue[50];
 
-        wsprintfW(value, L"%d", (int)determinant);
-        TextOut(hdc, 10, 10, value, lstrlen(value));
+        wsprintfW(tempValue, L"%d", (int)determinant);
+        TextOut(hdc, 0, 0, tempValue, lstrlen(tempValue));
 
         EndPaint(hWnd, &ps);
     }
