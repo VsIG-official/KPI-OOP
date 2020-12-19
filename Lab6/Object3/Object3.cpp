@@ -34,7 +34,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 long GetTextFromClipboard(HWND, char*, long);
 void CalculateDeterminant(HWND hWnd);
 void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
-void GetMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** newMatrix);
+void GetMatrixWithoutRowAndColumn(int** matrix, int size, int row, int col, int** newMatrix);
 int MatrixDeterminant(int** matrix, int size);
 
 #pragma endregion VariablesAndFunctions
@@ -240,14 +240,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         UpdateWindow(hWnd);
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        wchar_t tempValue[50];
-
-        wsprintfW(tempValue, L"%d", (int)determinant);
+        wchar_t tempValue[256];
+        wsprintfW(tempValue, L"%d", determinant);
         TextOut(hdc, 0, 0, tempValue, lstrlen(tempValue));
 
         EndPaint(hWnd, &ps);
     }
-
         break;
     default:
         return DefWindowProcW(hWnd, message, wParam, lParam);
@@ -259,62 +257,61 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 /// Calculate determinant
 /// </summary>
 /// <param name="matrix"></param>
-/// <param name="size"></param>
+/// <param name="n"></param>
 /// <returns></returns>
-int MatrixDeterminant(int** matrix, int size)
+int MatrixDeterminant(int** matrix, int n)
 {
-    int det = 0;
-    int degree = 1;
+    int deter = 0;
+    int counter = 1;
 
-    if (size == 1)
+    if (n == 1)
     {
         return matrix[0][0];
     }
 
-    else if (size == 2)
+    else if (n == 2)
     {
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
     }
     else
     {
-        int** newMatrix = new int* [size - 1];
-        for (int i = 0; i < size - 1; i++)
+        int** newMatrix = new int* [n - 1];
+        for (int i = 0; i < n - 1; i++)
         {
-            newMatrix[i] = new int[size - 1];
+            newMatrix[i] = new int[n - 1];
         }
 
-        for (int j = 0; j < size; j++)
+        for (int j = 0; j < n; j++)
         {
-            GetMatrixWithoutRowAndCol(matrix, size, 0, j, newMatrix);
+            GetMatrixWithoutRowAndColumn(matrix, n, 0, j, newMatrix);
 
-            det = det + (degree * matrix[0][j] * MatrixDeterminant(newMatrix, size - 1));
-
-            degree = -degree;
+            deter = deter + (counter * matrix[0][j] * MatrixDeterminant(newMatrix, n - 1));
+            counter = -counter;
         }
 
-        for (int i = 0; i < size - 1; i++)
+        for (int i = 0; i < n - 1; i++)
         {
             delete[] newMatrix[i];
         }
         delete[] newMatrix;
     }
 
-    return det;
+    return deter;
 }
 
 /// <summary>
 /// Gets matrix without row and column
 /// </summary>
 /// <param name="matrix"></param>
-/// <param name="size"></param>
+/// <param name="n"></param>
 /// <param name="row"></param>
-/// <param name="col"></param>
+/// <param name="column"></param>
 /// <param name="newMatrix"></param>
-void GetMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** newMatrix)
+void GetMatrixWithoutRowAndColumn(int** matrix, int n, int row, int column, int** newMatrix)
 {
     int offsetRow = 0;
     int offsetCol = 0;
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         if (i == row)
         {
@@ -322,9 +319,9 @@ void GetMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** n
         }
 
         offsetCol = 0;
-        for (int j = 0; j < size - 1; j++)
+        for (int j = 0; j < n - 1; j++)
         {
-            if (j == col)
+            if (j == column)
             {
                 offsetCol = 1;
             }

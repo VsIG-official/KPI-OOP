@@ -104,10 +104,10 @@ void OnOk(HWND hDlg)
             hWndDataCreator = FindWindow("OBJECT2", NULL);
         }
 
-        //сформуємо дані як суцільний масив, наприклад, так
+        // form the data as a solid array, for example:
         long params[allValues] = { n_MOD1, Min_MOD1, Max_MOD1 };
 
-        //а тепер відправимо масив params вікну hWndOther іншої програми
+        // and now send an array of params to the hWndOther window of another program
         SendCopyData(hWndDataCreator, GetParent(hDlg), params, sizeof(params));
 
         return;
@@ -183,7 +183,7 @@ void OnClose(HWND hDlg)
 int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
 {
     COPYDATASTRUCT cds{};
-    cds.dwData = 1; //а можна і будь-яке інше значення
+    cds.dwData = 1; // and any other value is possible
     cds.cbData = cb;
     cds.lpData = lp;
     return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWndSrc, (LPARAM)&cds);
