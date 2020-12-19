@@ -34,8 +34,8 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 long GetTextFromClipboard(HWND, char*, long);
 void CalculateDeterminant(HWND hWnd);
 void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam);
-void getMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** newMatrix);
-int matrixDet(int** matrix, int size);
+void GetMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** newMatrix);
+int MatrixDeterminant(int** matrix, int size);
 
 #pragma endregion VariablesAndFunctions
 
@@ -237,14 +237,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:
     {
         PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        RECT rc = { 0 };
-        GetClientRect(hWnd, &rc);
         UpdateWindow(hWnd);
+        HDC hdc = BeginPaint(hWnd, &ps);
 
-        
+        //bufferForDraw = (TCHAR)determinant;
+        wchar_t value[50];
+        //_itoa_s(determinant, bufferForDraw, sizeof(determinant), 10);
 
-        TextOutA(hdc,0,0, (LPCSTR)determinant,10);
+        wsprintfW(value, L"%d", (int)determinant);
+        TextOut(hdc, 10, 10, value, lstrlen(value));
 
         EndPaint(hWnd, &ps);
     }
@@ -256,48 +257,43 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-//Вычисление определителя матрицы разложение по первой строке
-int matrixDet(int** matrix, int size)
+/// <summary>
+/// Calculate determinant
+/// </summary>
+/// <param name="matrix"></param>
+/// <param name="size"></param>
+/// <returns></returns>
+int MatrixDeterminant(int** matrix, int size)
 {
     int det = 0;
-    int degree = 1; // (-1)^(1+j) из формулы определителя
+    int degree = 1;
 
-    //Условие выхода из рекурсии
     if (size == 1)
     {
         return matrix[0][0];
     }
-    //Условие выхода из рекурсии
+
     else if (size == 2)
     {
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
     }
     else
     {
-        //Матрица без строки и столбца
         int** newMatrix = new int* [size - 1];
         for (int i = 0; i < size - 1; i++)
         {
             newMatrix[i] = new int[size - 1];
         }
 
-        //Раскладываем по 0-ой строке, цикл бежит по столбцам
         for (int j = 0; j < size; j++)
         {
-            //Удалить из матрицы i-ю строку и j-ый столбец
-            //Результат в newMatrix
-            getMatrixWithoutRowAndCol(matrix, size, 0, j, newMatrix);
+            GetMatrixWithoutRowAndCol(matrix, size, 0, j, newMatrix);
 
-            //Рекурсивный вызов
-            //По формуле: сумма по j, (-1)^(1+j) * matrix[0][j] * minor_j (это и есть сумма из формулы)
-            //где minor_j - дополнительный минор элемента matrix[0][j]
-            // (напомню, что минор это определитель матрицы без 0-ой строки и j-го столбца)
-            det = det + (degree * matrix[0][j] * matrixDet(newMatrix, size - 1));
-            //"Накручиваем" степень множителя
+            det = det + (degree * matrix[0][j] * MatrixDeterminant(newMatrix, size - 1));
+
             degree = -degree;
         }
 
-        //Чистим память на каждом шаге рекурсии(важно!)
         for (int i = 0; i < size - 1; i++)
         {
             delete[] newMatrix[i];
@@ -308,33 +304,37 @@ int matrixDet(int** matrix, int size)
     return det;
 }
 
-//Возвращает матрицу matrix без row-ой строки и col-того столбца, результат в newMatrix
-void getMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** newMatrix)
+/// <summary>
+/// Gets matrix without row and column
+/// </summary>
+/// <param name="matrix"></param>
+/// <param name="size"></param>
+/// <param name="row"></param>
+/// <param name="col"></param>
+/// <param name="newMatrix"></param>
+void GetMatrixWithoutRowAndCol(int** matrix, int size, int row, int col, int** newMatrix)
 {
-    int offsetRow = 0; //Смещение индекса строки в матрице
-    int offsetCol = 0; //Смещение индекса столбца в матрице
+    int offsetRow = 0;
+    int offsetCol = 0;
     for (int i = 0; i < size - 1; i++)
     {
-        //Пропустить row-ую строку
         if (i == row)
         {
-            offsetRow = 1; //Как только встретили строку, которую надо пропустить, делаем смещение для исходной матрицы
+            offsetRow = 1;
         }
 
-        offsetCol = 0; //Обнулить смещение столбца
+        offsetCol = 0;
         for (int j = 0; j < size - 1; j++)
         {
-            //Пропустить col-ый столбец
             if (j == col)
             {
-                offsetCol = 1; //Встретили нужный столбец, проускаем его смещением
+                offsetCol = 1;
             }
 
             newMatrix[i][j] = matrix[i + offsetRow][j + offsetCol];
         }
     }
 }
-
 
 /// <summary>
 /// Calculates determinant
@@ -351,17 +351,17 @@ void CalculateDeterminant(HWND hWnd)
 
     std::string tempBufferForMatrixString = bufferText;
 
-    string num;
+    string currentNumber;
 
     std::replace(tempBufferForMatrixString.begin(),
         tempBufferForMatrixString.end(), '\n', ' ');
 
     while (tempBufferForMatrixString != "")
     {
-        num = tempBufferForMatrixString.substr(
+        currentNumber = tempBufferForMatrixString.substr(
             0, tempBufferForMatrixString.find_first_of(" "));
 
-        buffer.push_back(stod(num));
+        buffer.push_back(stod(currentNumber));
 
         tempBufferForMatrixString = tempBufferForMatrixString.substr(
             tempBufferForMatrixString.find_first_of(" ") + 1);
@@ -373,17 +373,12 @@ void CalculateDeterminant(HWND hWnd)
         for (int j = 0; j < n_MOD3; ++j)
         {
             matrix[i][j] = buffer[i];
-
-            //TextOutA(hdc, 0,0,(LPCSTR)buffer[i],1);
         }
     }
 
+    determinant = MatrixDeterminant(matrix, n_MOD3);
 
-    determinant = matrixDet(matrix, n_MOD3);
-
-    //textout D
-
-// free
+    // free
     for (int z = 0; z < n_MOD3; ++z)
     {
         delete[] matrix[z];
