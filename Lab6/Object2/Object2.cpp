@@ -212,7 +212,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        SetWindowPos(hWnd, HWND_BOTTOM, 141, 40, 200, 700, SWP_DEFERERASE);
+        SetWindowPos(hWnd, HWND_BOTTOM, 610, 190, 200, 200, SWP_DEFERERASE);
     }
     break;
     case WM_COPYDATA:
@@ -251,11 +251,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        char* cstr = new char[copyMatrix.size() + 1];
-        strcpy_s(cstr, copyMatrix.size() + 1, copyMatrix.c_str());
-        PutTextToClipboard(hWnd, cstr);
+        char* tempStr = new char[copyMatrix.size() + 1];
+        strcpy_s(tempStr, copyMatrix.size() + 1, copyMatrix.c_str());
+        PutTextToClipboard(hWnd, tempStr);
 
-        DrawTextA(hdc, cstr, -1, &rc, DT_TOP);
+        DrawTextA(hdc, tempStr, -1, &rc, DT_TOP);
 
         EndPaint(hWnd, &ps);
     }
@@ -328,7 +328,7 @@ void CreateMatrix(HWND hWnd)
 int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
 {
     COPYDATASTRUCT cds{};
-    cds.dwData = 1; //а можна і будь-яке інше значення
+    cds.dwData = 1; // or you can have any other value
     cds.cbData = cb;
     cds.lpData = lp;
     return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWndSrc, (LPARAM)&cds);
@@ -343,7 +343,7 @@ int SendCopyData(HWND hWndDest, HWND hWndSrc, void* lp, long cb)
 int RandomInt(int low, int high)
 {
     std::random_device rd;
-    std::mt19937 gen(rd()); // seed the generator
+    std::mt19937 gen(rd()); // seed generator
     std::uniform_int_distribution<> distr(low, high);
     return distr(gen);
 }
@@ -424,7 +424,7 @@ void StartObj3(HWND hWnd)
         WinExec("Object3.exe", SW_SHOW);
         hWndDataCreator = FindWindow("OBJECT3", NULL);
     }
-    //сформуємо дані як суцільний масив, наприклад, так
+    // form the data as a solid array, for example:
     long params[allValues] = { n_MOD2};
 
     SendCopyData(hWndDataCreator, hWnd, params, sizeof(params));
