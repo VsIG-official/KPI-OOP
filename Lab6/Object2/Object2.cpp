@@ -280,6 +280,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 /// <returns></returns>
 void CreateMatrix(HWND hWnd)
 {
+    copyMatrix = "";
+
     // dynamic allocation
     int** matrix = new int* [n_MOD2];
     for (int i = 0; i < n_MOD2; ++i)
@@ -378,6 +380,8 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
     n_MOD2 = p[0];
     Min_MOD2 = p[1];
     Max_MOD2 = p[2];
+
+    InvalidateRect(hWnd, 0, TRUE);
 }
 
 /// <summary>

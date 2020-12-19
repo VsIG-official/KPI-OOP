@@ -396,6 +396,8 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
     cds = (COPYDATASTRUCT*)lParam;
     long* p = (long*)cds->lpData;
     n_MOD3 = p[0];
+
+    InvalidateRect(hWnd, 0, TRUE);
 }
 
 /// <summary>
