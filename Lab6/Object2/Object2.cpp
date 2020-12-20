@@ -212,7 +212,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        SetWindowPos(hWnd, HWND_BOTTOM, 610, 190, 200, 200, SWP_DEFERERASE);
+        SetWindowPos(hWnd, HWND_TOPMOST, 610, 190, 200, 200, SWP_DEFERERASE);
     }
     break;
     case WM_COPYDATA:

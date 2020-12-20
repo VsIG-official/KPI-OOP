@@ -203,7 +203,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         GetTextFromClipboard(hWnd, bufferText, sizeof(bufferText));
 
-        SetWindowPos(hWnd, HWND_BOTTOM, 810, 190, 200, 200, SWP_DEFERERASE);
+        SetWindowPos(hWnd, HWND_TOPMOST, 810, 190, 200, 200, SWP_DEFERERASE);
     }
         break;
     case WM_COPYDATA:
