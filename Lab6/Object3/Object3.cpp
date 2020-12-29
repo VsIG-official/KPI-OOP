@@ -210,9 +210,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         OnCopyData(hWnd, wParam, lParam);
 
-        // CalculateDeterminant(hWnd);
-
-        InvalidateRect(hWnd, 0, TRUE);
+        CalculateDeterminant(hWnd);
     }
     break;
     case WM_COMMAND:
@@ -371,7 +369,48 @@ void CalculateDeterminant(HWND hWnd)
         }
     }
 
-    determinant = MatrixDeterminant(matrix, n_MOD3);
+    determinant = 1;
+    for (int l = 0; l < n_MOD3; l++)
+    {
+        int k = l;
+        while (k < n_MOD3 && matrix[k][l] == 0)
+        {
+            k++;
+        }
+        if (k == n_MOD3) break;
+        else if (k > l)
+        {
+            float *temp = new float[n_MOD3];
+            for (int i = 0; i < n_MOD3; i++)
+            {
+                temp[i] = matrix[l][i];
+            }
+            for (int i = 0; i < n_MOD3; i++)
+            {
+                matrix[l][i] = matrix[k][i];
+            }
+            for (int i = 0; i < n_MOD3; i++)
+            {
+                matrix[k][i] = temp[i];
+            }
+            determinant *= -1;
+        }
+        for (int i = l + 1; i < n_MOD3; i++)
+        {
+            if (i == l + 1 && matrix[i][l] == 0) continue;
+            float d = matrix[i][l] / matrix[l][l];
+            for (int j = l; j < n_MOD3; j++)
+            {
+                matrix[i][j] = matrix[i][j] - d * matrix[l][j];
+            }
+        }
+    }
+    for (int i = 0; i < n_MOD3; i++)
+    {
+        determinant *= matrix[i][i];
+    }
+
+    //determinant = MatrixDeterminant(matrix, n_MOD3);
 
     // free
     for (int z = 0; z < n_MOD3; ++z)
@@ -393,8 +432,6 @@ void OnCopyData(HWND hWnd, WPARAM wParam, LPARAM lParam)
     cds = (COPYDATASTRUCT*)lParam;
     long* p = (long*)cds->lpData;
     n_MOD3 = p[0];
-
-    InvalidateRect(hWnd, 0, TRUE);
 }
 
 /// <summary>
