@@ -17,7 +17,9 @@
 
 ## Badges
 
-
+> [![Theme](https://img.shields.io/badge/Theme-OOP-blue?style=flat-square)](https://en.wikipedia.org/wiki/Object-oriented_programming)
+> [![Language](https://img.shields.io/badge/Language-C++-blue?style=flat-square)](https://en.wikipedia.org/wiki/C%2B%2B)
+> [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 ---
 
