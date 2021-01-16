@@ -1,7 +1,7 @@
 # OOP
 
 <p align="center">
-  <img src="https://github.com/VsIG-official/Images/blob/master/LogoFinalWhite.png" data-canonical-src="https://github.com/VsIG-official/Images/blob/master/LogoFinalWhite.png" width="200" height="100" />
+  <img src="https://github.com/VsIG-official/KPI-OOP/blob/master/pict.png" data-canonical-src="https://github.com/VsIG-official/KPI-OOP/blob/master/pict.png" width="600" height="300" />
 </p>
 
 ## Table of Contents (Optional)
