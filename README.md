@@ -4,7 +4,7 @@
   <img src="https://github.com/VsIG-official/KPI-OOP/blob/master/pict.png" data-canonical-src="https://github.com/VsIG-official/KPI-OOP/blob/master/pict.png" width="600" height="300" />
 </p>
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Description](#description)
 - [Badges](#badges)
@@ -13,7 +13,7 @@
 
 ### Description
 
-> Subtitle or Short Description Goes Here
+This repo was created for subject "OOP" and have both labs and lectures
 
 ## Badges
 
@@ -23,10 +23,26 @@
 
 ---
 
-## Example (Optional)
+## Example
 
 ```cpp
-
+/// <summary>
+/// Do something, when LB is unclicked
+/// </summary>
+/// <param name="hWnd"></param>
+void MyEditor::OnLBup(HWND hWnd)
+{
+	POINT pt;
+	GetCursorPos(&pt);
+	ScreenToClient(hWnd, &pt);
+	X2 = pt.x;
+	Y2 = pt.y;
+	isPressed = false;
+	pcshape[size]->Set(X1, Y1, X2, Y2);
+	size++;
+	InvalidateRect(hWnd, NULL, TRUE);
+	pcshape[size] = pcshape[size - 1]->Duplicate();
+}
 ```
 
 ---
